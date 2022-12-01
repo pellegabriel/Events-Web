@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-weeout-staging-132046-authRole",
+      "UnauthRoleArn": "arn:aws:iam::261965827529:role/amplify-weeout-staging-132046-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::261965827529:role/amplify-weeout-staging-132046-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-weeout-staging-132046-deployment",
+      "UnauthRoleName": "amplify-weeout-staging-132046-unauthRole",
+      "StackName": "amplify-weeout-staging-132046",
+      "StackId": "arn:aws:cloudformation:us-east-1:261965827529:stack/amplify-weeout-staging-132046/f72f62a0-717a-11ed-a516-126a09e165f9",
+      "AmplifyAppId": "dnfsujy7ltlt1"
+    }
+  }
+}

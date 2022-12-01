@@ -9,15 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^4.1.0",
+    "@emotion/react": "^11.10.5",
+    "@fontsource/inter": "^4.5.14",
+    "@theme-ui/components": "^0.15.4",
     "@types/node": "18.11.10",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "aws-amplify": "^5.0.4",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-form-hook": "^0.0.1",
+    "react-hook-form": "^7.40.0",
     "react-npm": "^2.6.1",
     "start": "^5.1.0",
     "typescript": "4.9.3"

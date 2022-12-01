@@ -1,0 +1,16 @@
+type EventTypes @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  EventTypes: String
+  untitledfield: String
+  eventID: ID! @index(name: "byEvent")
+}
+
+type Event @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Event: String
+  EventTypes: [EventTypes] @hasMany(indexName: "byEvent", fields: ["id"])
+  date: AWSDateTime
+  user: AWSURL
+  is_done: Boolean
+  map_point: AWSDate
+}

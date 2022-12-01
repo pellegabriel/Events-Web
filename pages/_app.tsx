@@ -1,45 +1,39 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import Event from './event/event'
-import FormUser from './formUser/FormUser';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
-import IniciarMap from './map/map'
+import Link from 'next/link'
+import "../styles/globals.css";
+import { Amplify } from "aws-amplify";
+import { studioTheme } from "../src/ui-components";
+import { AmplifyProvider } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import "@fontsource/inter";
+import "../styles/reset.css";
+
+import awsconfig from "../src/aws-exports";
+Amplify.configure(awsconfig);
+
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-  <Component {...pageProps} />
+    <AmplifyProvider theme={studioTheme}>
+      <Component {...pageProps} />
 
-      <Router>
-    <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/event">Event</Link>
-          </li>
-          <li>
-            <Link to="/formUser">Users</Link>
-          </li>
-        </ul>
-      </nav>
-
-      {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
-      <Routes>
-      <Route path="/event" element={<Event/>} />
-      <Route path="/formUser" element={<FormUser/>} />
-      </Routes>
-      
-    </div>
-    <div id='map'>
-      <></>
-      <IniciarMap/>
-    </div>
-  </Router>
-  </>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+            <Link href="/event">
+              Event
+            </Link>
+            </li>
+            <li>
+            <Link href="/formUser">
+              FormUser
+            </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+  </AmplifyProvider>
   );
 }
