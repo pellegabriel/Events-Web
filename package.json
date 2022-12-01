@@ -17,6 +17,9 @@
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-form-hook": "^0.0.1",
+    "react-npm": "^2.6.1",
+    "start": "^5.1.0",
     "typescript": "4.9.3"
   }
 }

@@ -66,6 +66,7 @@ export default function Home() {
           </span>
         </a>
       </footer>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7z-2uAFQW1KYOn8K2GAcEzTa__3BXp-0&callback=iniciarMap"></script>
     </div>
   )
 }
