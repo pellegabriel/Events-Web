@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import "../styles/globals.css";
-import { Amplify } from "aws-amplify";
+import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { studioTheme } from "../src/ui-components";
 import { AmplifyProvider } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
