@@ -16,7 +16,7 @@ export default function FormUser() {
   })
 
   return (
-    <div className="App">
+    <>
       <form onSubmit={onSubmit}>
         <input {...register('firstName', {required: true})} placeholder="First name" />
         <input {...register('secondName', {required: true})} placeholder="Second name" />
@@ -29,7 +29,7 @@ export default function FormUser() {
       <h2>
         <Link href="/">Back to home</Link>
       </h2>
-    </div>
+      </>
   );
 }
 
