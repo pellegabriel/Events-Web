@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 
 interface FormData {
   firstName: string;
@@ -15,7 +16,7 @@ export default function FormUser() {
   })
 
   return (
-    <div className="App">
+    <>
       <form onSubmit={onSubmit}>
         <input {...register('firstName', {required: true})} placeholder="First name" />
         <input {...register('secondName', {required: true})} placeholder="Second name" />
@@ -25,7 +26,10 @@ export default function FormUser() {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+      <h2>
+        <Link href="/">Back to home</Link>
+      </h2>
+      </>
   );
 }
 

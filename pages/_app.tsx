@@ -17,23 +17,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AmplifyProvider theme={studioTheme}>
       <Component {...pageProps} />
-
-      <div className="App">
-        <nav>
-          <ul>
-            <li>
-            <Link href="/event">
-              Event
-            </Link>
-            </li>
-            <li>
-            <Link href="/formUser">
+            <Link href="/FormUser" >
               FormUser
             </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+            <Link href="/eventManager" >
+              Event Manager
+            </Link>
+
   </AmplifyProvider>
   );
 }

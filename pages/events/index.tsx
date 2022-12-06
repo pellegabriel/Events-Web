@@ -1,3 +1,4 @@
+
 import { DataStore } from '@aws-amplify/datastore';
 import { Event } from './models';
 
@@ -11,4 +12,3 @@ const Events = () => {
             {models.toString()}
         </div>
     )
-}
