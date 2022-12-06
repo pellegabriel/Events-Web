@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
@@ -12,9 +12,8 @@ type EagerEventTypes = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly EventTypes?: string | null;
-  readonly untitledfield?: string | null;
-  readonly eventID: string;
+  readonly name?: string | null;
+  readonly enabled?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -25,9 +24,8 @@ type LazyEventTypes = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly EventTypes?: string | null;
-  readonly untitledfield?: string | null;
-  readonly eventID: string;
+  readonly name?: string | null;
+  readonly enabled?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -44,12 +42,13 @@ type EagerEvent = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly Event?: string | null;
-  readonly EventTypes?: (EventTypes | null)[] | null;
-  readonly date?: string | null;
-  readonly user?: string | null;
+  readonly name: string;
+  readonly startDate?: string | null;
+  readonly endDate: string;
   readonly is_done?: boolean | null;
   readonly map_point?: string | null;
+  readonly types?: (string | null)[] | null;
+  readonly user: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -60,12 +59,13 @@ type LazyEvent = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly Event?: string | null;
-  readonly EventTypes: AsyncCollection<EventTypes>;
-  readonly date?: string | null;
-  readonly user?: string | null;
+  readonly name: string;
+  readonly startDate?: string | null;
+  readonly endDate: string;
   readonly is_done?: boolean | null;
   readonly map_point?: string | null;
+  readonly types?: (string | null)[] | null;
+  readonly user: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
