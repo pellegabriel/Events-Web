@@ -10,25 +10,18 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "EventTypes": {
-                    "name": "EventTypes",
+                "name": {
+                    "name": "name",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "untitledfield": {
-                    "name": "untitledfield",
+                "enabled": {
+                    "name": "enabled",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
                     "isRequired": false,
-                    "attributes": []
-                },
-                "eventID": {
-                    "name": "eventID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -54,15 +47,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byEvent",
-                        "fields": [
-                            "eventID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -92,41 +76,25 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "Event": {
-                    "name": "Event",
+                "name": {
+                    "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
-                "EventTypes": {
-                    "name": "EventTypes",
-                    "isArray": true,
-                    "type": {
-                        "model": "EventTypes"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "eventID"
-                        ]
-                    }
-                },
-                "date": {
-                    "name": "date",
+                "startDate": {
+                    "name": "startDate",
                     "isArray": false,
                     "type": "AWSDateTime",
                     "isRequired": false,
                     "attributes": []
                 },
-                "user": {
-                    "name": "user",
+                "endDate": {
+                    "name": "endDate",
                     "isArray": false,
-                    "type": "AWSURL",
-                    "isRequired": false,
+                    "type": "AWSDateTime",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "is_done": {
@@ -139,8 +107,23 @@ export const schema = {
                 "map_point": {
                     "name": "map_point",
                     "isArray": false,
-                    "type": "AWSDate",
+                    "type": "String",
                     "isRequired": false,
+                    "attributes": []
+                },
+                "types": {
+                    "name": "types",
+                    "isArray": true,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "user": {
+                    "name": "user",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -189,5 +172,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "e6f1495f0aece5677ccaa918615a0705"
+    "version": "48486cbbac8e2a5d5f88f0d8ff22286e"
 };

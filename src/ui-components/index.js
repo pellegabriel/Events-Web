@@ -7,3 +7,5 @@
 export { default as studioTheme } from "./studioTheme";
 export { default as EventCreateForm } from "./EventCreateForm";
 export { default as EventUpdateForm } from "./EventUpdateForm";
+export { default as EventTypesCreateForm } from "./EventTypesCreateForm";
+export { default as EventTypesUpdateForm } from "./EventTypesUpdateForm";

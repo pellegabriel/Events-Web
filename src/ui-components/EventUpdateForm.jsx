@@ -7,15 +7,153 @@
 /* eslint-disable */
 import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
+import { Event } from "../models";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
+  Badge,
   Button,
+  Divider,
   Flex,
   Grid,
+  Icon,
+  ScrollView,
   SwitchField,
+  Text,
   TextField,
+  useTheme,
 } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
+function ArrayField({
+  items = [],
+  onChange,
+  label,
+  inputFieldRef,
+  children,
+  hasError,
+  setFieldValue,
+  currentFieldValue,
+  defaultFieldValue,
+}) {
+  const { tokens } = useTheme();
+  const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
+  const [isEditing, setIsEditing] = React.useState();
+  React.useEffect(() => {
+    if (isEditing) {
+      inputFieldRef?.current?.focus();
+    }
+  }, [isEditing]);
+  const removeItem = async (removeIndex) => {
+    const newItems = items.filter((value, index) => index !== removeIndex);
+    await onChange(newItems);
+    setSelectedBadgeIndex(undefined);
+  };
+  const addItem = async () => {
+    if (
+      (currentFieldValue !== undefined ||
+        currentFieldValue !== null ||
+        currentFieldValue !== "") &&
+      !hasError
+    ) {
+      const newItems = [...items];
+      if (selectedBadgeIndex !== undefined) {
+        newItems[selectedBadgeIndex] = currentFieldValue;
+        setSelectedBadgeIndex(undefined);
+      } else {
+        newItems.push(currentFieldValue);
+      }
+      await onChange(newItems);
+      setIsEditing(false);
+    }
+  };
+  return (
+    <React.Fragment>
+      {isEditing && children}
+      {!isEditing ? (
+        <>
+          <Text>{label}</Text>
+          <Button
+            onClick={() => {
+              setIsEditing(true);
+            }}
+          >
+            Add item
+          </Button>
+        </>
+      ) : (
+        <Flex justifyContent="flex-end">
+          {(currentFieldValue || isEditing) && (
+            <Button
+              children="Cancel"
+              type="button"
+              size="small"
+              onClick={() => {
+                setFieldValue(defaultFieldValue);
+                setIsEditing(false);
+                setSelectedBadgeIndex(undefined);
+              }}
+            ></Button>
+          )}
+          <Button
+            size="small"
+            variation="link"
+            color={tokens.colors.brand.primary[80]}
+            isDisabled={hasError}
+            onClick={addItem}
+          >
+            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
+          </Button>
+        </Flex>
+      )}
+      {!!items?.length && (
+        <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
+          {items.map((value, index) => {
+            return (
+              <Badge
+                key={index}
+                style={{
+                  cursor: "pointer",
+                  alignItems: "center",
+                  marginRight: 3,
+                  marginTop: 3,
+                  backgroundColor:
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
+                }}
+                onClick={() => {
+                  setSelectedBadgeIndex(index);
+                  setFieldValue(items[index]);
+                  setIsEditing(true);
+                }}
+              >
+                {value.toString()}
+                <Icon
+                  style={{
+                    cursor: "pointer",
+                    paddingLeft: 3,
+                    width: 20,
+                    height: 20,
+                  }}
+                  viewBox={{ width: 20, height: 20 }}
+                  paths={[
+                    {
+                      d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
+                      stroke: "black",
+                    },
+                  ]}
+                  ariaLabel="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    removeItem(index);
+                  }}
+                />
+              </Badge>
+            );
+          })}
+        </ScrollView>
+      )}
+      <Divider orientation="horizontal" marginTop={5} />
+    </React.Fragment>
+  );
+}
 export default function EventUpdateForm(props) {
   const {
     id,
@@ -30,25 +168,32 @@ export default function EventUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    Event: undefined,
-    date: undefined,
-    user: undefined,
+    name: undefined,
+    startDate: undefined,
+    endDate: undefined,
     is_done: false,
     map_point: undefined,
+    types: [],
+    user: undefined,
   };
-  const [Event, setEvent] = React.useState(initialValues.Event);
-  const [date, setDate] = React.useState(initialValues.date);
-  const [user, setUser] = React.useState(initialValues.user);
+  const [name, setName] = React.useState(initialValues.name);
+  const [startDate, setStartDate] = React.useState(initialValues.startDate);
+  const [endDate, setEndDate] = React.useState(initialValues.endDate);
   const [is_done, setIs_done] = React.useState(initialValues.is_done);
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
+  const [types, setTypes] = React.useState(initialValues.types);
+  const [user, setUser] = React.useState(initialValues.user);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord };
-    setEvent(cleanValues.Event);
-    setDate(cleanValues.date);
-    setUser(cleanValues.user);
+    setName(cleanValues.name);
+    setStartDate(cleanValues.startDate);
+    setEndDate(cleanValues.endDate);
     setIs_done(cleanValues.is_done);
     setMap_point(cleanValues.map_point);
+    setTypes(cleanValues.types ?? []);
+    setCurrentTypesValue(undefined);
+    setUser(cleanValues.user);
     setErrors({});
   };
   const [eventRecord, setEventRecord] = React.useState(event);
@@ -60,12 +205,16 @@ export default function EventUpdateForm(props) {
     queryData();
   }, [id, event]);
   React.useEffect(resetStateValues, [eventRecord]);
+  const [currentTypesValue, setCurrentTypesValue] = React.useState(undefined);
+  const typesRef = React.createRef();
   const validations = {
-    Event: [],
-    date: [],
-    user: [{ type: "URL" }],
+    name: [{ type: "Required" }],
+    startDate: [],
+    endDate: [{ type: "Required" }],
     is_done: [],
     map_point: [],
+    types: [],
+    user: [{ type: "Required" }],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -102,11 +251,13 @@ export default function EventUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          Event,
-          date,
-          user: user || undefined,
+          name,
+          startDate,
+          endDate,
           is_done,
           map_point,
+          types,
+          user,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -149,89 +300,96 @@ export default function EventUpdateForm(props) {
       {...getOverrideProps(overrides, "EventUpdateForm")}
     >
       <TextField
-        label="Event"
-        isRequired={false}
+        label="Name"
+        isRequired={true}
         isReadOnly={false}
-        defaultValue={Event}
+        defaultValue={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Event: value,
-              date,
-              user,
+              name: value,
+              startDate,
+              endDate,
               is_done,
               map_point,
+              types,
+              user,
             };
             const result = onChange(modelFields);
-            value = result?.Event ?? value;
+            value = result?.name ?? value;
           }
-          if (errors.Event?.hasError) {
-            runValidationTasks("Event", value);
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
           }
-          setEvent(value);
+          setName(value);
         }}
-        onBlur={() => runValidationTasks("Event", Event)}
-        errorMessage={errors.Event?.errorMessage}
-        hasError={errors.Event?.hasError}
-        {...getOverrideProps(overrides, "Event")}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Date"
+        label="Start date"
         isRequired={false}
         isReadOnly={false}
         type="datetime-local"
-        defaultValue={date && convertToLocal(new Date(date))}
+        defaultValue={startDate && convertToLocal(new Date(startDate))}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Event,
-              date: value,
-              user,
+              name,
+              startDate: value,
+              endDate,
               is_done,
               map_point,
+              types,
+              user,
             };
             const result = onChange(modelFields);
-            value = result?.date ?? value;
+            value = result?.startDate ?? value;
           }
-          if (errors.date?.hasError) {
-            runValidationTasks("date", value);
+          if (errors.startDate?.hasError) {
+            runValidationTasks("startDate", value);
           }
-          setDate(new Date(value).toISOString());
+          setStartDate(new Date(value).toISOString());
         }}
-        onBlur={() => runValidationTasks("date", date)}
-        errorMessage={errors.date?.errorMessage}
-        hasError={errors.date?.hasError}
-        {...getOverrideProps(overrides, "date")}
+        onBlur={() => runValidationTasks("startDate", startDate)}
+        errorMessage={errors.startDate?.errorMessage}
+        hasError={errors.startDate?.hasError}
+        {...getOverrideProps(overrides, "startDate")}
       ></TextField>
       <TextField
-        label="User"
-        isRequired={false}
+        label="End date"
+        isRequired={true}
         isReadOnly={false}
-        defaultValue={user}
+        type="datetime-local"
+        defaultValue={endDate && convertToLocal(new Date(endDate))}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Event,
-              date,
-              user: value,
+              name,
+              startDate,
+              endDate: value,
               is_done,
               map_point,
+              types,
+              user,
             };
             const result = onChange(modelFields);
-            value = result?.user ?? value;
+            value = result?.endDate ?? value;
           }
-          if (errors.user?.hasError) {
-            runValidationTasks("user", value);
+          if (errors.endDate?.hasError) {
+            runValidationTasks("endDate", value);
           }
-          setUser(value);
+          setEndDate(new Date(value).toISOString());
         }}
-        onBlur={() => runValidationTasks("user", user)}
-        errorMessage={errors.user?.errorMessage}
-        hasError={errors.user?.hasError}
-        {...getOverrideProps(overrides, "user")}
+        onBlur={() => runValidationTasks("endDate", endDate)}
+        errorMessage={errors.endDate?.errorMessage}
+        hasError={errors.endDate?.hasError}
+        {...getOverrideProps(overrides, "endDate")}
       ></TextField>
       <SwitchField
         label="Is done"
@@ -242,11 +400,13 @@ export default function EventUpdateForm(props) {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              Event,
-              date,
-              user,
+              name,
+              startDate,
+              endDate,
               is_done: value,
               map_point,
+              types,
+              user,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -265,17 +425,18 @@ export default function EventUpdateForm(props) {
         label="Map point"
         isRequired={false}
         isReadOnly={false}
-        type="date"
         defaultValue={map_point}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Event,
-              date,
-              user,
+              name,
+              startDate,
+              endDate,
               is_done,
               map_point: value,
+              types,
+              user,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -289,6 +450,82 @@ export default function EventUpdateForm(props) {
         errorMessage={errors.map_point?.errorMessage}
         hasError={errors.map_point?.hasError}
         {...getOverrideProps(overrides, "map_point")}
+      ></TextField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              name,
+              startDate,
+              endDate,
+              is_done,
+              map_point,
+              types: values,
+              user,
+            };
+            const result = onChange(modelFields);
+            values = result?.types ?? values;
+          }
+          setTypes(values);
+          setCurrentTypesValue(undefined);
+        }}
+        currentFieldValue={currentTypesValue}
+        label={"Types"}
+        items={types}
+        hasError={errors.types?.hasError}
+        setFieldValue={setCurrentTypesValue}
+        inputFieldRef={typesRef}
+        defaultFieldValue={undefined}
+      >
+        <TextField
+          label="Types"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentTypesValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.types?.hasError) {
+              runValidationTasks("types", value);
+            }
+            setCurrentTypesValue(value);
+          }}
+          onBlur={() => runValidationTasks("types", currentTypesValue)}
+          errorMessage={errors.types?.errorMessage}
+          hasError={errors.types?.hasError}
+          ref={typesRef}
+          {...getOverrideProps(overrides, "types")}
+        ></TextField>
+      </ArrayField>
+      <TextField
+        label="User"
+        isRequired={true}
+        isReadOnly={false}
+        defaultValue={user}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              startDate,
+              endDate,
+              is_done,
+              map_point,
+              types,
+              user: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.user ?? value;
+          }
+          if (errors.user?.hasError) {
+            runValidationTasks("user", value);
+          }
+          setUser(value);
+        }}
+        onBlur={() => runValidationTasks("user", user)}
+        errorMessage={errors.user?.errorMessage}
+        hasError={errors.user?.hasError}
+        {...getOverrideProps(overrides, "user")}
       ></TextField>
       <Flex
         justifyContent="space-between"
