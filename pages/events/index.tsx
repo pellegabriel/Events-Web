@@ -1,5 +1,6 @@
 import { Amplify, withSSRContext } from 'aws-amplify';
 import Head from 'next/head';
+
 // import { ModelEventFilterInput } from '../../src/API';
 import awsExports from '../../src/aws-exports';
 import { listEvents } from '../../src/graphql/queries';
@@ -9,15 +10,18 @@ import Link from 'next/link'
 // } from '../../src/ui-components';
 
 
+
 Amplify.configure({ ...awsExports, ssr: true });
 
 export async function getServerSideProps({ req }: any) {
   const SSR = withSSRContext({ req });
+
   // const filter: ModelEventFilterInput = {
   //   and: [
   //       {startDate: {eq: '2022-12-05T12:14:00.000Z'}}
   //   ]
   // }
+
   try {
     const response = await SSR.API.graphql({ query: listEvents, variables: { filter: filter} });
     return {
@@ -37,7 +41,9 @@ export async function getServerSideProps({ req }: any) {
 export default function Events({ events = [] }) {
 
   return (
+
     <div className='flex items-center'>
+
       <Head>
         <title>Lista d Eventos</title>
         <link rel="icon" href="/favicon.ico" />
@@ -68,6 +74,7 @@ export default function Events({ events = [] }) {
               </Link>
           </div>  
         </div>
+
       </main>
     </div>
   );
