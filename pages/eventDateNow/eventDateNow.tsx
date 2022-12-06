@@ -1,4 +1,4 @@
-export default function EventNow () {
+export default function EventNow (): JSX.Element {
     return (
         <div className="py-6 px-4 sm:p-6 md:py-10 md:px-8">
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">

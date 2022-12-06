@@ -23,7 +23,8 @@ export async function getServerSideProps({ req }: any) {
   // }
 
   try {
-    const response = await SSR.API.graphql({ query: listEvents, variables: { filter: filter} });
+    // const response = await SSR.API.graphql({ query: listEvents, variables: { filter: filter} });
+    const response = await SSR.API.graphql({ query: listEvents});
     return {
       props: {
         events: response.data.listEvents.items,
