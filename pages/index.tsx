@@ -39,14 +39,10 @@ export default function Home() {
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
           >
-            
             <h2>Caja3 &rarr;</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor adipisci voluptatum, voluptates facere sint consectetur, vero aspernatur saepe, nostrum velit asperiores odit numquam maiores? Minima, explicabo aperiam. Asperiores, id officiis?</p>
           </a>
-
-       
         </div>
-
       </main>
 
       <footer className='text-center'>
