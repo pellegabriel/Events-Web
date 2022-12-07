@@ -38,8 +38,10 @@ export default function Home() {
             <h2>Caja2 &rarr;</h2>
             <p>editar este texto o algo asi</p>
           </a>
+          <div className='w-full lg:w-7/12 bg-white p-5 rounded-lg'>
           <Events/>
           <MyComponent/>
+          </div>
           <div className='p-1 bg-white grid gap-4 col-start-2 col-end-3 sm:mb-6 lg:gap-6  lg:row-span-6 lg:mb-0 overflow-y-auto h-60 ...'>
             <EventNowWindow/>
             

@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import Link from 'next/link'
+
 import "../styles/globals.css";
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { studioTheme } from "../src/ui-components";
