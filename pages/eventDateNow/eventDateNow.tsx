@@ -32,7 +32,7 @@ export default function EventNow () {
             <button type="button" className="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg">Check availability</button>
           </div>
           <p className="mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400">
-            This sunny and spacious room is for those traveling light and looking for a comfy and cosy place to lay their head for a night or two. This beach house sits in a vibrant neighborhood littered with cafes, pubs, restaurants and supermarkets and is close to all the major attractions such as Edinburgh Castle and Arthur's Seat.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid veniam dolorum quod obcaecati, harum ullam mollitia, voluptate officia natus possimus temporibus ad. Aliquam ipsa ullam, saepe est reprehenderit nihil!
           </p>
         </div>
 

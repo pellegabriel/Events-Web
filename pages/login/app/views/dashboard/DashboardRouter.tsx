@@ -1,8 +1,8 @@
 // import { Switch, Route, Redirect } from 'react-router-dom';
 import Link from 'next/link';
-import { Home } from './home/Home';
+import  Home  from './home/Home';
 
-export function DashboardRouter(){
+export default function DashboardRouter(){
    return (
       <>
         <main>

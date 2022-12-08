@@ -1,7 +1,7 @@
 import { useReducer } from "react";
-import { AppRouter } from "./app/router/AppRouter";
+import  AppRouter  from "./app/router/AppRouter";
 import { AuthContext } from "./app/views/store/contexts/AuthContext";
-import { authReducer } from "./app/views/store/reducers/authReducer";
+import  authReducer  from "./app/views/store/reducers/authReducer";
 
 const init = () => {
   let sessionUser: any = sessionStorage.getItem("user");

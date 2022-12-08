@@ -4,7 +4,7 @@ interface Props{
    children:ReactElement
 }
 
-export function AuthCard(props:Props){
+export default function AuthCard(props:Props){
    return(
       <div className="container mt-4rem mycontainer">
         <div className="d-flex justify-content-center">

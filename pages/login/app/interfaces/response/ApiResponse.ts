@@ -1,4 +1,4 @@
-export interface ApiResponse{
+export default interface ApiResponse{
     data:any[],
     success:boolean,
     status:number,

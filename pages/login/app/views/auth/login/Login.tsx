@@ -1,14 +1,14 @@
-import { AuthCard } from "../components/authCard/AuthCard";
-import logo from '../../../assets/img/logo.png';
+import  AuthCard  from "../components/authCard/AuthCard";
+import Image from 'next/image'
 import accountIcon from '../../../assets/icons/account.svg';
 import passwordIcon from '../../../assets/icons/password.svg';
 import React, { useContext, useState } from "react";
 import Link from 'next/link'
 import { AuthContext } from "../../store/contexts/AuthContext";
-import { AuthService } from "../../../services/auth/AuthService";
+import  AuthService  from "../../../services/auth/AuthService";
 
 
-export function Login(){
+export default function Login(){
    const { dispatchUser }:any = useContext(AuthContext);
    const [ auth, setAuth ] = useState({email:'', password:''})
   //  const history = useHistory();
@@ -48,7 +48,7 @@ export function Login(){
 
         <div className="mb-2 p-1 d-flex border rounded">
           <div className="mx-2 mt-1"> 
-            <img 
+            <Image 
               className="img-fluid"
               src={accountIcon}
               alt="iconUser" />
@@ -65,7 +65,7 @@ export function Login(){
 
         <div className="mb-2 p-1 d-flex border rounded">
           <div className="mx-2 mt-1"> 
-            <img 
+          <Image 
               className="img-fluid"
               src={passwordIcon}
               alt="iconUser" />

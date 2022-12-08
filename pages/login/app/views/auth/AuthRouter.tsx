@@ -3,7 +3,7 @@ import { Login } from './login/Login';
 import Link from 'next/link'
 
 
-export function AuthRouter(){
+export default function AuthRouter(){
    return (
     //   <Switch>
     //      <Route exact path="/auth/login">

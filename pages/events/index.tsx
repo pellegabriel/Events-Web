@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { ModelEventFilterInput } from '../../src/API';
 import awsExports from '../../src/aws-exports';
 import { listEvents } from '../../src/graphql/queries';
+import Link from 'next/link'
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -32,14 +33,14 @@ export async function getServerSideProps({ req }: any) {
 export default function Events({ events = [] }) {
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white flex items-center'>
       <Head>
-        <title>Lista d Eventos</title>
+        <title>WeeOut</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main >
-          <h1 >Lista d' Eventos</h1>
+          <h1 >Lista de Eventos</h1>
 
           <p >
             <code >{events.length}</code>
@@ -56,6 +57,16 @@ export default function Events({ events = [] }) {
           )})}
 
           </div>
+          <Link href={'/createEvents'}>
+          <div className='"group-hover:text-white group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-violet-500 hover:ring-sky-500"'>
+          <div className="flex items-center space-x-3">
+          
+            + New Event 
+          
+          </div>
+          <p className="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</p>
+          </div>
+          </Link>
          </main>
     </div>
   );

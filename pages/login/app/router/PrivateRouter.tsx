@@ -6,7 +6,7 @@ interface Props {
    component:any,
 }
 
-export function PrivateRouter({ loggedIn, component }:Props){
+export default function PrivateRouter({ loggedIn, component }:Props){
  return (
     <>
       {
