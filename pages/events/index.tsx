@@ -42,10 +42,10 @@ export default function Events({ events = [] }) {
       <main >
           <h1 >Lista de Eventos</h1>
 
-          <p >
+          <div >
             <code >{events.length}</code>
             events
-          </p>
+          </div>
 
           <div >
           {events.map((event: any) => {
@@ -64,7 +64,7 @@ export default function Events({ events = [] }) {
             + New Event 
           
           </div>
-          <p className="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</p>
+          <div className="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</div>
           </div>
           </Link>
          </main>
