@@ -39,7 +39,7 @@ export default function Events({ events = [] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main >
+      <div >
           <h1 >Lista de Eventos</h1>
 
           <div >
@@ -67,7 +67,7 @@ export default function Events({ events = [] }) {
           <div className="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</div>
           </div>
           </Link>
-         </main>
+         </div>
     </div>
   );
 }
