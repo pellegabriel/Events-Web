@@ -17,7 +17,7 @@ export default function FormUser() {
 
   return (
 
-    <body className="font-mono bg-gray-900 flex justify-center">
+    <div className="font-mono bg-gray-900 flex justify-center">
         
         <div className="container mx-auto">
           <div className="flex justify-center px-6 my-12">
@@ -29,9 +29,9 @@ export default function FormUser() {
                 <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={onSubmit}>
                   <div className="mb-4 md:flex md:justify-between">
                     <div className="mb-4 md:mr-2 md:mb-0">
-                    <h1>
+                      <h1>
                         First Name
-                        </h1>
+                      </h1>
                       <input {...register('firstName', {required: true})}
                         className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                         type="text"
@@ -71,9 +71,9 @@ export default function FormUser() {
                       <div className="text-xs italic text-red-500">Please choose a password.</div>
                     </div>
                     <div className="md:ml-2">
-                    <h1>
+                      <h1>
                         Confirm Password
-                        </h1>
+                      </h1>
                       <input {...register('confirmPassword', {required: true, validate: (value: any) => value === getValues('password')})}
                         className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                         placeholder="******************"
@@ -102,18 +102,16 @@ export default function FormUser() {
                     >
                       Already have an account? Login!
                     </a>
-                <div>
-                  <Link className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href="/">Back to home</Link>
+                    <div>
+                    <Link className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href="/">Back to home</Link>
+                    </div>
                   </div>
-                  </div>
-
-
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </div>
     // <div className='grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0  '>
     //   <form onSubmit={onSubmit}>
     //     <input {...register('firstName', {required: true})} placeholder="First name" />
