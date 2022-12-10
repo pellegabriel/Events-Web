@@ -16,14 +16,10 @@ export default function FormUser() {
   })
 
   return (
-
-    <div className="font-mono bg-gray-900 flex justify-center">
-        
+    <div className="font-mono bg-gray-200 flex h-screen">
         <div className="container mx-auto">
           <div className="flex justify-center px-6 my-12">
-        
             <div className="w-full xl:w-3/4 lg:w-11/12 flex justify-center">
-
               <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg ">
                 <h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
                 <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={onSubmit}>
@@ -112,21 +108,6 @@ export default function FormUser() {
           </div>
         </div>
       </div>
-    // <div className='grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0  '>
-    //   <form onSubmit={onSubmit}>
-    //     <input {...register('firstName', {required: true})} placeholder="First name" />
-    //     <input {...register('secondName', {required: true})} placeholder="Second name" />
-    //     <input {...register('email', {required: true})} placeholder="Email" />
-    //     <input {...register('password', {required: true})} placeholder="Password" type="password" />
-    //     <input {...register('confirmPassword', {required: true, validate: (value: any) => value === getValues('password')})} placeholder="Confirm password" type="password" />
-
-        
-    //   </form>
-    //   <h2>
-    //   <button type="submit">Submit</button>
-    //     <Link href="/">Back to home</Link>
-    //   </h2>
-    //   </div>
   );
 }
 
