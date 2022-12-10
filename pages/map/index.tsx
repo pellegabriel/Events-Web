@@ -4,8 +4,8 @@ import { Spinner } from "@theme-ui/components";
 
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '450px',
+  height: '250px'
 };
 
 const center = {
