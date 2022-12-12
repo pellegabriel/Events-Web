@@ -33,13 +33,8 @@ export async function getServerSideProps({ req }: any) {
 export default function Events({ events = [] }) {
 
   return (
-    <div className='bg-white flex items-center'>
-      <Head>
-        <title>WeeOut</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main >
+    <div className=' bg-white flex items-center  mx-auto rounded-lg p-6 '>
+      <div >
           <h1 >Lista de Eventos</h1>
 
           <div >
@@ -57,17 +52,8 @@ export default function Events({ events = [] }) {
           )})}
 
           </div>
-          <Link href={'/createEvents'}>
-          <div className='"group-hover:text-white group block max-w-xs mx-auto rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-violet-500 hover:ring-sky-500"'>
-          <div className="flex items-center space-x-3">
-          
-            + New Event 
-          
-          </div>
-          <div className="text-slate-500 group-hover:text-white text-sm">Create a new project from a variety of starting templates.</div>
-          </div>
-          </Link>
-         </main>
+
+         </div>
     </div>
   );
 }
