@@ -168,42 +168,56 @@ export default function EventCreateForm(props) {
   } = props;
   const initialValues = {
     name: undefined,
+    id: undefined,
     startDate: undefined,
     endDate: undefined,
+    Field0: undefined,
     is_done: false,
     map_point: undefined,
     types: [],
     user: undefined,
+    description: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
+  const [id, setId] = React.useState(initialValues.id);
   const [startDate, setStartDate] = React.useState(initialValues.startDate);
   const [endDate, setEndDate] = React.useState(initialValues.endDate);
+  const [Field0, setField0] = React.useState(initialValues.Field0);
   const [is_done, setIs_done] = React.useState(initialValues.is_done);
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
+    setId(initialValues.id);
     setStartDate(initialValues.startDate);
     setEndDate(initialValues.endDate);
+    setField0(initialValues.Field0);
     setIs_done(initialValues.is_done);
     setMap_point(initialValues.map_point);
     setTypes(initialValues.types);
     setCurrentTypesValue(undefined);
     setUser(initialValues.user);
+    setDescription(initialValues.description);
     setErrors({});
   };
   const [currentTypesValue, setCurrentTypesValue] = React.useState(undefined);
   const typesRef = React.createRef();
   const validations = {
     name: [{ type: "Required" }],
+    id: [{ type: "Required" }],
     startDate: [],
     endDate: [{ type: "Required" }],
+    Field0: [],
     is_done: [],
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
+    description: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -224,12 +238,15 @@ export default function EventCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
+          id,
           startDate,
           endDate,
+          Field0,
           is_done,
           map_point,
           types,
           user,
+          description,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -271,7 +288,7 @@ export default function EventCreateForm(props) {
       {...getOverrideProps(overrides, "EventCreateForm")}
     >
       <TextField
-        label="Name"
+        label="Title"
         isRequired={true}
         isReadOnly={false}
         onChange={(e) => {
@@ -279,12 +296,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
+              id,
               startDate,
               endDate,
+              Field0,
               is_done,
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -300,6 +320,38 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
+        label="Sub Title"
+        isRequired={true}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              id: value,
+              startDate,
+              endDate,
+              Field0,
+              is_done,
+              map_point,
+              types,
+              user,
+              description,
+            };
+            const result = onChange(modelFields);
+            value = result?.id ?? value;
+          }
+          if (errors.id?.hasError) {
+            runValidationTasks("id", value);
+          }
+          setId(value);
+        }}
+        onBlur={() => runValidationTasks("id", id)}
+        errorMessage={errors.id?.errorMessage}
+        hasError={errors.id?.hasError}
+        {...getOverrideProps(overrides, "id")}
+      ></TextField>
+      <TextField
         label="Start date"
         isRequired={false}
         isReadOnly={false}
@@ -309,12 +361,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate: value,
               endDate,
+              Field0,
               is_done,
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.startDate ?? value;
@@ -339,12 +394,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate,
               endDate: value,
+              Field0,
               is_done,
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.endDate ?? value;
@@ -359,6 +417,36 @@ export default function EventCreateForm(props) {
         hasError={errors.endDate?.hasError}
         {...getOverrideProps(overrides, "endDate")}
       ></TextField>
+      <TextField
+        label="Description"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              id,
+              startDate,
+              endDate,
+              Field0: value,
+              is_done,
+              map_point,
+              types,
+              user,
+              description,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field0 ?? value;
+          }
+          if (errors.Field0?.hasError) {
+            runValidationTasks("Field0", value);
+          }
+          setField0(value);
+        }}
+        onBlur={() => runValidationTasks("Field0", Field0)}
+        errorMessage={errors.Field0?.errorMessage}
+        hasError={errors.Field0?.hasError}
+        {...getOverrideProps(overrides, "Field0")}
+      ></TextField>
       <SwitchField
         label="Is done"
         defaultChecked={false}
@@ -369,12 +457,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate,
               endDate,
+              Field0,
               is_done: value,
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -398,12 +489,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate,
               endDate,
+              Field0,
               is_done,
               map_point: value,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -424,12 +518,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate,
               endDate,
+              Field0,
               is_done,
               map_point,
               types: values,
               user,
+              description,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -473,12 +570,15 @@ export default function EventCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              id,
               startDate,
               endDate,
+              Field0,
               is_done,
               map_point,
               types,
               user: value,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -492,6 +592,38 @@ export default function EventCreateForm(props) {
         errorMessage={errors.user?.errorMessage}
         hasError={errors.user?.hasError}
         {...getOverrideProps(overrides, "user")}
+      ></TextField>
+      <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              id,
+              startDate,
+              endDate,
+              Field0,
+              is_done,
+              map_point,
+              types,
+              user,
+              description: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
       ></TextField>
       <Flex
         justifyContent="space-between"
