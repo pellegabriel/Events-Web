@@ -39,5 +39,11 @@ export type AmplifyDependentResourcesAttributes = {
         "userPoolGroups": {
             "betatestGroupRole": "string"
         }
+    },
+    "storage": {
+        "s3weeout01storage2ebbc512": {
+            "BucketName": "string",
+            "Region": "string"
+        }
     }
 }

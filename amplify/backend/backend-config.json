@@ -108,5 +108,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "s3weeout01storage2ebbc512": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }
