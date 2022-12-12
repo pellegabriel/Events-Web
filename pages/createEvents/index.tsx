@@ -10,6 +10,7 @@ export default function eventCreate () {
         <h1>Create Your Event</h1>
         <EventCreateForm 
         />
+
       </div>
     </div>
     
