@@ -86,18 +86,18 @@ export default function FormUser() {
                   </div>
                   <hr className="mb-6 border-t" />
                   <div className="text-center">
-                    <a
+                    <span
                       className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                     >
                       Forgot Password?
-                    </a>
+                    </span>
                   </div>
                   <div className="text-center">
-                    <a
+                    <span
                       className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                     >
                       Already have an account? Login!
-                    </a>
+                    </span>
                     <div>
                     <Link className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href="/">Back to home</Link>
                     </div>

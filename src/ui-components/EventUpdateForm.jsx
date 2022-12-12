@@ -175,6 +175,7 @@ export default function EventUpdateForm(props) {
     map_point: undefined,
     types: [],
     user: undefined,
+    description: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [startDate, setStartDate] = React.useState(initialValues.startDate);
@@ -183,6 +184,9 @@ export default function EventUpdateForm(props) {
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord };
@@ -194,6 +198,7 @@ export default function EventUpdateForm(props) {
     setTypes(cleanValues.types ?? []);
     setCurrentTypesValue(undefined);
     setUser(cleanValues.user);
+    setDescription(cleanValues.description);
     setErrors({});
   };
   const [eventRecord, setEventRecord] = React.useState(event);
@@ -215,6 +220,7 @@ export default function EventUpdateForm(props) {
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
+    description: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -258,6 +264,7 @@ export default function EventUpdateForm(props) {
           map_point,
           types,
           user,
+          description,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -315,6 +322,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -346,6 +354,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.startDate ?? value;
@@ -377,6 +386,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.endDate ?? value;
@@ -407,6 +417,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -437,6 +448,7 @@ export default function EventUpdateForm(props) {
               map_point: value,
               types,
               user,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -463,6 +475,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types: values,
               user,
+              description,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -513,6 +526,7 @@ export default function EventUpdateForm(props) {
               map_point,
               types,
               user: value,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -526,6 +540,37 @@ export default function EventUpdateForm(props) {
         errorMessage={errors.user?.errorMessage}
         hasError={errors.user?.hasError}
         {...getOverrideProps(overrides, "user")}
+      ></TextField>
+      <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              startDate,
+              endDate,
+              is_done,
+              map_point,
+              types,
+              user,
+              description: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
       ></TextField>
       <Flex
         justifyContent="space-between"

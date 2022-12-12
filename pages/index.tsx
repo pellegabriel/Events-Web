@@ -19,9 +19,9 @@ export default function Home() {
         <nav className="bg-gray-800 p-2 mt-0 fixed w-full z-10 top-0">
         <div className="container mx-auto flex flex-wrap items-center">
 		    <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-				<a className="text-white no-underline hover:text-white hover:no-underline" href="#">
-					<span className="text-2xl pl-2"><i className="em em-grinning"></i> Welcome to <a className='text-violet-500'>Weeout</a> <span className="animate-waving-hand">👋🏻</span></span>
-				</a>
+				<span className="text-white no-underline hover:text-white hover:no-underline" href="#">
+					<span className="text-2xl pl-2"><i className="em em-grinning"></i> Bienvenido a <a className='text-violet-500'>Weeout</a> <span className="animate-waving-hand">👋🏻</span></span>
+				</span>
             </div>
 			<div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
 				<ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="flex flex-wrap">
           <div className="w-5/6 sm:w-1/2 p-6">
             <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-            Search for an event
+            Busca un evento
             </h3>
             <div className="text-gray-600 mb-8">
             <Events/>
@@ -55,7 +55,6 @@ export default function Home() {
 
               Images from:
 
-              <a className="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
             </div>
           </div>
           <div className="w-full sm:w-1/2 p-6">
@@ -339,7 +338,7 @@ export default function Home() {
           <div className="w-full sm:w-1/2 p-6 mt-6">
             <div className="align-middle">
               <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-               Find the nearest event
+              Localizalo 
               </h3>
               <div className=' '>
                     <MyComponent/>        
@@ -390,23 +389,23 @@ export default function Home() {
           </div> */}
           <section className="container mx-auto text-center py-6 mb-12">
             <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-violet-500">
-              Create an event
+              Agrega evento
             </h2>
             <div className="w-full mb-4">
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <h3 className="my-4 text-3xl leading-tight">
-            Share your best moments with people!
+            Comparte momentos con otras personas!
             </h3>
             <Link className='flex justify-center' href={'/createEvents'}>
               <div className=" hover:text-white hover:bg-violet-500 w-64 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                + New Event 
+                + Nuevo evento 
               </div>
             </Link>
           </section>   
           <div className=' bg-white '>
           <h4 className=" p-4 w-full my-2 text-3xl font-bold leading-tight text-center text-black">
-          Events happening now
+          Sucediendo ahora
             </h4>
                   </div>
                 <div className='p-8'>
