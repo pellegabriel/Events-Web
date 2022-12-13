@@ -11,6 +11,11 @@ import "@fontsource/inter";
 import awsconfig from "../src/aws-exports";
 Amplify.configure(awsconfig);
 
+import config from '../src/aws-exports'
+Amplify.configure({
+  ...config,
+  ssr: true
+})
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

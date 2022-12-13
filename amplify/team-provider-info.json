@@ -17,22 +17,15 @@
         "weeout921a0308": {},
         "userPoolGroups": {}
       },
-      "function": {
-        "weeout921a0308DefineAuthChallenge": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308DefineAuthChallenge-52764c6741644a484772-build.zip"
-        },
-        "weeout921a0308CreateAuthChallenge": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-464c44414755326e474c-build.zip"
-        },
-        "weeout921a0308VerifyAuthChallengeResponse": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-68476a44626c4a352f61-build.zip"
-        }
-      },
       "api": {
         "weeout": {}
+      },
+      "function": {
+        "weeout921a0308CustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/",
+          "EMAILSUBJECT": "",
+          "EMAILMESSAGE": "hello"
+        }
       }
     }
   }
