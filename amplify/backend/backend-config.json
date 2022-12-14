@@ -23,7 +23,17 @@
     }
   },
   "function": {
-    "weeout921a0308CustomMessage": {
+    "weeout921a0308DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "weeout921a0308CreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "weeout921a0308VerifyAuthChallengeResponse": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -36,7 +46,25 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "weeout921a0308CustomMessage",
+          "resourceName": "weeout921a0308DefineAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "weeout921a0308CreateAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "weeout921a0308VerifyAuthChallengeResponse",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",
@@ -52,7 +80,7 @@
           "EMAIL"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": "8",
+          "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
         "mfaConfiguration": "OFF",

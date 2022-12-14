@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "weeout921a0308_identitypool_921a0308",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "weeout921a0308",
     "userPoolName": "weeout921a0308_userpool_921a0308",
     "autoVerifiedAttributes": [
@@ -14,10 +14,10 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Tu codigo es ",
+    "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": true,
-    "passwordPolicyMinLength": "8",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
       "email"
@@ -36,10 +36,16 @@
     "sharedId": "921a0308",
     "resourceName": "weeout921a0308",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "manual",
+    "useDefault": "default",
     "triggers": {
-      "CustomMessage": [
-        "verification-link"
+      "DefineAuthChallenge": [
+        "captcha-define-challenge"
+      ],
+      "CreateAuthChallenge": [
+        "captcha-create-challenge"
+      ],
+      "VerifyAuthChallengeResponse": [
+        "captcha-verify"
       ]
     },
     "userPoolGroupList": [
@@ -64,7 +70,25 @@
     "dependsOn": [
       {
         "category": "function",
-        "resourceName": "weeout921a0308CustomMessage",
+        "resourceName": "weeout921a0308DefineAuthChallenge",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      },
+      {
+        "category": "function",
+        "resourceName": "weeout921a0308CreateAuthChallenge",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      },
+      {
+        "category": "function",
+        "resourceName": "weeout921a0308VerifyAuthChallengeResponse",
         "triggerProvider": "Cognito",
         "attributes": [
           "Arn",
@@ -73,19 +97,13 @@
       }
     ],
     "permissions": [],
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"CustomMessage\",\n    \"lambdaFunctionName\": \"weeout921a0308CustomMessage\"\n  }\n]",
+    "authTriggerConnections": [
+      "{\"triggerType\":\"DefineAuthChallenge\",\"lambdaFunctionName\":\"weeout921a0308DefineAuthChallenge\"}",
+      "{\"triggerType\":\"CreateAuthChallenge\",\"lambdaFunctionName\":\"weeout921a0308CreateAuthChallenge\"}",
+      "{\"triggerType\":\"VerifyAuthChallengeResponse\",\"lambdaFunctionName\":\"weeout921a0308VerifyAuthChallengeResponse\"}"
+    ],
     "parentStack": {
       "Ref": "AWS::StackId"
-    },
-    "thirdPartyAuth": true,
-    "authProviders": [],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "hostedUI": true,
-    "hostedUIDomainName": "",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
-    "verificationBucketName": "weeout921a0308verificationbucket"
+    }
   }
 }

@@ -7,7 +7,19 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "weeout921a0308CustomMessage": {
+        "weeout921a0308DefineAuthChallenge": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string"
+        },
+        "weeout921a0308CreateAuthChallenge": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string"
+        },
+        "weeout921a0308VerifyAuthChallengeResponse": {
             "Name": "string",
             "Arn": "string",
             "LambdaExecutionRole": "string",
@@ -18,7 +30,6 @@ export type AmplifyDependentResourcesAttributes = {
         "weeout921a0308": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
-            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",

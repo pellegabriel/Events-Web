@@ -1,6 +1,7 @@
 //pages/post.js
 //other imports here
 import {Authenticator,Flex,useTheme,} from "@aws-amplify/ui-react";
+import Profile from "./profile";
 
 function Post() {
 
@@ -31,6 +32,7 @@ const authComponents = {
         //   // other components here
         // </Layout>
     //   )} */}
+    <Profile/>
     </Authenticator>
   );
 }
