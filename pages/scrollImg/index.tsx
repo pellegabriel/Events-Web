@@ -1,23 +1,41 @@
-import Image from 'next/image'
+import EventCard from "../eventCard/eventCard"
 
 export default function ScrollImg () {
     return (
-        <div className="snap-proximity snap-x ...">
-            <div className="snap-center ...">
-                <Image alt='' src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
+
+    <main>
+    <div className="container px-4 flex-grow w-full py-4 sm:py-16 mx-auto px-0">
+      <div className="mx-auto w-full md:w-4/5 px-4">
+        <div className="container my-8">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-3xl font-medium">
+              Mira algunos eventos
+            </h2>
+            <div>
+              <button
+                className="cursor-pointer text-xl mx-1 text-indigo-600 font-bold"
+              >
+              </button>
+              <button
+                className="cursor-pointer text-xl mx-1 text-indigo-600 font-bold"
+              >
+              </button>
             </div>
-            <div className="snap-center ...">
-                <Image alt='' src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-            </div>
-            <div className="snap-center ...">
-                <Image  alt='' src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-            </div>
-            <div className="snap-center ...">
-                <Image alt='' src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-            </div>
-            <div className="snap-center ...">
-                <Image alt='' src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-            </div>
+          </div>
+          <div
+            id="scrollContainer"
+            className="scrollbar flex flex-no-wrap overflow-x-scroll scrolling-touch items-start mb-8"
+          >
+            <EventCard/>
+            <EventCard/>
+            <EventCard/>
+            <EventCard/>
+          </div>
         </div>
+
+        
+      </div>
+    </div>
+    </main>
     )
 }

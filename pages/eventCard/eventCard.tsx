@@ -1,8 +1,11 @@
-export default function eventCard () {
+export default function EventCard () {
     return (
-        <div className="max-w-sm rounded-sm overflow-hidden shadow-lg m-16">
+        <div
+        className="flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 border rounded-lg"
+        >
+        <div className="max-w-sm rounded-sm overflow-hidden shadow-lg m-3">
   
-            <div className="h-64 bg-cover hover:bg-gray"></div>
+            <div className="h-8 bg-cover hover:bg-gray"></div>
             <div className="mx-6 my-4 border-b border-gray-light">
                 <div className="font-medium text-base text-gray-darker mb-4">Item name goes here</div>
                 <div className="font-normal text-gray-dark text-sm mb-2">
@@ -44,6 +47,7 @@ export default function eventCard () {
                 </span>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
