@@ -22,7 +22,7 @@ export declare type EventCreateFormInputValues = {
     map_point?: string;
     types?: string[];
     user?: string;
-    description?: string;
+    descripcion?: string;
 };
 export declare type EventCreateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -34,7 +34,7 @@ export declare type EventCreateFormValidationValues = {
     map_point?: ValidationFunction<string>;
     types?: ValidationFunction<string>;
     user?: ValidationFunction<string>;
-    description?: ValidationFunction<string>;
+    descripcion?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventCreateFormOverridesProps = {
@@ -48,7 +48,7 @@ export declare type EventCreateFormOverridesProps = {
     map_point?: FormProps<TextFieldProps>;
     types?: FormProps<TextFieldProps>;
     user?: FormProps<TextFieldProps>;
-    description?: FormProps<TextFieldProps>;
+    descripcion?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EventCreateFormProps = React.PropsWithChildren<{
     overrides?: EventCreateFormOverridesProps | undefined | null;

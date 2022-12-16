@@ -2,15 +2,49 @@ import {
   EventCreateForm 
 } from '../../src/ui-components';
 
-export default function eventCreate () {
+export default function EventCreate () {
 
   return (
-    <div className='font-mono bg-gray-200  h-screen'>
-      <div className='p-8 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl'>
-        <h1>Create Your Event</h1>
+    <section
+   className="
+   bg-white
+   pt-20
+   lg:pt-[120px]
+   pb-12
+   lg:pb-[90px]
+   relative
+   z-20
+   overflow-hidden
+   "
+   >
+   <div className="container">
+    <div className="flex flex-wrap justify-center -mx-4">
+         <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+            <div
+               className="
+               bg-white
+               rounded-xl
+               relative
+               z-10
+               overflow-hidden
+               border border-primary border-opacity-20
+               shadow-pricing
+               py-10
+               px-8
+               sm:p-12
+               lg:py-10 lg:px-6
+               xl:p-12
+               mb-10
+               "
+               >
+      <div >
         <EventCreateForm />
+        
       </div>
     </div>
-    
+    </div>
+    </div>
+    </div>
+    </section>
   )
 }
