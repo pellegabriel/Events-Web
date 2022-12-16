@@ -1,13 +1,17 @@
 import Image from 'next/image'
 // import img1 from '../../public/IMG1.png' 
 import user from '../../public/user.png'
+import EventCreate from "../createEvents";
+import EventUpdate from '../updateEvents/update';
+
     
 export default function Profile () {
     return (
+        <div>
+<div className='h-screen flex justify-center '>
 
-<div className="h-screen overflow-hidden flex items-center justify-center bg-#edf2f7" >
-    <div className="relative max-w-md mx-auto md:max-w-2xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
-    <div className="px-6">
+    <div className="  break-words bg-white h-screen mb-6 shadow-lg rounded-xl mt-16">
+    <div className="">
         <div className="flex flex-wrap justify-center">
             <div className="w-full flex justify-center">
                 <div className="relative">
@@ -41,15 +45,20 @@ export default function Profile () {
         <div className="mt-6 py-6 border-t border-slate-200 text-center">
             <div className="flex flex-wrap justify-center">
                 <div className="w-full px-4">
-                    <p className="font-light leading-relaxed text-slate-600 mb-4">An artist of considerable range, Mike is the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm.</p>
-                    <a href="javascript:;" className="font-normal text-slate-700 hover:text-slate-400">Follow Account</a>
+                    <span className="font-light leading-relaxed text-slate-600 mb-4">An artist of considerable range, Mike is the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm.</span>
                 </div>
             </div>
         </div>
+        
     </div>
+
+<EventCreate/>
+<EventUpdate/>
+
 </div>
 </div>
 
+</div>
 
     )
 }

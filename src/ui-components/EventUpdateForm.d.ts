@@ -22,6 +22,7 @@ export declare type EventUpdateFormInputValues = {
     types?: string[];
     user?: string;
     description?: string;
+    descripcion?: string;
 };
 export declare type EventUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -32,6 +33,7 @@ export declare type EventUpdateFormValidationValues = {
     types?: ValidationFunction<string>;
     user?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
+    descripcion?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventUpdateFormOverridesProps = {
@@ -44,6 +46,7 @@ export declare type EventUpdateFormOverridesProps = {
     types?: FormProps<TextFieldProps>;
     user?: FormProps<TextFieldProps>;
     description?: FormProps<TextFieldProps>;
+    descripcion?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EventUpdateFormProps = React.PropsWithChildren<{
     overrides?: EventUpdateFormOverridesProps | undefined | null;

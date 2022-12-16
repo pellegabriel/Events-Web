@@ -166,6 +166,7 @@ export default function EventCreateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     name: undefined,
     id: undefined,
@@ -176,7 +177,7 @@ export default function EventCreateForm(props) {
     map_point: undefined,
     types: [],
     user: undefined,
-    description: undefined,
+    descripcion: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [id, setId] = React.useState(initialValues.id);
@@ -187,8 +188,8 @@ export default function EventCreateForm(props) {
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
-  const [description, setDescription] = React.useState(
-    initialValues.description
+  const [descripcion, setDescripcion] = React.useState(
+    initialValues.descripcion
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -202,7 +203,7 @@ export default function EventCreateForm(props) {
     setTypes(initialValues.types);
     setCurrentTypesValue(undefined);
     setUser(initialValues.user);
-    setDescription(initialValues.description);
+    setDescripcion(initialValues.descripcion);
     setErrors({});
   };
   const [currentTypesValue, setCurrentTypesValue] = React.useState(undefined);
@@ -217,7 +218,7 @@ export default function EventCreateForm(props) {
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
-    description: [],
+    descripcion: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -231,9 +232,9 @@ export default function EventCreateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
-      columnGap="15px"
-      padding="20px"
+      rowGap={tokens.space.xs.value}
+      columnGap={tokens.space.xxxs.value}
+      padding={tokens.space.xl.value}
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
@@ -246,7 +247,7 @@ export default function EventCreateForm(props) {
           map_point,
           types,
           user,
-          description,
+          descripcion,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -288,7 +289,7 @@ export default function EventCreateForm(props) {
       {...getOverrideProps(overrides, "EventCreateForm")}
     >
       <TextField
-        label="Title"
+        label="Titulo"
         isRequired={true}
         isReadOnly={false}
         onChange={(e) => {
@@ -304,7 +305,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -320,7 +321,7 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Sub Title"
+        label="Sub Titulo"
         isRequired={true}
         isReadOnly={false}
         onChange={(e) => {
@@ -336,7 +337,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.id ?? value;
@@ -352,7 +353,7 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "id")}
       ></TextField>
       <TextField
-        label="Start date"
+        label="Comienzo"
         isRequired={false}
         isReadOnly={false}
         type="datetime-local"
@@ -369,7 +370,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.startDate ?? value;
@@ -385,7 +386,7 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "startDate")}
       ></TextField>
       <TextField
-        label="End date"
+        label="Final"
         isRequired={true}
         isReadOnly={false}
         type="datetime-local"
@@ -402,7 +403,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.endDate ?? value;
@@ -418,7 +419,8 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "endDate")}
       ></TextField>
       <TextField
-        label="Description"
+        label="Descripcion"
+        isRequired={false}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -432,7 +434,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;
@@ -465,7 +467,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -481,7 +483,7 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "is_done")}
       ></SwitchField>
       <TextField
-        label="Map point"
+        label="Localizacion"
         isRequired={false}
         isReadOnly={false}
         onChange={(e) => {
@@ -497,7 +499,7 @@ export default function EventCreateForm(props) {
               map_point: value,
               types,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -526,7 +528,7 @@ export default function EventCreateForm(props) {
               map_point,
               types: values,
               user,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -535,7 +537,7 @@ export default function EventCreateForm(props) {
           setCurrentTypesValue(undefined);
         }}
         currentFieldValue={currentTypesValue}
-        label={"Types"}
+        label={"Tipo de Evento"}
         items={types}
         hasError={errors.types?.hasError}
         setFieldValue={setCurrentTypesValue}
@@ -543,7 +545,7 @@ export default function EventCreateForm(props) {
         defaultFieldValue={undefined}
       >
         <TextField
-          label="Types"
+          label="Tipo de Evento"
           isRequired={false}
           isReadOnly={false}
           value={currentTypesValue}
@@ -562,7 +564,7 @@ export default function EventCreateForm(props) {
         ></TextField>
       </ArrayField>
       <TextField
-        label="User"
+        label="Usuario"
         isRequired={true}
         isReadOnly={false}
         onChange={(e) => {
@@ -578,7 +580,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user: value,
-              description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -594,7 +596,7 @@ export default function EventCreateForm(props) {
         {...getOverrideProps(overrides, "user")}
       ></TextField>
       <TextField
-        label="Description"
+        label="Descripcion"
         isRequired={false}
         isReadOnly={false}
         onChange={(e) => {
@@ -610,37 +612,37 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
-              description: value,
+              descripcion: value,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.descripcion ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.descripcion?.hasError) {
+            runValidationTasks("descripcion", value);
           }
-          setDescription(value);
+          setDescripcion(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
+        onBlur={() => runValidationTasks("descripcion", descripcion)}
+        errorMessage={errors.descripcion?.errorMessage}
+        hasError={errors.descripcion?.hasError}
+        {...getOverrideProps(overrides, "descripcion")}
       ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Limpiar Formulario"
           type="reset"
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xxxs.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Cancel"
+            children="Cancelar"
             type="button"
             onClick={() => {
               onCancel && onCancel();
@@ -648,7 +650,7 @@ export default function EventCreateForm(props) {
             {...getOverrideProps(overrides, "CancelButton")}
           ></Button>
           <Button
-            children="Submit"
+            children="Subir Evento"
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}

@@ -32,7 +32,9 @@ const authComponents = {
         //   // other components here
         // </Layout>
     //   )} */}
+    
     <Profile/>
+    
     </Authenticator>
   );
 }
