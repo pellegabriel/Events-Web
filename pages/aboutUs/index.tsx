@@ -15,21 +15,14 @@ export default function AboutUs () {
                 </a>
                 <div>
                     <header>
-                        <div className="mb-3">
-                            <ul className="flex flex-wrap text-xs font-medium -m-1">
-                                <li className="m-1">
-                                    <a className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out" href="#0">Product</a>
-                                </li>
-                                <li className="m-1">
-                                    <a className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out" href="#0">Engineering</a>
-                                </li>
-                            </ul>
-                        </div>
                         <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
-                            <a className="hover:text-gray-100 transition duration-150 ease-in-out" href="#0">Designing a functional workflow at home.</a>
+                            <a className="hover:text-gray-100 transition duration-150 ease-in-out" href="#0">Te damos la bienvenida a WeeOut</a>
                         </h3>
                     </header>
-                    <p className="text-lg text-gray-400 flex-grow">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.</p>
+                    <div className="text-lg text-gray-400 flex-grow">Es un espacio digital que brinda un servicio gratuito para agentes culturales y aficionados a la cultura, el arte y ocio.
+Nuestro objetivo es facilitar a través de nuestra página, el encuentro entre nuestros artistas y productores culturales y todos aquellos que deseen disfrutar de esta oferta.
+<br/>A través nuestro podrás generar o buscar eventos de acuerdo a tu interés. Podés saber qué está pasando en este preciso momento en el lugar en donde estés y acceder a la información detallada de la actividad, precios y modalidades de manera sencilla y gratuita. 
+                        Sólo un click te permitirá encontrar lo que buscás para disfrutar de un momento agradable, acorde a tu necesidad y bolsillo. Sumate a nuestra comunidad de usuarios.</div>
                     <footer className="flex items-center mt-4">
                         <a href="#0">
                             <Image className="rounded-full flex-shrink-0 mr-4" src={admin} width="40" height="40" alt="Author 04"/>
@@ -37,7 +30,6 @@ export default function AboutUs () {
                         <div>
                             <a className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out" href="#0">Chris Solerieu</a>
                             <div className="text-gray-700"> - </div>
-                            <div className="text-gray-500">Jan 19, 2020</div>
                         </div>
                     </footer>
                 </div>
