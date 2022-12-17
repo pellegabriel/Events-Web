@@ -27,7 +27,7 @@ export default function Home() {
 			<div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
 				<ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
 				  <li className="mr-3">
-					<a className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">More about us</a>
+            <Link href='/aboutUs' className='inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4'>Mas sobre nosotros</Link>
 				  </li>
           <li className="mr-3">
           <Link className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/formUser'>Sing In</Link>
@@ -89,11 +89,11 @@ export default function Home() {
             <h3 className="my-4 text-3xl leading-tight">
             Comparte momentos con otras personas!
             </h3>
-            <Link className='flex justify-center' href={'/createEvents'}>
+            {/* <Link className='flex justify-center' href={'/createEvents'}>
               <div className=" hover:text-white hover:bg-violet-500 w-64 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                 + Nuevo evento 
               </div>
-            </Link>
+            </Link> */}
           </section>   
 
         </main>

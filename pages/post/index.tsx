@@ -26,16 +26,15 @@ const authComponents = {
       {/* {({ signOut, user }) => ( */}
         {/* // <Layout */}
         {/* //   handleClick={() => signOut()}
-        //   authText="Sign Out"
-        //   username={user.attributes.email.split("@")[0]}
-        // >
-        //   // other components here
-        // </Layout>
-    //   )} */}
-    
-    <Profile/>
-    
+          authText="Sign Out"
+          username={user.attributes.email.split("@")[0]}
+        >
+          // other components here
+        </Layout>
+      )} */}
+      <Profile/>
     </Authenticator>
+    
   );
 }
 export default Post;
