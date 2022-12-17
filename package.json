@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^4.2.0",
+    "@aws-amplify/ui-react": "^4.2.1",
     "@emotion/react": "^11.10.5",
     "@fontsource/inter": "^4.5.14",
     "@react-google-maps/api": "^2.17.0",
@@ -17,7 +17,7 @@
     "@types/node": "18.11.10",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
-    "aws-amplify": "^5.0.5",
+    "aws-amplify": "^5.0.7",
     "emotion": "^11.0.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
