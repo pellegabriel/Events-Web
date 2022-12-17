@@ -3,30 +3,23 @@ import React from "react";
 import Link from 'next/link'
 import ScrollImg from './scrollImg';
 import Ilustration from './ilustration/ilustration';
-import { withAuthenticator } from "@aws-amplify/ui-react";
+// import { id } from 'aws-sdk/clients/datapipeline';
 
 interface IHome {
-  signOut: string;
-  user: string;
+  signOut: ()=> void
+  
+  user: Record<string, any>
   renderedAt: string;
 }
+// Interface IHome {
+//   user: TUser
+//   }
+  
+//   Type TUser = {
+//   userName: string 
+//   }
 
-export function getServerSideProps() {
-  const renderedAt = new Date();
-  const formattedBuildDate = renderedAt.toLocaleDateString("en-US", {
-    dateStyle: "long",
-  });
-  const formattedBuildTime = renderedAt.toLocaleTimeString("en-US", {
-    timeStyle: "long",
-  });
-  return {
-    props: {
-      renderedAt: `${formattedBuildDate} at ${formattedBuildTime}`,
-    },
-  };
-}
-
-function Home({ signOut, user, renderedAt }: IHome) {  
+function Home({ signOut, user, renderedAt}: IHome) {  
   return (
     <div className='cursor-pointer'>
       <Head>
@@ -51,10 +44,7 @@ function Home({ signOut, user, renderedAt }: IHome) {
             <Link href='/aboutUs' className='inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4'>Mas sobre nosotros</Link>
 				  </li>
           <li className="mr-3">
-          <Link className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/formUser'>Sing In</Link>
-				  </li>
-          <li className="mr-3">
-					<a className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/post'>Login</a>
+					<a className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/post'>Comienza a disfrutar</a>
 				  </li>
 				</ul>
 			</div>
@@ -75,15 +65,15 @@ function Home({ signOut, user, renderedAt }: IHome) {
         </main>
         
       </div>
-      <div style={{ padding: 50 }}>
+      {/* <div style={{ padding: 50 }}>
       <h1>Logged in as {user.username}.</h1>
       <div>
         <button onClick={signOut}>Sign out</button>
       </div>
-      <p>This page was server-side rendered on {renderedAt}.</p>
-    </div>
+      <div>This page was server-side rendered on {renderedAt}.</div>
+    </div> */}
     </div>
   )
 }
 
-export default withAuthenticator(Home);
+export default Home;

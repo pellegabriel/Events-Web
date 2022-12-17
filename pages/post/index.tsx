@@ -2,8 +2,31 @@
 //other imports here
 import {Authenticator,Flex,useTheme,} from "@aws-amplify/ui-react";
 import Profile from "./profile";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 
-function Post() {
+interface IHome {
+  signOut: ()=> void
+  
+  user: Record<string, any>
+  renderedAt: string;
+}
+export function getServerSideProps() {
+  const renderedAt = new Date();
+  const formattedBuildDate = renderedAt.toLocaleDateString("en-US", {
+    dateStyle: "long",
+  });
+  const formattedBuildTime = renderedAt.toLocaleTimeString("en-US", {
+    timeStyle: "long",
+  });
+  return {
+    props: {
+      renderedAt: `${formattedBuildDate} at ${formattedBuildTime}`,
+    },
+  };
+}
+
+
+function Post({signOut, user, renderedAt}: IHome) {
 
 const authComponents = {
     Header() {
@@ -33,8 +56,15 @@ const authComponents = {
         </Layout>
       )} */}
       <Profile/>
+      <div style={{ padding: 50 }}>
+      <h1>Logged in as {user.username}.</h1>
+      <div>
+        <button onClick={signOut}>Sign out</button>
+      </div>
+      <div>This page was server-side rendered on {renderedAt}.</div>
+      </div>
     </Authenticator>
     
   );
 }
-export default Post;
+export default withAuthenticator(Post);
