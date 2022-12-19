@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
 import ScrollImg from './scrollImg';
-import Ilustration from './ilustration/ilustration';
+import MainEvent from './mainEvent/mainEvent';
 // import { id } from 'aws-sdk/clients/datapipeline';
 
 interface IHome {
@@ -30,7 +30,7 @@ function Home({ signOut, user, renderedAt}: IHome) {
       <div className=" font-mono bg-gray-200 h-full">
         <main >
           <ScrollImg/>
-          <Ilustration/>
+          <MainEvent/>
         <nav className="bg-gray-800 p-2 mt-0 fixed w-full z-10 top-0">
         <div className="container mx-auto flex flex-wrap items-center">
 		    <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">

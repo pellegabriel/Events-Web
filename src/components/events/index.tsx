@@ -1,7 +1,7 @@
 import { Amplify, withSSRContext } from 'aws-amplify';
 // import { ModelEventFilterInput } from '../../src/API';
-import awsExports from '../../src/aws-exports';
-import { listEvents } from '../../src/graphql/queries';
+import awsExports from '../../aws-exports';
+import { listEvents } from '../../graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
 

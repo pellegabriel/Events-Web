@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import user from '../../public/user.png'
 import Link from 'next/link'
-import Events from '../events'
+import Events from '../../src/components/events'
 
 export default function Profile() {
     return(
@@ -54,7 +54,7 @@ export default function Profile() {
         <div className="">
             <Events/>
             <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>
-                            Administra eventos, crea o actualizalos
+                Administra eventos, crea o actualizalos
             </Link>
            
             </div>

@@ -1,7 +1,7 @@
 import MyComponent from '../map/index';
-import Events from '../events';
+import Events from '../../src/components/events';
 
-export default function Ilustration () {
+export default function MainEvent () {
     return(  
     
         <section className="bg-white border-b py-8">
