@@ -1,7 +1,7 @@
 import { Amplify, withSSRContext } from 'aws-amplify';
 // import { ModelEventFilterInput } from '../../src/API';
-import awsExports from '../../aws-exports';
-import { listEvents } from '../../graphql/queries';
+import awsExports from '../../src/aws-exports';
+import { listEvents } from '../../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -13,8 +13,7 @@ export async function getServerSideProps({ req }: any) {
   //   ]
   // }
   try {
-    // const response = await SSR.API.graphql({ query: listEvents, variables: { filter: filter} });
-    const response = await SSR.API.graphql({ query: listEvents});
+     const response = await SSR.API.graphql({ query: listEvents, variables: {} });
     return {
       props: {
         events: response.data.listEvents.items,
@@ -41,7 +40,7 @@ export default function Events({ events = [] }) {
     <div className="p-1">
       <h5 className="py-1 px-6 ">Cantidad de eventos disponibles: </h5>
       <div className="flex px-6  text-gray-700 text-base mb-4">
-        <code >{events.length}-</code>
+        <code >{events.length}</code>
          events
       </div>
     </div>
@@ -50,27 +49,12 @@ export default function Events({ events = [] }) {
             return (
                 <div className='border-b border-gray-300' key={event.id}>
                 <h3>{event.name}</h3>
-
               </div>
           )})}
     </div>
   </div>
 </div>
 
-    
-      <div >
-          <h1 ></h1>
-
-          <div >
-
-          </div>
-
-          <div >
-
-
-          </div>
-
-         </div>
     </div>
   );
 }

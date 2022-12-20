@@ -1,5 +1,5 @@
 import MyComponent from '../map/index';
-import Events from '../../src/components/events';
+import Events from '../events';
 import Ilustration from '../../src/components/Ilustracion/Ilustracion';
 export default function MainEvent () {
     return(  

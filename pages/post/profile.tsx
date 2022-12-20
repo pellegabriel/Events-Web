@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import user from '../../public/user.png'
 import Link from 'next/link'
-import Events from '../../src/components/events'
+import Events from '../events'
 
 export default function Profile() {
     return(
