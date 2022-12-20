@@ -60,7 +60,7 @@ function Home({ }: IHome) {
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <ScrollImg/>
-          <MainEvent/>
+            <MainEvent/>
           </section>   
 
         </main>
