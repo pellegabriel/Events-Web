@@ -49,7 +49,7 @@ function Home({ }: IHome) {
             <Link href='/aboutUs' className='inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4'>Mas sobre nosotros</Link>
 				  </li>
           <li className="mr-3">
-					<a className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/post'>Comienza a disfrutar</a>
+					<Link className="inline-block py-2 px-4 text-white no-underline hover:text-violet-500 hover:text-underline py-2 px-4" href='/post'>Comienza a disfrutar</Link>
 				  </li>
 				</ul>
 			</div>
