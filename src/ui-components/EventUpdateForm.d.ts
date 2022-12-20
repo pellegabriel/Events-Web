@@ -15,38 +15,38 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type EventUpdateFormInputValues = {
     name?: string;
-    startDate?: string;
-    endDate?: string;
-    is_done?: boolean;
+    description?: string;
     map_point?: string;
     types?: string[];
     user?: string;
-    description?: string;
     descripcion?: string;
+    startDate?: string;
+    endDate?: string;
+    is_done?: boolean;
 };
 export declare type EventUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
-    startDate?: ValidationFunction<string>;
-    endDate?: ValidationFunction<string>;
-    is_done?: ValidationFunction<boolean>;
+    description?: ValidationFunction<string>;
     map_point?: ValidationFunction<string>;
     types?: ValidationFunction<string>;
     user?: ValidationFunction<string>;
-    description?: ValidationFunction<string>;
     descripcion?: ValidationFunction<string>;
+    startDate?: ValidationFunction<string>;
+    endDate?: ValidationFunction<string>;
+    is_done?: ValidationFunction<boolean>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventUpdateFormOverridesProps = {
     EventUpdateFormGrid?: FormProps<GridProps>;
     name?: FormProps<TextFieldProps>;
-    startDate?: FormProps<TextFieldProps>;
-    endDate?: FormProps<TextFieldProps>;
-    is_done?: FormProps<SwitchFieldProps>;
+    description?: FormProps<TextFieldProps>;
     map_point?: FormProps<TextFieldProps>;
     types?: FormProps<TextFieldProps>;
     user?: FormProps<TextFieldProps>;
-    description?: FormProps<TextFieldProps>;
     descripcion?: FormProps<TextFieldProps>;
+    startDate?: FormProps<TextFieldProps>;
+    endDate?: FormProps<TextFieldProps>;
+    is_done?: FormProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type EventUpdateFormProps = React.PropsWithChildren<{
     overrides?: EventUpdateFormOverridesProps | undefined | null;
