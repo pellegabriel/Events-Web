@@ -2,11 +2,12 @@ import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
 import ScrollImg from './scrollImg';
-import MainEvent from './mainEvent/mainEvent';
 // import { id } from 'aws-sdk/clients/datapipeline';
 import Image from 'next/image'
 import admin from '../public/admin.png' 
-
+import MyComponent from './map/index';
+import Events from './events';
+import Ilustration from './../src/components/Ilustracion/Ilustracion';
 
 interface IHome {
   signOut: ()=> void
@@ -60,9 +61,20 @@ function Home({ }: IHome) {
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <ScrollImg/>
-            <MainEvent/>
           </section>   
+          <article className="grid gap-2">
+      <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
+        <section className="grid grid-cols-12 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
+          <h1 className="col-span-10 text-3xl mt-12">Busca lo que necesites en la Lista de eventos disponibles: </h1>
 
+          <div className="col-span-12 h-[13rem] lg:h-[31rem] w-full object-cover lg:col-span-5 lg:row-span-2">
+          <Events/>
+          </div>
+          <p className="text-xl col-span-12 lg:col-span-7"><MyComponent/> </p>
+          <p className="text-xs xl:text-sm col-span-12 sm:col-span-7 lg:col-span-4"><Ilustration/></p>               
+        </section>
+      </main>
+    </article>
         </main>
         
       </div>
