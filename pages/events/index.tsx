@@ -31,6 +31,7 @@ export async function getServerSideProps({ req }: any) {
 export default function Events({ events = [] }) {
 
   return (
+    
     <div className='w-6/6 bg-white flex items-center  rounded-lg p-6 '>
     <div className="flex justify-center">
   <div className="block rounded-lg shadow-lg bg-white max-w-sm text-center">
