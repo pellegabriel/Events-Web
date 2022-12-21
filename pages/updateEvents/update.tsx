@@ -1,6 +1,6 @@
 import { 
     EventUpdateForm
-  } from '../../ui-components';
+  } from '../../src/ui-components';
   
   export default function EventUpdate () {
 

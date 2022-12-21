@@ -1,6 +1,6 @@
-import MyComponent from '../../../pages/map/index';
-import Events from '../../../pages/events';
-import Ilustration from '../Ilustracion/Ilustracion';
+import MyComponent from '../map/index';
+import Events from '../events';
+import Ilustration from '../../src/components/Ilustracion/Ilustracion';
 export default function MainEvent () {
     return(  
       <article className="grid gap-2">
