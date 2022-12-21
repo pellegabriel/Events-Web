@@ -1,4 +1,4 @@
-import EventCard from "../eventCard/eventCard"
+import EventCard from "../../src/components/eventCard/eventCard"
 
 export default function ScrollImg () {
     return (
