@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
-import ScrollImg from '../src/components/scrollImg';
-import MainEvent from '../src/components/mainEvent/mainEvent';
+import ScrollImg from './scrollImg';
+import MainEvent from './mainEvent/mainEvent';
 // import { id } from 'aws-sdk/clients/datapipeline';
 import Image from 'next/image'
 import admin from '../public/admin.png' 

@@ -1,4 +1,4 @@
-import img1 from '../../../public/IMG1.png' 
+import img1 from '../../public/IMG1.png' 
 import Image from 'next/image'
 
 export default function EventCard () {
