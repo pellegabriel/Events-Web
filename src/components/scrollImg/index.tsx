@@ -1,6 +1,11 @@
 import EventCard from "../eventCard/eventCard"
+import { Event } from '../../models'
 
-export default function ScrollImg () {
+interface IProps {
+  events: Array<Event>
+}
+
+export default function ScrollImg ({events}: IProps) {
     return (
     <main>
       <div className="container px-4 flex-grow w-full py-4 sm:py-16 mx-auto px-0">
@@ -25,10 +30,7 @@ export default function ScrollImg () {
               id="scrollContainer"
               className="scrollbar flex flex-no-wrap overflow-x-scroll scrolling-touch items-start mb-8"
             >
-              <EventCard/>
-              <EventCard/>
-              <EventCard/>
-              <EventCard/>
+              <EventCard events={events}/>
             </div>
           </div>
 

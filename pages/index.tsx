@@ -1,19 +1,26 @@
 import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
-import ScrollImg from './scrollImg';
-// import { id } from 'aws-sdk/clients/datapipeline';
+import ScrollImg from '../src/components/scrollImg';
+import { Amplify, withSSRContext } from 'aws-amplify';
 import Image from 'next/image'
 import admin from '../public/admin.png' 
-import MyComponent from './map/index';
+import Map from './map/index';
 import Events from './events';
 import Ilustration from './../src/components/Ilustracion/Ilustracion';
+import { ModelEventFilterInput } from '../src/API';
+import { listEvents } from '../src/graphql/queries';
+import awsExports from '../src/aws-exports';
+import { Event } from '../src/models';
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 interface IHome {
   signOut: ()=> void
   
   user: Record<string, any>
   renderedAt: string;
+  events: Array<Event>
 }
 // Interface IHome {
 //   user: TUser
@@ -22,8 +29,36 @@ interface IHome {
 //   Type TUser = {
 //   userName: string 
 //   }
+export async function getServerSideProps({ req, query }: any) {
+  const SSR = withSSRContext({ req });
+  const startDate = new Date(query.startDate);
+  const types = query.types;
+  const filterOptions = {
+    ...(query.types && {types: {contains: types}}),
+    ...(query.startDate && {startDate: {gt: startDate.toISOString()}}),
+  }
 
-function Home({ }: IHome) {  
+   const filter: ModelEventFilterInput = {
+     and: [
+       {...filterOptions}
+     ]
+   }
+  try {
+     const response = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
+    return {
+      props: {
+        events: response.data.listEvents.items,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: {},
+    };
+  }
+}
+
+function Home({events }: IHome) {  
   return (
     <div className='cursor-pointer'>
       <Head>
@@ -60,7 +95,7 @@ function Home({ }: IHome) {
             <div className="w-full mb-4">
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <ScrollImg/>
+            <ScrollImg events={events}/>
           </section>   
           <article className="grid gap-2">
       <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
@@ -70,8 +105,8 @@ function Home({ }: IHome) {
           <div className="col-span-12 h-[13rem] lg:h-[31rem] w-full object-cover lg:col-span-5 lg:row-span-2">
           <Events/>
           </div>
-          <p className="text-xl col-span-12 lg:col-span-7"><MyComponent/> </p>
-          <p className="text-xs xl:text-sm col-span-12 sm:col-span-7 lg:col-span-4"><Ilustration/></p>               
+          <div className="text-xl col-span-12 lg:col-span-7"><Map events={events}/> </div>
+          <div className="text-xs xl:text-sm col-span-12 sm:col-span-7 lg:col-span-4"><Ilustration/></div>               
         </section>
       </main>
     </article>
