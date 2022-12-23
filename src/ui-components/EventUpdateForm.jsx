@@ -176,6 +176,7 @@ export default function EventUpdateForm(props) {
     types: [],
     user: undefined,
     description: undefined,
+    descripcion: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [startDate, setStartDate] = React.useState(initialValues.startDate);
@@ -186,6 +187,9 @@ export default function EventUpdateForm(props) {
   const [user, setUser] = React.useState(initialValues.user);
   const [description, setDescription] = React.useState(
     initialValues.description
+  );
+  const [descripcion, setDescripcion] = React.useState(
+    initialValues.descripcion
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -199,6 +203,7 @@ export default function EventUpdateForm(props) {
     setCurrentTypesValue(undefined);
     setUser(cleanValues.user);
     setDescription(cleanValues.description);
+    setDescripcion(cleanValues.descripcion);
     setErrors({});
   };
   const [eventRecord, setEventRecord] = React.useState(event);
@@ -221,6 +226,7 @@ export default function EventUpdateForm(props) {
     types: [],
     user: [{ type: "Required" }],
     description: [],
+    descripcion: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -265,6 +271,7 @@ export default function EventUpdateForm(props) {
           types,
           user,
           description,
+          descripcion,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -307,7 +314,7 @@ export default function EventUpdateForm(props) {
       {...getOverrideProps(overrides, "EventUpdateForm")}
     >
       <TextField
-        label="Name"
+        label="Titulo"
         isRequired={true}
         isReadOnly={false}
         defaultValue={name}
@@ -323,6 +330,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -338,7 +346,7 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Start date"
+        label="Comienzo"
         isRequired={false}
         isReadOnly={false}
         type="datetime-local"
@@ -355,6 +363,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.startDate ?? value;
@@ -370,7 +379,7 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "startDate")}
       ></TextField>
       <TextField
-        label="End date"
+        label="Final"
         isRequired={true}
         isReadOnly={false}
         type="datetime-local"
@@ -387,6 +396,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.endDate ?? value;
@@ -402,7 +412,7 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "endDate")}
       ></TextField>
       <SwitchField
-        label="Is done"
+        label="Ya se realizo"
         defaultChecked={false}
         isDisabled={false}
         isChecked={is_done}
@@ -418,6 +428,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -433,7 +444,7 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "is_done")}
       ></SwitchField>
       <TextField
-        label="Map point"
+        label="Localizacion"
         isRequired={false}
         isReadOnly={false}
         defaultValue={map_point}
@@ -449,6 +460,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -476,6 +488,7 @@ export default function EventUpdateForm(props) {
               types: values,
               user,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -484,7 +497,7 @@ export default function EventUpdateForm(props) {
           setCurrentTypesValue(undefined);
         }}
         currentFieldValue={currentTypesValue}
-        label={"Types"}
+        label={"Tipo de evento"}
         items={types}
         hasError={errors.types?.hasError}
         setFieldValue={setCurrentTypesValue}
@@ -492,7 +505,7 @@ export default function EventUpdateForm(props) {
         defaultFieldValue={undefined}
       >
         <TextField
-          label="Types"
+          label="Tipo de evento"
           isRequired={false}
           isReadOnly={false}
           value={currentTypesValue}
@@ -511,7 +524,7 @@ export default function EventUpdateForm(props) {
         ></TextField>
       </ArrayField>
       <TextField
-        label="User"
+        label="Usuario"
         isRequired={true}
         isReadOnly={false}
         defaultValue={user}
@@ -527,6 +540,7 @@ export default function EventUpdateForm(props) {
               types,
               user: value,
               description,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -542,7 +556,7 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "user")}
       ></TextField>
       <TextField
-        label="Description"
+        label="Descripcion"
         isRequired={false}
         isReadOnly={false}
         defaultValue={description}
@@ -558,6 +572,7 @@ export default function EventUpdateForm(props) {
               types,
               user,
               description: value,
+              descripcion,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -572,12 +587,44 @@ export default function EventUpdateForm(props) {
         hasError={errors.description?.hasError}
         {...getOverrideProps(overrides, "description")}
       ></TextField>
+      <TextField
+        label="Descripcion"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={descripcion}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              startDate,
+              endDate,
+              is_done,
+              map_point,
+              types,
+              user,
+              description,
+              descripcion: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.descripcion ?? value;
+          }
+          if (errors.descripcion?.hasError) {
+            runValidationTasks("descripcion", value);
+          }
+          setDescripcion(value);
+        }}
+        onBlur={() => runValidationTasks("descripcion", descripcion)}
+        errorMessage={errors.descripcion?.errorMessage}
+        hasError={errors.descripcion?.hasError}
+        {...getOverrideProps(overrides, "descripcion")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Reset"
+          children="Limpiar formulario"
           type="reset"
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ResetButton")}
@@ -587,7 +634,7 @@ export default function EventUpdateForm(props) {
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Cancel"
+            children="Cancelar"
             type="button"
             onClick={() => {
               onCancel && onCancel();
@@ -595,7 +642,7 @@ export default function EventUpdateForm(props) {
             {...getOverrideProps(overrides, "CancelButton")}
           ></Button>
           <Button
-            children="Submit"
+            children="Subir evento"
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}

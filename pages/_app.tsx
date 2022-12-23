@@ -6,7 +6,8 @@ import { studioTheme } from "../src/ui-components";
 import { AmplifyProvider } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import "@fontsource/inter";
-
+import "@aws-amplify/ui-react/styles.css";
+import "../styles/globals.css";
 
 import awsconfig from "../src/aws-exports";
 Amplify.configure(awsconfig);
