@@ -1,7 +1,7 @@
 import Image from 'next/image'
 // import img1 from '../../public/IMG1.png' 
 import { Amplify, Storage } from 'aws-amplify';
-import user from '../../public/user.png'
+import user1 from '../../public/user1.png'
 import { 
     EventCreateForm 
   } from '../../src/ui-components';
@@ -45,7 +45,7 @@ export default function EventUserAdm () {
         <div className="">
             <div className=" flex ">
                 <div className="">
-                    <Image alt='' src={user} className="shadow-xl rounded-full align-middle border-none -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
+                    <Image alt='' src={user1} className="shadow-xl rounded-full align-middle border-none -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
                 </div>
             </div>
             
