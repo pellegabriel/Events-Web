@@ -6,21 +6,30 @@ import { Amplify, withSSRContext } from 'aws-amplify';
 import Image from 'next/image'
 import admin from '../public/admin.png' 
 import Map from './map/index';
-import Events from './events';
+import EventsSearch from '../src/components/filterEventSearch/filterEventSearch';
 import Ilustration from './../src/components/Ilustracion/Ilustracion';
 import { ModelEventFilterInput } from '../src/API';
 import { listEvents } from '../src/graphql/queries';
 import awsExports from '../src/aws-exports';
 import { Event } from '../src/models';
+import {  useRouter } from 'next/router';
+
 
 Amplify.configure({ ...awsExports, ssr: true });
 
 interface IHome {
   signOut: ()=> void
-  
+  scrollEvents: Array<Event>
   user: Record<string, any>
   renderedAt: string;
   events: Array<Event>
+  filters: IFilters
+}
+
+export interface IFilters {
+  startDate: string,
+ types: string
+ 
 }
 // Interface IHome {
 //   user: TUser
@@ -37,17 +46,29 @@ export async function getServerSideProps({ req, query }: any) {
     ...(query.types && {types: {contains: types}}),
     ...(query.startDate && {startDate: {gt: startDate.toISOString()}}),
   }
-
+    const today = new Date().toISOString(); 
+    console.log(today)
    const filter: ModelEventFilterInput = {
      and: [
        {...filterOptions}
      ]
    }
+   const dateFilter: ModelEventFilterInput = {
+    and: [
+      {startDate: {gt: today}}
+    //   trae eventos apartir de ahora
+    ]
+  }
+
   try {
-     const response = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
+     const response = await SSR.API.graphql({ query: listEvents, variables: {filter: dateFilter}});
+     const responseFilter = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
+    //  COPIAR ESTO 2 VECES Y 1 MODIFICAR PARA Q NO SE ME CAMBIE
     return {
       props: {
-        events: response.data.listEvents.items,
+        scrollEvents: response.data.listEvents.items,
+        events: responseFilter.data.listEvents.items,
+        filters: filterOptions
       },
     };
   } catch (err) {
@@ -56,9 +77,24 @@ export async function getServerSideProps({ req, query }: any) {
       props: {},
     };
   }
+  
 }
+function Home({events =[] ,scrollEvents=[],filters}: IHome) { 
+  const router = useRouter();
+  // Call this function whenever you want to
+  // refresh props!
+  const refreshData = ({startDate, types}: IFilters) => {
+    router.push({pathname: '/', query: {startDate: startDate, types: types}});
+  }
 
-function Home({events }: IHome) {  
+  const handleChange = (newFilters: IFilters) => {
+    const prevFilters = router.query;
+    refreshData(
+      {
+        ...(prevFilters as unknown as IFilters),
+         ...newFilters
+        })
+  } 
   return (
     <div className='cursor-pointer'>
       <Head>
@@ -95,7 +131,7 @@ function Home({events }: IHome) {
             <div className="w-full mb-4">
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <ScrollImg events={events}/>
+            <ScrollImg events={scrollEvents}/>
           </section>   
           <article className="grid gap-2">
       <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
@@ -103,7 +139,7 @@ function Home({events }: IHome) {
           <h1 className="col-span-10 text-3xl mt-12">Busca lo que necesites en la Lista de eventos disponibles: </h1>
 
           <div className="col-span-12 h-[13rem] lg:h-[31rem] w-full object-cover lg:col-span-5 lg:row-span-2">
-          <Events/>
+          <EventsSearch events={events}  filters={filters} updateFilters={handleChange} />
           </div>
           <div className="text-xl col-span-12 lg:col-span-7"><Map events={events}/> </div>
           <div className="text-xs xl:text-sm col-span-12 sm:col-span-7 lg:col-span-4"><Ilustration/></div>               
@@ -113,13 +149,6 @@ function Home({events }: IHome) {
         </main>
         
       </div>
-      {/* <div style={{ padding: 50 }}>
-      <h1>Logged in as {user.username}.</h1>
-      <div>
-        <button onClick={signOut}>Sign out</button>
-      </div>
-      <div>This page was server-side rendered on {renderedAt}.</div>
-    </div> */}
     </div>
   )
 }

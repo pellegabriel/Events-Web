@@ -29,6 +29,7 @@ export async function getServerSideProps({ req, query }: any) {
    }
   try {
      const response = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
+    //  COPIAR ESTO 2 VECES Y 1 MODIFICAR PARA Q NO SE ME CAMBIE
     return {
       props: {
         events: response.data.listEvents.items,
@@ -67,7 +68,7 @@ export default function Events({ events = [] }) {
   return (
     
     <div className='w-6/6 bg-white flex items-center  rounded-lg p-6 '>
-      <EventCard events={events}/>
+      {/* <EventCard events={events}/> */}
       <div>
         Fecha inicio: <input type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate', router)}}/>
       </div>

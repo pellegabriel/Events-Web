@@ -48,7 +48,7 @@ function Map({events = []}: IProps) {
       // >
         
       //   { /* Child components, such as markers, info windows, etc. */ }
-      //   <> {events.map((event) => (
+      //   {events.map((event) => (
       //     <Marker
       //       key={event.id}
       //       latitude={event.map_point.lat}
@@ -59,7 +59,7 @@ function Map({events = []}: IProps) {
       //         <Image src="/home-solid.svg" alt="house" className="w-8" />
 
       //     </Marker>
-      //   ))}</>
+      //   ))}
       // </GoogleMap>
       <></>
   ) : <></>

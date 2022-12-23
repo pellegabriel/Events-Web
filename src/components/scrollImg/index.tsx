@@ -30,7 +30,11 @@ export default function ScrollImg ({events}: IProps) {
               id="scrollContainer"
               className="scrollbar flex flex-no-wrap overflow-x-scroll scrolling-touch items-start mb-8"
             >
-              <EventCard events={events}/>
+               {events.map((event) => (
+                <EventCard event={event}/>
+              ))
+                }  
+           
             </div>
           </div>
 
