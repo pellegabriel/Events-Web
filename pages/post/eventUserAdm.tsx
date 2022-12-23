@@ -10,6 +10,19 @@ import {
 
     
 export default function EventUserAdm () {
+    const handleImageChange = async (e: { target: { files: any[]; }; }) => {
+        const file = e.target.files[0];
+        try {
+          let formData = new FormData();           
+          formData.append("file", file);
+          await fetch('/api/uploadImage', {
+            method: "POST", 
+            body: formData
+          });    
+        } catch (error) {
+          console.log("Error uploading file: ", error);
+        }
+      }
     return (
         
 <div className='mt-10 p-8 flex items-center justify-center'>
@@ -31,23 +44,26 @@ export default function EventUserAdm () {
         </div>
         <div className=" flex mt-6 py-6 border-t border-slate-300 text-center">
         <div className=' overflow-hidden flex items-center justify-center'>
-<div className='mt-8  grid-cols-4 p-10 '>
-    <h1 className='text-2xl text-slate-700 font-bold leading-normal mt-4'>Crea un evento</h1>
-    <EventCreateForm />
-    </div>
-    <div className='mt-8 mb-8 grid-cols-1 p-10'>
-    <h1 className='text-2xl text-slate-700 font-bold leading-normal mb-1'>Actualiza un evento</h1>
-    <EventUpdateForm/>
-    </div>
-</div>
-</div>
+    <div className='mt-8  grid-cols-4 p-10 '>
+        <h1 className='text-2xl text-slate-700 font-bold leading-normal mt-4'>Crea un evento</h1>
+        <EventCreateForm />
         </div>
-        
+        <div className='mt-8 mb-8 grid-cols-1 p-10'>
+        <h1 className='text-2xl text-slate-700 font-bold leading-normal mb-1'>Actualiza un evento</h1>
+
+        <EventUpdateForm/>
+        Subir imagen 
+          <input type="file" onChange={handleImageChange} />
+        </div>
+    </div>
+    </div>
+            </div>
+            
+        </div>
+
     </div>
 
-</div>
-
-</div>
+    </div>
 
     )
 }
