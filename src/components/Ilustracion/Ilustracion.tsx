@@ -1,48 +1,27 @@
-import MyComponent from '../map/index';
-import Events from '../../src/components/events';
-
-export default function MainEvent () {
-    return(  
-    
-        <section className="bg-white border-b py-8">
-      <div className="container max-w-5xl mx-auto m-8">
-        <div className="w-full mb-4">
-          <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-        <div className="flex flex-wrap">
-          <div className="w-5/6 sm:w-1/2 p-6">
-            <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-            Busca un evento
-            </h3>
-            <div className="text-gray-600 mb-8">
-            <Events/>
-            
-              <br />
-              <br />
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 p-6">
-            <svg className="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
+export default function Ilustration () {
+    return (
+        <div>
+            <svg className="col-span-12 sm:col-span-5 h-[12.9375rem] lg:h-[14.8125rem] w-full object-cover" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
               <title>travel booking</title>
-              <rect x="171.5" y="111.25" width="834" height="456" rx="20.42" fill="#f2f2f2" />
-              <path d="m172 133.75h268v434h-247.58a20.42 20.42 0 0 1 -20.42 -20.42v-413.58z" fill="#ff6347" />
-              <path transform="translate(-11.5 -150.75)" d="M1017,282.42V294H183V282.42A20.42,20.42,0,0,1,203.42,262H996.58A20.42,20.42,0,0,1,1017,282.42Z" fill="#3f3d56" />
-              <circle cx="193" cy="127.75" r="6" fill="#ff6347" />
-              <circle cx="208" cy="127.75" r="6" fill="#ff6347" />
-              <circle cx="223" cy="127.75" r="6" fill="#ff6347" />
-              <path transform="translate(-11.5 -150.75)" d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43" fill="none" stroke="#f2f2f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-              <path
+               <rect x="171.5" y="111.25" width="834" height="456" rx="20.42" fill="#f2f2f2" />
+               <path d="m172 133.75h268v434h-247.58a20.42 20.42 0 0 1 -20.42 -20.42v-413.58z" fill="#ff6347" />
+               <path transform="translate(-11.5 -150.75)" d="M1017,282.42V294H183V282.42A20.42,20.42,0,0,1,203.42,262H996.58A20.42,20.42,0,0,1,1017,282.42Z" fill="#3f3d56" />
+               <circle cx="193" cy="127.75" r="6" fill="#ff6347" />
+               <circle cx="208" cy="127.75" r="6" fill="#ff6347" />
+               <circle cx="223" cy="127.75" r="6" fill="#ff6347" />
+               <path transform="translate(-11.5 -150.75)" d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
+               <path transform="translate(-11.5 -150.75)" d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43" fill="none" stroke="#f2f2f2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+               <path
                 transform="translate(-11.5 -150.75)"
                 d="M385.31,507a66.46,66.46,0,0,1-16.1,28.82l-35.53-55.59,15.69-24.78a.66.66,0,0,1,1.1,0C353.76,460.32,371,486,385.31,507Z"
                 fill="none"
                 stroke="#f2f2f2"
-                stroke-miterlimit="10"
-                stroke-width="2"
+                strokeMiterlimit="10"
+                strokeWidth="2"
               />
               <path transform="translate(-11.5 -150.75)" d="M337.5,452.5a15,15,0,0,1-12.12,14.73l-15-23.51a15,15,0,0,1,27.16,8.78Z" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="m347.5 481.5" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
-              <path transform="translate(-11.5 -150.75)" d="m333.5 480.5" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
+              <path transform="translate(-11.5 -150.75)" d="m347.5 481.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
+              <path transform="translate(-11.5 -150.75)" d="m333.5 480.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
               <rect x="604" y="260.14" width="347" height="11" rx="1.24" fill="#ff6347" opacity=".3" />
               <rect x="604" y="392.07" width="347" height="11" rx="1.24" fill="#ff6347" opacity=".3" />
               <rect x="878" y="279.75" width="73" height="25" rx="1.24" fill="#ff6347" />
@@ -84,21 +63,7 @@ export default function MainEvent () {
                 fill="#3c354c"
               />
             </svg>
-          </div>
         </div>
-        <div className="flex flex-wrap flex-col-reverse sm:flex-row">
-          <div className="w-full sm:w-1/2 p-6 mt-6">
-            <div className="align-middle">
-              <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Localizalo 
-              </h3>
-              <div className=' '>
-                    <MyComponent/>        
-                  </div>    
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     )
 }
+     
