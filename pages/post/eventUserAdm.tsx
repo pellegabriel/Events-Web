@@ -1,5 +1,6 @@
 import Image from 'next/image'
 // import img1 from '../../public/IMG1.png' 
+import { Amplify, Storage } from 'aws-amplify';
 import user from '../../public/user.png'
 import { 
     EventCreateForm 
@@ -7,22 +8,34 @@ import {
   import { 
     EventUpdateForm 
   } from '../../src/ui-components';
+  import awsExports from '../../src/aws-exports';
+import { useEffect, useState } from 'react';
+
+Amplify.configure({ ...awsExports, ssr: true });
 
     
 export default function EventUserAdm () {
     const handleImageChange = async (e: { target: { files: any[]; }; }) => {
         const file = e.target.files[0];
         try {
-          let formData = new FormData();           
-          formData.append("file", file);
-          await fetch('/api/uploadImage', {
-            method: "POST", 
-            body: formData
-          });    
+          console.log({file})
+            Storage.put(file.name, file);
         } catch (error) {
           console.log("Error uploading file: ", error);
         }
       }
+
+      const [image, setImage] = useState<string>()
+      const getUploadedImage = async () => {
+          const file = await Storage.get("72630236_10218164678861973_3689376666745831424_n.jpg", {
+              level: "public"
+          });
+          console.log({file})
+          setImage(file)
+      }
+      useEffect(() => {
+          getUploadedImage()
+      }, [])
     return (
         
 <div className='mt-10 p-8 flex items-center justify-center'>
@@ -54,6 +67,7 @@ export default function EventUserAdm () {
         <EventUpdateForm/>
         Subir imagen 
           <input type="file" onChange={handleImageChange} />
+          {image && <Image alt='' src={image} width={100} height={100}/>}
         </div>
     </div>
     </div>
