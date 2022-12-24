@@ -3,12 +3,15 @@ import awsExports from '../../aws-exports';
 import { FocusEvent } from 'react';
 import { Event } from '../../models';
 import { IFilters } from '../../../pages';
+import EventCard from "../eventCard/eventCard"
+
 
 Amplify.configure({ ...awsExports, ssr: true });
 interface IProps {
     events: Array<Event>,    
     filters: IFilters,
     updateFilters: (newValue: Partial <IFilters> ) => void
+    event: Event
 }
 
 export default function EventsSearch({ events = [], updateFilters }:IProps) {  
@@ -18,15 +21,18 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
   
     return (
       
-      <div className='w-6/6 bg-white flex items-center  rounded-lg p-6 '>
-        <div>
-          Fecha inicio: <input type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
+      <div className=' w-6/6 bg-gray rounded-lg p-6 '>
+      {/* <div className='flex flex-col p-8'> */}
+      <div className="flex flex-col py-6 p-8">
+        <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
+          <input  type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
         </div>
-        <div>
-         tipo de evento: <input type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
+        <div className="flex flex-col p-8">
+        <h2 className="font-medium text-sm text-stone-600">Tipo de evento:</h2>
+         <input  type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
         </div>
-        <div className="flex justify-center">
-          <div className="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+                <div className="flex justify-center">
+          <div className="">
             <div className="text-gray-900 text-xl font-medium mb-2 border-b border-gray-300">
               Lista de Eventos
             </div>
@@ -37,18 +43,16 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
                 events
               </div>
             </div>
-            <div className="py-3 px-6 ">
+            <div className="grid grid-cols-4 gap-4 ">
               {events.map((event: any) => {
                 return (
-                    <div className='border-b border-gray-300' key={event.id}>
-                      <h3>{event.name}</h3> 
-                      <h3>{event.startDate}</h3> 
-                      <h3>{event.types}</h3>     
-                    </div>      
+                  <EventCard event={event}/>
                       )})}
             </div>
           </div>
         </div>
+        {/* </div> */}
+
       </div>
     );
   }

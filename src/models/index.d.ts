@@ -49,7 +49,6 @@ type EagerEvent = {
   readonly map_point?: string | null;
   readonly types?: (string | null)[] | null;
   readonly user: string;
-  readonly description?: string | null;
   readonly descripcion?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -68,7 +67,6 @@ type LazyEvent = {
   readonly map_point?: string | null;
   readonly types?: (string | null)[] | null;
   readonly user: string;
-  readonly description?: string | null;
   readonly descripcion?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

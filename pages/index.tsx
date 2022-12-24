@@ -136,10 +136,10 @@ function Home({events =[] ,scrollEvents=[],filters}: IHome) {
           </section>   
           <article className="grid gap-2">
       <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
-        <section className="grid grid-cols-12 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
+        <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
           <h1 className="col-span-10 text-3xl mt-12">Busca lo que necesites en la Lista de eventos disponibles: </h1>
 
-          <div className="col-span-12 h-[13rem] lg:h-[31rem] w-full object-cover lg:col-span-5 lg:row-span-2">
+          <div className="col-span-12  object-cover lg:row-span-2">
           <EventsSearch events={events}  filters={filters} updateFilters={handleChange} />
           </div>
           <div className="text-xl col-span-12 lg:col-span-7"><Map events={events}/> </div>

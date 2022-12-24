@@ -15,37 +15,37 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type EventUpdateFormInputValues = {
     name?: string;
+    description?: string;
     startDate?: string;
     endDate?: string;
     is_done?: boolean;
     map_point?: string;
     types?: string[];
     user?: string;
-    description?: string;
     descripcion?: string;
 };
 export declare type EventUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
     startDate?: ValidationFunction<string>;
     endDate?: ValidationFunction<string>;
     is_done?: ValidationFunction<boolean>;
     map_point?: ValidationFunction<string>;
     types?: ValidationFunction<string>;
     user?: ValidationFunction<string>;
-    description?: ValidationFunction<string>;
     descripcion?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventUpdateFormOverridesProps = {
     EventUpdateFormGrid?: FormProps<GridProps>;
     name?: FormProps<TextFieldProps>;
+    description?: FormProps<TextFieldProps>;
     startDate?: FormProps<TextFieldProps>;
     endDate?: FormProps<TextFieldProps>;
     is_done?: FormProps<SwitchFieldProps>;
     map_point?: FormProps<TextFieldProps>;
     types?: FormProps<TextFieldProps>;
     user?: FormProps<TextFieldProps>;
-    description?: FormProps<TextFieldProps>;
     descripcion?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EventUpdateFormProps = React.PropsWithChildren<{

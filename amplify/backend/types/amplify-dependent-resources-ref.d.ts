@@ -6,27 +6,10 @@ export type AmplifyDependentResourcesAttributes = {
             "GraphQLAPIEndpointOutput": "string"
         }
     },
-    "function": {
-        "weeout921a0308DefineAuthChallenge": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        },
-        "weeout921a0308CreateAuthChallenge": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        },
-        "weeout921a0308VerifyAuthChallengeResponse": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        }
-    },
     "auth": {
+        "userPoolGroups": {
+            "betatestGroupRole": "string"
+        },
         "weeout921a0308": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
@@ -35,9 +18,29 @@ export type AmplifyDependentResourcesAttributes = {
             "UserPoolName": "string",
             "AppClientIDWeb": "string",
             "AppClientID": "string"
+        }
+    },
+    "function": {
+        "weeout921a0308CreateAuthChallenge": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string",
+            "LambdaExecutionRoleArn": "string"
         },
-        "userPoolGroups": {
-            "betatestGroupRole": "string"
+        "weeout921a0308DefineAuthChallenge": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string",
+            "LambdaExecutionRoleArn": "string"
+        },
+        "weeout921a0308VerifyAuthChallengeResponse": {
+            "Name": "string",
+            "Arn": "string",
+            "LambdaExecutionRole": "string",
+            "Region": "string",
+            "LambdaExecutionRoleArn": "string"
         }
     },
     "storage": {

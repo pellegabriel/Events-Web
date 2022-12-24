@@ -167,27 +167,28 @@ export default function EventUpdateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     name: undefined,
+    description: undefined,
     startDate: undefined,
     endDate: undefined,
     is_done: false,
     map_point: undefined,
     types: [],
     user: undefined,
-    description: undefined,
     descripcion: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
   const [startDate, setStartDate] = React.useState(initialValues.startDate);
   const [endDate, setEndDate] = React.useState(initialValues.endDate);
   const [is_done, setIs_done] = React.useState(initialValues.is_done);
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
-  const [description, setDescription] = React.useState(
-    initialValues.description
-  );
   const [descripcion, setDescripcion] = React.useState(
     initialValues.descripcion
   );
@@ -195,6 +196,7 @@ export default function EventUpdateForm(props) {
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord };
     setName(cleanValues.name);
+    setDescription(cleanValues.description);
     setStartDate(cleanValues.startDate);
     setEndDate(cleanValues.endDate);
     setIs_done(cleanValues.is_done);
@@ -202,7 +204,6 @@ export default function EventUpdateForm(props) {
     setTypes(cleanValues.types ?? []);
     setCurrentTypesValue(undefined);
     setUser(cleanValues.user);
-    setDescription(cleanValues.description);
     setDescripcion(cleanValues.descripcion);
     setErrors({});
   };
@@ -219,13 +220,13 @@ export default function EventUpdateForm(props) {
   const typesRef = React.createRef();
   const validations = {
     name: [{ type: "Required" }],
+    description: [],
     startDate: [],
     endDate: [{ type: "Required" }],
     is_done: [],
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
-    description: [],
     descripcion: [],
   };
   const runValidationTasks = async (fieldName, value) => {
@@ -257,20 +258,20 @@ export default function EventUpdateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
-      columnGap="15px"
-      padding="20px"
+      rowGap={tokens.space.xs.value}
+      columnGap={tokens.space.xxxs.value}
+      padding={tokens.space.xl.value}
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
           name,
+          description,
           startDate,
           endDate,
           is_done,
           map_point,
           types,
           user,
-          description,
           descripcion,
         };
         const validationResponses = await Promise.all(
@@ -323,13 +324,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
+              description,
               startDate,
               endDate,
               is_done,
               map_point,
               types,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -346,6 +347,37 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
+        label="Sub Titulo"
+        isRequired={false}
+        defaultValue={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              description: value,
+              startDate,
+              endDate,
+              is_done,
+              map_point,
+              types,
+              user,
+              descripcion,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
+      <TextField
         label="Comienzo"
         isRequired={false}
         isReadOnly={false}
@@ -356,13 +388,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate: value,
               endDate,
               is_done,
               map_point,
               types,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -389,13 +421,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate: value,
               is_done,
               map_point,
               types,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -421,13 +453,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate,
               is_done: value,
               map_point,
               types,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -453,13 +485,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate,
               is_done,
               map_point: value,
               types,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -481,13 +513,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate,
               is_done,
               map_point,
               types: values,
               user,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -533,13 +565,13 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate,
               is_done,
               map_point,
               types,
               user: value,
-              description,
               descripcion,
             };
             const result = onChange(modelFields);
@@ -559,51 +591,19 @@ export default function EventUpdateForm(props) {
         label="Descripcion"
         isRequired={false}
         isReadOnly={false}
-        defaultValue={description}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              startDate,
-              endDate,
-              is_done,
-              map_point,
-              types,
-              user,
-              description: value,
-              descripcion,
-            };
-            const result = onChange(modelFields);
-            value = result?.description ?? value;
-          }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
-          }
-          setDescription(value);
-        }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Descripcion"
-        isRequired={false}
-        isReadOnly={false}
         defaultValue={descripcion}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name,
+              description,
               startDate,
               endDate,
               is_done,
               map_point,
               types,
               user,
-              description,
               descripcion: value,
             };
             const result = onChange(modelFields);
@@ -630,7 +630,7 @@ export default function EventUpdateForm(props) {
           {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xxxs.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
