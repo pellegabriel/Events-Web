@@ -55,6 +55,7 @@ type EagerEvent = {
 }
 
 type LazyEvent = {
+  description: ReactNode;
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Event, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';

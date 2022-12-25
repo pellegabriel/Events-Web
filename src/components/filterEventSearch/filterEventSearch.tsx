@@ -3,7 +3,7 @@ import awsExports from '../../aws-exports';
 import { FocusEvent } from 'react';
 import { Event } from '../../models';
 import { IFilters } from '../../../pages';
-import EventCard from "../eventCard/eventCard"
+import EventCard2 from "../eventCard2/eventCard2"
 
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -43,10 +43,10 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
                 events
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-3">
               {events.map((event: any) => {
                 return (
-                  <EventCard event={event}/>
+                  <EventCard2 event={event}/>
                       )})}
             </div>
           </div>
