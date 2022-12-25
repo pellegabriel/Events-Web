@@ -6,7 +6,7 @@ interface IProps {
     event: Event
 }
 
-export default function EventCard ({event}: IProps) {
+export default function EventCard2 ({event}: IProps) {
     return (
 <div className="container mx-auto p-6 grid grid-cols-2 gap-4 border-b border-gray-300 ">
   <div className="col-span-1 flex flex-col bg-white border-2 p-4 shadow-lg "key={event.id}>
@@ -14,17 +14,19 @@ export default function EventCard ({event}: IProps) {
                             src={img1}
                              alt='Picture' className="w-full"/>
     <h2 className=" mb-3 flex flex-wrap font-bold">
-      Card Name
+    {event.name}
     </h2>
+    <p className="mb-3 flex flex-wrap font-bold">{event.types}</p>
+
     <div className=" mb-4 flex flex-wrap ">
-        <div className="mr-2">Link 1</div>
-        <div className="mr-2">Link 2</div>
+        <div className="mr-2">{event.startDate}</div>
+        <div className="mr-2">{event.endDate}</div>
     </div>
-    <p className="text-md text-justify">Some Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel enim lectus.</p>
+    <p className="text-md text-justify">{event.descripcion}</p>
     <div className="flex flex-wrap mt-auto pt-3 text-xs">
-      <p className="mr-2 mb-2">Tag #1</p>
-      <p className="mr-2 mb-2">Tag #2</p>
+      <p className="mr-2 mb-2">{event.map_point}</p>
     </div>
+    
   </div>
 </div>
         // <div
