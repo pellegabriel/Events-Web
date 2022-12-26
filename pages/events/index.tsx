@@ -2,7 +2,6 @@ import { Amplify, withSSRContext } from 'aws-amplify';
 import { ModelEventFilterInput } from '../../src/API';
 import awsExports from '../../src/aws-exports';
 import { listEvents } from '../../src/graphql/queries';
-import EventCard from '../../src/components/eventCard/eventCard';
 import { NextRouter, useRouter } from 'next/router';
 import { FocusEvent } from 'react';
 
