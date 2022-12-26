@@ -5,7 +5,10 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import Image from 'next/image'
 import user1 from '../../public/user1.png'
 import Link from 'next/link'
-import Events from '../events'
+import Events from '../../events'
+import { useRouter } from 'next/router'
+
+
 
 interface IHome {
   signOut: ()=> void
@@ -30,7 +33,8 @@ export function getServerSideProps() {
 
 
 function Post({signOut, user, renderedAt}: IHome) {
-
+    const router = useRouter()
+    const id = router.query.id as string
     const authComponents = {
       Header() {
         const { tokens } = useTheme();
@@ -72,7 +76,19 @@ function Post({signOut, user, renderedAt}: IHome) {
                             </Link>
                             <Link href='/' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'onClick={signOut}>Sign out
                             </Link>
+                            
                           </div>
+                      </div>
+                      <div>
+                        <h1>Post: {id}</h1>
+                        <ul>
+                          <li>
+                            <Link href={`/post/${id}/edit`}>First comment</Link>
+                          </li>
+                          <li>
+                            <Link href={`/post/${id}/second-comment`}>Second comment</Link>
+                          </li>
+                        </ul>
                       </div>
                   </div>   
               </div>
@@ -82,4 +98,4 @@ function Post({signOut, user, renderedAt}: IHome) {
     
   );
 }
-export default withAuthenticator(Post);
+export default withAuthenticator(Post)
