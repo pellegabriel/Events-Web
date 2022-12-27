@@ -1,12 +1,25 @@
-import img1 from '../../../public/IMG1.png' 
 import Image from 'next/image'
 import { Event } from '../../models'
+import { useEffect, useState } from 'react'
+import { Storage } from 'aws-amplify';
 
 interface IProps {
     event: Event
 }
 
 export default function EventCard ({event}: IProps) {
+    
+    const [image, setImage] = useState<string>()
+    const getUploadedImage = async () => {
+        const file = await Storage.get(event.id, {
+            level: "public"
+        });
+        console.log({file, event})
+        setImage(file)
+    }
+    useEffect(() => {
+        getUploadedImage()
+    }, [])
     return (
 
                 <div
@@ -15,9 +28,7 @@ export default function EventCard ({event}: IProps) {
                         <div className='border-b border-gray-300'  key={event.id}>
                         <div className="max-w-sm rounded-sm overflow-hidden shadow-lg m-3">
                             <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                                    <Image
-                                    src={img1}
-                                    alt='Picture' className="w-full"/>
+                            {image && <Image alt='' src={image} width={100} height={100}/>}
                                 <div className="px-6 py-4">
                                     <div className="font-bold text-xl mb-2"> {event.name}</div>
                                     <div className="text-gray-700 text-base">

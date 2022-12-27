@@ -4,12 +4,19 @@ import awsExports from '../../src/aws-exports';
 import { listEvents } from '../../src/graphql/queries';
 import { NextRouter, useRouter } from 'next/router';
 import { FocusEvent } from 'react';
+import Link from 'next/link';
+import { Event } from "../../src/models";
+
 
 Amplify.configure({ ...awsExports, ssr: true });
 
 interface IFilters {
   startDate: string,
   types: string
+}
+
+interface IProps {
+  events: Array <Event>
 }
 
 export async function getServerSideProps({ req, query }: any) {
@@ -43,7 +50,7 @@ export async function getServerSideProps({ req, query }: any) {
 }
 
 
-export default function Events({ events = [] }) {
+export default function Events({ events = [] }:IProps) {
   const router = useRouter();
   // Call this function whenever you want to
   // refresh props!
@@ -87,13 +94,15 @@ export default function Events({ events = [] }) {
             </div>
           </div>
           <div className="py-3 px-6 ">
-            {events.map((event: any) => {
+            {events.map((event) => {
               return (
+                <Link href={`/events/${event.id}`}>
                   <div className='border-b border-gray-300' key={event.id}>
                     <h3>{event.name}</h3> 
                     <h3>{event.startDate}</h3> 
                     <h3>{event.types}</h3>     
-                  </div>      
+                  </div>    
+                  </Link>  
                     )})}
           </div>
         </div>
