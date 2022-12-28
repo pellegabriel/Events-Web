@@ -36,7 +36,7 @@ export async function getServerSideProps({ req, query }: any) {
     }
   }
 
-export default function Id({event}:IProps) {
+export default function Id({}:IProps) {
     const router = useRouter();
     const id = router.query.id as string
     const name= router.query.comment as string
@@ -95,7 +95,7 @@ export default function Id({event}:IProps) {
             <div className='mt-8 mb-8 grid-cols-1 p-10'>
             <h1 className='text-2xl text-slate-700 font-bold leading-normal mb-1'>Actualiza un evento</h1>
     
-            <EventCreateForm event={event}/>
+            <EventCreateForm/>
             Subir imagen 
               <input type="file" onChange={handleImageChange} />
               {image && <Image alt='' src={image} width={100} height={100}/>}

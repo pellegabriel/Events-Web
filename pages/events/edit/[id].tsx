@@ -39,7 +39,6 @@ export async function getServerSideProps({ req, query }: any) {
 export default function Id({event}:IProps) {
     const router = useRouter();
     const id = router.query.id as string
-    const name= router.query.comment as string
 
     const handleImageChange = async (e: { target: { files: any[]; }; }) => {
         const file = e.target.files[0];

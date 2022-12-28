@@ -1,13 +1,17 @@
 import {Authenticator,Flex,useTheme,} from "@aws-amplify/ui-react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import Image from 'next/image'
-import user1 from '../../public/user1.png'
 import Link from 'next/link'
-// import Events from '../events'
+import { EventCreateForm } from "../../src/ui-components";
+import React, { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import { Event } from "../../src/models";
+import Image from 'next/image'
+import {Storage } from 'aws-amplify';
+import user1 from '../../public/user1.png'
 
-interface IHome {
+interface IProps {
+  event: Event
   signOut: ()=> void
-  
   user: Record<string, any>
   renderedAt: string;
 }
@@ -27,7 +31,31 @@ export function getServerSideProps() {
 }
 
 
-function Profile({signOut, user, renderedAt}: IHome) {
+function Profile({signOut, user, renderedAt}: IProps ) {
+       const router = useRouter();
+    const id = router.query.id as string
+
+    const handleImageChange = async (e: { target: { files: any[]; }; }) => {
+        const file = e.target.files[0];
+        try {
+            console.log({file})
+            Storage.put(id, file);
+        } catch (error) {
+            console.log("Error uploading file: ", error);
+        }
+          }
+    
+          const [image, setImage] = useState<string>()
+          const getUploadedImage = async () => {
+              const file = await Storage.get(id, {
+                  level: "public"
+              });
+              console.log({file})
+              setImage(file)
+          }
+          useEffect(() => {
+              getUploadedImage()
+          }, [])
 
     const authComponents = {
       Header() {
@@ -64,6 +92,14 @@ function Profile({signOut, user, renderedAt}: IHome) {
                       </div>
                       <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
                           <div className=' overflow-hidden flex items-center justify-center'>
+                          <div className='mt-8 mb-8 grid-cols-1 p-10'>
+            <h1 className='text-2xl text-slate-700 font-bold leading-normal mb-1'>Crea tu propio evento: </h1>
+
+                      <EventCreateForm/>
+                      Subir imagen 
+                        <input type="file" onChange={handleImageChange} />
+                        {image && <Image alt='' src={image} width={100} height={100}/>}
+                      </div>
                             <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>
                                 Administra eventos, crea o actualizalos
                             </Link>
