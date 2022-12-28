@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
-import ScrollImg from '../src/components/scrollImg';
+import ScrollImg from '../src/components/scrollEvent';
 import { Amplify, withSSRContext } from 'aws-amplify';
 import Image from 'next/image'
 import admin from '../public/admin.png' 
@@ -13,6 +13,7 @@ import { listEvents } from '../src/graphql/queries';
 import awsExports from '../src/aws-exports';
 import { Event } from '../src/models';
 import {  useRouter } from 'next/router';
+import ScrollEvent from '../src/components/scrollEvent';
 
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -128,11 +129,11 @@ function Home({events =[] ,scrollEvents=[],filters}: IHome) {
         </div>
     </nav>
 
-          <section className="container mx-auto text-center py-6 mb-12">
+          <section className="container mx-auto text-center py-20 mb-12 ">
             <div className="w-full mb-4">
               <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <ScrollImg events={scrollEvents}/>
+            <ScrollEvent events={scrollEvents}/>
           </section>   
           <article className="grid gap-2">
       <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
