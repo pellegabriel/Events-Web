@@ -20,39 +20,35 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
     }
   
     return (
-      
-      <div className=' w-6/6 bg-gray rounded-lg p-6 '>
-      {/* <div className='flex flex-col p-8'> */}
-      <div className="flex flex-col py-6 p-8">
-        <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
-          <input  type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
+      <div className='border border-gray-300 w-6/6 bg-gray rounded-lg p-6 '>
+
+        <div className='flex justify-center mb-10 mt-10 '>
+          <div className="flex flex-col py-6 p-8 ">
+            <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
+            <input className='w-7' type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
+          </div>
+          <div className="flex flex-col p-8 ">
+            <h2 className="font-medium text-sm text-stone-600">Tipo de evento:</h2>
+            <input className='w-7' type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
+          </div>
         </div>
-        <div className="flex flex-col p-8">
-        <h2 className="font-medium text-sm text-stone-600">Tipo de evento:</h2>
-         <input  type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
-        </div>
-                <div className="flex justify-center">
+
+
+        <div className="flex justify-center">
           <div className="">
-            <div className="text-gray-900 text-xl font-medium mb-2 border-b border-gray-300">
-              Lista de Eventos
+            <div className="text-gray-900 text-xl font-medium mb-12 border-b border-gray-300 ">
+              <h5 className="py-1 mb-1">Cantidad de eventos disponibles: {events.length}</h5>
             </div>
-            <div className="p-1">
-              <h5 className="py-1 px-6 ">Cantidad de eventos disponibles: </h5>
-              <div className="flex px-6  text-gray-700 text-base mb-4">
-                <code >{events.length}</code>
-                events
-              </div>
-            </div>
-            <div className="grid grid-cols-3">
+            
+            <div className="flex flex-wrap w-7 bg-green-200">
               {events.map((event: any) => {
                 return (
                   <EventCard2 event={event} key={event.id} />
-                      )})}
+                )})
+              }
             </div>
           </div>
         </div>
-        {/* </div> */}
-
       </div>
     );
   }

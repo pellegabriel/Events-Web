@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 
@@ -22,11 +21,9 @@ export default function ScrollEvent({events}:IProps) {
   return (
     <div>
       <Swiper
-        pagination={{
-          type: "progressbar",
-        }}
+    
         navigation={true}
-        modules={[Pagination, Navigation]}
+        modules={[ Navigation]}
         className="mySwiper"
 
       >
