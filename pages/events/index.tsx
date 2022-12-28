@@ -102,8 +102,9 @@ export default function Events({ events = [] }:IProps) {
                     <h3>{event.startDate}</h3> 
                     <h3>{event.types}</h3>     
                   </div>    
-                  </Link>  
-                    )})}
+                </Link>  
+              )
+            })}
           </div>
         </div>
       </div>
