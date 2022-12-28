@@ -37,7 +37,7 @@ export default function EventCard ({event}: IProps | any) {
                         <div className='border-b border-gray-300'  key={event.id}>
                         <div className="max-w-sm rounded-sm overflow-hidden shadow-lg m-3">
                             <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                            {error ? <Image alt='' src={img1} width={100} height={100}/> : <Image alt='' src={image} width={100} height={100} onError={handleImageError}/>}
+                            {error ? <Image alt='' src={img1} width={400} height={200}/> : <Image alt='' src={image} width={400} height={200} onError={handleImageError}/>}
                                 <div className="px-6 py-4">
                                     <div className="font-bold text-xl mb-2"> {event.name}</div>
                                     <div className="text-gray-700 text-base">

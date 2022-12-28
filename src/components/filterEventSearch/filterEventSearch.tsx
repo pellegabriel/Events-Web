@@ -46,7 +46,7 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
             <div className="grid grid-cols-3">
               {events.map((event: any) => {
                 return (
-                  <EventCard2 event={event}/>
+                  <EventCard2 event={event} key={event.id} />
                       )})}
             </div>
           </div>
