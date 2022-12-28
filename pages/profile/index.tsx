@@ -47,6 +47,16 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
       }
     const id = router.query.id as string
 
+ const handleAudioChange = async (e: { target: { files: any[]; }; }) => {
+      const file = e.target.files[0];
+      try {
+          console.log({file})
+          Storage.put(`audio/${id}`, file);
+      } catch (error) {
+          console.log("Error uploading file: ", error);
+      }
+        }
+
     const handleImageChange = async (e: { target: { files: any[]; }; }) => {
         const file = e.target.files[0];
         try {
@@ -56,7 +66,18 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
             console.log("Error uploading file: ", error);
         }
           }
-    
+          const [audio, setAudio] = useState<string>()
+          const getUploadedAudio = async () => {
+              const file = await Storage.get(`audio/${id}`, {
+                  level: "public"
+              });
+              console.log({file})
+              setAudio(file)
+          }
+          useEffect(() => {
+              getUploadedAudio()
+          }, [])
+
           const [image, setImage] = useState<string>()
           const getUploadedImage = async () => {
               const file = await Storage.get(id, {
@@ -116,10 +137,13 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
 
                       <EventCreateForm/>
                       Subir imagen 
-                        <input type="file" onChange={handleImageChange} />
-                        {image && <Image alt='' src={image} width={100} height={100}/>}
-                      </div>
-                      <div className="col-span-12  object-cover lg:row-span-2">
+              <input type="file" onChange={handleImageChange} />
+              {image && <Image alt='' src={image} width={100} height={100}/>}
+            Subir audio  
+              <input type="file" onChange={handleAudioChange} />
+              {audio && <audio controls><source src={audio} type="audio/*"/>
+                </audio>}
+              
           <EventsSearch events={events}  filters={filters} updateFilters={handleChange} />
           </div>
                             {/* <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>

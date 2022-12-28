@@ -40,6 +40,16 @@ export default function Id({event}:IProps) {
     const router = useRouter();
     const id = router.query.id as string
 
+    const handleAudioChange = async (e: { target: { files: any[]; }; }) => {
+      const file = e.target.files[0];
+      try {
+          console.log({file})
+          Storage.put(`audio/${id}`, file);
+      } catch (error) {
+          console.log("Error uploading file: ", error);
+      }
+        }
+
     const handleImageChange = async (e: { target: { files: any[]; }; }) => {
         const file = e.target.files[0];
         try {
@@ -49,7 +59,18 @@ export default function Id({event}:IProps) {
             console.log("Error uploading file: ", error);
         }
           }
-    
+          const [audio, setAudio] = useState<string>()
+          const getUploadedAudio = async () => {
+              const file = await Storage.get(`audio/${id}`, {
+                  level: "public"
+              });
+              console.log({file})
+              setAudio(file)
+          }
+          useEffect(() => {
+              getUploadedAudio()
+          }, [])
+
           const [image, setImage] = useState<string>()
           const getUploadedImage = async () => {
               const file = await Storage.get(id, {
@@ -61,9 +82,6 @@ export default function Id({event}:IProps) {
           useEffect(() => {
               getUploadedImage()
           }, [])
-
-
-
 
         return (
             
@@ -97,6 +115,10 @@ export default function Id({event}:IProps) {
             Subir imagen 
               <input type="file" onChange={handleImageChange} />
               {image && <Image alt='' src={image} width={100} height={100}/>}
+              Subir audio  
+              <input type="file" onChange={handleAudioChange} />
+              {audio && <audio controls><source src={audio} type="audio/*"/>
+                </audio>}
             </div>
         </div>
         </div>
