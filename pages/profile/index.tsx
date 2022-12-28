@@ -8,12 +8,21 @@ import { Event } from "../../src/models";
 import Image from 'next/image'
 import {Storage } from 'aws-amplify';
 import user1 from '../../public/user1.png'
+import EventsSearch from "../../src/components/filterEventSearch/filterEventSearch";
 
 interface IProps {
   event: Event
   signOut: ()=> void
   user: Record<string, any>
   renderedAt: string;
+  events: Array<Event>
+  filters: IFilters
+
+}
+export interface IFilters {
+  startDate: string,
+ types: string
+ 
 }
 export function getServerSideProps() {
   const renderedAt = new Date();
@@ -31,8 +40,11 @@ export function getServerSideProps() {
 }
 
 
-function Profile({signOut, user, renderedAt}: IProps ) {
+function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
        const router = useRouter();
+       const refreshData = ({startDate, types}: IFilters) => {
+        router.push({pathname: '/profile', query: {startDate: startDate, types: types}});
+      }
     const id = router.query.id as string
 
     const handleImageChange = async (e: { target: { files: any[]; }; }) => {
@@ -72,7 +84,14 @@ function Profile({signOut, user, renderedAt}: IProps ) {
         );
       },
     };
-
+    const handleChange = (newFilters: IFilters) => {
+      const prevFilters = router.query;
+      refreshData(
+        {
+          ...(prevFilters as unknown as IFilters),
+           ...newFilters
+          })
+    } 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
     <div className='mt-10 p-8 flex items-center justify-center'>
@@ -100,17 +119,41 @@ function Profile({signOut, user, renderedAt}: IProps ) {
                         <input type="file" onChange={handleImageChange} />
                         {image && <Image alt='' src={image} width={100} height={100}/>}
                       </div>
-                            <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>
+                      <div className="col-span-12  object-cover lg:row-span-2">
+          <EventsSearch events={events}  filters={filters} updateFilters={handleChange} />
+          </div>
+                            {/* <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>
                                 Administra eventos, crea o actualizalos
-                            </Link>
-                            <Link href='/' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'onClick={signOut}>Sign out
-                            </Link>
+                            </Link> */}
+                            {/* <Link href='/' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'onClick={signOut}>Sign out
+                            </Link> */}
                           </div>
                       </div>
                   </div>   
               </div>
           </div>
+
       </div>
+
+          <footer className="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.
+            </span>
+            <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                <Link href='/' className='mr-4 hover:underline md:mr-6'>Pagina principal
+                            </Link>
+                </li>
+                <li>
+                <Link href='/' className='mr-4 hover:underline md:mr-6'onClick={signOut}>Cerrar sesion
+                            </Link>                
+                </li>
+                <li>
+                <Link href='/aboutUs' className='mr-4 hover:underline md:mr-6'>Sobre nosotros
+                            </Link>
+                </li>
+
+            </ul>
+        </footer>
     </Authenticator>
     
   );
