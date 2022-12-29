@@ -4,11 +4,11 @@ export default function Ilustration () {
             <svg className="col-span-12 sm:col-span-5 h-[12.9375rem] lg:h-[14.8125rem] w-full object-cover" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
               <title>travel booking</title>
                <rect x="171.5" y="111.25" width="834" height="456" rx="20.42" fill="#f2f2f2" />
-               <path d="m172 133.75h268v434h-247.58a20.42 20.42 0 0 1 -20.42 -20.42v-413.58z" fill="#ff6347" />
+               <path d="m172 133.75h268v434h-247.58a20.42 20.42 0 0 1 -20.42 -20.42v-413.58z" fill="#8F00FF" />
                <path transform="translate(-11.5 -150.75)" d="M1017,282.42V294H183V282.42A20.42,20.42,0,0,1,203.42,262H996.58A20.42,20.42,0,0,1,1017,282.42Z" fill="#3f3d56" />
-               <circle cx="193" cy="127.75" r="6" fill="#ff6347" />
-               <circle cx="208" cy="127.75" r="6" fill="#ff6347" />
-               <circle cx="223" cy="127.75" r="6" fill="#ff6347" />
+               <circle cx="193" cy="127.75" r="6" fill="#8F00FF" />
+               <circle cx="208" cy="127.75" r="6" fill="#8F00FF" />
+               <circle cx="223" cy="127.75" r="6" fill="#8F00FF" />
                <path transform="translate(-11.5 -150.75)" d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
                <path transform="translate(-11.5 -150.75)" d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43" fill="none" stroke="#f2f2f2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                <path
@@ -22,10 +22,10 @@ export default function Ilustration () {
               <path transform="translate(-11.5 -150.75)" d="M337.5,452.5a15,15,0,0,1-12.12,14.73l-15-23.51a15,15,0,0,1,27.16,8.78Z" fill="none" stroke="#f2f2f2" stroke-miterlimit="10" stroke-width="2" />
               <path transform="translate(-11.5 -150.75)" d="m347.5 481.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
               <path transform="translate(-11.5 -150.75)" d="m333.5 480.5" fill="none" stroke="#f2f2f2" strokeMiterlimit="10" strokeWidth="2" />
-              <rect x="604" y="260.14" width="347" height="11" rx="1.24" fill="#ff6347" opacity=".3" />
-              <rect x="604" y="392.07" width="347" height="11" rx="1.24" fill="#ff6347" opacity=".3" />
-              <rect x="878" y="279.75" width="73" height="25" rx="1.24" fill="#ff6347" />
-              <rect x="878" y="411.75" width="73" height="25" rx="1.24" fill="#ff6347" />
+              <rect x="604" y="260.14" width="347" height="11" rx="1.24" fill="#8F00FF" opacity=".3" />
+              <rect x="604" y="392.07" width="347" height="11" rx="1.24" fill="#8F00FF" opacity=".3" />
+              <rect x="878" y="279.75" width="73" height="25" rx="1.24" fill="#8F00FF" />
+              <rect x="878" y="411.75" width="73" height="25" rx="1.24" fill="#8F00FF" />
               <path transform="translate(-11.5 -150.75)" d="m978.18 606.93l-1.73 2s-21.05 2-20.2 5.39 25.35-4.55 25.35-4.55z" fill="#ffc1c7" />
               <path transform="translate(-11.5 -150.75)" d="m1016.3 605.22s-22.5 8-34.74 4.56l5.69 11.39s29.05-0.86 34.18-6-5.13-9.95-5.13-9.95z" fill="#ff6584" />
               <path transform="translate(-11.5 -150.75)" d="m1016.3 605.22s-22.5 8-34.74 4.56l5.69 11.39s29.05-0.86 34.18-6-5.13-9.95-5.13-9.95z" opacity=".1" />
