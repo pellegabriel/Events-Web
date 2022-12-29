@@ -12,8 +12,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: -34.92317666584001,
+  lng: -57.94956215165454
 };
 
 interface IProps {
@@ -44,7 +44,7 @@ function MyComponent({ events = [] }:IProps) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom= {14}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
