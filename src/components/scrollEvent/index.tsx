@@ -19,7 +19,7 @@ interface IProps {
 
 export default function ScrollEvent({events}:IProps) {
   return (
-    <div>
+    <div >
       <Swiper
     
         navigation={true}

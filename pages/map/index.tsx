@@ -4,9 +4,11 @@ import { Spinner } from "@theme-ui/components";
 import { Event } from "../../src/models";
 import Marker from "./Marker"
 
+
 const containerStyle = {
-  width: '450px',
-  height: '250px'
+  width: '1500px',
+  height: '500px',
+  borderRadius: '30px'
 };
 
 const center = {
