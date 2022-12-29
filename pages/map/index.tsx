@@ -1,19 +1,26 @@
 import { memo, SetStateAction, useCallback, useState } from "react";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { Spinner } from "@theme-ui/components";
+import { Event } from "../../src/models";
+import Marker from "./Marker"
 
 
 const containerStyle = {
-  width: '450px',
-  height: '250px'
+  width: '1500px',
+  height: '500px',
+  borderRadius: '30px'
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: -34.92317666584001,
+  lng: -57.94956215165454
 };
 
-function MyComponent() {
+interface IProps {
+  events: Array <Event>
+}
+
+function MyComponent({ events = [] }:IProps) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY || "Error"
@@ -37,10 +44,11 @@ function MyComponent() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom= {14}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
+        {events.map((event)=>(<Marker event={event} key={event.id}/>))}
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
