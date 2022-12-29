@@ -31,7 +31,7 @@ export default function EventCard ({event}: IProps | any) {
     }
 
     return (
-        <div className="flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 border rounded-lg">
+        <div className="bg-white flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 border rounded-lg">
             <div className='border-b border-gray-300'  key={event.id}>
                 <div className="max-w-sm rounded-sm overflow-hidden shadow-lg m-3">
                     <div className="max-w-sm rounded overflow-hidden shadow-lg">
