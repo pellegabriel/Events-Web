@@ -1,6 +1,5 @@
-import { memo, SetStateAction, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Spinner } from "@theme-ui/components";
 import { Event } from "../../src/models";
 import Marker from "./Marker"
 

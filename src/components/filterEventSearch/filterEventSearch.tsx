@@ -20,9 +20,9 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
     }
   
     return (
-      <div className='border border-gray-300 w-6/6 bg-gray rounded-lg p-6 '>
+      <div className='border border-gray-300 w-6/6 rounded-lg p-8 '>
 
-        <div className='flex justify-center mb-10 mt-10 '>
+        <div className='flex justify-center mb-10 mt-10  '>
           <div className="flex flex-col py-6 p-8 ">
             <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
             <input className='w-7' type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
@@ -35,12 +35,12 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
 
 
         <div className="flex justify-center">
-          <div className="">
+          <div className="justify-center">
             <div className="text-gray-900 text-xl font-medium mb-12 border-b border-gray-300 ">
               <h5 className="py-1 mb-1">Cantidad de eventos disponibles: {events.length}</h5>
             </div>
             
-            <div className="flex flex-wrap w-7 bg-green-200">
+            <div className="flex flex-wrap  pl-2 ">
               {events.map((event: any) => {
                 return (
                   <EventCard2 event={event} key={event.id} />
