@@ -96,7 +96,7 @@ export default function Events({ events = [] }:IProps) {
           <div className="py-3 px-6 ">
             {events.map((event) => {
               return (
-                <Link href={`/events/${event.id}`}>
+                <Link href={`/events/edit/${event.id}`}>
                   <div className='border-b border-gray-300' key={event.id}>
                     <h3>{event.name}</h3> 
                     <h3>{event.startDate}</h3> 

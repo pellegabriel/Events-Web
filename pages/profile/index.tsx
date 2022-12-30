@@ -115,7 +115,7 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
     } 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-    <div className='mt-10 p-8 flex items-center justify-center'>
+    <div className='h-full p-8 flex items-center justify-center bg-gradient-to-t from-gray-800 to-violet-700'>
       <div className=" break-words bg-white  mt-16 ">
         <div className="">
                     <div className="">
@@ -159,20 +159,20 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
 
       </div>
 
-          <footer className="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.
+          <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+            <span className="text-sm text-white sm:text-center dark:text-gray-400">© 2022. All Rights Reserved.
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                 <li>
-                <Link href='/' className='mr-4 hover:underline md:mr-6'>Pagina principal
+                <Link href='/' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'>Pagina principal
                             </Link>
                 </li>
                 <li>
-                <Link href='/' className='mr-4 hover:underline md:mr-6'onClick={signOut}>Cerrar sesion
+                <Link href='/' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'onClick={signOut}>Cerrar sesion
                             </Link>                
                 </li>
                 <li>
-                <Link href='/aboutUs' className='mr-4 hover:underline md:mr-6'>Sobre nosotros
+                <Link href='/aboutUs' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'>Sobre nosotros
                             </Link>
                 </li>
 

@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from "react";
 import Link from 'next/link'
-import ScrollImg from '../src/components/scrollEvent';
 import { Amplify, withSSRContext } from 'aws-amplify';
 import Image from 'next/image'
 import admin from '../public/admin.png' 
@@ -144,7 +143,7 @@ function Home({events =[] ,scrollEvents=[],filters}: IHome) {
         <h1 className="xl:font-serif text-3xl text-white">Busca lo que necesites en la Lista de eventos disponibles: </h1>
 
         <article className="grid gap-2">
-          <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8">
+          <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] gap-6 gap-y-8 ">
             <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
               
 
