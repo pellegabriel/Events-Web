@@ -31,9 +31,9 @@ export default function EventCard2 ({event}: IProps | any) {
     }
 
     return (
-        <div key={event.id} className="bg-white flex-none w-2/3 md:w-1/3  mr-8 md:pb-4 mr-2 mb-4 border rounded-lg">
-                <div className="max-w-sm rounded-sm overflow-hidden  m-3">
-                    <div className="max-w-sm rounded overflow-hidden  ">
+        <div key={event.id} className="bg-white flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 mr-2  mb-4 border rounded-lg">
+                <div className="max-w-sm rounded-sm overflow-hidden m-3">
+                    <div className="max-w-sm rounded overflow-hidden">
                         {error ? <Image alt='' src={img1} width={400} height={200}/> : <Image alt='' src={image} width={400} height={200} onError={handleImageError}/>}
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2"> {event.name}</div>
@@ -44,13 +44,13 @@ export default function EventCard2 ({event}: IProps | any) {
                             {event.startDate} <br />
                             {event.endDate}
                         </div>
-                    </div>
-                    <div className="px-6 pt-4 pb-2">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{event.types}</span>
-                    </div>
-                    <div className="px-6 pt-4 pb-2">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{event.map_point}</span>
-                    </div>
+                        </div>
+                        <div className="px-6 pt-4 pb-2">
+                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{event.types}</span>
+                        </div>
+                        <div className="px-6 pt-4 pb-2">
+                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{event.map_point}</span>
+                        </div>
                     </div>
                 </div> 
             </div>
