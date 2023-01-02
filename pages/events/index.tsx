@@ -6,6 +6,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { FocusEvent } from 'react';
 import Link from 'next/link';
 import { Event } from "../../src/models";
+import parseDate from '../../src/helperFunctions/parseDate';
 
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -71,6 +72,7 @@ export default function Events({ events = [] }:IProps) {
   //   refreshData({types: e.target.value, startDate})
   // }
 
+
   return (
     
     <div className='w-6/6 bg-white flex items-center  rounded-lg p-6 '>
@@ -95,11 +97,12 @@ export default function Events({ events = [] }:IProps) {
           </div>
           <div className="py-3 px-6 ">
             {events.map((event) => {
+              const startDate = event.startDate ? parseDate(event.startDate) : ""
               return (
                 <Link href={`/events/edit/${event.id}`}>
                   <div className='border-b border-gray-300' key={event.id}>
                     <h3>{event.name}</h3> 
-                    <h3>{event.startDate}</h3> 
+                    <h3>{startDate}</h3> 
                     <h3>{event.types}</h3>     
                   </div>    
                 </Link>  

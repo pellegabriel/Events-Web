@@ -124,24 +124,25 @@ function Home({events =[] ,scrollEvents=[],filters}: IHome) {
 			      </div>
           </div>
         </nav>
-
-        <h1 className=' xl:font-serif text-5xl text-white'>
+        
+        <h1 className='mt-20 xl:font-serif text-5xl text-white'>
           <span>Hola, comienza ahora <br/>a disfrutar de</span>
           <span className='text-violet-500 mx-2 '>Weeout</span>
         </h1>
-        <Link className="bg-transparent hover:bg-violet-500 text-white font-semibold hover:text-black mt-10 py-2 px-4 border border-violet-500 hover:border-transparent rounded" href='/profile'>Comienza a disfrutar</Link>
+        <Link className="mt-40 w-1/5 h-16 bg-transparent hover:bg-violet-500 text-white font-semibold hover:text-black mt-10 py-2 px-4 border border-violet-500 hover:border-transparent rounded flex items-center justify-center text-xl" href='/profile'>Comienza a disfrutar</Link>
 
 
-        <section className="container mx-auto text-center">
-        <div className="text-xs xl:text-sm col-span-12 mb-10 sm:col-span-7 lg:col-span-4 px-64  "><Ilustration/></div>  
+        <Ilustration/>
       
-        </section>  
         <ScrollEvent events={scrollEvents} />
              
-        <div className="text-xl col-span-12 lg:col-span-7 mb-10"><Map events={events}/> </div>
-        <h1 className="xl:font-serif text-3xl text-white">Busca lo que necesites en la Lista de eventos disponibles: </h1>
+        <div className="text-xl col-span-12 lg:col-span-7 mb-40 mt-40">
+        <h1 className="xl:font-serif text-4xl text-white pb-8">Mira los eventos que te rodean: </h1>
+        <Map events={events}/> </div>
 
         <article className="grid gap-2 max-w-[1370px]">
+        <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">Busca lo que necesites en la Lista de eventos disponibles: </h1>
+
           <main className="grid gap-6 gap-y-8  ">
             <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
               
