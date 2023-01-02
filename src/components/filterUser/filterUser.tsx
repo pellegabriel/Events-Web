@@ -4,6 +4,7 @@ import { FocusEvent } from 'react';
 import { Event } from '../../models';
 import { IFilters } from '../../../pages';
 import EventCard2 from "../eventCard2/eventCard2"
+import Link from 'next/link';
 
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -14,7 +15,7 @@ interface IProps {
     event: Event
 }
 
-export default function EventsSearch({ events = [], updateFilters }:IProps) {  
+export default function EventsUser({ events = [], updateFilters }:IProps) {  
     const handleChange = (value: string, name: string ) => {
       updateFilters({[name]:value}) 
     }
@@ -42,7 +43,10 @@ export default function EventsSearch({ events = [], updateFilters }:IProps) {
             <div className=" flex flex-wrap  pl-2 ">
               {events.map((event: any) => {
                 return (
-                  <EventCard2 event={event} key={event.id} />
+                  <Link href={`/events/edit/${event.id}`}>
+                     <EventCard2 event={event} key={event.id} />
+                </Link>  
+              
                 )})
               }
             </div>

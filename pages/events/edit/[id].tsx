@@ -113,12 +113,39 @@ function Id({event, signOut, user, renderedAt}: IProps ) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
+         <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 ">
+          <div className="container mx-auto flex flex-wrap items-center">
+		        <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+				      <div className="text-white no-underline hover:text-white hover:no-underline">
+					      <div className="flex text-2xl pl-2">
+                  <div className="em em-grinning"></div>
+                  Bienvenido a 
+                  <div className='text-violet-500 mx-2'>Weeout</div> 
+                </div>
+				      </div>
+            </div>
+			      <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+				      <ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
+                
+              <li className="mr-3">
+                  <Link href='/profile' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Volver a Usuario</Link>
+                </li>
+                <li className="mr-3">
+                  <Link href='/' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Pagina principal</Link>
+                </li>
+
+                <li className="mr-3">
+                <Link href='/' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'onClick={signOut}>Cerrar sesion</Link>
+                </li>
+			      	</ul>
+			      </div>
+          </div>
+        </nav>
     <div className='h-full p-8 flex items-center justify-center bg-gradient-to-t from-gray-800 to-violet-700'>
-      <div className=" break-words bg-white  mt-16 ">
-        <div className="">
+      <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">        <div className="">
                     <div className="">
                       <div className=" flex ">
-                          <div className="">
+                          <div className="mt-20">
                               <Image alt='' src={user1} className="shadow-xl rounded-full align-middle border-none -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
                           </div>
                       </div>
@@ -156,14 +183,7 @@ function Id({event, signOut, user, renderedAt}: IProps ) {
             <span className="text-sm text-white sm:text-center dark:text-gray-400">© 2022. All Rights Reserved.
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-                <li>
-                <Link href='/' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'>Pagina principal
-                            </Link>
-                </li>
-                <li>
-                <Link href='/' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'onClick={signOut}>Cerrar sesion
-                            </Link>                
-                </li>
+
                 <li>
                 <Link href='/aboutUs' className='mr-8  hover:text-gray-800 md:mr-6 text-1xl text-white'>Sobre nosotros
                             </Link>

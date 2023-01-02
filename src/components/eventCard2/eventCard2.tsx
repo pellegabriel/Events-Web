@@ -31,7 +31,7 @@ export default function EventCard2 ({event}: IProps | any) {
     }
 
     return (
-        <div key={event.id} className="bg-white flex-none w-2/3 md:w-1/3 mr-8 md:pb-4 mr-2  mb-4 border rounded-lg">
+        <div key={event.id} className="bg-white flex-none w-1/3 md:w-1/3 mr-8 md:pb-4 mr-2  mb-4 border rounded-lg">
                 <div className="max-w-sm rounded-sm overflow-hidden m-3">
                     <div className="max-w-sm rounded overflow-hidden">
                         {error ? <Image alt='' src={img1} width={400} height={200}/> : <Image alt='' src={image} width={400} height={200} onError={handleImageError}/>}
