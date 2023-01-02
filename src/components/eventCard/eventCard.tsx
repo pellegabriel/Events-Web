@@ -30,8 +30,8 @@ export default function EventCard ({event}: IProps | any) {
         setError(true)
     }
 
-    return (
-        <div className="bg-white w-screen border rounded-lg">
+    return ( 
+        <div className="max-w-5xl bg-white w-screen border rounded-lg">
             <div className='border-b border-gray-300'  key={event.id}>
                 <div className=" rounded-sm overflow-hidden shadow-lg m-3">
                     <div className=" rounded overflow-hidden shadow-lg">

@@ -1,9 +1,34 @@
 import Image from 'next/image'
 import mas from '../../public/mas.png' 
 import admin from '../../public/admin.png' 
+import Link from 'next/link'
 export default function AboutUs () {
     return (
-    <div>    
+        
+    <div>
+               <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
+          <div className="container mx-auto flex flex-wrap items-center">
+		        <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+				      <div className="text-white no-underline hover:text-white hover:no-underline">
+					      <div className="flex text-2xl pl-2">
+                  <div className="em em-grinning"></div>
+                  Bienvenido a 
+                  <div className='text-violet-500 mx-2'>Weeout</div> 
+                </div>
+				      </div>
+            </div>
+			      <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+				      <ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
+                <li className="mr-3">
+                  <Link href='/' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Pagina principal</Link>
+                </li>
+                <li className="mr-3">
+                  <Link href='/profile' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Empieza ahora</Link>
+                </li>
+			      	</ul>
+			      </div>
+          </div>
+        </nav>    
     <section className="bg-gradient-to-t from-violet-700 to-gray-800  flex flex-col justify-center antialiased bg-gray-900 text-gray-200 min-h-screen">
         <div className="max-w-7xl bg-gradient-to-t from-gray-900 to-violet-500 mx-auto p-40 border border-gray-300 rounded-lg sm:px-6 h-full">
             <article className=" max-w-sm mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
