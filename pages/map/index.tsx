@@ -5,8 +5,8 @@ import Marker from "./Marker"
 
 
 const containerStyle = {
-  width: '1500px',
-  height: '500px',
+  width: '1200px',
+  height: '400px',
   borderRadius: '30px'
 };
 
@@ -43,7 +43,7 @@ function MyComponent({ events = [] }:IProps) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom= {14}
+        zoom= {10}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
