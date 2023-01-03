@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { 
     EventUpdateForm 
   } from '../../../src/ui-components';
-import React, { useEffect, useState } from "react"
+import React, { ChangeEvent, useEffect, useState } from "react"
 import { getEvent } from "../../../src/graphql/queries";
 
 interface IProps {
@@ -52,8 +52,8 @@ function Id({event, signOut, user, renderedAt}: IProps ) {
        const router = useRouter();
         const id = router.query.id as string
 
- const handleAudioChange = async (e: { target: { files: any[]; }; }) => {
-      const file = e.target.files[0];
+ const handleAudioChange = async (e: ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files && e.target.files[0]
       try {
           console.log({file})
           Storage.put(`audio/${id}`, file);
@@ -62,8 +62,8 @@ function Id({event, signOut, user, renderedAt}: IProps ) {
       }
         }
 
-    const handleImageChange = async (e: { target: { files: any[]; }; }) => {
-        const file = e.target.files[0];
+    const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files && e.target.files[0]
         try {
             console.log({file})
             Storage.put(id, file);

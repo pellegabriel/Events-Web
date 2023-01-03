@@ -15,7 +15,7 @@ interface IProps {
     event: Event
 }
 
-export default function EventsUser({ events = [], updateFilters }:IProps) {  
+export default function EventsUser({ events = [], updateFilters, filters }:IProps) {  
     const handleChange = (value: string, name: string ) => {
       updateFilters({[name]:value}) 
     }
@@ -26,11 +26,11 @@ export default function EventsUser({ events = [], updateFilters }:IProps) {
         <div className='flex justify-center mb-10 mt-10  '>
           <div className="flex flex-col py-6 p-8 ">
             <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
-            <input className='w-7' type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
+            <input className='w-7 text-gray-900' type="date" placeholder='Fecha' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'startDate')}}/>
           </div>
           <div className="flex flex-col p-8 ">
             <h2 className="font-medium text-sm text-stone-600">Tipo de evento:</h2>
-            <input className='w-7' type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
+            <input className='w-7 text-gray-900' type="text" placeholder='tipo' onBlur={(e: FocusEvent<HTMLInputElement>) => {handleChange(e.target.value, 'types')}}/>
           </div>
         </div>
 

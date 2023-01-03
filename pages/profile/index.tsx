@@ -1,12 +1,11 @@
-import {Authenticator,Flex,useTheme,} from "@aws-amplify/ui-react";
+import {Authenticator,Flex,useAuthenticator,useTheme,} from "@aws-amplify/ui-react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import Link from 'next/link'
-import { EventCreateForm } from "../../src/ui-components";
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useRouter } from "next/router"
 import { Event } from "../../src/models";
 import Image from 'next/image'
-import {Amplify, Storage, withSSRContext } from 'aws-amplify';
+import {Amplify, withSSRContext } from 'aws-amplify';
 import user1 from '../../public/user1.png'
 import { ModelEventFilterInput } from "../../src/API";
 import { listEvents } from "../../src/graphql/queries";
@@ -22,12 +21,13 @@ interface IProps {
   user: Record<string, any>
   renderedAt: string;
   events: Array<Event>
-  filters: IFilters
+  filters: Partial<IFilters>
 
 }
 export interface IFilters {
-  startDate: string,
- types: string
+  startDate?: string,
+ types?: string,
+ userId?: string
  
 }
 export async function getServerSideProps({ req, query }: any) {
@@ -41,9 +41,11 @@ export async function getServerSideProps({ req, query }: any) {
     timeStyle: "long",
   });
   const types = query.types;
+  const userId = query.userId;
   const filterOptions = {
     ...(query.types && {types: {contains: types}}),
     ...(query.startDate && {startDate: {gt: startDate.toISOString()}}),
+    ...(query.userId && {user: {eq: userId}}),
   }
      const filter: ModelEventFilterInput = {
      and: [
@@ -52,10 +54,10 @@ export async function getServerSideProps({ req, query }: any) {
    }
   try {
      const response = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
-    //  COPIAR ESTO 2 VECES Y 1 MODIFICAR PARA Q NO SE ME CAMBIE
     return {
       props: {
         events: response.data.listEvents.items,
+        filters: filterOptions
       },
     };
   } catch (err) {
@@ -68,54 +70,14 @@ export async function getServerSideProps({ req, query }: any) {
 }
 
 
-function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
+function Profile({events =[], signOut, renderedAt, filters}: IProps ) {
        const router = useRouter();
-       const refreshData = ({startDate, types}: IFilters) => {
-        router.push({pathname: '/profile', query: {startDate: startDate, types: types}});
+       const { user } = useAuthenticator((context) => [context.user]);
+       const refreshData = ({userId, startDate, types}: IFilters) => {
+        router.push({pathname: '/profile', query: {startDate: startDate, types: types, userId: userId}});
       }
-    const id = router.query.id as string
-
- const handleAudioChange = async (e: { target: { files: any[]; }; }) => {
-      const file = e.target.files[0];
-      try {
-          console.log({file})
-          Storage.put(`audio/${id}`, file);
-      } catch (error) {
-          console.log("Error uploading file: ", error);
-      }
-        }
-
-    const handleImageChange = async (e: { target: { files: any[]; }; }) => {
-        const file = e.target.files[0];
-        try {
-            console.log({file})
-            Storage.put(id, file);
-        } catch (error) {
-            console.log("Error uploading file: ", error);
-        }
-          }
-          const [audio, setAudio] = useState<string>()
-          const getUploadedAudio = async () => {
-              const file = await Storage.get(`audio/${id}`, {
-                  level: "public"
-              });
-              console.log({file})
-              setAudio(file)
-          }
           useEffect(() => {
-              getUploadedAudio()
-          }, [])
-
-          const [image, setImage] = useState<string>()
-          const getUploadedImage = async () => {
-              const file = await Storage.get(id, {
-                  level: "public"
-              });
-              console.log({file})
-              setImage(file)
-          }
-          useEffect(() => {
-              getUploadedImage()
+            refreshData({userId: user.attributes?.email})
           }, [])
 
     const authComponents = {
@@ -186,15 +148,6 @@ function Profile({events =[], signOut, user, renderedAt, filters}: IProps ) {
                           <div className=' overflow-hidden flex items-center justify-center'>
                           <div className='mt-8 mb-8 grid-cols-1 p-10'>
             <h1 className='text-2xl text-slate-700 font-bold leading-normal mb-1'>Crea tu propio evento: </h1>
-
-                      <EventCreateForm/>
-                      Subir imagen 
-              <input type="file" onChange={handleImageChange} />
-              {image && <Image alt='' src={image} width={100} height={100}/>}
-            Subir audio  
-              <input type="file" onChange={handleAudioChange} />
-              {audio && <audio controls><source src={audio} type="audio/*"/>
-                </audio>}
               
                 </div>
                             {/* <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>

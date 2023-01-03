@@ -77,6 +77,7 @@ export const getEvent = /* GraphQL */ `
       map_point
       types
       user
+      descripcion
       createdAt
       updatedAt
       _version
@@ -101,6 +102,7 @@ export const listEvents = /* GraphQL */ `
         map_point
         types
         user
+        descripcion
         createdAt
         updatedAt
         _version
@@ -134,6 +136,7 @@ export const syncEvents = /* GraphQL */ `
         map_point
         types
         user
+        descripcion
         createdAt
         updatedAt
         _version

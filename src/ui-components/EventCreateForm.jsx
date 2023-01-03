@@ -177,6 +177,7 @@ export default function EventCreateForm(props) {
     map_point: undefined,
     types: [],
     user: undefined,
+    subTitulo: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [id, setId] = React.useState(initialValues.id);
@@ -187,6 +188,7 @@ export default function EventCreateForm(props) {
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
+  const [subTitulo, setSubTitulo] = React.useState(initialValues.subTitulo);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
@@ -199,6 +201,7 @@ export default function EventCreateForm(props) {
     setTypes(initialValues.types);
     setCurrentTypesValue(undefined);
     setUser(initialValues.user);
+    setSubTitulo(initialValues.subTitulo);
     setErrors({});
   };
   const [currentTypesValue, setCurrentTypesValue] = React.useState(undefined);
@@ -213,6 +216,7 @@ export default function EventCreateForm(props) {
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
+    subTitulo: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -241,6 +245,7 @@ export default function EventCreateForm(props) {
           map_point,
           types,
           user,
+          subTitulo,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -298,6 +303,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -329,6 +335,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.id ?? value;
@@ -361,6 +368,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.startDate ?? value;
@@ -393,6 +401,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.endDate ?? value;
@@ -423,6 +432,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;
@@ -455,6 +465,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.is_done ?? value;
@@ -486,6 +497,7 @@ export default function EventCreateForm(props) {
               map_point: value,
               types,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -514,6 +526,7 @@ export default function EventCreateForm(props) {
               map_point,
               types: values,
               user,
+              subTitulo,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -565,6 +578,7 @@ export default function EventCreateForm(props) {
               map_point,
               types,
               user: value,
+              subTitulo,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -578,6 +592,38 @@ export default function EventCreateForm(props) {
         errorMessage={errors.user?.errorMessage}
         hasError={errors.user?.hasError}
         {...getOverrideProps(overrides, "user")}
+      ></TextField>
+      <TextField
+        label="Sub titulo"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              id,
+              startDate,
+              endDate,
+              Field0,
+              is_done,
+              map_point,
+              types,
+              user,
+              subTitulo: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.subTitulo ?? value;
+          }
+          if (errors.subTitulo?.hasError) {
+            runValidationTasks("subTitulo", value);
+          }
+          setSubTitulo(value);
+        }}
+        onBlur={() => runValidationTasks("subTitulo", subTitulo)}
+        errorMessage={errors.subTitulo?.errorMessage}
+        hasError={errors.subTitulo?.hasError}
+        {...getOverrideProps(overrides, "subTitulo")}
       ></TextField>
       <Flex
         justifyContent="space-between"

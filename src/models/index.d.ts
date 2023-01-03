@@ -50,12 +50,12 @@ type EagerEvent = {
   readonly types?: (string | null)[] | null;
   readonly user: string;
   readonly descripcion?: string | null;
+  readonly subTitulo?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
 type LazyEvent = {
-  description: ReactNode;
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Event, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
@@ -69,6 +69,7 @@ type LazyEvent = {
   readonly types?: (string | null)[] | null;
   readonly user: string;
   readonly descripcion?: string | null;
+  readonly subTitulo?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -170,41 +170,39 @@ export default function EventUpdateForm(props) {
   const { tokens } = useTheme();
   const initialValues = {
     name: undefined,
-    description: undefined,
-    startDate: undefined,
-    endDate: undefined,
-    is_done: false,
+    subTitulo: undefined,
     map_point: undefined,
     types: [],
     user: undefined,
     descripcion: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    is_done: false,
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [description, setDescription] = React.useState(
-    initialValues.description
-  );
-  const [startDate, setStartDate] = React.useState(initialValues.startDate);
-  const [endDate, setEndDate] = React.useState(initialValues.endDate);
-  const [is_done, setIs_done] = React.useState(initialValues.is_done);
+  const [subTitulo, setSubTitulo] = React.useState(initialValues.subTitulo);
   const [map_point, setMap_point] = React.useState(initialValues.map_point);
   const [types, setTypes] = React.useState(initialValues.types);
   const [user, setUser] = React.useState(initialValues.user);
   const [descripcion, setDescripcion] = React.useState(
     initialValues.descripcion
   );
+  const [startDate, setStartDate] = React.useState(initialValues.startDate);
+  const [endDate, setEndDate] = React.useState(initialValues.endDate);
+  const [is_done, setIs_done] = React.useState(initialValues.is_done);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord };
     setName(cleanValues.name);
-    setDescription(cleanValues.description);
-    setStartDate(cleanValues.startDate);
-    setEndDate(cleanValues.endDate);
-    setIs_done(cleanValues.is_done);
+    setSubTitulo(cleanValues.subTitulo);
     setMap_point(cleanValues.map_point);
     setTypes(cleanValues.types ?? []);
     setCurrentTypesValue(undefined);
     setUser(cleanValues.user);
     setDescripcion(cleanValues.descripcion);
+    setStartDate(cleanValues.startDate);
+    setEndDate(cleanValues.endDate);
+    setIs_done(cleanValues.is_done);
     setErrors({});
   };
   const [eventRecord, setEventRecord] = React.useState(event);
@@ -220,14 +218,14 @@ export default function EventUpdateForm(props) {
   const typesRef = React.createRef();
   const validations = {
     name: [{ type: "Required" }],
-    description: [],
-    startDate: [],
-    endDate: [{ type: "Required" }],
-    is_done: [],
+    subTitulo: [],
     map_point: [],
     types: [],
     user: [{ type: "Required" }],
     descripcion: [],
+    startDate: [],
+    endDate: [{ type: "Required" }],
+    is_done: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -265,14 +263,14 @@ export default function EventUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          description,
-          startDate,
-          endDate,
-          is_done,
+          subTitulo,
           map_point,
           types,
           user,
           descripcion,
+          startDate,
+          endDate,
+          is_done,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -324,14 +322,14 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              description,
-              startDate,
-              endDate,
-              is_done,
+              subTitulo,
               map_point,
               types,
               user,
               descripcion,
+              startDate,
+              endDate,
+              is_done,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -347,134 +345,37 @@ export default function EventUpdateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Sub Titulo"
-        isRequired={false}
-        defaultValue={description}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description: value,
-              startDate,
-              endDate,
-              is_done,
-              map_point,
-              types,
-              user,
-              descripcion,
-            };
-            const result = onChange(modelFields);
-            value = result?.description ?? value;
-          }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
-          }
-          setDescription(value);
-        }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Comienzo"
+        label="Sub titulo"
         isRequired={false}
         isReadOnly={false}
-        type="datetime-local"
-        defaultValue={startDate && convertToLocal(new Date(startDate))}
+        defaultValue={subTitulo}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              startDate: value,
-              endDate,
-              is_done,
+              subTitulo: value,
               map_point,
               types,
               user,
               descripcion,
-            };
-            const result = onChange(modelFields);
-            value = result?.startDate ?? value;
-          }
-          if (errors.startDate?.hasError) {
-            runValidationTasks("startDate", value);
-          }
-          setStartDate(new Date(value).toISOString());
-        }}
-        onBlur={() => runValidationTasks("startDate", startDate)}
-        errorMessage={errors.startDate?.errorMessage}
-        hasError={errors.startDate?.hasError}
-        {...getOverrideProps(overrides, "startDate")}
-      ></TextField>
-      <TextField
-        label="Final"
-        isRequired={true}
-        isReadOnly={false}
-        type="datetime-local"
-        defaultValue={endDate && convertToLocal(new Date(endDate))}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              startDate,
-              endDate: value,
-              is_done,
-              map_point,
-              types,
-              user,
-              descripcion,
-            };
-            const result = onChange(modelFields);
-            value = result?.endDate ?? value;
-          }
-          if (errors.endDate?.hasError) {
-            runValidationTasks("endDate", value);
-          }
-          setEndDate(new Date(value).toISOString());
-        }}
-        onBlur={() => runValidationTasks("endDate", endDate)}
-        errorMessage={errors.endDate?.errorMessage}
-        hasError={errors.endDate?.hasError}
-        {...getOverrideProps(overrides, "endDate")}
-      ></TextField>
-      <SwitchField
-        label="Ya se realizo"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={is_done}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
               startDate,
               endDate,
-              is_done: value,
-              map_point,
-              types,
-              user,
-              descripcion,
+              is_done,
             };
             const result = onChange(modelFields);
-            value = result?.is_done ?? value;
+            value = result?.subTitulo ?? value;
           }
-          if (errors.is_done?.hasError) {
-            runValidationTasks("is_done", value);
+          if (errors.subTitulo?.hasError) {
+            runValidationTasks("subTitulo", value);
           }
-          setIs_done(value);
+          setSubTitulo(value);
         }}
-        onBlur={() => runValidationTasks("is_done", is_done)}
-        errorMessage={errors.is_done?.errorMessage}
-        hasError={errors.is_done?.hasError}
-        {...getOverrideProps(overrides, "is_done")}
-      ></SwitchField>
+        onBlur={() => runValidationTasks("subTitulo", subTitulo)}
+        errorMessage={errors.subTitulo?.errorMessage}
+        hasError={errors.subTitulo?.hasError}
+        {...getOverrideProps(overrides, "subTitulo")}
+      ></TextField>
       <TextField
         label="Localizacion"
         isRequired={false}
@@ -485,14 +386,14 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              startDate,
-              endDate,
-              is_done,
+              subTitulo,
               map_point: value,
               types,
               user,
               descripcion,
+              startDate,
+              endDate,
+              is_done,
             };
             const result = onChange(modelFields);
             value = result?.map_point ?? value;
@@ -513,14 +414,14 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              startDate,
-              endDate,
-              is_done,
+              subTitulo,
               map_point,
               types: values,
               user,
               descripcion,
+              startDate,
+              endDate,
+              is_done,
             };
             const result = onChange(modelFields);
             values = result?.types ?? values;
@@ -565,14 +466,14 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              startDate,
-              endDate,
-              is_done,
+              subTitulo,
               map_point,
               types,
               user: value,
               descripcion,
+              startDate,
+              endDate,
+              is_done,
             };
             const result = onChange(modelFields);
             value = result?.user ?? value;
@@ -597,14 +498,14 @@ export default function EventUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name,
-              description,
-              startDate,
-              endDate,
-              is_done,
+              subTitulo,
               map_point,
               types,
               user,
               descripcion: value,
+              startDate,
+              endDate,
+              is_done,
             };
             const result = onChange(modelFields);
             value = result?.descripcion ?? value;
@@ -619,6 +520,104 @@ export default function EventUpdateForm(props) {
         hasError={errors.descripcion?.hasError}
         {...getOverrideProps(overrides, "descripcion")}
       ></TextField>
+      <TextField
+        label="Comienzo"
+        isRequired={false}
+        isReadOnly={false}
+        type="datetime-local"
+        defaultValue={startDate && convertToLocal(new Date(startDate))}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              subTitulo,
+              map_point,
+              types,
+              user,
+              descripcion,
+              startDate: value,
+              endDate,
+              is_done,
+            };
+            const result = onChange(modelFields);
+            value = result?.startDate ?? value;
+          }
+          if (errors.startDate?.hasError) {
+            runValidationTasks("startDate", value);
+          }
+          setStartDate(new Date(value).toISOString());
+        }}
+        onBlur={() => runValidationTasks("startDate", startDate)}
+        errorMessage={errors.startDate?.errorMessage}
+        hasError={errors.startDate?.hasError}
+        {...getOverrideProps(overrides, "startDate")}
+      ></TextField>
+      <TextField
+        label="Final"
+        isRequired={true}
+        isReadOnly={false}
+        type="datetime-local"
+        defaultValue={endDate && convertToLocal(new Date(endDate))}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              subTitulo,
+              map_point,
+              types,
+              user,
+              descripcion,
+              startDate,
+              endDate: value,
+              is_done,
+            };
+            const result = onChange(modelFields);
+            value = result?.endDate ?? value;
+          }
+          if (errors.endDate?.hasError) {
+            runValidationTasks("endDate", value);
+          }
+          setEndDate(new Date(value).toISOString());
+        }}
+        onBlur={() => runValidationTasks("endDate", endDate)}
+        errorMessage={errors.endDate?.errorMessage}
+        hasError={errors.endDate?.hasError}
+        {...getOverrideProps(overrides, "endDate")}
+      ></TextField>
+      <SwitchField
+        label="Ya se realizo"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={is_done}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              subTitulo,
+              map_point,
+              types,
+              user,
+              descripcion,
+              startDate,
+              endDate,
+              is_done: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.is_done ?? value;
+          }
+          if (errors.is_done?.hasError) {
+            runValidationTasks("is_done", value);
+          }
+          setIs_done(value);
+        }}
+        onBlur={() => runValidationTasks("is_done", is_done)}
+        errorMessage={errors.is_done?.errorMessage}
+        hasError={errors.is_done?.hasError}
+        {...getOverrideProps(overrides, "is_done")}
+      ></SwitchField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

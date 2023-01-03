@@ -30,12 +30,14 @@ export default function Id({event}:IProps) {
     const router = useRouter();
     const id = router.query.id as string
     const name= router.query.comment as string
+    console.log("User: ", {user: event.user})
 
     return(
         <>
 
         <>{event.id}</>
         <>{event.name}</>
+        <>{event.user}</>
         
         </>
     )
