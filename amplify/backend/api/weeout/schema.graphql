@@ -14,5 +14,6 @@ type Event @model @auth(rules: [{allow: public}]) {
   types: [ID]
   user: ID!
   descripcion: String
+  subTitulo: String
 }
  

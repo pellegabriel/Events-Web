@@ -17,30 +17,22 @@
         "weeout921a0308": {},
         "userPoolGroups": {}
       },
-      "api": {
-        "weeout": {}
+      "storage": {
+        "s3weeout01storage2ebbc512": {}
       },
       "function": {
-        "weeout921a0308CustomMessage": {
-          "REDIRECTURL": "http://localhost:3000/",
-          "EMAILSUBJECT": "",
-          "EMAILMESSAGE": "hello"
+        "weeout921a0308CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
+          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-3557535843354b367453-build.zip"
         },
         "weeout921a0308DefineAuthChallenge": {
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
           "s3Key": "amplify-builds/weeout921a0308DefineAuthChallenge-4f5841796d782f624555-build.zip"
         },
-        "weeout921a0308CreateAuthChallenge": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-3557535843354b367453-build.zip"
-        },
         "weeout921a0308VerifyAuthChallengeResponse": {
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-52747a2b6c38534b6a71-build.zip"
+          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-76445131775a69303754-build.zip"
         }
-      },
-      "storage": {
-        "s3weeout01storage2ebbc512": {}
       }
     }
   }

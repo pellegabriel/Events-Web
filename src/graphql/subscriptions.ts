@@ -61,6 +61,7 @@ export const onCreateEvent = /* GraphQL */ `
       map_point
       types
       user
+      descripcion
       createdAt
       updatedAt
       _version
@@ -80,6 +81,7 @@ export const onUpdateEvent = /* GraphQL */ `
       map_point
       types
       user
+      descripcion
       createdAt
       updatedAt
       _version
@@ -99,6 +101,7 @@ export const onDeleteEvent = /* GraphQL */ `
       map_point
       types
       user
+      descripcion
       createdAt
       updatedAt
       _version
