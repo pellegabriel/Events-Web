@@ -68,6 +68,7 @@ export const createEvent = /* GraphQL */ `
       types
       user
       descripcion
+      subTitulo
       createdAt
       updatedAt
       _version
@@ -91,6 +92,7 @@ export const updateEvent = /* GraphQL */ `
       types
       user
       descripcion
+      subTitulo
       createdAt
       updatedAt
       _version
@@ -114,6 +116,7 @@ export const deleteEvent = /* GraphQL */ `
       types
       user
       descripcion
+      subTitulo
       createdAt
       updatedAt
       _version

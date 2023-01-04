@@ -1,100 +1,104 @@
 import Head from 'next/head'
-import React from "react";
+import React from 'react'
 import Link from 'next/link'
-import { Amplify, withSSRContext } from 'aws-amplify';
-import Map from './map/index';
-import EventsSearch from '../src/components/filterEventSearch/filterEventSearch';
-import Ilustration from './../src/components/Ilustracion/Ilustracion';
-import { ModelEventFilterInput } from '../src/API';
-import { listEvents } from '../src/graphql/queries';
-import awsExports from '../src/aws-exports';
-import { Event } from '../src/models';
-import {  useRouter } from 'next/router';
-import ScrollEvent from '../src/components/scrollEvent';
+import { Amplify, withSSRContext } from 'aws-amplify'
+import Map from './map/index'
+import EventsSearch from '../src/components/filterEventSearch/filterEventSearch'
+import Ilustration from './../src/components/Ilustracion/Ilustracion'
+import { ModelEventFilterInput } from '../src/API'
+import { listEvents } from '../src/graphql/queries'
+import awsExports from '../src/aws-exports'
+import { Event } from '../src/models'
+import { useRouter } from 'next/router'
+import ScrollEvent from '../src/components/scrollEvent'
 
-
-Amplify.configure({ ...awsExports, ssr: true });
+Amplify.configure({ ...awsExports, ssr: true })
 
 interface IHome {
-  signOut: ()=> void
+  signOut: () => void
   scrollEvents: Array<Event>
   user: Record<string, any>
-  renderedAt: string;
+  renderedAt: string
   events: Array<Event>
   filters: IFilters
 }
 
 export interface IFilters {
-  startDate: string,
- types: string
- 
+  startDate: string
+  types: string
 }
 // Interface IHome {
 //   user: TUser
 //   }
-  
+
 //   Type TUser = {
-//   userName: string 
+//   userName: string
 //   }
 export async function getServerSideProps({ req, query }: any) {
-  const SSR = withSSRContext({ req });
-  const startDate = new Date(query.startDate);
-  const types = query.types;
+  const SSR = withSSRContext({ req })
+  const startDate = new Date(query.startDate)
+  const types = query.types
   const filterOptions = {
-    ...(query.types && {types: {contains: types}}),
-    ...(query.startDate && {startDate: {gt: startDate.toISOString()}}),
+    ...(query.types && { types: { contains: types } }),
+    ...(query.startDate && { startDate: { gt: startDate.toISOString() } }),
   }
-    const today = new Date().toISOString(); 
-    console.log(today)
-   const filter: ModelEventFilterInput = {
-     and: [
-       {...filterOptions}
-     ]
-   }
-   const dateFilter: ModelEventFilterInput = {
+  const today = new Date().toISOString()
+  console.log(today)
+  const filter: ModelEventFilterInput = {
+    and: [{ ...filterOptions }],
+  }
+  const dateFilter: ModelEventFilterInput = {
     and: [
-      {startDate: {gt: today}}
-    //   trae eventos apartir de ahora
-    ]
+      { startDate: { gt: today } },
+      //   trae eventos apartir de ahora
+    ],
   }
 
   try {
-     const response = await SSR.API.graphql({ query: listEvents, variables: {filter: dateFilter}});
-     const responseFilter = await SSR.API.graphql({ query: listEvents, variables: {filter: filter} });
+    const response = await SSR.API.graphql({
+      query: listEvents,
+      variables: { filter: dateFilter },
+    })
+    const responseFilter = await SSR.API.graphql({
+      query: listEvents,
+      variables: { filter: filter },
+    })
     //  COPIAR ESTO 2 VECES Y 1 MODIFICAR PARA Q NO SE ME CAMBIE
     return {
       props: {
         scrollEvents: response.data.listEvents.items,
         events: responseFilter.data.listEvents.items,
-        filters: filterOptions
+        filters: filterOptions,
       },
-    };
+    }
   } catch (err) {
-    console.log(err);
+    console.log(err)
     return {
       props: {},
-    };
+    }
   }
-  
 }
-function Home({events =[] ,scrollEvents=[],filters}: IHome) { 
-  const router = useRouter();
+function Home({ events = [], scrollEvents = [], filters }: IHome) {
+  const router = useRouter()
   // Call this function whenever you want to
   // refresh props!
-  const refreshData = ({startDate, types}: IFilters) => {
-    router.push({pathname: '/', query: {startDate: startDate, types: types}});
+  const refreshData = ({ startDate, types }: IFilters) => {
+    router.push({
+      pathname: '/',
+      query: { startDate: startDate, types: types },
+    })
   }
 
-  const handleChange = (newFilters: IFilters) => {
-    const prevFilters = router.query;
-    refreshData(
-      {
-        ...(prevFilters as unknown as IFilters),
-         ...newFilters
-        })
-  } 
+  const handleChange = (newFilters: Partial<IFilters>) => {
+    const prevFilters = router.query
+    refreshData({
+      ...(prevFilters as unknown as IFilters),
+      ...newFilters,
+    })
+  }
   return (
-    <div className=' bg-gradient-to-t from-violet-700 to-gray-800  pt-40 flex items-center flex-col'>
+    <>
+      <div className=" bg-gradient-to-t from-violet-700 to-gray-800  pt-40 flex items-center flex-col">
         <Head>
           <title>Weeout</title>
           <meta name="description" content="Generated by create next app" />
@@ -103,66 +107,104 @@ function Home({events =[] ,scrollEvents=[],filters}: IHome) {
 
         <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
           <div className="container mx-auto flex flex-wrap items-center">
-		        <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-				      <div className="text-white no-underline hover:text-white hover:no-underline">
-					      <div className="flex text-2xl pl-2">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+              <div className="text-white no-underline hover:text-white hover:no-underline">
+                <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  Bienvenido a 
-                  <div className='text-violet-500 mx-2'>Weeout</div> 
+                  Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
                 </div>
-				      </div>
+              </div>
             </div>
-			      <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
-				      <ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
+            <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+              <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
                 <li className="mr-3">
-                  <Link href='/aboutUs' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Mas sobre nosotros</Link>
+                  <Link
+                    href="/aboutUs"
+                    className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                  >
+                    Mas sobre nosotros
+                  </Link>
                 </li>
                 <li className="mr-3">
-                  <Link href='/profile' className='inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4 text-white'>Empieza ahora</Link>
+                  <Link
+                    href="/profile"
+                    className=" bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                  >
+                    Empieza ahora
+                  </Link>
                 </li>
-			      	</ul>
-			      </div>
+              </ul>
+            </div>
           </div>
         </nav>
-        
-        <h1 className='mt-20 xl:font-serif text-5xl text-white'>
-          <span>Hola, comienza ahora <br/>a disfrutar de</span>
-          <span className='text-violet-500 mx-2 '>Weeout</span>
+
+        <h1 className="mt-20 xl:font-serif text-5xl text-white">
+          <span>
+            Hola, comienza ahora <br />a disfrutar de
+          </span>
+          <span className="text-yellow-500 mx-2 ">Weeout</span>
         </h1>
-        <Link className="mt-40 w-1/5 h-16 bg-transparent hover:bg-violet-500 text-white font-semibold hover:text-black mt-10 py-2 px-4 border border-violet-500 hover:border-transparent rounded flex items-center justify-center text-xl" href='/profile'>Comienza a disfrutar</Link>
+        <Link
+          className="mt-40 w-1/5 h-16 bg-transparent hover:bg-yellow-500 text-white font-semibold hover:text-black mt-10 py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center text-xl"
+          href="/profile"
+        >
+          Comienza a disfrutar
+        </Link>
 
+        <Ilustration />
 
-        <Ilustration/>
-      
         <ScrollEvent events={scrollEvents} />
-             
+
         <div className="text-xl col-span-12 lg:col-span-7 mb-40 mt-40">
-        <h1 className="xl:font-serif text-4xl text-white pb-8">Mira los eventos que te rodean: </h1>
-        <Map events={events}/> </div>
+          <h1 className="xl:font-serif text-4xl text-white pb-8">
+            Mira los eventos que te rodean:
+          </h1>
+          <Map events={events} />
+        </div>
 
         <article className="grid gap-2 max-w-[1370px]">
-        <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">Busca lo que necesites en la Lista de eventos disponibles: </h1>
+          <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">
+            Busca lo que necesites en la Lista de eventos disponibles:{' '}
+          </h1>
 
           <main className="grid gap-6 gap-y-8  ">
             <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
-              
-
-              <div className="col-span-12  object-cover lg:row-span-2 bg-gradient-to-t from-gray-900 to-violet-600 border rounded-lg text-white">
-              <EventsSearch events={events}  filters={filters} updateFilters={handleChange} />
+              <div className="col-span-12  object-cover lg:row-span-2 bg-gradient-to-t from-gray-900 to-violet-600 border rounded-lg text-black">
+                <EventsSearch
+                  events={events}
+                  filters={filters}
+                  updateFilters={handleChange}
+                />
               </div>
             </section>
           </main>
         </article>
-          
-      {/* <div style={{ padding: 50 }}>
-      <h1>Logged in as {user.username}.</h1>
-      <div>
-        <button onClick={signOut}>Sign out</button>
-      </div>
-      <div>This page was server-side rendered on {renderedAt}.</div>
-    </div> */}
+
+        {/* <div style={{ padding: 50 }}>
+    <h1>Logged in as {user.username}.</h1>
+    <div>
+      <button onClick={signOut}>Sign out</button>
     </div>
+    <div>This page was server-side rendered on {renderedAt}.</div>
+  </div> */}
+      </div>
+      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+        <span className="text-sm text-white sm:text-center dark:text-gray-400">
+          © 2022. All Rights Reserved.
+        </span>
+        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+          <li>
+            <Link
+              href="/aboutUs"
+              className="mr-8  hover:text-yellow-500 md:mr-6 text-1xl text-white"
+            >
+              Sobre nosotros
+            </Link>
+          </li>
+        </ul>
+      </footer>
+    </>
   )
 }
 
-export default Home;
+export default Home

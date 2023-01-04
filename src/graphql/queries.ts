@@ -78,6 +78,7 @@ export const getEvent = /* GraphQL */ `
       types
       user
       descripcion
+      subTitulo
       createdAt
       updatedAt
       _version
@@ -103,6 +104,7 @@ export const listEvents = /* GraphQL */ `
         types
         user
         descripcion
+        subTitulo
         createdAt
         updatedAt
         _version
@@ -137,6 +139,7 @@ export const syncEvents = /* GraphQL */ `
         types
         user
         descripcion
+        subTitulo
         createdAt
         updatedAt
         _version
