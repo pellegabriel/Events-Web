@@ -47,7 +47,7 @@ export async function getServerSideProps({ req, query }: any) {
   }
 }
 
-function newEvent({ signOut, user, renderedAt }: IProps) {
+function NewEvent({ signOut, user, renderedAt }: IProps) {
   const router = useRouter()
   const [error, setError] = useState<string>()
   const [isLoading, setLoading] = useState<boolean>(false)
@@ -185,4 +185,4 @@ function newEvent({ signOut, user, renderedAt }: IProps) {
     </Authenticator>
   )
 }
-export default withAuthenticator(newEvent)
+export default withAuthenticator(NewEvent)
