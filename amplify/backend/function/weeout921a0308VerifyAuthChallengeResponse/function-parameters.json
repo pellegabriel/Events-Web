@@ -1,8 +1,6 @@
 {
   "trigger": true,
-  "modules": [
-    "captcha-verify"
-  ],
+  "modules": ["captcha-verify"],
   "parentResource": "weeout921a0308",
   "functionName": "weeout921a0308VerifyAuthChallengeResponse",
   "resourceName": "weeout921a0308VerifyAuthChallengeResponse",

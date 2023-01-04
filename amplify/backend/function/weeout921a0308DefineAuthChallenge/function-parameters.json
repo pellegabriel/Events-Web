@@ -1,8 +1,6 @@
 {
   "trigger": true,
-  "modules": [
-    "captcha-define-challenge"
-  ],
+  "modules": ["captcha-define-challenge"],
   "parentResource": "weeout921a0308",
   "functionName": "weeout921a0308DefineAuthChallenge",
   "resourceName": "weeout921a0308DefineAuthChallenge",

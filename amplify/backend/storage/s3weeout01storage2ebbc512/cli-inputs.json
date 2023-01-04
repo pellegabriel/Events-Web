@@ -3,12 +3,6 @@
   "bucketName": "weeout01-storage-2ebbc512",
   "policyUUID": "53bfb63f",
   "storageAccess": "authAndGuest",
-  "guestAccess": [
-    "READ"
-  ],
-  "authAccess": [
-    "READ",
-    "CREATE_AND_UPDATE",
-    "DELETE"
-  ]
+  "guestAccess": ["READ"],
+  "authAccess": ["READ", "CREATE_AND_UPDATE", "DELETE"]
 }
