@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import img1 from '../../../public/IMG1.png'
 import parseDate from '../../helperFunctions/parseDate'
+import Link from 'next/link'
 
 interface IProps {
   event: Event
@@ -19,11 +20,10 @@ export default function EventCard({ event }: IProps | any) {
       const file = await Storage.get(event.id, {
         level: 'public',
       })
-      setImage(file)  
+      setImage(file)
     } catch (error) {
-      setError(true)  
+      setError(true)
     }
-    
   }
   useEffect(() => {
     getUploadedImage()
@@ -53,14 +53,14 @@ export default function EventCard({ event }: IProps | any) {
       <div className="border-b border-gray-300" key={event.id}>
         <div className=" rounded-sm overflow-hidden shadow-lg m-3">
           <div className=" rounded overflow-hidden shadow-lg ">
-            {(image && !error) ? (
+            {image && !error ? (
               <Image
-              alt=""
-              src={image}
-              width={400}
-              height={200}
-              onError={handleImageError}
-            />
+                alt=""
+                src={image}
+                width={400}
+                height={200}
+                onError={handleImageError}
+              />
             ) : (
               <Image alt="" src={img1} width={400} height={200} />
             )}
@@ -69,7 +69,7 @@ export default function EventCard({ event }: IProps | any) {
               <div className="text-gray-700 text-base">{event.descripcion}</div>
               {audio && (
                 <audio controls src={audio}>
-                  <a href={audio} />
+                  <Link href={audio} />
                 </audio>
               )}
               <div className="text-gray-700 text-base">

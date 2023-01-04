@@ -194,7 +194,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                     <input type="file" onChange={handleAudioChange} />
                     {audio && (
                       <audio controls src={audio}>
-                        <a href={audio} />
+                        <Link href={audio} />
                       </audio>
                     )}
                   </div>

@@ -135,9 +135,11 @@ export default function Id({ event, center }: IProps | any) {
                     <div className="flex">
                       <div className="flex-shrink-0"></div>
                       <div className="ml-4">
-                        <audio controls>
-                          <source src={audio} type="audio/*" />
-                        </audio>
+                        {audio && (
+                          <audio controls src={audio}>
+                            <Link href={audio} />
+                          </audio>
+                        )}
                       </div>
                     </div>
 

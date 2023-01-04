@@ -11,7 +11,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../src/graphql/queries'
 import { EventCreateForm } from '../../src/ui-components'
 import { EventCreateFormInputValues } from '../../src/ui-components/EventCreateForm'
-import Spinner  from '../../src/components/spinner'
+import Spinner from '../../src/components/spinner'
 
 interface IProps {
   event: Event
@@ -68,18 +68,18 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
     router.push(`/profile`)
   }
   const handleError = (_event: EventCreateFormInputValues, message: string) => {
-    setError(message) 
+    setError(message)
     setLoading(false)
   }
   const handleSubmit = (event: EventCreateFormInputValues) => {
     setLoading(true)
 
-    return ({
+    return {
       ...event,
       ...{
-        user: user.username
-      }
-    })
+        user: user.username,
+      },
+    }
   }
 
   return (
@@ -156,7 +156,11 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
                       Crea un evento:
                     </h1>
 
-                    <EventCreateForm onSuccess={handleSuccess} onSubmit={handleSubmit} onError={handleError}  />
+                    <EventCreateForm
+                      onSuccess={handleSuccess}
+                      onSubmit={handleSubmit}
+                      onError={handleError}
+                    />
                     {error && <div>{error}</div>}
                     {isLoading && <Spinner />}
                   </div>
