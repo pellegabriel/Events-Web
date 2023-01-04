@@ -1,12 +1,9 @@
-import { 
-    EventUpdateForm
-  } from '../../ui-components';
-  
-export default function EventUpdate () {
+import { EventUpdateForm } from '../../ui-components'
 
-return (
-  <section
-  className="
+export default function EventUpdate() {
+  return (
+    <section
+      className="
   bg-white
   pt-20
   lg:pt-[120px]
@@ -16,12 +13,12 @@ return (
   z-20
   overflow-hidden
   "
-  >
-    <div className="container">
-      <div className="flex flex-wrap justify-center -mx-4">
-        <div className="w-full md:w-1/2 lg:w-1/3 px-4">
-          <div
-            className="
+    >
+      <div className="container">
+        <div className="flex flex-wrap justify-center -mx-4">
+          <div className="w-full md:w-1/2 lg:w-1/3 px-4">
+            <div
+              className="
             bg-white
             rounded-xl
             relative
@@ -36,16 +33,14 @@ return (
             xl:p-12
             mb-10
             "
-          >
-            <div >
-              <EventUpdateForm/>
-            
+            >
+              <div>
+                <EventUpdateForm />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-    )
-  }
-  
+    </section>
+  )
+}

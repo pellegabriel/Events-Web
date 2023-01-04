@@ -6,7 +6,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'weeout01-storage-2ebbc512161600-main.s3.us-east-1.amazonaws.com',
+        hostname:
+          'weeout01-storage-2ebbc512161600-main.s3.us-east-1.amazonaws.com',
         pathname: '/public/**',
       },
     ],

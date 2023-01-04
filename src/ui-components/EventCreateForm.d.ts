@@ -14,41 +14,35 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type EventCreateFormInputValues = {
     name?: string;
-    id?: string;
+    subTitulo?: string;
     startDate?: string;
     endDate?: string;
-    Field0?: string;
     is_done?: boolean;
+    descripcion?: string;
     map_point?: string;
     types?: string[];
-    user?: string;
-    subTitulo?: string;
 };
 export declare type EventCreateFormValidationValues = {
     name?: ValidationFunction<string>;
-    id?: ValidationFunction<string>;
+    subTitulo?: ValidationFunction<string>;
     startDate?: ValidationFunction<string>;
     endDate?: ValidationFunction<string>;
-    Field0?: ValidationFunction<string>;
     is_done?: ValidationFunction<boolean>;
+    descripcion?: ValidationFunction<string>;
     map_point?: ValidationFunction<string>;
     types?: ValidationFunction<string>;
-    user?: ValidationFunction<string>;
-    subTitulo?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventCreateFormOverridesProps = {
     EventCreateFormGrid?: FormProps<GridProps>;
     name?: FormProps<TextFieldProps>;
-    id?: FormProps<TextFieldProps>;
+    subTitulo?: FormProps<TextFieldProps>;
     startDate?: FormProps<TextFieldProps>;
     endDate?: FormProps<TextFieldProps>;
-    Field0?: FormProps<TextFieldProps>;
     is_done?: FormProps<SwitchFieldProps>;
+    descripcion?: FormProps<TextFieldProps>;
     map_point?: FormProps<TextFieldProps>;
     types?: FormProps<TextFieldProps>;
-    user?: FormProps<TextFieldProps>;
-    subTitulo?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EventCreateFormProps = React.PropsWithChildren<{
     overrides?: EventCreateFormOverridesProps | undefined | null;
