@@ -105,5 +105,5 @@ export default function EventCard({ event }: IProps | any) {
         </audio>
       )}
     </div>
-  )s
+  )
 }
