@@ -55,7 +55,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
             </h5>
           </div>
 
-          <div className=" ">
+          <div className="">
             {events.map((event: any) => {
               return (
                 <Link href={`/events/${event.id}`} key={event.id}>

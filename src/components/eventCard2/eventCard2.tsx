@@ -49,7 +49,7 @@ export default function EventCard2({ event }: IProps | any) {
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
   return (
-    <div className='flex bg-white rounded-lg'>
+    <div className='flex bg-white rounded-lg mt-6' key={event.id}>
     <div className="group">
             
     <div className="">
@@ -76,50 +76,34 @@ export default function EventCard2({ event }: IProps | any) {
         
       <div className="sm:col-span-2" >
             
-        <div className="flex items-center space-x-3" >
-                                
-          <div className="flex items-center space-x-2" >
-                                                
-            <span className="inline-flex items-center leading-none px-2.5 py-1.5 text-sm font-medium text-skin-inverted rounded-full border border-skin-input">
-        
-              <svg className="mr-1.5 h-2 w-2 brand-react" fill="currentColor" viewBox="0 0 8 8">
-            
-                <circle cx="4" cy="4" r="3"></circle>
-        
-              </svg>
-    Tag #1
-            </span>
-                                                                              
-          </div>
-                
-                        
-        </div>
+ 
             
         <div className="mt-2">
                 
-          <a href="https://laravel.cm/articles/traquer-un-champ-validation-conditionelle-react-hook-form-5" className="group">
+          <div className="group">
                     
-            <h4 className="text-lg leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">A Tailwind CSS Card for Displaying Blog Posts</h4>
-                
-          </a>
+            <h4 className="text-lg leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary"> {event.name}</h4>
+            {audio && (
+            <audio controls src={audio}>
+            <Link href={audio} />
+            </audio>
+            )}
+          </div>
                 
           <p className="mt-1 text-sm font-normal text-skin-base leading-5">
-    Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus. 
-                </p>
+           {event.descripcion}
+          </p>
                 
           <div className="mt-3 flex items-center font-sans">
                     
             <div className="ml-3">
  
               <div className="flex space-x-1 text-sm text-skin-muted">
-                            
-                <time>1 Feb, 2022</time>
-                            
-                <span aria-hidden="true">·</span>
-                            
-                <span>3 min read time</span>
-                        
-
+                <div className="text-gray-700 text-base">
+                  Fecha de Inicio: {startDate} <br />
+                  Fecha de cierre: {endDate}
+                </div>
+                      
               </div>
                     
             </div>
