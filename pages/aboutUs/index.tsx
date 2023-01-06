@@ -58,12 +58,11 @@ export default function AboutUs() {
             <div>
               <header>
                 <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
-                  <a
+                  <h2
                     className="hover:text-gray-100 transition duration-150 ease-in-out"
-                    href="#0"
                   >
                     Te damos la bienvenida a WeeOut
-                  </a>
+                  </h2>
                 </h3>
               </header>
               <div className="text-lg text-gray-400 flex-grow">
@@ -81,7 +80,7 @@ export default function AboutUs() {
                 tu necesidad y bolsillo. Sumate a nuestra comunidad de usuarios.
               </div>
               <footer className="flex items-center mt-4">
-                <a href="#0">
+                <h2 >
                   <Image
                     className="rounded-full flex-shrink-0 mr-4"
                     src={admin}
@@ -89,14 +88,14 @@ export default function AboutUs() {
                     height="40"
                     alt="Author 04"
                   />
-                </a>
+                </h2>
                 <div>
-                  <a
+                  <h2
                     className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out"
-                    href="#0"
+                    
                   >
                     Chris Solerieu
-                  </a>
+                  </h2>
                   <div className="text-gray-700"> - </div>
                 </div>
               </footer>

@@ -96,19 +96,6 @@ export default function EventCard({ event }: IProps | any) {
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
             {event.types}
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>
         </div>
       )}
       
@@ -118,5 +105,5 @@ export default function EventCard({ event }: IProps | any) {
         </audio>
       )}
     </div>
-  )
+  )s
 }
