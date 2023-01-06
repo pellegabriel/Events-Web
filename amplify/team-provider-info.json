@@ -23,15 +23,15 @@
       "function": {
         "weeout921a0308CreateAuthChallenge": {
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-3557535843354b367453-build.zip"
+          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-43503479745236596b4d-build.zip"
         },
         "weeout921a0308DefineAuthChallenge": {
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308DefineAuthChallenge-4f5841796d782f624555-build.zip"
+          "s3Key": "amplify-builds/weeout921a0308DefineAuthChallenge-6465482b653131454865-build.zip"
         },
         "weeout921a0308VerifyAuthChallengeResponse": {
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-76445131775a69303754-build.zip"
+          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-3931632b4e2b6b732b4a-build.zip"
         }
       },
       "api": {

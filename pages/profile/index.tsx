@@ -6,21 +6,23 @@ import {
 } from '@aws-amplify/ui-react'
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Event } from '../../src/models'
 import Image from 'next/image'
 import { Amplify, withSSRContext } from 'aws-amplify'
 import user1 from '../../public/user1.png'
 import { ModelEventFilterInput } from '../../src/API'
-import { listEvents } from '../../src/graphql/queries'
+import { getEvent, listEvents } from '../../src/graphql/queries'
 import awsExports from '../../src/aws-exports'
 import EventsUser from '../../src/components/filterUser/filterUser'
+import { EventCreateForm } from '../../src/ui-components'
+import { EventCreateFormInputValues } from '../../src/ui-components/EventCreateForm'
+import { Spinner } from '@theme-ui/components'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
 interface IProps {
-  event: Event
   signOut: () => void
   user: Record<string, any>
   renderedAt: string
@@ -54,9 +56,10 @@ export async function getServerSideProps({ req, query }: any) {
   }
   try {
     const response = await SSR.API.graphql({
-      query: listEvents,
+      query: listEvents, getEvent,
       variables: { filter: filter },
     })
+    console.log(response)
     return {
       props: {
         events: response.data.listEvents.items,
@@ -71,19 +74,41 @@ export async function getServerSideProps({ req, query }: any) {
   }
 }
 
-function Profile({ events = [], signOut, renderedAt, filters }: IProps) {
+function Profile({ events = [], signOut, filters }: IProps) {
   const router = useRouter()
+  const id = router.query.id as string
+  const [error, setError] = useState<string>()
+  const [isLoading, setLoading] = useState<boolean>(false)
+  // const SSR = withSSRContext({ req })
+
   const { user } = useAuthenticator((context) => [context.user])
+
   const refreshData = ({ userId, startDate, types }: IFilters) => {
     router.push({
       pathname: '/profile',
       query: { startDate: startDate, types: types, userId: userId },
     })
   }
+
   useEffect(() => {
     refreshData({ userId: user.username })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+
+  // const generateEvent = ({ userId, startDate, types }: IFilters) => {
+  //   router.push({
+  //     pathname: '/profile',
+  //     query: { startDate: startDate, types: types, userId: userId },
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   generateEvent({ userId: user.username })
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
+
+   
 
   const authComponents = {
     Header() {
@@ -97,6 +122,25 @@ function Profile({ events = [], signOut, renderedAt, filters }: IProps) {
         ></Flex>
       )
     },
+  }
+
+  const handleSuccess = (newEventId: string) => {
+    router.push(`/events/edit/${newEventId}`)
+  }
+  const handleError = (_event: EventCreateFormInputValues, message: string) => {
+    setError(message)
+    setLoading(false)
+  }
+  const handleSubmit = async (event: EventCreateFormInputValues) => {
+    setLoading(true)
+
+    return {
+      ...event,
+      ...{
+        user: user.username,
+  
+      },
+    }
   }
   const handleChange = (newFilters: IFilters) => {
     const prevFilters = router.query
@@ -164,12 +208,14 @@ function Profile({ events = [], signOut, renderedAt, filters }: IProps) {
                 </h1>
               </div>
               <div className="flex justify-center items-center">
-                <Link
-                  className=" w-1/5 h-16 bg-transparent hover:bg-yellow-500 text-black font-semibold hover:text-white  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center text-lg"
-                  href="/new"
-                >
-                  Crear un Evento
-                </Link>
+              <EventCreateForm
+                      onSuccess={handleSuccess}
+                      onSubmit={handleSubmit}
+                      onError={handleError}
+                    />
+                    {error && <div>{error}</div>}
+                    {isLoading && <Spinner />}
+
               </div>
 
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
@@ -191,11 +237,6 @@ function Profile({ events = [], signOut, renderedAt, filters }: IProps) {
                       </section>
                     </main>
                   </div>
-                  {/* <Link href='/post/eventUserAdm' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'>
-                                Administra eventos, crea o actualizalos
-                            </Link> */}
-                  {/* <Link href='/' className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent roundeds'onClick={signOut}>Sign out
-                            </Link> */}
                 </div>
               </div>
             </div>

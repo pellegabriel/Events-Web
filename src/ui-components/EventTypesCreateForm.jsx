@@ -5,18 +5,18 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from 'react'
-import { fetchByPath, validateField } from './utils'
-import { EventTypes } from '../models'
-import { getOverrideProps } from '@aws-amplify/ui-react/internal'
+import * as React from "react";
+import { fetchByPath, validateField } from "./utils";
+import { EventTypes } from "../models";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Flex,
   Grid,
   SwitchField,
   TextField,
-} from '@aws-amplify/ui-react'
-import { DataStore } from 'aws-amplify'
+} from "@aws-amplify/ui-react";
+import { DataStore } from "aws-amplify";
 export default function EventTypesCreateForm(props) {
   const {
     clearOnSuccess = true,
@@ -28,32 +28,32 @@ export default function EventTypesCreateForm(props) {
     onChange,
     overrides,
     ...rest
-  } = props
+  } = props;
   const initialValues = {
     name: undefined,
     enabled: false,
-  }
-  const [name, setName] = React.useState(initialValues.name)
-  const [enabled, setEnabled] = React.useState(initialValues.enabled)
-  const [errors, setErrors] = React.useState({})
+  };
+  const [name, setName] = React.useState(initialValues.name);
+  const [enabled, setEnabled] = React.useState(initialValues.enabled);
+  const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setName(initialValues.name)
-    setEnabled(initialValues.enabled)
-    setErrors({})
-  }
+    setName(initialValues.name);
+    setEnabled(initialValues.enabled);
+    setErrors({});
+  };
   const validations = {
     name: [],
     enabled: [],
-  }
+  };
   const runValidationTasks = async (fieldName, value) => {
-    let validationResponse = validateField(value, validations[fieldName])
-    const customValidator = fetchByPath(onValidate, fieldName)
+    let validationResponse = validateField(value, validations[fieldName]);
+    const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
-      validationResponse = await customValidator(value, validationResponse)
+      validationResponse = await customValidator(value, validationResponse);
     }
-    setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }))
-    return validationResponse
-  }
+    setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
+    return validationResponse;
+  };
   return (
     <Grid
       as="form"
@@ -61,71 +61,73 @@ export default function EventTypesCreateForm(props) {
       columnGap="15px"
       padding="20px"
       onSubmit={async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         let modelFields = {
           name,
           enabled,
-        }
+        };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
             if (Array.isArray(modelFields[fieldName])) {
               promises.push(
                 ...modelFields[fieldName].map((item) =>
-                  runValidationTasks(fieldName, item),
-                ),
-              )
-              return promises
+                  runValidationTasks(fieldName, item)
+                )
+              );
+              return promises;
             }
-            promises.push(runValidationTasks(fieldName, modelFields[fieldName]))
-            return promises
-          }, []),
-        )
+            promises.push(
+              runValidationTasks(fieldName, modelFields[fieldName])
+            );
+            return promises;
+          }, [])
+        );
         if (validationResponses.some((r) => r.hasError)) {
-          return
+          return;
         }
         if (onSubmit) {
-          modelFields = onSubmit(modelFields)
+          modelFields = onSubmit(modelFields);
         }
         try {
-          await DataStore.save(new EventTypes(modelFields))
+          await DataStore.save(new EventTypes(modelFields));
           if (onSuccess) {
-            onSuccess(modelFields)
+            onSuccess(modelFields);
           }
           if (clearOnSuccess) {
-            resetStateValues()
+            resetStateValues();
           }
         } catch (err) {
           if (onError) {
-            onError(modelFields, err.message)
+            onError(modelFields, err.message);
           }
         }
       }}
       {...rest}
-      {...getOverrideProps(overrides, 'EventTypesCreateForm')}
+      {...getOverrideProps(overrides, "EventTypesCreateForm")}
     >
       <TextField
         label="Name"
         isRequired={false}
         isReadOnly={false}
         onChange={(e) => {
-          let { value } = e.target
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name: value,
               enabled,
-            }
-            const result = onChange(modelFields)
-            value = result?.name ?? value
+            };
+            const result = onChange(modelFields);
+            value = result?.name ?? value;
           }
           if (errors.name?.hasError) {
-            runValidationTasks('name', value)
+            runValidationTasks("name", value);
           }
-          setName(value)
+          setName(value);
         }}
-        onBlur={() => runValidationTasks('name', name)}
+        onBlur={() => runValidationTasks("name", name)}
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, 'name')}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <SwitchField
         label="Enabled"
@@ -133,56 +135,56 @@ export default function EventTypesCreateForm(props) {
         isDisabled={false}
         isChecked={enabled}
         onChange={(e) => {
-          let value = e.target.checked
+          let value = e.target.checked;
           if (onChange) {
             const modelFields = {
               name,
               enabled: value,
-            }
-            const result = onChange(modelFields)
-            value = result?.enabled ?? value
+            };
+            const result = onChange(modelFields);
+            value = result?.enabled ?? value;
           }
           if (errors.enabled?.hasError) {
-            runValidationTasks('enabled', value)
+            runValidationTasks("enabled", value);
           }
-          setEnabled(value)
+          setEnabled(value);
         }}
-        onBlur={() => runValidationTasks('enabled', enabled)}
+        onBlur={() => runValidationTasks("enabled", enabled)}
         errorMessage={errors.enabled?.errorMessage}
         hasError={errors.enabled?.hasError}
-        {...getOverrideProps(overrides, 'enabled')}
+        {...getOverrideProps(overrides, "enabled")}
       ></SwitchField>
       <Flex
         justifyContent="space-between"
-        {...getOverrideProps(overrides, 'CTAFlex')}
+        {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
           children="Clear"
           type="reset"
           onClick={resetStateValues}
-          {...getOverrideProps(overrides, 'ClearButton')}
+          {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
           gap="15px"
-          {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
             children="Cancel"
             type="button"
             onClick={() => {
-              onCancel && onCancel()
+              onCancel && onCancel();
             }}
-            {...getOverrideProps(overrides, 'CancelButton')}
+            {...getOverrideProps(overrides, "CancelButton")}
           ></Button>
           <Button
             children="Submit"
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}
-            {...getOverrideProps(overrides, 'SubmitButton')}
+            {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>
       </Flex>
     </Grid>
-  )
+  );
 }
