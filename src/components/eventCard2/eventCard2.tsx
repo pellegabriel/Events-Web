@@ -50,7 +50,7 @@ export default function EventCard2({ event }: IProps | any) {
 
   return (
     <div className='flex bg-white rounded-lg'>
-    <a href="https://stackdiary.com/" className="group">
+    <div className="group">
             
     <div className="">
             
@@ -69,7 +69,7 @@ export default function EventCard2({ event }: IProps | any) {
         
     </div>
     
-  </a>
+  </div>
     <div className="space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
         
 
