@@ -49,14 +49,14 @@ export default function EventCard({ event }: IProps | any) {
   return (
     <div
       style={{
-        margin: '40px',
+        margin: '20px',
         display: 'flex',
         minHeight: '324px',
         maxWidth: '250px',
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}
-      className="bg-white rounded-lg overflow-hidden shadow-lg m-3"
+      className="bg-white rounded-lg overflow-hidden shadow-lg"
     >
       <div
         style={{
@@ -72,7 +72,7 @@ export default function EventCard({ event }: IProps | any) {
             width={300}
             height={200}
             onError={handleImageError}
-            style={{ width: '300px', height: '200px' }}
+            style={{ width: '300px', height: '180px' }}
           />
         ) : (
           <Image
@@ -81,7 +81,7 @@ export default function EventCard({ event }: IProps | any) {
           width={300}
           height={200}
           onError={handleImageError}
-          style={{ width: '300px', height: '200px' }}
+          style={{ width: '300px', height: '180px' }}
           />
         )}
 

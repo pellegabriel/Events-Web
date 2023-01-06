@@ -146,55 +146,22 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           </div>
         </nav>
 
-        <h1 className="mt-20 xl:font-serif text-5xl text-white">
-          <span>
-            Hola, comienza ahora <br />a disfrutar de
-          </span>
-          <span className="text-yellow-500 mx-2 ">Weeout</span>
-        </h1>
-        <Link
-          className="mt-40 w-1/5 h-16 bg-transparent hover:bg-yellow-500 text-white font-semibold hover:text-black mt-10 py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center text-xl"
-          href="/profile"
-        >
-          Comienza a disfrutar
-        </Link>
-
-        {/* <Ilustration /> */}
-
-        <ScrollEvent events={scrollEvents} />
-
-        <div className="text-xl col-span-12 lg:col-span-7 mb-40 mt-40">
-          <h1 className="xl:font-serif text-4xl text-white pb-8">
-            Mira los eventos que te rodean:
-          </h1>
+        <div className="flex flex-wrap overflow-auto">
+          <ScrollEvent events={scrollEvents} />
           <Map events={events} />
         </div>
-
         <article className="grid gap-2 max-w-[1370px]">
           <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">
             Busca lo que necesites en la Lista de eventos disponibles:{' '}
           </h1>
-
-
             <section className="">
-
                 <EventsSearch
                   events={events}
                   filters={filters}
                   updateFilters={handleChange}
                 />
-
             </section>
-
         </article>
-
-        {/* <div style={{ padding: 50 }}>
-    <h1>Logged in as {user.username}.</h1>
-    <div>
-      <button onClick={signOut}>Sign out</button>
-    </div>
-    <div>This page was server-side rendered on {renderedAt}.</div>
-  </div> */}
       </div>
       <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
