@@ -47,15 +47,15 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <div className="justify-center">
+      <div className="">
+        <div className="">
           <div className="text-gray-900 text-xl font-medium mb-12 border-b border-gray-300 ">
             <h5 className="py-1 mb-1">
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>
 
-          <div className=" flex flex-wrap  pl-2 ">
+          <div className=" ">
             {events.map((event: any) => {
               return (
                 <Link href={`/events/${event.id}`} key={event.id}>
