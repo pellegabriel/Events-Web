@@ -49,22 +49,24 @@ export default function EventCard2({ event }: IProps | any) {
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
   return (
-    <div className='flex bg-white rounded-lg mt-8' key={event.id}>
+    <div className='flex bg-white rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75' key={event.id} style={{        background: '#F4F6F6 '
+  }}>
     <div className="group">
             
     <div className="">
             
         {image && !error ? (
          <Image
-           className="object-cover shadow-lg group-hover:opacity-75 p-4 " 
+           className=" p-4 " 
            alt=""
            src={image}
            width={400}
            height={200}
            onError={handleImageError}
+           style={{ width: '300px', height: '180px', minWidth: '300px' }}
          />
        ) : (
-         <Image  className="object-cover shadow-lg group-hover:opacity-75 p-4" alt="" src={img1} width={400} height={200} />
+         <Image  className=" p-4" alt="" src={img1} width={400} height={200} style={{ width: '300px', height: '180px' }}/>
        )}
         
     </div>
@@ -114,37 +116,4 @@ export default function EventCard2({ event }: IProps | any) {
       </div>
     </div>
     </div>
-  )
-}
-{/* 
- // <div
-    //   key={event.id}
-    // >
-    //      <div className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
-   
-    //       </div>
-
-    //       <div className="flex flex-col justify-between p-4 leading-normal">
-    //         <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {event.name}</div>
-    //         <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">{event.descripcion}</div>
-    //         {audio && (
-    //           <audio controls src={audio}>
-    //             <Link href={audio} />
-    //           </audio>
-    //         )}
-    //         <div className="text-gray-700 text-base">
-    //           Fecha de Inicio: {startDate} <br />
-    //           Fecha de cierre: {endDate}
-    //         </div>
-    //       </div>
-    //       <div className="px-6 pt-4 pb-2">
-    //         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-    //           {event.types}
-    //         </span>
-    //       </div>
-    //       <div className="px-6 pt-4 pb-2">
-    //         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-    //           {event.map_point}
-    //         </span>
-    //       </div>
-    //     </div> */}
+  )}

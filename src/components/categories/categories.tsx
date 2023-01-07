@@ -13,7 +13,7 @@ export default function CategoriesList () {
             maxWidth: '1400px',
             marginBottom: '100px'
         }}>
-            <h1>Categorias</h1>
+            <h1 className="text-3xl pb-8">Categorias</h1>
             <div style={{
                 overflow: "auto",
                 maxWidth: "80%",

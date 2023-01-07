@@ -147,8 +147,10 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           </div>
         </nav>
         <CategoriesList />
+        <h1 className="text-3xl pb-8">Categorias</h1>
 
         <div className="flex flex-wrap overflow-auto">
+          
           <ScrollEvent events={scrollEvents} />
           <Map events={events} />
         </div>
