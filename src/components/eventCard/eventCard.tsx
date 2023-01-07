@@ -55,8 +55,9 @@ export default function EventCard({ event }: IProps | any) {
         maxWidth: '290px',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        background: '#F4F6F6 '
       }}
-      className="bg-white rounded-lg overflow-hidden shadow-lg"
+      className=" rounded-lg overflow-hidden shadow-lg"
     >
       <div
         style={{

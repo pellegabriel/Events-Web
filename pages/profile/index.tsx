@@ -94,20 +94,6 @@ function Profile({ events = [], signOut, filters }: IProps) {
     refreshData({ userId: user.username })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-
-  // const generateEvent = ({ userId, startDate, types }: IFilters) => {
-  //   router.push({
-  //     pathname: '/profile',
-  //     query: { startDate: startDate, types: types, userId: userId },
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   generateEvent({ userId: user.username })
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
-
    
 
   const authComponents = {
@@ -184,7 +170,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
           </div>
         </div>
       </nav>
-      <div className="h-full p-8 flex items-center justify-center bg-gradient-to-t from-gray-800 to-violet-700">
+      <div className="h-full p-8 flex items-center justify-center" style={{ background:'#E5E8E8'}}>
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           <div className="">
             <div className="">
@@ -207,7 +193,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
                   el siguiente boton:{' '}
                 </h1>
               </div>
-              <div className="flex justify-center items-center">
+              <div className="flex bg-white rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75 justify-center items-center">
               <EventCreateForm
                       onSuccess={handleSuccess}
                       onSubmit={handleSubmit}
@@ -227,7 +213,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
 
                     <main className="grid gap-6 gap-y-8  ">
                       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
-                        <div className="col-span-12  object-cover lg:row-span-2 bg-gradient-to-t from-gray-900 to-violet-600 border rounded-lg">
+                        <div className="col-span-12  object-cover lg:row-span-2 border rounded-lg" style={{ background:'#E5E8E8'}}>
                           <EventsUser
                             events={events}
                             filters={filters}
