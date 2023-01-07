@@ -49,7 +49,7 @@ export default function EventCard2({ event }: IProps | any) {
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
   return (
-    <div className='flex bg-white rounded-lg mt-6' key={event.id}>
+    <div className='flex bg-white rounded-lg mt-8' key={event.id}>
     <div className="group">
             
     <div className="">
