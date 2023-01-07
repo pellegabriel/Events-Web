@@ -20,8 +20,8 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
 
   return (
     <div className=" border border-gray-300 w-6/6 rounded-lg p-8   ">
-      <div className="flex justify-center mb-10 mt-10  ">
-        <div className="flex flex-col py-6 p-8 ">
+      <div className="mb-10 mt-10" style={{ maxWidth:"400px"}}>
+        <div className="flex flex-col py-1 p-8 ">
           <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
           <input
             className="w-7"

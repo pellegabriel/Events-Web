@@ -11,6 +11,7 @@ import awsExports from '../src/aws-exports'
 import { Event } from '../src/models'
 import { useRouter } from 'next/router'
 import ScrollEvent from '../src/components/scrollEvent'
+import CategoriesList from '../src/components/categories/categories'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
@@ -105,7 +106,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           flexDirection: 'column',
           alignItems: 'center'
         }}
-        className=" bg-gradient-to-t from-violet-700 to-gray-800  pt-40"
+        className=" bg-white  pt-40"
       >
         <Head>
           <title>Weeout</title>
@@ -145,6 +146,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
             </div>
           </div>
         </nav>
+        <CategoriesList />
 
         <div className="flex flex-wrap overflow-auto">
           <ScrollEvent events={scrollEvents} />

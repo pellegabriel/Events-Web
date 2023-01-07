@@ -2,34 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.swiper {
-  width: 100%;
-  height: 100%;
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #ba7dc2; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ba7dc2; 
+  border-radius: 10px;
 }
 
-.swiper-slide img {
-  display: block;
-  object-fit: cover;
-}
-.swiper-button-next {
-  background-color: aliceblue;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ba7dc2; 
 }

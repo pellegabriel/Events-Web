@@ -52,7 +52,7 @@ export default function EventCard({ event }: IProps | any) {
         margin: '20px',
         display: 'flex',
         minHeight: '324px',
-        maxWidth: '250px',
+        maxWidth: '290px',
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}

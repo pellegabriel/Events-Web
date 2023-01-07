@@ -59,7 +59,7 @@ export default function EventsUser({
             </h5>
           </div>
 
-          <div className=" flex flex-wrap  pl-2 ">
+          <div className="">
             {events.map((event: any) => {
               return (
                 <Link href={`/events/edit/${event.id}`} key={event.id}>
