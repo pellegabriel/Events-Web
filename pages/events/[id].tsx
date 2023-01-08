@@ -119,7 +119,7 @@ export default function Id({ event, center }: IProps | any) {
             {event.user}
           </p>
         <div className='flex justify-center items-center'>
-        <section className="dark:bg-gray-800 dark:text-gray-100 " style={{ background:'#E5E8E8',maxWidth: '600px', minHeight: '1000px'}}>
+        <section className="flex border border-gray-300 w-6/6 rounded-lg p-8 " style={{ background:'#E5E8E8',maxWidth: '600px', minHeight: '1000px'}}>
        
           <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
             
