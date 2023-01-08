@@ -1,14 +1,14 @@
-import { Amplify, withSSRContext } from 'aws-amplify'
+import { Amplify, API, withSSRContext } from 'aws-amplify'
 import { ModelEventFilterInput } from '../../src/API'
 import awsExports from '../../src/aws-exports'
 import { listEvents } from '../../src/graphql/queries'
 import { NextRouter, useRouter } from 'next/router'
-import { FocusEvent } from 'react'
+import { FocusEvent, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Event } from '../../src/models'
 import parseDate from '../../src/helperFunctions/parseDate'
 
-Amplify.configure({ ...awsExports, ssr: true })
+Amplify.configure({ ...awsExports, ssr: false })
 
 interface IFilters {
   startDate: string
@@ -19,80 +19,51 @@ interface IProps {
   events: Array<Event>
 }
 
-export async function getServerSideProps({ req, query }: any) {
-  const SSR = withSSRContext({ req })
-  const startDate = new Date(query.startDate)
-  const types = query.types
-  const filterOptions = {
-    ...(query.types && { types: { contains: types } }),
-    ...(query.startDate && { startDate: { gt: startDate.toISOString() } }),
-  }
-
-  const filter: ModelEventFilterInput = {
-    and: [{ ...filterOptions }],
-  }
-  try {
-    const response = await SSR.API.graphql({
-      query: listEvents,
-      variables: { filter: filter },
-    })
-    //  COPIAR ESTO 2 VECES Y 1 MODIFICAR PARA Q NO SE ME CAMBIE
-    return {
-      props: {
-        events: response.data.listEvents.items,
-      },
-    }
-  } catch (err) {
-    console.log(err)
-    return {
-      props: {},
-    }
-  }
-}
-
 export default function Events({ events = [] }: IProps) {
   const router = useRouter()
-  // Call this function whenever you want to
-  // refresh props!
-  const refreshData = ({ startDate, types }: IFilters) => {
-    router.push({
-      pathname: 'events',
-      query: { startDate: startDate, types: types },
-    })
-  }
+  const { categoryTitle } = router.query
+  const [loading, setLoading] = useState(false)
+  const [listOfEvents, setListOfEvents] = useState([])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        const response = await API.graphql({
+          // agregar la interface de la respuesta de la api asi graphql<interface>
+          query: listEvents,
+          variables: {
+            filter: {
+              and: [{ types: { contains: categoryTitle } }],
+            }
+          },
+        })
 
-  const handleChange = (value: string, name: string, router: NextRouter) => {
-    const prevFilters = router.query
-    refreshData({
-      ...(prevFilters as unknown as IFilters),
-      [name]: value,
-    })
-  }
+        if (response.data.listEvents) { 
+          setListOfEvents(response.data.listEvents.items)
+        }
 
-  // const handleChangeTypes = (e: FocusEvent ) => {
-  //   refreshData({types: e.target.value, startDate})
-  // }
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [categoryTitle])
+
 
   return (
     <div className="w-6/6 bg-white flex items-center  rounded-lg p-6 ">
-      {/* <EventCard events={events}/> */}
-      <div>
-        Fecha inicio:{' '}
-        <input
-          type="date"
-          placeholder="Fecha"
-          onBlur={(e: FocusEvent<HTMLInputElement>) => {
-            handleChange(e.target.value, 'startDate', router)
-          }}
-        />
-      </div>
+  
       <div>
         tipo de evento:{' '}
         <input
           type="text"
           placeholder="tipo"
           onBlur={(e: FocusEvent<HTMLInputElement>) => {
-            handleChange(e.target.value, 'types', router)
+            // handleChange(e.target.value, 'types', router)
           }}
         />
       </div>
@@ -109,10 +80,16 @@ export default function Events({ events = [] }: IProps) {
             </div>
           </div>
           <div className="py-3 px-6 ">
-            {events.map((event) => {
+
+            {loading && (
+              <p>loading...</p>
+            )}
+
+            {listOfEvents && listOfEvents.map((event) => {
               const startDate = event.startDate
                 ? parseDate(event.startDate)
                 : ''
+
               return (
                 <Link href={`/events/edit/${event.id}`} key={event.id}>
                   <div className="border-b border-gray-300" key={event.id}>

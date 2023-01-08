@@ -35,7 +35,7 @@ export default function AboutUs() {
           </div>
         </div>
       </nav>
-      <section className="bg-gradient-to-t from-violet-700 to-gray-800  flex flex-col justify-center antialiased bg-gray-900 text-gray-200 pt-40">
+      <section className="bg-white items-center flex flex-col justify-center antialiased pb-40 text-black-200 pt-40">
       <Ilustration/>
       </section>
       <div

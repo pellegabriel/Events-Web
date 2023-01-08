@@ -12,6 +12,7 @@ import { Event } from '../src/models'
 import { useRouter } from 'next/router'
 import ScrollEvent from '../src/components/scrollEvent'
 import CategoriesList from '../src/components/categories/categories'
+import EventsNowList from '../src/components/eventsNowList/eventsNowList'
 
 Amplify.configure({ ...awsExports, ssr: true })
 
@@ -146,14 +147,23 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
             </div>
           </div>
         </nav>
-        <CategoriesList />
-        <h1 className="text-3xl pb-8">Categorias</h1>
 
-        <div className="flex flex-wrap overflow-auto">
-          
-          <ScrollEvent events={scrollEvents} />
+        <div>
+          <h2 style={{ fontSize: '32px' }}>En este momento</h2>
+          <EventsNowList />
+        </div>
+
+
+        <div className="flex" style={{ alignItems:'flex-start' }}>
+
+         <CategoriesList />
+          <div>
+            <h2 style={{ fontSize: '32px', marginLeft: '18px' }}>Estos eventos comienzan pronto</h2>
+            <ScrollEvent events={scrollEvents} />
+          </div>
           <Map events={events} />
         </div>
+
         <article className="grid gap-2 max-w-[1370px]">
           <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">
             Busca lo que necesites en la Lista de eventos disponibles:{' '}

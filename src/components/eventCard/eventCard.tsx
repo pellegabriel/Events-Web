@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
-import img1 from '../../../public/IMG1.png'
+import img1 from '../../../public/img1.jpg'
 import Link from 'next/link'
 
 interface IProps {
@@ -52,7 +52,7 @@ export default function EventCard({ event }: IProps | any) {
         margin: '20px',
         display: 'flex',
         minHeight: '324px',
-        maxWidth: '290px',
+        maxWidth: '270px',
         flexDirection: 'column',
         justifyContent: 'space-between',
         background: '#F4F6F6 '
