@@ -9,7 +9,7 @@ interface IProps {
 
 export default function ScrollEvent({ events }: IProps) {
   return (
-    <div className='flex flex-wrap overflow-auto ' style={{ width: '1030px',height: '730px' , marginRight: '150px' }}>
+    <div className='flex flex-wrap overflow-auto ' style={{ width: '960px',height: '730px' , marginRight: '30px', overflow: 'auto' }}>
         {events.map((event, index) => {
           return (
             <Link href={`/events/${event.id}`}>

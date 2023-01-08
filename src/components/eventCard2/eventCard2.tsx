@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
-import img1 from '../../../public/IMG1.png'
+import img1 from '../../../public/img1.jpg'
 import parseDate from '../../helperFunctions/parseDate'
 import Link from 'next/link'
 

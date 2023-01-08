@@ -6,7 +6,7 @@ import { Event } from '../../src/models'
 import Map from '../map/index'
 import Image from 'next/image'
 import { Storage } from 'aws-amplify'
-import img1 from '../../public/IMG1.png'
+import img1 from '../../public/img1.jpg'
 import parseDate from '../../src/helperFunctions/parseDate'
 import Link from 'next/link'
 
@@ -78,7 +78,7 @@ export default function Id({ event, center }: IProps | any) {
 
   return (
     <>
-      <div className=" bg-gradient-to-t from-violet-700 to-gray-800  pt-40 flex items-center flex-col">
+      <div className="pt-40 flex justify-center items-center">
         <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
@@ -111,24 +111,45 @@ export default function Id({ event, center }: IProps | any) {
             </div>
           </div>
         </nav>
-        <section className="dark:bg-gray-800 dark:text-gray-100 ">
+        <div className='flex flex-col justify-center items-center'>
+        <h2 className="  tracking-tight text-center  dark:text-gray-50 xl:font-serif text-5xl text-black mb-10">
+            {event.name}
+          </h2>
+          <p className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif text-black">
+            {event.user}
+          </p>
+        <div className='flex justify-center items-center'>
+        <section className="dark:bg-gray-800 dark:text-gray-100 " style={{ background:'#E5E8E8',maxWidth: '600px', minHeight: '1000px'}}>
+       
           <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+            
+            <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
+                  {error ? (
+                    <Image
+                      alt=""
+                      src={img1}
+                      width={700}
+                      height={700}
+                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
+                    />
+                  ) : (
+                    <Image
+                      alt=""
+                      src={image}
+                      width={700}
+                      height={700}
+                      onError={handleImageError}
+                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
+                    />
+                  )}
+                </div>
             <div>
-              <h2 className="  tracking-tight text-center sm:text-5xl dark:text-gray-50 xl:font-serif text-5xl text-white">
-                {event.name}
-              </h2>
-              <p className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif text-white">
-                {event.user}
-              </p>
-            </div>
-
-            <div>
-              <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+              <div className="flex flex-col lg:items-center">
                 <div className="lg:col-start-2">
-                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif text-white">
+                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif text-black">
                     {event.subtitle}
                   </h3>
-                  <p className="mt-3 text-lg font-serif text-white">
+                  <p className="mt-3 text-lg font-serif text-black">
                     {event.descripcion}
                   </p>
                   <div className="mt-12 space-y-12">
@@ -152,31 +173,14 @@ export default function Id({ event, center }: IProps | any) {
                     </div>
                   </div>
                 </div>
-                <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-                  {error ? (
-                    <Image
-                      alt=""
-                      src={img1}
-                      width={700}
-                      height={700}
-                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
-                    />
-                  ) : (
-                    <Image
-                      alt=""
-                      src={image}
-                      width={700}
-                      height={700}
-                      onError={handleImageError}
-                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
-                    />
-                  )}
-                </div>
-                <Map events={[event]} center={mapCenter} zoom={15} />
+                
               </div>
             </div>
           </div>
         </section>
+        <Map events={[event]} center={mapCenter} zoom={15} />
+        </div>
+        </div>
       </div>
       <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
