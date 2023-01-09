@@ -74,7 +74,6 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
     const file = await Storage.get(`audio/${id}`, {
       level: 'public',
     })
-    console.log({ file })
     setAudio(file)
   }
   useEffect(() => {
@@ -87,7 +86,6 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
     const file = await Storage.get(id, {
       level: 'public',
     })
-    console.log({ file })
     setImage(file)
   }
   useEffect(() => {

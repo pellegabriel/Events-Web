@@ -10,7 +10,7 @@ import Link from 'next/link'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../src/graphql/queries'
 import { EventCreateForm } from '../../src/ui-components'
-import { EventCreateFormInputValues } from '../../src/ui-components/EventCreateForm'
+import { EventCreateFormInputValues } from '../../src/components/eventCreateFormEdited/EventCreateForm'
 import Spinner from '../../src/components/spinner'
 
 interface IProps {

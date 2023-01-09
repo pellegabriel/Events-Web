@@ -111,19 +111,24 @@ export default function Id({ event, center }: IProps | any) {
             </div>
           </div>
         </nav>
-        <div className='flex flex-col justify-center items-center'>
-        <h2 className="  tracking-tight text-center  dark:text-gray-50 xl:font-serif text-5xl text-black mb-10">
+        <div className="flex flex-col justify-center items-center">
+          <h2 className="  tracking-tight text-center  dark:text-gray-50 xl:font-serif text-5xl text-black mb-10">
             {event.name}
           </h2>
           <p className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif text-black">
             {event.user}
           </p>
-        <div className='flex justify-center items-center'>
-        <section className="flex border border-gray-300 w-6/6 rounded-lg p-8 " style={{ background:'#E5E8E8',maxWidth: '600px', minHeight: '1000px'}}>
-       
-          <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-            
-            <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
+          <div className="flex justify-center items-center">
+            <section
+              className="flex border border-gray-300 w-6/6 rounded-lg p-8 "
+              style={{
+                background: '#E5E8E8',
+                maxWidth: '600px',
+                minHeight: '1000px',
+              }}
+            >
+              <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+                <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
                   {error ? (
                     <Image
                       alt=""
@@ -143,43 +148,42 @@ export default function Id({ event, center }: IProps | any) {
                     />
                   )}
                 </div>
-            <div>
-              <div className="flex flex-col lg:items-center">
-                <div className="lg:col-start-2">
-                  <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif text-black">
-                    {event.subtitle}
-                  </h3>
-                  <p className="mt-3 text-lg font-serif text-black">
-                    {event.descripcion}
-                  </p>
-                  <div className="mt-12 space-y-12">
-                    <div className="flex">
-                      <div className="flex-shrink-0"></div>
-                      <div className="ml-4">
-                        {audio && (
-                          <audio controls src={audio}>
-                            <Link href={audio} />
-                          </audio>
-                        )}
-                      </div>
-                    </div>
+                <div>
+                  <div className="flex flex-col lg:items-center">
+                    <div className="lg:col-start-2">
+                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif text-black">
+                        {event.subtitle}
+                      </h3>
+                      <p className="mt-3 text-lg font-serif text-black">
+                        {event.descripcion}
+                      </p>
+                      <div className="mt-12 space-y-12">
+                        <div className="flex">
+                          <div className="flex-shrink-0"></div>
+                          <div className="ml-4">
+                            {audio && (
+                              <audio controls src={audio}>
+                                <Link href={audio} />
+                              </audio>
+                            )}
+                          </div>
+                        </div>
 
-                    <div className="flex">
-                      <div className="ml-4">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                          {event.types}
-                        </span>
+                        <div className="flex">
+                          <div className="ml-4">
+                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                              {event.types}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                
               </div>
-            </div>
+            </section>
+            <Map events={[event]} center={mapCenter} zoom={15} />
           </div>
-        </section>
-        <Map events={[event]} center={mapCenter} zoom={15} />
-        </div>
         </div>
       </div>
       <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">

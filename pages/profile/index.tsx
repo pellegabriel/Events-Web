@@ -13,11 +13,11 @@ import Image from 'next/image'
 import { Amplify, withSSRContext } from 'aws-amplify'
 import user1 from '../../public/user1.png'
 import { ModelEventFilterInput } from '../../src/API'
-import { getEvent, listEvents } from '../../src/graphql/queries'
+import { listEvents } from '../../src/graphql/queries'
 import awsExports from '../../src/aws-exports'
 import EventsUser from '../../src/components/filterUser/filterUser'
-import { EventCreateForm } from '../../src/ui-components'
-import { EventCreateFormInputValues } from '../../src/ui-components/EventCreateForm'
+import EventCreateForm from '../../src/components/eventCreateFormEdited/EventCreateForm'
+import { EventCreateFormInputValues } from '../../src/components/eventCreateFormEdited/EventCreateForm'
 import { Spinner } from '@theme-ui/components'
 
 Amplify.configure({ ...awsExports, ssr: true })
@@ -56,7 +56,7 @@ export async function getServerSideProps({ req, query }: any) {
   }
   try {
     const response = await SSR.API.graphql({
-      query: listEvents, getEvent,
+      query: listEvents,
       variables: { filter: filter },
     })
     console.log(response)
@@ -94,7 +94,6 @@ function Profile({ events = [], signOut, filters }: IProps) {
     refreshData({ userId: user.username })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-   
 
   const authComponents = {
     Header() {
@@ -110,21 +109,21 @@ function Profile({ events = [], signOut, filters }: IProps) {
     },
   }
 
-  const handleSuccess = (newEventId: string) => {
-    router.push(`/events/edit/${newEventId}`)
+  const handleSuccess = (newEvent: Event) => {
+    console.log('ASDASD', { newEvent })
+    router.push(`/events/edit/${newEvent.id}`)
   }
   const handleError = (_event: EventCreateFormInputValues, message: string) => {
     setError(message)
     setLoading(false)
   }
-  const handleSubmit = async (event: EventCreateFormInputValues) => {
+  const handleSubmit = (event: EventCreateFormInputValues) => {
     setLoading(true)
 
     return {
       ...event,
       ...{
         user: user.username,
-  
       },
     }
   }
@@ -170,7 +169,10 @@ function Profile({ events = [], signOut, filters }: IProps) {
           </div>
         </div>
       </nav>
-      <div className="h-full p-8 flex items-center justify-center" style={{ background:'#E5E8E8'}}>
+      <div
+        className="h-full p-8 flex items-center justify-center"
+        style={{ background: '#E5E8E8' }}
+      >
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           <div className="">
             <div className="">
@@ -194,14 +196,13 @@ function Profile({ events = [], signOut, filters }: IProps) {
                 </h1>
               </div>
               <div className="flex bg-white rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75 justify-center items-center">
-              <EventCreateForm
-                      onSuccess={handleSuccess}
-                      onSubmit={handleSubmit}
-                      onError={handleError}
-                    />
-                    {error && <div>{error}</div>}
-                    {isLoading && <Spinner />}
-
+                <EventCreateForm
+                  onSuccess={handleSuccess}
+                  onSubmit={handleSubmit}
+                  onError={handleError}
+                />
+                {error && <div>{error}</div>}
+                {isLoading && <Spinner />}
               </div>
 
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
@@ -213,7 +214,10 @@ function Profile({ events = [], signOut, filters }: IProps) {
 
                     <main className="grid gap-6 gap-y-8  ">
                       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
-                        <div className="col-span-12  object-cover lg:row-span-2 border rounded-lg" style={{ background:'#E5E8E8'}}>
+                        <div
+                          className="col-span-12  object-cover lg:row-span-2 border rounded-lg"
+                          style={{ background: '#E5E8E8' }}
+                        >
                           <EventsUser
                             events={events}
                             filters={filters}

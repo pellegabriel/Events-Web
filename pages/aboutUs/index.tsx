@@ -36,7 +36,7 @@ export default function AboutUs() {
         </div>
       </nav>
       <section className="bg-white items-center flex flex-col justify-center antialiased pb-40 text-black-200 pt-40">
-      <Ilustration/>
+        <Ilustration />
       </section>
       <div
         x-show="open"

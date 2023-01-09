@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Amplify, withSSRContext } from 'aws-amplify'
 import Map from './map/index'
 import EventsSearch from '../src/components/filterEventSearch/filterEventSearch'
-import Ilustration from './../src/components/Ilustracion/Ilustracion'
 import { ModelEventFilterInput } from '../src/API'
 import { listEvents } from '../src/graphql/queries'
 import awsExports from '../src/aws-exports'
@@ -105,7 +104,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
         className=" bg-white  pt-40"
       >
@@ -153,12 +152,12 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           <EventsNowList />
         </div>
 
-
-        <div className="flex" style={{ alignItems:'flex-start' }}>
-
-         <CategoriesList />
+        <div className="flex" style={{ alignItems: 'flex-start' }}>
+          <CategoriesList />
           <div>
-            <h2 style={{ fontSize: '32px', marginLeft: '18px' }}>Estos eventos comienzan pronto</h2>
+            <h2 style={{ fontSize: '32px', marginLeft: '18px' }}>
+              Estos eventos comienzan pronto
+            </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
           <Map events={events} />
@@ -168,13 +167,13 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">
             Busca lo que necesites en la Lista de eventos disponibles:{' '}
           </h1>
-            <section className="">
-                <EventsSearch
-                  events={events}
-                  filters={filters}
-                  updateFilters={handleChange}
-                />
-            </section>
+          <section className="">
+            <EventsSearch
+              events={events}
+              filters={filters}
+              updateFilters={handleChange}
+            />
+          </section>
         </article>
       </div>
       <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
