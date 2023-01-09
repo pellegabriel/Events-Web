@@ -91,7 +91,7 @@ export type CreateEventInput = {
   id?: string | null
   name: string
   startDate?: string | null
-  endDate: string
+  endDate?: string | null
   is_done?: boolean | null
   map_point?: string | null
   types?: Array<string | null> | null
@@ -137,7 +137,7 @@ export type Event = {
   id: string
   name: string
   startDate?: string | null
-  endDate: string
+  endDate?: string | null
   is_done?: boolean | null
   map_point?: string | null
   types?: Array<string | null> | null
@@ -335,7 +335,7 @@ export type CreateEventMutation = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -361,7 +361,7 @@ export type UpdateEventMutation = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -387,7 +387,7 @@ export type DeleteEventMutation = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -481,7 +481,7 @@ export type GetEventQuery = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -510,7 +510,7 @@ export type ListEventsQuery = {
       id: string
       name: string
       startDate?: string | null
-      endDate: string
+      endDate?: string | null
       is_done?: boolean | null
       map_point?: string | null
       types?: Array<string | null> | null
@@ -543,7 +543,7 @@ export type SyncEventsQuery = {
       id: string
       name: string
       startDate?: string | null
-      endDate: string
+      endDate?: string | null
       is_done?: boolean | null
       map_point?: string | null
       types?: Array<string | null> | null
@@ -625,7 +625,7 @@ export type OnCreateEventSubscription = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -650,7 +650,7 @@ export type OnUpdateEventSubscription = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null
@@ -675,7 +675,7 @@ export type OnDeleteEventSubscription = {
     id: string
     name: string
     startDate?: string | null
-    endDate: string
+    endDate?: string | null
     is_done?: boolean | null
     map_point?: string | null
     types?: Array<string | null> | null

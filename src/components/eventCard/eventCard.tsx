@@ -34,7 +34,7 @@ export default function EventCard({ event }: IProps | any) {
   }
 
   const getUploadedAudio = async () => {
-    const file = await Storage.get(event.id, {
+    const file = await Storage.get(`audio/${event.id}`, {
       level: 'public',
     })
     setAudio(file)
@@ -55,7 +55,7 @@ export default function EventCard({ event }: IProps | any) {
         maxWidth: '270px',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        background: '#F4F6F6 '
+        background: '#F4F6F6 ',
       }}
       className=" rounded-lg overflow-hidden shadow-lg"
     >
@@ -63,7 +63,7 @@ export default function EventCard({ event }: IProps | any) {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'space-between'
+          alignItems: 'space-between',
         }}
       >
         {image && !error ? (
@@ -77,21 +77,24 @@ export default function EventCard({ event }: IProps | any) {
           />
         ) : (
           <Image
-          alt=""
-          src={img1}
-          width={300}
-          height={200}
-          onError={handleImageError}
-          style={{ width: '300px', height: '180px' }}
+            alt=""
+            src={img1}
+            width={300}
+            height={200}
+            onError={handleImageError}
+            style={{ width: '300px', height: '180px' }}
           />
         )}
 
         <h2
-        className="font-bold text-xl mb-2"
-        style={{ marginLeft: '16px', marginTop: '16px' }}
-        > {event.name}</h2>
+          className="font-bold text-xl mb-2"
+          style={{ marginLeft: '16px', marginTop: '16px' }}
+        >
+          {' '}
+          {event.name}
+        </h2>
       </div>
-        
+
       {event.types.length > 0 && (
         <div style={{ display: 'flex', width: '100%', overflow: 'auto' }}>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
@@ -99,9 +102,9 @@ export default function EventCard({ event }: IProps | any) {
           </span>
         </div>
       )}
-      
+
       {audio && (
-        <audio controls src={audio} >
+        <audio controls src={audio}>
           <Link href={audio} />
         </audio>
       )}
