@@ -149,7 +149,8 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
 
         <div>
           <h2 style={{ fontSize: '32px' }}>En este momento</h2>
-          <EventsNowList />
+          <EventsNowList events={[]} filters={filters} />
+          //NO CREO Q ANDE
         </div>
 
         <div className="flex" style={{ alignItems: 'flex-start' }}>
