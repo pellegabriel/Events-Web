@@ -37,7 +37,7 @@ export default function CategoriesList() {
       className="flex justify-center flex-col "
       style={{ marginRight: '20px' }}
     >
-      <h1 className="text-3xl pb-8">Categorias</h1>
+      <h1 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl  p-2' style={{maxWidth:'185px'}}>Categorias</h1>
       <div
         style={{
           overflow: 'auto',

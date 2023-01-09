@@ -175,15 +175,9 @@ function Profile({ events = [], signOut, filters }: IProps) {
       >
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           <div className="">
-            <div className="">
-              <div className=" flex pl-20">
-                <div className="mt-20">
-                  <Image
-                    alt=""
-                    src={user1}
-                    className=" shadow-xl rounded-full align-middle border-none -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
-                  />
-                </div>
+            <div className="" >
+              <div className="justiify-center flex pl-20">
+                
                 <h3 className="m-16 ml-40 flex items-cen mx-20 text-5xl text-slate-700 font-bold leading-normal mb-1">
                   Hola {user.username} Bienvenido!
                 </h3>
@@ -195,11 +189,12 @@ function Profile({ events = [], signOut, filters }: IProps) {
                   el siguiente boton:{' '}
                 </h1>
               </div>
-              <div className="flex bg-white rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75 justify-center items-center">
+              <div className="flex rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75 justify-center items-center">
                 <EventCreateForm
                   onSuccess={handleSuccess}
                   onSubmit={handleSubmit}
                   onError={handleError}
+                  
                 />
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}

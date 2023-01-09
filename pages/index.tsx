@@ -148,15 +148,15 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
         </nav>
 
         <div>
-          <h2 style={{ fontSize: '32px' }}>En este momento</h2>
+          <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-base  p-2' style={{ fontSize: '32px' }}>En este momento</h2>
           <EventsNowList events={[]} filters={filters} />
-          //NO CREO Q ANDE
+       
         </div>
 
         <div className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div>
-            <h2 style={{ fontSize: '32px', marginLeft: '18px' }}>
+            <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl  p-2' style={{ fontSize: '32px', marginLeft: '18px', maxWidth: '895px'}}>
               Estos eventos comienzan pronto
             </h2>
             <ScrollEvent events={scrollEvents} />
@@ -165,7 +165,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
         </div>
 
         <article className="grid gap-2 max-w-[1370px]">
-          <h1 className="xl:font-serif text-3xl pb-8 pl-20 text-white">
+          <h1 className="px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-3xl  p-4">
             Busca lo que necesites en la Lista de eventos disponibles:{' '}
           </h1>
           <section className="">
