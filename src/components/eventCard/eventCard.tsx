@@ -57,7 +57,7 @@ export default function EventCard({ event }: IProps | any) {
         justifyContent: 'space-between',
         background: '#F4F6F6 ',
       }}
-      className=" rounded-lg overflow-hidden shadow-lg"
+      className=" rounded-lg overflow-hidden shadow-xl"
     >
       <div
         style={{

@@ -129,7 +129,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                    className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                    style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -137,8 +137,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    className=" bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                  >
+                    style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                  >
                     Empieza ahora
                   </Link>
                 </li>
@@ -148,7 +147,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
         </nav>
 
         <div>
-          <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-base  p-2' style={{ fontSize: '32px' }}>En este momento</h2>
+          <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-base bg-gray-800 p-2' style={{ fontSize: '32px' ,borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>En este momento</h2>
           <EventsNowList events={[]} filters={filters} />
        
         </div>
@@ -156,7 +155,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
         <div className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div>
-            <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl  p-2' style={{ fontSize: '32px', marginLeft: '18px', maxWidth: '895px'}}>
+            <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl bg-gray-800 p-2' style={{ fontSize: '32px', marginLeft: '18px', maxWidth: '895px', borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
               Estos eventos comienzan pronto
             </h2>
             <ScrollEvent events={scrollEvents} />
@@ -164,9 +163,9 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           <Map events={events} />
         </div>
 
-        <article className="grid gap-2 max-w-[1370px]">
-          <h1 className="px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-3xl  p-4">
-            Busca lo que necesites en la Lista de eventos disponibles:{' '}
+        <article className="grid gap-2 max-w-[1370px]" style={{marginTop: '100px'}}>
+          <h1 className="px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-3xl bg-gray-800 p-4" style={{borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
+            Busca lo que necesites en la Lista de eventos disponibles:
           </h1>
           <section className="">
             <EventsSearch

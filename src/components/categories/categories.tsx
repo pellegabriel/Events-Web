@@ -33,39 +33,43 @@ export default function CategoriesList() {
   }
 
   return (
-    <div
-      className="flex justify-center flex-col "
-      style={{ marginRight: '20px' }}
+    <div><h1 className='px-8 text-white bg-gray-800 rounded dark:bg-gray-500 text-xl  p-2' style={{ maxWidth: '300px', margin: '10px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
+      className="flex justify-center flex-col shadow-xl "
+      style={{
+        marginRight: '20px',
+        background: '#138D75', borderRadius: '10px', margin: '10px'
+      }}
     >
-      <h1 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl  p-2' style={{maxWidth:'185px'}}>Categorias</h1>
+
       <div
         style={{
           overflow: 'auto',
           display: 'flex',
           width: '230px',
           height: '600px',
+          marginTop: '20px'
         }}
-        className="flex flex-col overflow-auto"
+        className="flex flex-col overflow-auto "
       >
         {categories.map(({ title, img }, index) => {
           return (
             <button
+              className='shadow-xl '
               key={index}
               onClick={() => navigateToCategory(title)}
-              style={{ margin: '2px', minWidth: '200px' }}
+              style={{ margin: '2px', maxWidth: '200px', background: '#A569BD ', borderBottomRightRadius: '10px', color: 'white', marginBottom: '10px' }}
             >
               <Image
                 alt=""
                 src={img}
                 width={200}
                 height={200}
-                style={{ width: '180px', height: '120px' }}
-              />
+                style={{ width: '200px', height: '120px' }} />
               <div style={{ maxWidth: '50%' }}>{title}</div>
             </button>
           )
         })}
       </div>
-    </div>
+    </div></div>
   )
 }

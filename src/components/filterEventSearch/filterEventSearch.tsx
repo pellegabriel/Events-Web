@@ -19,10 +19,10 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
   }
 
   return (
-    <div className=" border border-gray-300 w-6/6 rounded-lg p-8   ">
-      <div className="mb-10 mt-10" style={{ maxWidth: '400px' }}>
+    <div className=" border border-gray-300 w-6/6 rounded-lg p-8   flex justify-center" style={{background: '#A569BD ',borderRadius:'10px' ,color:'white'}}>
+      <div className="mb-10  p-8" style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-1 p-8 ">
-          <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
+          <h2 className="font-medium text-sm text-stone-600 text-lg">Fecha inicio: </h2>
           <input
             className="w-7"
             type="date"
@@ -33,7 +33,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
           />
         </div>
         <div className="flex flex-col p-8 ">
-          <h2 className="font-medium text-sm text-stone-600">
+          <h2 className="font-medium text-sm text-stone-600 text-lg">
             Tipo de evento:
           </h2>
           <input
@@ -47,9 +47,10 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
         </div>
       </div>
 
-      <div className="">
+      <div className="flex justify-center" style={{background: '#138D75',
+      padding: '48px', borderRadius:'10px'}}>
         <div className="">
-          <div className="text-gray-900 text-xl font-medium mb-12 border-b border-gray-300 ">
+          <div className=" text-xl font-medium mb-12 border-b border-gray-300 ">
             <h5 className="py-1 mb-1">
               Cantidad de eventos disponibles: {events.length}
             </h5>

@@ -50,7 +50,7 @@ export default function EventCard2({ event }: IProps | any) {
 
   return (
     <div
-      className="flex bg-white rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75"
+      className="flex bg-white rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
       style={{ background: '#F4F6F6 ' }}
     >
