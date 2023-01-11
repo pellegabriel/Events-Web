@@ -53,8 +53,8 @@ export default function EventsUser({
 
       <div className="flex justify-center">
         <div className="justify-center">
-          <div className="text-gray-900 text-xl font-medium mb-12 border-b border-gray-300 ">
-            <h5 className="py-1 mb-1">
+          <div className="text-xl font-medium mb-12 border-b border-gray-300 ">
+            <h5 className="py-1 mb-1" style={{color:'black'}}>
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>

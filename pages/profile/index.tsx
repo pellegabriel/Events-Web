@@ -171,7 +171,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
       </nav>
       <div
         className="h-full p-8 flex items-center justify-center"
-        style={{ background: '#E5E8E8' }}
+        style={{ background: '#ba7dc2' }}
       >
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           <div className="">
