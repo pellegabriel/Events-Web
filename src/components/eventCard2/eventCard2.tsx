@@ -50,9 +50,9 @@ export default function EventCard2({ event }: IProps | any) {
 
   return (
     <div
-      className="flex bg-white rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
+      className="flex rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
-      style={{background:'#2596be' , width:'800px'}}
+      style={{background:'#ba7dc2' , width:'800px'}}
     >
       <div className="group">
         <div className="flex flex-col ">
@@ -83,12 +83,11 @@ export default function EventCard2({ event }: IProps | any) {
               )}
         </div>
       </div>
-      <div className="space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
+      <div className=" flex justify-center items-center pl-15 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
         <div className="sm:col-span-2">
           <div className="mt-2">
             <div className="group">
               <h4 className="text-lg leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">
-                {' '}
                 {event.name}
               </h4>
             

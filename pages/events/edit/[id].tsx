@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { Event } from '../../../src/models'
 import Image from 'next/image'
 import { Storage, withSSRContext } from 'aws-amplify'
-import user1 from '../../../public/user1.png'
+import svg4 from '../../../public/svg4.svg'
 import { Authenticator, Flex, useTheme } from '@aws-amplify/ui-react'
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
@@ -115,7 +115,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 ">
+      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#2596be'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -130,14 +130,14 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Volver a Usuario
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Pagina principal
                 </Link>
               </li>
@@ -145,7 +145,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
+      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
                 >
                   Cerrar sesion
                 </Link>
@@ -155,27 +155,31 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
         </div>
       </nav>
 
-      <div className="h-full p-8 flex items-center justify-center bg-gradient-to-t from-gray-800 to-violet-700">
+      <div className="h-full p-8 flex items-center justify-center " style={{background:'#ba7dc2'}}>
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           {' '}
           <div className="">
             <div className="">
               <div className=" flex ">
-                <div className="mt-20">
-                  <Image
-                    alt=""
-                    src={user1}
-                    className="shadow-xl rounded-full align-middle border-none -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
-                  />
-                </div>
+              
               </div>
-              <div className="p-8 mx-20">
-                <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
+              <div className="p-8 mx-20 flex flex-col items-center justify-center">
+                <h3 className="text-4xl text-slate-700 font-bold leading-normal mb-1">
                   Buenisimo {user.username} !
                 </h3>
                 <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>
                   Fecha de la actualizacion: {renderedAt}
+                </div>
+                <Image
+                    alt=""
+                    src={svg4}
+                    className=""
+                  />
+                  <div className="text-xs mt-0 mb-2 text-slate-400 font-bold ">
+                  <h2 className="mr-2 text-slate-500 opacity-85 text-lg ">El evento ya fue creado, ahora solo  falta que termines de  rellenarlo
+                   <br/> para poder compartirlo con todo el mundo!
+</h2>
                 </div>
               </div>
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
@@ -206,7 +210,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
         </div>
       </div>
 
-      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#2596be'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>

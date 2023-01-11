@@ -11,7 +11,6 @@ import { useRouter } from 'next/router'
 import { Event } from '../../src/models'
 import Image from 'next/image'
 import { Amplify, withSSRContext } from 'aws-amplify'
-import user1 from '../../public/user1.png'
 import { ModelEventFilterInput } from '../../src/API'
 import { listEvents } from '../../src/graphql/queries'
 import awsExports from '../../src/aws-exports'
@@ -19,6 +18,8 @@ import EventsUser from '../../src/components/filterUser/filterUser'
 import EventCreateForm from '../../src/components/eventCreateFormEdited/EventCreateForm'
 import { EventCreateFormInputValues } from '../../src/components/eventCreateFormEdited/EventCreateForm'
 import { Spinner } from '@theme-ui/components'
+import svg3 from '../../public/svg3.svg'
+
 
 Amplify.configure({ ...awsExports, ssr: true })
 
@@ -176,20 +177,16 @@ function Profile({ events = [], signOut, filters }: IProps) {
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
           <div className="">
             <div className="" >
-              <div className="justiify-center flex pl-20">
+              <div className="justiify-center flex flex-col items-center">
                 
-                <h3 className="m-16 ml-40 flex items-cen mx-20 text-5xl text-slate-700 font-bold leading-normal mb-1">
+                <h3 className="mt-20 flex items-cen  text-4xl text-slate-700 font-bold leading-normal mb-1">
                   Hola {user.username} Bienvenido!
                 </h3>
-              </div>
+                <Image alt="" src={svg3} width={500} height={500} />
 
-              <div className="p-10 mx-10 flex justify-center ">
-                <h1 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
-                  Ahora que estas aqui, podras crear tus propios eventos tocando
-                  el siguiente boton:{' '}
+                <h1 className="mt-10 text-2xl text-slate-500 font-bold leading-normal mb-1">
+                  Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
-              </div>
-              <div className="flex rounded-lg mt-8 object-cover shadow-lg group-hover:opacity-75 justify-center items-center">
                 <EventCreateForm
                   onSuccess={handleSuccess}
                   onSubmit={handleSubmit}
@@ -198,8 +195,11 @@ function Profile({ events = [], signOut, filters }: IProps) {
                 />
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
+                <h1 className="mt-10 mb-20 text-2xl text-slate-500 font-bold leading-normal mb-1">
+                  No olvides darle a "Subir Evento", te llevara a la siguiente fase.
+                </h1>
               </div>
-
+        
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
                 <div className=" overflow-hidden flex items-center justify-center">
                   <div className="mt-8 mb-8 grid-cols-1 p-10">
