@@ -114,7 +114,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
+        <nav className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
               <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -129,7 +129,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                    style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                    style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -137,7 +137,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                  >
+                    style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"                  >
                     Empieza ahora
                   </Link>
                 </li>

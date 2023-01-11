@@ -136,7 +136,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
   }
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 ">
+      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 " style={{background:'#2596be'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -151,15 +151,15 @@ function Profile({ events = [], signOut, filters }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                >
+                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"
+                  >
                   Pagina principal
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"
                   onClick={signOut}
                 >
                   Cerrar sesion
@@ -229,7 +229,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
         </div>
       </div>
       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
-      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{background:'#2596be'}}>
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>

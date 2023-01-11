@@ -37,7 +37,7 @@ export default function CategoriesList() {
       className="flex justify-center flex-col shadow-xl "
       style={{
         marginRight: '20px',
-        background: '#138D75', borderRadius: '10px', margin: '10px'
+        background:'#2596be', borderRadius: '10px', margin: '10px'
       }}
     >
 

@@ -10,7 +10,7 @@ export default function Ilustration() {
     >
       <div
         className="flex p-10  max-w-md items-center bg-gray"
-        style={{ background: '#E5E8E8' }}
+        style={{ background: '#2596be' }}
       >
         <Image alt="" src={svg1} width={600} height={600} />
         <h2 className=" flex justify-center p-10 xl:font-serif text-3xl text-black">
@@ -23,7 +23,7 @@ export default function Ilustration() {
       </div>
       <div
         className="flex p-10 mt-20 max-w-md items-center"
-        style={{ background: '#E5E8E8' }}
+        style={{ background: '#2596be' }}
       >
         <Image alt="" src={svg2} width={600} height={600} />
         <h2 className="flex justify-center p-10 xl:font-serif text-3xl text-black">

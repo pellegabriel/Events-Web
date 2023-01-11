@@ -19,7 +19,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
   }
 
   return (
-    <div className=" border border-gray-300 w-6/6 rounded-lg p-8   flex justify-center" style={{background: '#A569BD',borderRadius:'10px' ,color:'white'}}>
+    <div className=" border border-gray-300 w-6/6 rounded-lg p-8   flex justify-center" style={{padding:'8px', marginBottom:'100px',background:'#2596be',borderRadius:'10px' ,color:'white'}}>
       <div className="mb-10  p-8" style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-1 p-8 ">
           <h2 className="font-medium text-sm text-stone-600 text-lg">Fecha inicio: </h2>
@@ -47,16 +47,23 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
         </div>
       </div>
 
-      <div className="flex justify-center" style={{background: '#138D75',
+      <div className="flex justify-center" style={{background:'white',
       padding: '48px', borderRadius:'10px'}}>
         <div className="">
-          <div className=" text-xl font-medium mb-12 border-b border-gray-300 ">
+          <div className=" text-xl text-black font-medium mb-12 border-b border-gray-300 ">
             <h5 className="py-1 mb-1">
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>
 
-          <div className="">
+          <div
+      className="flex flex-wrap "
+      style={{
+        width: '860px',
+        height: '900px',
+        overflow: 'auto',
+      }}
+    >
             {events.map((event: any) => {
               return (
                 <Link href={`/events/${event.id}`} key={event.id}>

@@ -52,10 +52,10 @@ export default function EventCard2({ event }: IProps | any) {
     <div
       className="flex bg-white rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
-      style={{ background: '#F4F6F6 ' }}
+      style={{background:'#2596be' , width:'800px'}}
     >
       <div className="group">
-        <div className="">
+        <div className="flex flex-col ">
           {image && !error ? (
             <Image
               className=" p-4 "
@@ -76,6 +76,11 @@ export default function EventCard2({ event }: IProps | any) {
               style={{ width: '300px', height: '180px' }}
             />
           )}
+           {audio && (
+                <audio style={{marginBottom:'10px' ,maxWidth:'400px',padding:'10px', }} controls src={audio}>
+                  <Link href={audio} />
+                </audio>
+              )}
         </div>
       </div>
       <div className="space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
@@ -86,11 +91,7 @@ export default function EventCard2({ event }: IProps | any) {
                 {' '}
                 {event.name}
               </h4>
-              {audio && (
-                <audio controls src={audio}>
-                  <Link href={audio} />
-                </audio>
-              )}
+            
             </div>
 
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
@@ -109,7 +110,9 @@ export default function EventCard2({ event }: IProps | any) {
             </div>
           </div>
         </div>
+        
       </div>
+     
     </div>
   )
 }

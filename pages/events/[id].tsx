@@ -78,8 +78,8 @@ export default function Id({ event, center }: IProps | any) {
 
   return (
     <>
-      <div className="pt-40 flex justify-center items-center">
-        <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
+      <div className="pt-40 flex justify-center items-center pb-40" >
+        <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
               <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -94,14 +94,14 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                   style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
+                   style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
                     Pagina principal
                   </Link>
                 </li>
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                  style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
+                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
                     Empieza ahora
                   </Link>
                 </li>
@@ -109,20 +109,24 @@ export default function Id({ event, center }: IProps | any) {
             </div>
           </div>
         </nav>
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="  tracking-tight text-center  dark:text-gray-50 xl:font-serif text-5xl text-black mb-10">
+        <div className="flex flex-col justify-center items-center  p-20" style={{ background:'#ba7dc2',borderRadius:'10px', color:'white'
+}}>
+          <h2 className="mx-auto rounded-lg shadow-xl dark:bg-gray-500 tracking-tight text-center border border-gray-300 p-8 dark:text-gray-50 xl:font-serif text-5xl mb-10">
             {event.name}
           </h2>
-          <p className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif text-black">
+          <h2 className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif ">
+            Usuario que posteo el evento:
+          </h2>
+          <h2 className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif ">
             {event.user}
-          </p>
+          </h2>
           <div className="flex justify-center items-center">
             <section
-              className="flex border border-gray-300 w-6/6 rounded-lg p-8 "
+              className="flex w-6/6 rounded-lg p-8 "
               style={{
-                background: '#E5E8E8',
+                background:'#ba7dc2',
                 maxWidth: '600px',
-                minHeight: '1000px',
+                minHeight: '500px',
               }}
             >
               <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
@@ -133,7 +137,7 @@ export default function Id({ event, center }: IProps | any) {
                       src={img1}
                       width={700}
                       height={700}
-                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
+                      className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
                     />
                   ) : (
                     <Image
@@ -142,17 +146,17 @@ export default function Id({ event, center }: IProps | any) {
                       width={700}
                       height={700}
                       onError={handleImageError}
-                      className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
+                      className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
                     />
                   )}
                 </div>
                 <div>
                   <div className="flex flex-col lg:items-center">
                     <div className="lg:col-start-2">
-                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif text-black">
+                      <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif ">
                         {event.subtitle}
                       </h3>
-                      <p className="mt-3 text-lg font-serif text-black">
+                      <p className="mt-3 text-lg font-serif ">
                         {event.descripcion}
                       </p>
                       <div className="mt-12 space-y-12">
@@ -180,11 +184,12 @@ export default function Id({ event, center }: IProps | any) {
                 </div>
               </div>
             </section>
-            <Map events={[event]} center={mapCenter} zoom={15} />
+            <div className="mx-auto rounded-xl shadow-xl dark:bg-gray-500"><Map events={[event]} center={mapCenter} zoom={15} /></div>
+            
           </div>
         </div>
       </div>
-      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#2596be'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -200,54 +205,5 @@ export default function Id({ event, center }: IProps | any) {
         </ul>
       </footer>
     </>
-    // {/* <div className="dark:bg-gray-800 dark:text-gray-50">
-    // 	<div className="container grid grid-cols-12 mx-auto dark:bg-gray-900">
-    // 		<div className="bg-no-repeat bg-cover dark:bg-gray-700 col-span-full lg:col-span-4" >
-    //     {error ? (
-    //               <Image alt="" src={img1} width={400} height={200} />
-    //             ) : (
-    //               <Image
-    //                 alt=""
-    //                 src={image}
-    //                 width={400}
-    //                 height={200}
-    //                 onError={handleImageError}
-    //               />
-    //             )}
-    //     </div>
-    // 		<div className="flex flex-col p-6 col-span-full row-span-full lg:col-span-8 lg:p-10">
-    // 			<div className="flex justify-start">
-    // 				<span className="px-2 py-1 text-xs rounded-full dark:bg-violet-400 dark:text-gray-900">Label</span>
-    // 			</div>
-    // 			<h1 className="text-3xl font-semibold">Lorem ipsum dolor sit.</h1>
-    // 			<p className="flex-1 pt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, reprehenderit adipisci tempore voluptas laborum quod.</p>
-    // 			<a rel="noopener noreferrer" href="#" className="inline-flex items-center pt-2 pb-6 space-x-2 text-sm dark:text-violet-400">
-    // 				<span>Read more</span>
-    // 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-    // 					<path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-    // 				</svg>
-    // 			</a>
-    // 			<div className="flex items-center justify-between pt-2">
-    // 				<div className="flex space-x-2">
-    // 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 dark:text-gray-400">
-    // 						<path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd"></path>
-    // 					</svg>
-    // 					<span className="self-center text-sm">by Leroy Jenkins</span>
-    // 				</div>
-    // 				<span className="text-xs">3 min read</span>
-    //         <>
-    //       <>{event.name}</>
-    //       <>{event.user}</>
-    //       <div className="text-xl col-span-12 lg:col-span-7 mb-40 mt-40">
-    //           <h1 className="xl:font-serif text-4xl text-white pb-8">
-    //             Mira los eventos que te rodean:
-    //           </h1>
-    //           <Map events={[event]} />
-    //         </div>
-    //     </>
-    // 			</div>
-    // 		</div>
-    // 	</div>
-    // </div> */}
   )
 }

@@ -48,10 +48,13 @@ export default function EventsNowList({ events = [] }: IProps) {
         height: '180px',
         overflow: 'auto',
         marginBottom: '64px',
+        background:'#2596be',
+        borderBottomLeftRadius:'10PX',
+        borderBottomRightRadius:'10PX'
       }}
     >
       {events.length === 0 ? (
-        <div>No hay eventos disponibles en este momento</div>
+        <h2 className='text-white text-2xl flex justidy-center items-center' style={{marginLeft:'100px'}}>No hay eventos disponibles en este momento</h2>
       ) : (
         events.map((event: any) => {
           return (
