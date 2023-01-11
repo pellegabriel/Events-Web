@@ -50,6 +50,8 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
   const router = useRouter()
   const id = router.query.id as string
 
+  console.log("Aca event vale", {event})
+
   const handleAudioChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0]
     try {
@@ -106,6 +108,10 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
       )
     },
   }
+  const handleSubmit = (e: any) => {
+    console.log("handleSubmit", {e})
+    return e
+  }
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
@@ -124,16 +130,14 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                >
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Volver a Usuario
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                >
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Pagina principal
                 </Link>
               </li>
@@ -141,8 +145,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold  py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                  onClick={signOut}
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
                 >
                   Cerrar sesion
                 </Link>
@@ -182,7 +185,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                       Actualiza el evento:{' '}
                     </h1>
 
-                    <EventUpdateForm event={event} />
+                    <EventUpdateForm event={event} onSubmit={handleSubmit} />
                     <h3 className="p-4 text-lg ">Actualizar imagen </h3>
                     <input type="file" onChange={handleImageChange} />
                     {image && (

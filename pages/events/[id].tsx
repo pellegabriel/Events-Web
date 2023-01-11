@@ -94,16 +94,14 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                    className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                  >
+                   style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
                     Pagina principal
                   </Link>
                 </li>
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    className="bg-yellow-500 hover:bg-yellow-700 text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
-                  >
+                  style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
                     Empieza ahora
                   </Link>
                 </li>

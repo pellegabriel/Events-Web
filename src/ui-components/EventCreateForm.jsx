@@ -7,17 +7,11 @@
 /* eslint-disable */
 import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
-import { EventTypes } from "../models";
+import { Event } from "../models";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import {
-  Button,
-  Flex,
-  Grid,
-  SwitchField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
-export default function EventTypesCreateForm(props) {
+export default function EventCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -29,21 +23,18 @@ export default function EventTypesCreateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     name: undefined,
-    enabled: false,
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [enabled, setEnabled] = React.useState(initialValues.enabled);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
-    setEnabled(initialValues.enabled);
     setErrors({});
   };
   const validations = {
-    name: [],
-    enabled: [],
+    name: [{ type: "Required" }],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -57,14 +48,13 @@ export default function EventTypesCreateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
-      columnGap="15px"
-      padding="20px"
+      rowGap={tokens.space.xs.value}
+      columnGap={tokens.space.xxxs.value}
+      padding={tokens.space.xl.value}
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
           name,
-          enabled,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -89,7 +79,7 @@ export default function EventTypesCreateForm(props) {
           modelFields = onSubmit(modelFields);
         }
         try {
-          await DataStore.save(new EventTypes(modelFields));
+          await DataStore.save(new Event(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -103,18 +93,17 @@ export default function EventTypesCreateForm(props) {
         }
       }}
       {...rest}
-      {...getOverrideProps(overrides, "EventTypesCreateForm")}
+      {...getOverrideProps(overrides, "EventCreateForm")}
     >
       <TextField
-        label="Name"
-        isRequired={false}
+        label="Nombre del evento"
+        isRequired={true}
         isReadOnly={false}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name: value,
-              enabled,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -129,47 +118,22 @@ export default function EventTypesCreateForm(props) {
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
       ></TextField>
-      <SwitchField
-        label="Enabled"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={enabled}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              name,
-              enabled: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.enabled ?? value;
-          }
-          if (errors.enabled?.hasError) {
-            runValidationTasks("enabled", value);
-          }
-          setEnabled(value);
-        }}
-        onBlur={() => runValidationTasks("enabled", enabled)}
-        errorMessage={errors.enabled?.errorMessage}
-        hasError={errors.enabled?.hasError}
-        {...getOverrideProps(overrides, "enabled")}
-      ></SwitchField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Limpiar"
           type="reset"
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xxxs.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Cancel"
+            children="Cancelar"
             type="button"
             onClick={() => {
               onCancel && onCancel();
@@ -177,7 +141,7 @@ export default function EventTypesCreateForm(props) {
             {...getOverrideProps(overrides, "CancelButton")}
           ></Button>
           <Button
-            children="Submit"
+            children="Subir Evento"
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}

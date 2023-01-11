@@ -99,16 +99,14 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                  className="inline-block  no-underline hover:text-yellow-500 hover:text-underline py-2 px-4 text-white"
-                >
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Volver a Usuario
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="inline-block  no-underline hover:text-yellow-500 hover:text-underline py-2 px-4 text-white"
-                >
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
                   Pagina principal
                 </Link>
               </li>
@@ -116,8 +114,7 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                  className="inline-block  no-underline hover:text-yellow-500 hover:text-underline py-2 px-4 text-white"
-                  onClick={signOut}
+      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
                 >
                   Cerrar sesion
                 </Link>

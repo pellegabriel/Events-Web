@@ -43,19 +43,28 @@
       "customAuth": true,
       "dependsOn": [
         {
-          "attributes": ["Arn", "Name"],
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
           "category": "function",
           "resourceName": "weeout921a0308DefineAuthChallenge",
           "triggerProvider": "Cognito"
         },
         {
-          "attributes": ["Arn", "Name"],
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
           "category": "function",
           "resourceName": "weeout921a0308CreateAuthChallenge",
           "triggerProvider": "Cognito"
         },
         {
-          "attributes": ["Arn", "Name"],
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
           "category": "function",
           "resourceName": "weeout921a0308VerifyAuthChallengeResponse",
           "triggerProvider": "Cognito"
@@ -63,15 +72,21 @@
       ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": ["SMS"],
+        "mfaTypes": [
+          "SMS"
+        ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": ["EMAIL"],
+        "signupAttributes": [
+          "EMAIL"
+        ],
         "socialProviders": [],
         "usernameAttributes": [],
-        "verificationMechanisms": ["EMAIL"]
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
