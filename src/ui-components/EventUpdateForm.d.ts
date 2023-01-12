@@ -4,15 +4,22 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import * as React from "react";
-import { Event } from "../models";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import * as React from 'react'
+import { Event } from '../models'
+import { EscapeHatchProps } from '@aws-amplify/ui-react/internal'
+import {
+  GridProps,
+  SwitchFieldProps,
+  TextFieldProps,
+} from '@aws-amplify/ui-react'
 export declare type ValidationResponse = {
-    hasError: boolean;
-    errorMessage?: string;
-};
-export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
+  hasError: boolean
+  errorMessage?: string
+}
+export declare type ValidationFunction<T> = (
+  value: T,
+  validationResponse: ValidationResponse,
+) => ValidationResponse | Promise<ValidationResponse>
 export declare type EventUpdateFormInputValues = {
     name?: string;
     subTitulo?: string;

@@ -17,7 +17,7 @@ export const onCreateEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const onUpdateEventTypes = /* GraphQL */ `
   subscription OnUpdateEventTypes(
     $filter: ModelSubscriptionEventTypesFilterInput
@@ -33,7 +33,7 @@ export const onUpdateEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const onDeleteEventTypes = /* GraphQL */ `
   subscription OnDeleteEventTypes(
     $filter: ModelSubscriptionEventTypesFilterInput
@@ -49,7 +49,7 @@ export const onDeleteEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const onCreateEvent = /* GraphQL */ `
   subscription OnCreateEvent($filter: ModelSubscriptionEventFilterInput) {
     onCreateEvent(filter: $filter) {
@@ -70,7 +70,7 @@ export const onCreateEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const onUpdateEvent = /* GraphQL */ `
   subscription OnUpdateEvent($filter: ModelSubscriptionEventFilterInput) {
     onUpdateEvent(filter: $filter) {
@@ -91,7 +91,7 @@ export const onUpdateEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const onDeleteEvent = /* GraphQL */ `
   subscription OnDeleteEvent($filter: ModelSubscriptionEventFilterInput) {
     onDeleteEvent(filter: $filter) {
@@ -112,4 +112,4 @@ export const onDeleteEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`

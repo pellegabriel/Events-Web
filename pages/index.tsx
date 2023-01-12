@@ -13,8 +13,6 @@ import ScrollEvent from '../src/components/scrollEvent'
 import CategoriesList from '../src/components/categories/categories'
 import EventsNowList from '../src/components/eventsNowList/EventsNowList'
 
-
-
 Amplify.configure({ ...awsExports, ssr: true })
 
 interface IHome {
