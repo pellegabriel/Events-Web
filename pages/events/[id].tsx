@@ -80,7 +80,7 @@ export default function Id({ event, center }: IProps | any) {
   return (
     <>
     
-      <div className="pt-40 flex  items-center pb-40" >
+      <div className="\ flex  items-center " >
         <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
@@ -113,27 +113,29 @@ export default function Id({ event, center }: IProps | any) {
         </nav>
    
         
-        <div className="flex flex-col justify-center items-center  p-8" style={{ background:'#ba7dc2',borderRadius:'10px', color:'white'
+        <div className="flex flex-col justify-center items-center  p-10 mt-14" style={{ background:'#ba7dc2', color:'white'
 }}>
           <h2 className="mx-auto rounded-lg shadow-xl dark:bg-gray-500 tracking-tight text-center border border-gray-300 p-8 dark:text-gray-50 xl:font-serif text-5xl mb-10">
             {event.name}
           </h2>
-          <h2 className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif ">
+          <h2 className="max-w-3xl mx-auto  text-xl text-center font-serif ">
             Usuario que posteo el evento:
           </h2>
-          <h2 className="max-w-3xl mx-auto mt-4 text-xl text-center font-serif ">
+          <h2 className="max-w-3xl mx-auto text-xl text-center font-serif ">
             {event.user}
           </h2>
           <div className="flex justify-center items-center">
+          <div className="mx-auto rounded-xl shadow-xl dark:bg-gray-500"><Map events={[event]} center={mapCenter} zoom={15} /></div>
+
             <section
-              className="flex w-6/6 rounded-lg p-8 "
+              className="flex w-6/6 rounded-lg  "
               style={{
                 background:'#ba7dc2',
                 maxWidth: '600px',
                 minHeight: '500px',
               }}
             >
-              <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+              <div className="container max-w-xl p-6 py-12 mx-auto  lg:px-8 lg:max-w-7xl">
                 <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
                   {error ? (
                     <Image
@@ -188,7 +190,6 @@ export default function Id({ event, center }: IProps | any) {
                 </div>
               </div>
             </section>
-            <div className="mx-auto rounded-xl shadow-xl dark:bg-gray-500"><Map events={[event]} center={mapCenter} zoom={15} /></div>
             
           </div>
         </div>
