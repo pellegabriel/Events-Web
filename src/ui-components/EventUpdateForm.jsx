@@ -291,7 +291,8 @@ export default function EventUpdateForm(props) {
         }
         try {
           await DataStore.save(
-            Event.copyOf(eventRecord, (updated) => {
+            Event.copyOf({eventRecord}, (updated) => {
+              //nose si deberia ser sin el eventrecord aca ({},(update))
               Object.assign(updated, modelFields);
             })
           );
@@ -299,6 +300,7 @@ export default function EventUpdateForm(props) {
             onSuccess(modelFields);
           }
         } catch (err) {
+          console.error("pumba", err)
           if (onError) {
             onError(modelFields, err.message);
           }

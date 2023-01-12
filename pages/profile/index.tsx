@@ -196,22 +196,22 @@ function Profile({ events = [], signOut, filters }: IProps) {
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
                 <h1 className="mt-10 mb-20 text-2xl text-slate-500 font-bold leading-normal mb-1">
-                  No olvides darle a "Subir Evento", te llevara a la siguiente fase.
+                  No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
               </div>
         
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
                 <div className=" overflow-hidden flex items-center justify-center">
                   <div className="mt-8 mb-8 grid-cols-1 p-10">
-                    <h1 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
+                    <h1 className="text-3xl text-slate-700 font-bold leading-normal mb-10">
                       Busca uno de tus eventos y haz click para editarlo:{' '}
                     </h1>
 
                     <main className="grid gap-6 gap-y-8  ">
                       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
                         <div
-                          className="col-span-12  object-cover lg:row-span-2 border rounded-lg"
-                          style={{ background: '#E5E8E8' }}
+                          className="col-span-12  object-cover lg:row-span-2 rounded-lg"
+                          
                         >
                           <EventsUser
                             events={events}

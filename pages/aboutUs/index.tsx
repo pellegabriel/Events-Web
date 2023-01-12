@@ -26,7 +26,7 @@ export default function AboutUs() {
                 <Link
                   href="/profile"
                   style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
-                  Empieza ahora
+                   Tu perfil
                 </Link>
               </li>
             </ul>

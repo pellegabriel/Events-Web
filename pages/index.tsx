@@ -13,6 +13,8 @@ import ScrollEvent from '../src/components/scrollEvent'
 import CategoriesList from '../src/components/categories/categories'
 import EventsNowList from '../src/components/eventsNowList/EventsNowList'
 
+
+
 Amplify.configure({ ...awsExports, ssr: true })
 
 interface IHome {
@@ -138,7 +140,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                   <Link
                     href="/profile"
                     style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"                  >
-                    Empieza ahora
+                    Tu perfil
                   </Link>
                 </li>
               </ul>
@@ -167,11 +169,14 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           <h1 className="px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-3xl bg-gray-800 p-4" style={{borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
             Busca lo que necesites en la Lista de eventos disponibles:
           </h1>
+
           <section className="">
+
             <EventsSearch
               events={events}
               filters={filters}
               updateFilters={handleChange}
+              
             />
           </section>
         </article>

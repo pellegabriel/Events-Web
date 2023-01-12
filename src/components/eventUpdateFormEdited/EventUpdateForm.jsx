@@ -323,9 +323,10 @@ export default function EventUpdateForm(props) {
           )
           if (onSuccess) {
             console.log("estodeAca",{modelFields})
-            //onSuccess(modelFields)
+            onSuccess(modelFields)
           }
         } catch (err) {
+          console.error("pumba", err)
           if (onError) {
             onError(modelFields, err.message)
           }

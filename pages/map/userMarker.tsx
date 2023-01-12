@@ -28,12 +28,12 @@ function UserMarker({ map_point, center, zoom, onDragEnd }: IProps) {
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY || 'Error',
   })
 
-  const [map, setMap] = useState(null)
+  const [_map, setMap] = useState(null)
   const position = JSON.parse(
     (map_point) || '{ "lat": -34.91554, "lng": -57.91454 }',
   )
   console.log("aca map_point vale userMarker", {map_point, position})
-  const [currentPosition, setCurrentPosition] = useState(null)
+
 
   const onLoad = useCallback(function callback(map: any) {
     setMap(map)

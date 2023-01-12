@@ -15,6 +15,16 @@ export default function EventCard2({ event }: IProps | any) {
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
 
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+     setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+     setIsHover(false);
+  };
+  const boxStyle = {width:'800px'   ,backgroundColor: isHover ? '#ba7dc2'  : '#2596be',
+}
   const getUploadedImage = async () => {
     try {
       const file = await Storage.get(event.id, {
@@ -52,7 +62,9 @@ export default function EventCard2({ event }: IProps | any) {
     <div
       className="flex rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
-      style={{background:'#ba7dc2' , width:'800px'}}
+      style={boxStyle}
+          onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
     >
       <div className="group">
         <div className="flex flex-col ">

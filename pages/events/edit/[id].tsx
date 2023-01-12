@@ -6,9 +6,10 @@ import svg4 from '../../../public/svg4.svg'
 import { Authenticator, Flex, useTheme } from '@aws-amplify/ui-react'
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
-import { EventUpdateForm } from '../../../src/ui-components'
+import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../../src/graphql/queries'
+import { EventCreateFormInputValues } from '../../../src/ui-components/EventCreateForm'
 
 interface IProps {
   event: Event
@@ -49,7 +50,7 @@ export async function getServerSideProps({ req, query }: any) {
 function Id({ event, signOut, user, renderedAt }: IProps) {
   const router = useRouter()
   const id = router.query.id as string
-
+  
   console.log("Aca event vale", {event})
 
   const handleAudioChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -108,8 +109,17 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
       )
     },
   }
+  const handleSuccess = (_event: EventUpdateFormInputValues) => {
+    console.log (handleSuccess)
+    router.push(`/profile`)
+  }
+  const handleError = (_event: EventUpdateFormInputValues, message: string) => {
+    setError(message)
+    setLoading(false)
+  }
   const handleSubmit = (e: any) => {
     console.log("handleSubmit", {e})
+    
     return e
   }
 
@@ -179,7 +189,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                   <div className="text-xs mt-0 mb-2 text-slate-400 font-bold ">
                   <h2 className="mr-2 text-slate-500 opacity-85 text-lg ">El evento ya fue creado, ahora solo  falta que termines de  rellenarlo
                    <br/> para poder compartirlo con todo el mundo!
-</h2>
+                  </h2>
                 </div>
               </div>
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
@@ -189,16 +199,46 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                       Actualiza el evento:{' '}
                     </h1>
 
-                    <EventUpdateForm event={event} onSubmit={handleSubmit} />
-                    <h3 className="p-4 text-lg ">Actualizar imagen </h3>
-                    <input type="file" onChange={handleImageChange} />
+                    <EventUpdateForm id={event.id} onSubmit={handleSubmit} onSuccess={handleSuccess}
+                  onError={handleError}/>
+                    <div className="max-w-xl">
+                      <label
+                          className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                          <span className="flex items-center space-x-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                                  stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                              </svg>
+                              <span className="font-medium text-gray-600">
+                                  Suelta la imagen aqui
+                              </span>
+                          </span>
+                          <input type="file" name="file_upload" onChange={handleImageChange} className="hidden"/>
+                      </label>
+                  </div>
                     {image && (
                       <Image alt="" src={image} width={100} height={100} />
                     )}
-                    <h3 className="p-4 text-lg "> Actualizar audio</h3>
-                    <input type="file" onChange={handleAudioChange} />
+                    {/* <input type="file" onChange={handleAudioChange} /> */}
+                    <div className="max-w-xl">
+                      <label
+                          className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                          <span className="flex items-center space-x-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                                  stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                              </svg>
+                              <span className="font-medium text-gray-600">
+                                  Arrastra el archivo de audio aqui.
+                              </span>
+                          </span>
+                          <input type="file" name="file_upload" onChange={handleAudioChange} className="hidden"/>
+                      </label>
+                  </div>
                     {audio && (
-                      <audio controls src={audio}>
+                      <audio controls src={audio} style={{width:'550px', padding:'10px'}}>
                         <Link href={audio} />
                       </audio>
                     )}
@@ -229,3 +269,11 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
   )
 }
 export default withAuthenticator(Id)
+function setError(message: string) {
+  throw new Error('Function not implemented.')
+}
+
+function setLoading(arg0: boolean) {
+  throw new Error('Function not implemented.')
+}
+

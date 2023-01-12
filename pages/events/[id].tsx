@@ -6,6 +6,7 @@ import { Event } from '../../src/models'
 import Map from '../map/index'
 import Image from 'next/image'
 import { Storage } from 'aws-amplify'
+import svg6 from '../../public/svg6.svg'
 import img1 from '../../public/img1.jpg'
 import parseDate from '../../src/helperFunctions/parseDate'
 import Link from 'next/link'
@@ -78,7 +79,8 @@ export default function Id({ event, center }: IProps | any) {
 
   return (
     <>
-      <div className="pt-40 flex justify-center items-center pb-40" >
+    
+      <div className="pt-40 flex  items-center pb-40" >
         <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
@@ -109,6 +111,17 @@ export default function Id({ event, center }: IProps | any) {
             </div>
           </div>
         </nav>
+        <div className='flex flex-col p-10'>
+        <Image
+                      alt=""
+                      src={svg6}
+                      width={700}
+                      height={700}
+                      className="mx-auto  dark:bg-gray-500"
+                    />
+          <h1 className="mt-10 text-3xl text-slate-500 font-bold leading-normal mb-1 flex justify-center items-center" style={{maxWidth:'500px', marginLeft:'100px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
+        </div>
+        
         <div className="flex flex-col justify-center items-center  p-20" style={{ background:'#ba7dc2',borderRadius:'10px', color:'white'
 }}>
           <h2 className="mx-auto rounded-lg shadow-xl dark:bg-gray-500 tracking-tight text-center border border-gray-300 p-8 dark:text-gray-50 xl:font-serif text-5xl mb-10">
@@ -156,7 +169,7 @@ export default function Id({ event, center }: IProps | any) {
                       <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif ">
                         {event.subtitle}
                       </h3>
-                      <p className="mt-3 text-lg font-serif ">
+                      <p className="mt-3 text-lg font-serif " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
                         {event.descripcion}
                       </p>
                       <div className="mt-12 space-y-12">
@@ -164,7 +177,7 @@ export default function Id({ event, center }: IProps | any) {
                           <div className="flex-shrink-0"></div>
                           <div className="ml-4">
                             {audio && (
-                              <audio controls src={audio}>
+                              <audio controls src={audio} style={{width:'450px'}}>
                                 <Link href={audio} />
                               </audio>
                             )}

@@ -9,8 +9,8 @@ export default function Ilustration() {
       style={{ maxWidth: '1600px' }}
     >
       <div
-        className="flex p-10  max-w-md items-center bg-gray"
-        style={{ background: '#2596be' }}
+        className="flex p-10 hover:text-white max-w-md items-center bg-gray"
+        style={{ background: '#ba7dc2', borderRadius:'10px' }}
       >
         <Image alt="" src={svg1} width={600} height={600} />
         <h2 className=" flex justify-center p-10 xl:font-serif text-3xl text-black">
@@ -23,10 +23,10 @@ export default function Ilustration() {
       </div>
       <div
         className="flex p-10 mt-20 max-w-md items-center"
-        style={{ background: '#2596be' }}
+        style={{ background: '#ba7dc2', borderRadius:'10px' }}
       >
         <Image alt="" src={svg2} width={600} height={600} />
-        <h2 className="flex justify-center p-10 xl:font-serif text-3xl text-black">
+        <h2 className="flex justify-center hover:text-white p-10 xl:font-serif text-3xl text-black">
           A través nuestro podrás generar o buscar eventos de acuerdo a tu
           interés. Podés saber qué está pasando en este preciso momento en el
           lugar en donde estés y acceder a la información detallada de la

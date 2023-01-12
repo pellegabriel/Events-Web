@@ -47,7 +47,8 @@ export default function CategoriesList() {
           display: 'flex',
           width: '230px',
           height: '600px',
-          marginTop: '20px'
+          marginTop: '20px',
+          
         }}
         className="flex flex-col overflow-auto "
       >

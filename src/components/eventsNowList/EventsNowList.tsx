@@ -48,7 +48,7 @@ export default function EventsNowList({ events = [] }: IProps) {
         height: '180px',
         overflow: 'auto',
         marginBottom: '64px',
-        background:'#2596be',
+        background:'#ba7dc2',
         borderBottomLeftRadius:'10PX',
         borderBottomRightRadius:'10PX'
       }}
