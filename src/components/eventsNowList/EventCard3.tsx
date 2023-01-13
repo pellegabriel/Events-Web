@@ -2,9 +2,6 @@ import Image from 'next/image'
 import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
-import img1 from '../../../public/img1.jpg'
-import parseDate from '../../helperFunctions/parseDate'
-import Link from 'next/link'
 
 interface IProps {
   event: Event
@@ -65,7 +62,7 @@ export default function EventCard2({ event }: IProps | any) {
         <Image
           className=" p-4"
           alt=""
-          src={img1}
+          src='../../../public/img1.jpg'
           width={400}
           height={200}
           style={{ width: '180px', height: '120px' }}

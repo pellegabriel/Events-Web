@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
-import img1 from '../../../public/img1.jpg'
 import Link from 'next/link'
 
 interface IProps {
@@ -78,7 +77,7 @@ export default function EventCard({ event }: IProps | any) {
         ) : (
           <Image
             alt=""
-            src={img1}
+            src='../../../public/img1.jpg'
             width={300}
             height={200}
             onError={handleImageError}
