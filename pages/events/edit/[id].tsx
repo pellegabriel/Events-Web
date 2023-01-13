@@ -9,7 +9,6 @@ import Link from 'next/link'
 import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../../src/graphql/queries'
-import { EventCreateFormInputValues } from '../../../src/ui-components/EventCreateForm'
 
 interface IProps {
   event: Event
