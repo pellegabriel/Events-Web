@@ -7,7 +7,6 @@ import Map from '../map/index'
 import Image from 'next/image'
 import { Storage } from 'aws-amplify'
 import svg6 from '../../public/svg6.svg'
-import img1 from '../../public/img1.jpg'
 import parseDate from '../../src/helperFunctions/parseDate'
 import Link from 'next/link'
 
@@ -38,6 +37,7 @@ export async function getServerSideProps({ req, query }: any) {
 }
 
 export default function Id({ event, center }: IProps | any) {
+  const img1 = '/img1.jpg'
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
