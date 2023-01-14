@@ -1,10 +1,9 @@
 import Image from 'next/image'
-import img1 from '../../../public/img1.jpg'
 import { useRouter } from 'next/router'
 
 export default function CategoriesList() {
   const router = useRouter()
-
+  const img1 = '/img1.jpg'
   const categories = [
     { title: 'teatro', img: img1 },
     { title: 'deportivo', img: img1 },
