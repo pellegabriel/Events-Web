@@ -81,7 +81,7 @@ export default function EventCard2({ event }: IProps | any) {
             <Image
               className=" p-4"
               alt=""
-              src='../../../public/img1.jpg'
+              src='/img1.jpg'
               width={400}
               height={200}
               style={{ width: '300px', height: '180px' }}

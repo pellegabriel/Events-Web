@@ -77,7 +77,7 @@ export default function EventCard({ event }: IProps | any) {
         ) : (
           <Image
             alt=""
-            src='../../../public/img1.jpg'
+            src='/img1.jpg'
             width={300}
             height={200}
             onError={handleImageError}

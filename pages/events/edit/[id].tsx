@@ -198,7 +198,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                       Actualiza el evento:{' '}
                     </h1>
 
-                    <EventUpdateForm id={event.id} onSubmit={handleSubmit} onSuccess={handleSuccess}
+                    <EventUpdateForm id={event?.id} onSubmit={handleSubmit} onSuccess={handleSuccess}
                   onError={handleError}/>
                     <div className="max-w-xl">
                       <label
