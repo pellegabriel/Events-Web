@@ -23,8 +23,16 @@ a {
     color-scheme: dark;
   }
   body {
+    scale: 0.5;
     color: white;
     background: black;
   }
 }
+@media(
+  (max-width: 600px) {
+    body {
+      scale:0.9;
+    }
+  }
+)
  */

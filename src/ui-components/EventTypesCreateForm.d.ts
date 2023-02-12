@@ -4,56 +4,36 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import * as React from 'react'
-import { EscapeHatchProps } from '@aws-amplify/ui-react/internal'
-import {
-  GridProps,
-  SwitchFieldProps,
-  TextFieldProps,
-} from '@aws-amplify/ui-react'
+import * as React from "react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
-  hasError: boolean
-  errorMessage?: string
-}
-export declare type ValidationFunction<T> = (
-  value: T,
-  validationResponse: ValidationResponse,
-) => ValidationResponse | Promise<ValidationResponse>
+    hasError: boolean;
+    errorMessage?: string;
+};
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type EventTypesCreateFormInputValues = {
-  name?: string
-  enabled?: boolean
-}
+    name?: string;
+    enabled?: boolean;
+};
 export declare type EventTypesCreateFormValidationValues = {
-  name?: ValidationFunction<string>
-  enabled?: ValidationFunction<boolean>
-}
-export declare type FormProps<T> = Partial<T> &
-  React.DOMAttributes<HTMLDivElement>
+    name?: ValidationFunction<string>;
+    enabled?: ValidationFunction<boolean>;
+};
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EventTypesCreateFormOverridesProps = {
-  EventTypesCreateFormGrid?: FormProps<GridProps>
-  name?: FormProps<TextFieldProps>
-  enabled?: FormProps<SwitchFieldProps>
-} & EscapeHatchProps
-export declare type EventTypesCreateFormProps = React.PropsWithChildren<
-  {
-    overrides?: EventTypesCreateFormOverridesProps | undefined | null
-  } & {
-    clearOnSuccess?: boolean
-    onSubmit?: (
-      fields: EventTypesCreateFormInputValues,
-    ) => EventTypesCreateFormInputValues
-    onSuccess?: (fields: EventTypesCreateFormInputValues) => void
-    onError?: (
-      fields: EventTypesCreateFormInputValues,
-      errorMessage: string,
-    ) => void
-    onCancel?: () => void
-    onChange?: (
-      fields: EventTypesCreateFormInputValues,
-    ) => EventTypesCreateFormInputValues
-    onValidate?: EventTypesCreateFormValidationValues
-  } & React.CSSProperties
->
-export default function EventTypesCreateForm(
-  props: EventTypesCreateFormProps,
-): React.ReactElement
+    EventTypesCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    enabled?: PrimitiveOverrideProps<SwitchFieldProps>;
+} & EscapeHatchProps;
+export declare type EventTypesCreateFormProps = React.PropsWithChildren<{
+    overrides?: EventTypesCreateFormOverridesProps | undefined | null;
+} & {
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: EventTypesCreateFormInputValues) => EventTypesCreateFormInputValues;
+    onSuccess?: (fields: EventTypesCreateFormInputValues) => void;
+    onError?: (fields: EventTypesCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: EventTypesCreateFormInputValues) => EventTypesCreateFormInputValues;
+    onValidate?: EventTypesCreateFormValidationValues;
+} & React.CSSProperties>;
+export default function EventTypesCreateForm(props: EventTypesCreateFormProps): React.ReactElement;

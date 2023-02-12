@@ -11,32 +11,6 @@
       "StackId": "arn:aws:cloudformation:us-east-1:261965827529:stack/amplify-weeout-main-161600/7263d5b0-7193-11ed-b282-0af6a3da465d",
       "AmplifyAppId": "d3tpf1tfcuyy4x",
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-weeout-main-161600-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
-    },
-    "categories": {
-      "auth": {
-        "weeout921a0308": {},
-        "userPoolGroups": {}
-      },
-      "storage": {
-        "s3weeout01storage2ebbc512": {}
-      },
-      "function": {
-        "weeout921a0308CreateAuthChallenge": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308CreateAuthChallenge-43503479745236596b4d-build.zip"
-        },
-        "weeout921a0308DefineAuthChallenge": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308DefineAuthChallenge-6465482b653131454865-build.zip"
-        },
-        "weeout921a0308VerifyAuthChallengeResponse": {
-          "deploymentBucketName": "amplify-weeout-main-161600-deployment",
-          "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-3931632b4e2b6b732b4a-build.zip"
-        }
-      },
-      "api": {
-        "weeout": {}
-      }
     }
   }
 }

@@ -58,6 +58,9 @@ export default function EventCard({ event }: IProps | any) {
       }}
       className=" rounded-lg overflow-hidden shadow-xl"
     >
+        <h5 className="text-gray-700 text-base" style={{fontSize: '0.6rem' }}>
+                    Fecha de Inicio: {event.startDate} 
+        </h5>
       <div
         style={{
           display: 'flex',

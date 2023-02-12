@@ -4,8 +4,4 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as studioTheme } from './studioTheme'
-export { default as EventTypesCreateForm } from './EventTypesCreateForm'
-export { default as EventTypesUpdateForm } from './EventTypesUpdateForm'
-export { default as EventCreateForm } from '../components/eventCreateFormEdited/EventCreateForm'
-export { default as EventUpdateForm } from './EventUpdateForm'
+export { default as studioTheme } from "./studioTheme";
