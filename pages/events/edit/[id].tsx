@@ -216,9 +216,14 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                           <input type="file" name="file_upload" onChange={handleImageChange} className="hidden"/>
                       </label>
                   </div>
-                    {image && (
+                  <div style={{
+                    display:'flex', justifyContent:'center', padding:'8px'
+                  }}>
+                  {image && (
                       <Image alt="" src={image} width={100} height={100} />
                     )}
+                    
+                  </div>
                     {/* <input type="file" onChange={handleAudioChange} /> */}
                     <div className="max-w-xl">
                       <label

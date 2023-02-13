@@ -572,7 +572,9 @@ export default function EventUpdateForm(props) {
       </ArrayField>
       <Map map_point={map_point} onDragEnd={handleDragEnd}/>
 
-      <TextField
+      <TextField style={{
+        height:'200px'
+      }}
         label="Descripcion"
         isRequired={false}
         isReadOnly={false}

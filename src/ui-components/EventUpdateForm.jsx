@@ -542,7 +542,9 @@ export default function EventUpdateForm(props) {
           {...getOverrideProps(overrides, 'types')}
         ></TextField>
       </ArrayField>
-      <TextField
+      <TextField style={{
+        height:'200px'
+      }}
         label="Descripcion"
         isRequired={false}
         isReadOnly={false}
