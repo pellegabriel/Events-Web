@@ -9,6 +9,9 @@ import Link from 'next/link'
 import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../../src/graphql/queries'
+import Dropzone from 'react-dropzone-uploader'
+
+
 
 interface IProps {
   event: Event
@@ -238,6 +241,12 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                                   Arrastra el archivo de audio aqui.
                               </span>
                           </span>
+                          {/* <Dropzone
+                      getUploadParams={getUploadParams}
+                      onChangeStatus={handleChangeStatus}
+                      onSubmit={handleSubmit}
+                      accept="image/*,audio/*,video/*"
+                    /> */}
                           <input type="file" name="file_upload" onChange={handleAudioChange} className="hidden"/>
                       </label>
                   </div>
@@ -246,6 +255,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                         <Link href={audio} />
                       </audio>
                     )}
+
                   </div>
                 </div>
               </div>
