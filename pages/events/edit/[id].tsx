@@ -9,9 +9,7 @@ import Link from 'next/link'
 import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { getEvent } from '../../../src/graphql/queries'
-import Dropzone from 'react-dropzone-uploader'
-
-
+import DropZone from '../../../src/components/DropZone/DropZone'
 
 interface IProps {
   event: Event
@@ -53,8 +51,6 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
   const router = useRouter()
   const id = router.query.id as string
   
-  console.log("Aca event vale", {event})
-
   const handleAudioChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0]
     try {
@@ -65,8 +61,8 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
     }
   }
 
-  const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0]
+  const handleImageChange = async (files: File[]) => {
+    const file = files[0]
     try {
       console.log({ file })
       Storage.put(id, file)
@@ -74,6 +70,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
       console.log('Error uploading file: ', error)
     }
   }
+
   const [audio, setAudio] = useState<string>()
   const getUploadedAudio = async () => {
     const file = await Storage.get(`audio/${id}`, {
@@ -201,55 +198,38 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                       Actualiza el evento:{' '}
                     </h1>
 
-                    <EventUpdateForm id={event?.id} onSubmit={handleSubmit} onSuccess={handleSuccess}
-                  onError={handleError}/>
-                    <div className="max-w-xl">
-                      <label
-                          className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-                          <span className="flex items-center space-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
-                                  stroke="currentColor" stroke-width="2">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                              </svg>
-                              <span className="font-medium text-gray-600">
-                                  Suelta la imagen aqui
-                              </span>
-                          </span>
-                          <input type="file" name="file_upload" onChange={handleImageChange} className="hidden"/>
-                      </label>
-                  </div>
-                  <div style={{
-                    display:'flex', justifyContent:'center', padding:'8px'
-                  }}>
-                  {image && (
-                      <Image alt="" src={image} width={100} height={100} />
-                    )}
-                    
-                  </div>
-                    {/* <input type="file" onChange={handleAudioChange} /> */}
-                    <div className="max-w-xl">
-                      <label
-                          className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-                          <span className="flex items-center space-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
-                                  stroke="currentColor" stroke-width="2">
-                                  <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                              </svg>
-                              <span className="font-medium text-gray-600">
-                                  Arrastra el archivo de audio aqui.
-                              </span>
-                          </span>
-                          {/* <Dropzone
-                      getUploadParams={getUploadParams}
-                      onChangeStatus={handleChangeStatus}
+                    <EventUpdateForm
+                      id={event?.id}
                       onSubmit={handleSubmit}
-                      accept="image/*,audio/*,video/*"
-                    /> */}
-                          <input type="file" name="file_upload" onChange={handleAudioChange} className="hidden"/>
-                      </label>
-                  </div>
+                      onSuccess={handleSuccess}
+                      onError={handleError}
+                    />
+
+                    <DropZone handleImageChange={handleImageChange} />
+
+                    <div className="max-w-xl">
+                        <label
+                            className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+                            <span className="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                <span className="font-medium text-gray-600">
+                                    Arrastra el archivo de audio aqui.
+                                </span>
+                            </span>
+                            {/* <Dropzone
+                        getUploadParams={getUploadParams}
+                        onChangeStatus={handleChangeStatus}
+                        onSubmit={handleSubmit}
+                        accept="image/*,audio/*,video/*"
+                      /> */}
+                            <input type="file" name="file_upload" onChange={handleAudioChange} className="hidden"/>
+                        </label>
+                    </div>
+                    
                     {audio && (
                       <audio controls src={audio} style={{width:'550px', padding:'10px'}}>
                         <Link href={audio} />
