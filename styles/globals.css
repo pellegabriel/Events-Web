@@ -23,3 +23,23 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #ba7dc2;
 }
+
+@media (max-width: 600px) {
+
+  #header{display: flex;
+  justify-content: right;}
+  #medio{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+  }
+  #arriba{max-width: 500px;
+  padding-left: 70px;
+  }
+  #abajo{
+    max-width: 500px;
+  }
+  #footer{ width: 600px;
+  align-items: center;}
+  #todo{}  
+}
