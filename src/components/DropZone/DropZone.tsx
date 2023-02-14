@@ -6,7 +6,7 @@ interface DropzoneTypes {
   handleImageChange: (files: File[]) => void
 }
 
-function Dropzone({ handleImageChange }: DropzoneTypes) {
+function DropZone({ handleImageChange }: DropzoneTypes) {
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles: any)  => {
@@ -66,4 +66,4 @@ function Dropzone({ handleImageChange }: DropzoneTypes) {
   )
 }
 
-export default Dropzone
+export default DropZone
