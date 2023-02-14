@@ -112,7 +112,10 @@ function Profile({ events = [], signOut, filters }: IProps) {
 
   const handleSuccess = (newEvent: Event) => {
     console.log('ASDASD', { newEvent })
-    router.push(`/events/edit/${newEvent.id}`)
+    router.push({
+      pathname:`/events/edit/${newEvent.id}`,
+      query: {eventTitle: newEvent.name} 
+    })
   }
   const handleError = (_event: EventCreateFormInputValues, message: string) => {
     setError(message)
@@ -120,7 +123,7 @@ function Profile({ events = [], signOut, filters }: IProps) {
   }
   const handleSubmit = (event: EventCreateFormInputValues) => {
     setLoading(true)
-
+    console.log(event)
     return {
       ...event,
       ...{

@@ -5,6 +5,7 @@
  **************************************************************************/
 
 /* eslint-disable */
+import { useRouter } from 'next/router'
 import Map from '../../../pages/map/userMarker'
 
 import * as React from 'react'
@@ -169,6 +170,8 @@ export default function EventUpdateForm(props) {
     overrides,
     ...rest
   } = props
+  const router = useRouter()
+  const eventTitle = router.query.eventTitle
   const { tokens } = useTheme()
   const initialValues = {
     name: undefined,
@@ -339,7 +342,7 @@ export default function EventUpdateForm(props) {
         label="Titulo"
         isRequired={true}
         isReadOnly={false}
-        defaultValue={name}
+        defaultValue={eventTitle}
         onChange={(e) => {
           let { value } = e.target
           if (onChange) {

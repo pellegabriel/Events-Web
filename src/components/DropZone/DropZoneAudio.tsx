@@ -41,6 +41,7 @@ function DropZoneAudio({ handleAudioChange }: DropzoneTypes) {
 
   return (
     <div
+     className="max-w-xl"
       {...getRootProps()}
       style={{
         marginBottom: '20px',
