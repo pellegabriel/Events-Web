@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Event } from '../../../src/models'
+import { Event, EventTypes } from '../../../src/models'
 import Image from 'next/image'
 import { Storage, withSSRContext } from 'aws-amplify'
 import svg4 from '../../../public/svg4.svg'
@@ -8,11 +8,13 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
 import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { getEvent } from '../../../src/graphql/queries'
+import { getEvent, getEventTypes } from '../../../src/graphql/queries'
 import DropZone from '../../../src/components/DropZone/DropZone'
 import DropZoneAudio from '../../../src/components/DropZone/DropZoneAudio'
 
+
 interface IProps {
+  eventOptions : Array<EventTypes>
   event: Event
   signOut: () => void
   user: Record<string, any>
@@ -23,6 +25,7 @@ export async function getServerSideProps({ req, query }: any) {
   const SSR = withSSRContext({ req })
   const id = query.id as string
   const renderedAt = new Date()
+
   const formattedBuildDate = renderedAt.toLocaleDateString('en-US', {
     dateStyle: 'long',
   })
@@ -34,9 +37,13 @@ export async function getServerSideProps({ req, query }: any) {
       query: getEvent,
       variables: { id: id },
     })
+    const eventTypeOptions = await SSR.API.graphql({
+      query: getEventTypes,
+    })
     return {
       props: {
         event: response.data.getEvent,
+        eventOptions: eventTypeOptions.data.getEventTypes,
         renderedAt: `${formattedBuildDate} at ${formattedBuildTime}`,
       },
     }
@@ -50,7 +57,7 @@ export async function getServerSideProps({ req, query }: any) {
 
 
 
-function Id({ event, signOut, user, renderedAt }: IProps) {
+function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const router = useRouter()
   const eventTitle = router.query.eventTitle
   const id = router.query.id as string
@@ -210,6 +217,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                       onSubmit={handleSubmit}
                       onSuccess={handleSuccess}
                       onError={handleError}
+                      eventTypesOptions={eventOptions}
                     />
                     <DropZone handleImageChange={handleImageChange} />
 

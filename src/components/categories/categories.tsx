@@ -6,7 +6,6 @@ export default function CategoriesList() {
   const img1 = '/img1.jpg'
   const categories = [
     { title: 'teatro', img: img1 },
-    { title: 'deportivo', img: img1 },
     { title: 'Musica', img: img1 },
     { title: 'Actividades sociales', img: img1 },
     { title: 'Baile', img: img1 },

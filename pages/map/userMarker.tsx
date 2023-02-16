@@ -73,13 +73,17 @@ function UserMarker({ map_point, center, zoom, onDragEnd }: IProps) {
 
   return isLoaded ? (
     <div>
+      <div className='pt-8 pb-4' >
       <input
         id="address" 
         placeholder='Ingrese la direccion' 
         value={inputText}
         onChange={(e) => {
           setInputText(e.target.value)}}
+          style={{borderWidth:'1px', borderColor:'black'}}
+
       />
+      </div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center || defaultCenter}

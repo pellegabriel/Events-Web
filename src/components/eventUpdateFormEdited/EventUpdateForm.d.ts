@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from 'react'
-import { Event } from '../../models'
+import { Event, EventTypes } from '../../models'
 import { EscapeHatchProps } from '@aws-amplify/ui-react/internal'
 import {
   GridProps,
@@ -59,6 +59,7 @@ export declare type EventUpdateFormProps = React.PropsWithChildren<
   } & {
     id?: string
     event?: Event
+    eventTypesOptions?:Array<EventTypes>
     onSubmit?: (
       fields: EventUpdateFormInputValues,
     ) => EventUpdateFormInputValues

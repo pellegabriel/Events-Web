@@ -7,7 +7,7 @@
 /* eslint-disable */
 import { useRouter } from 'next/router'
 import Map from '../../../pages/map/userMarker'
-
+import Select from 'react-select'
 import * as React from 'react'
 import { fetchByPath, validateField } from '../../ui-components/utils'
 import { Event } from '../../models'
@@ -173,6 +173,7 @@ export default function EventUpdateForm(props) {
   const router = useRouter()
   const eventTitle = router.query.eventTitle
   const { tokens } = useTheme()
+  const { eventTypesOptions = [] } = rest
   const initialValues = {
     name: undefined,
     subTitulo: undefined,
@@ -547,18 +548,18 @@ export default function EventUpdateForm(props) {
           setCurrentTypesValue(undefined)
         }}
         currentFieldValue={currentTypesValue}
-        label={'Tipo de evento'}
         items={types}
         hasError={errors.types?.hasError}
         setFieldValue={setCurrentTypesValue}
         inputFieldRef={typesRef}
         defaultFieldValue={undefined}
       >
-        <TextField
+        <Select
           label="Tipo de evento"
           isRequired={false}
           isReadOnly={false}
           value={currentTypesValue}
+          options={eventTypesOptions}
           onChange={(e) => {
             let { value } = e.target
             if (errors.types?.hasError) {
@@ -571,7 +572,7 @@ export default function EventUpdateForm(props) {
           hasError={errors.types?.hasError}
           ref={typesRef}
           {...getOverrideProps(overrides, 'types')}
-        ></TextField>
+        />
       </ArrayField>
       <Map map_point={map_point} onDragEnd={handleDragEnd}/>
 
