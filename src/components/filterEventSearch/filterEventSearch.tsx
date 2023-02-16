@@ -21,7 +21,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
   }
 
   return (
-    <div className=" border border-gray-300 w-6/6 rounded-lg p-8 hover:bg-black  flex justify-center" style={{padding:'8px', marginBottom:'100px',background:'#2596be',borderRadius:'10px' ,  color:'white', }}>
+    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#e60c60',borderRadius:'10px' ,  color:'black', }}>
       <div className="mb-10  p-8" style={{ maxWidth: '700px' }}>
         <div className="flex flex-col py-1 p-8 ">
           <h2 className="font-medium text-sm text-stone-600 text-lg">Fecha inicio: </h2>
@@ -48,7 +48,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
           />
           
           <Image alt="" src={svg5} width={500} height={500} />
-          <h2 className="font-medium text-sm text-stone-600 text-lg">Filtra entre los eventos existentes para encontrar el que mas te guste.</h2>
+          <h2 style={{color: 'white'}} className="font-medium text-sm text-stone-600 text-lg">Filtra entre los eventos existentes para encontrar el que mas te guste.</h2>
 
         </div>
       </div>

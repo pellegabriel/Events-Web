@@ -26,7 +26,7 @@ export default function EventsUser({
   }
 
   return (
-    <div className="flex border border-gray-300 w-6/6 rounded-lg p-8   "style={{padding:'8px', marginBottom:'100px',background:'#2596be',borderRadius:'10px' ,  color:'white', }}>
+    <div className="flex border  w-6/6 rounded-lg p-8   "style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#e60c60',borderRadius:'10px' ,  color:'white', }}>
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-6 p-8 ">
           <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>

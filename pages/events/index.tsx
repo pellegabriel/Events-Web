@@ -62,6 +62,7 @@ export default function Events({ events = [] }: IProps) {
   const { categoryTitle } = router.query
 
   return (
+    <>
     <div
       style={{
         display: 'flex',
@@ -76,13 +77,13 @@ export default function Events({ events = [] }: IProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
+      <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'black'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
               <div className="flex text-2xl pl-2">
                 <div className="em em-grinning"></div>
-                Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
+                <div className='text-5xl font-extrabold' style={{color:'#e40661'}}>Weeout</div>
               </div>
             </div>
           </div>
@@ -91,15 +92,26 @@ export default function Events({ events = [] }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/aboutUs"
-                  style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                  style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                  >
                   Mas sobre nosotros
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/profile"
-                  style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                  style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                  >
                   Empieza ahora
+                </Link>
+                
+              </li>
+              <li className="mr-3">
+                <Link
+                  href="/"
+                 style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                  >
+                  Pagina principal
                 </Link>
               </li>
             </ul>
@@ -131,6 +143,23 @@ export default function Events({ events = [] }: IProps) {
           </div>
         </div>
       </div>
+      
     </div>
+     <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+     <span className="text-sm text-white sm:text-center dark:text-gray-400">
+       © 2022. All Rights Reserved.
+     </span>
+     <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+       <li>
+         <Link
+           href="/aboutUs"
+           className="mr-8  hover:text-yellow-500 md:mr-6 text-1xl text-white"
+         >
+           Sobre nosotros
+         </Link>
+       </li>
+     </ul>
+   </footer>
+   </>
   )
 }

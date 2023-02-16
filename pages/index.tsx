@@ -111,26 +111,24 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           flexDirection: 'column',
           alignItems: 'center',
         }}
-        className=" bg-white  pt-40"
+        className=" bg-white"
       >
         
 
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
+        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'black'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-              <div className="text-white no-underline hover:text-white hover:no-underline">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
+                  <div className='text-5xl font-extrabold' style={{color:'#e40661'}}>Weeout</div>
                 </div>
-              </div>
             </div>
             <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
               <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                    style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"
+                    style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -138,7 +136,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-white-500 hover:border-transparent rounded flex items-center justify-center"                  >
+                    style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"                  >
                     Tu perfil
                   </Link>
                 </li>
@@ -161,7 +159,9 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
+          <div style={{borderWidth:'3px', borderColor:'black', borderRadius:'30px'}}>
           <Map events={events} />
+          </div>
         </div>
 
         <article id='abajo' className="grid gap-2 max-w-[1370px]" style={{marginTop: '100px'}}>
@@ -180,7 +180,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           </section>
         </article>
       </div>
-      <footer style={{background:'#2596be'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>

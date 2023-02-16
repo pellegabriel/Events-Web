@@ -129,13 +129,13 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#2596be'}}>
+      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'black'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
               <div className="flex text-2xl pl-2">
                 <div className="em em-grinning"></div>
-                Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
+                <div className='text-5xl font-extrabold' style={{color:'#e40661'}}>Weeout</div>
               </div>
             </div>
           </div>
@@ -144,14 +144,16 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                 >
                   Volver a Usuario
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                 >
                   Pagina principal
                 </Link>
               </li>
@@ -159,7 +161,8 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
+                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                   onClick={signOut}
                 >
                   Cerrar sesion
                 </Link>
@@ -169,14 +172,12 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
         </div>
       </nav>
 
-      <div className="h-full p-8 flex items-center justify-center " style={{background:'#ba7dc2'}}>
-        <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 ">
+      <div className="h-full p-8 flex items-center justify-center " style={{background:'#9219b4'}}>
+        <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " style={{borderWidth:'3px', borderColor:'black'}}>
           {' '}
           <div className="">
-            <div className="">
-              <div className=" flex ">
-              
-              </div>
+            <div >
+             
               <div className="p-8 mx-20 flex flex-col items-center justify-center">
                 <h3 className="text-4xl text-slate-700 font-bold leading-normal mb-1">
                   Buenisimo {user.username} !
@@ -186,6 +187,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
                   Fecha de la actualizacion: {renderedAt}
                 </div>
                 <Image
+                style={{ background: '#c257eb', borderRadius:'30px' ,borderWidth:'3px', borderColor:'black'}}
                     alt=""
                     src={svg4}
                     className=""
@@ -246,7 +248,7 @@ function Id({ event, signOut, user, renderedAt }: IProps) {
         </div>
       </div>
 
-      <footer style={{background:'#2596be'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'black'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
