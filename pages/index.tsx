@@ -145,7 +145,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           </div>
         </nav>
 
-        <div id='arriba'>
+        <div id='arriba' className='pt-28'>
           <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-base bg-gray-800 p-2' style={{ fontSize: '25px' ,borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>En este momento</h2>
           <EventsNowList events={[]} filters={filters} />
        
