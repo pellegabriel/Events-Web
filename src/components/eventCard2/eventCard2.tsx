@@ -22,7 +22,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {width:'800px'   ,backgroundColor: isHover ? '#ba7dc2'  : '#2596be',
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#ba7dc2'  : '#2596be',
 }
   const getUploadedImage = async () => {
     try {
@@ -59,19 +59,22 @@ export default function EventCard2({ event }: IProps | any) {
 
   return (
     <div style={{flexDirection:'column', marginTop:'15px'}}>
-    <div  style={{color:'black', display:'flex', justifyContent:'start'}}>
-                    Fecha de Inicio: {startDate}
-    </div>
+   
     <div
-      className="flex rounded-lg mt-1 object-cover shadow-xl group-hover:opacity-75"
+      className="flex rounded-lg p-4 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
       style={boxStyle}
           onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+      
     >
 
-      <div className="group">
+      <div className="group" style={{minWidth:'300px'}}>
+        <div  style={{color:'black', display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
+                    Fecha de Inicio: {startDate}
+         </div>
         <div className="flex flex-col ">
+        
           {image && !error ? (
             <Image
               className=" p-4 "
@@ -93,26 +96,30 @@ export default function EventCard2({ event }: IProps | any) {
             />
           )}
            {audio && (
-                <audio style={{marginBottom:'10px' ,maxWidth:'400px',padding:'10px', }} controls src={audio}>
+                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
                   <Link href={audio} />
                 </audio>
               )}
         </div>
       </div>
-      <div className=" flex justify-center items-center pl-15 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
+      <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 " >
         <div className="sm:col-span-2">
-          <div className="mt-2">
-            <div className="group">
-              <h4 className="text-lg leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">
+          <div className="mt-3">
+            <div className="group mb-2">
+              <h4 className="text-2xl leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">
                 {event.name}
               </h4>
-            
+              <h5 className='text-md leading-6 font-sans '>
+                Sub Titulo
+              </h5>
             </div>
 
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
-              {event.descripcion}
+              {event.descripcion} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem corrupti, assumenda modi laboriosam quod nostrum hic explicabo iusto fuga nisi doloribus veniam ratione repellat magni maxime! Magni perspiciatis excepturi incidunt.
             </p>
-
+            <div  style={{color:'black', display:'flex', justifyContent:'start', marginTop:'20px'}}>
+                    Finaliza: {endDate}
+         </div>
           </div>
         </div>
         

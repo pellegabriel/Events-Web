@@ -26,7 +26,7 @@ export default function EventsUser({
   }
 
   return (
-    <div className="flex border  w-6/6 rounded-lg p-8   "style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#e60c60',borderRadius:'10px' ,  color:'white', }}>
+    <div className="flex border  w-6/6 rounded-lg p-8   "style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#e60c60',borderRadius:'10px' }}>
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-6 p-8 ">
           <h2 className="font-medium text-sm text-stone-600">Fecha inicio: </h2>
@@ -57,9 +57,9 @@ export default function EventsUser({
         </div>
       </div>
 
-      <div className="flex justify-center"style={{background:'white',
-      padding: '48px', borderRadius:'10px'}}>
-        <div className="justify-center">
+      <div style={{background:'white',
+      padding: '48px', borderRadius:'10px', maxWidth:'800px'}}>
+        <div className="">
           <div className="text-xl font-medium mb-12 border-b border-gray-300 ">
             <h5 className="py-1 mb-1" style={{color:'black'}}>
               Cantidad de eventos disponibles: {events.length}
@@ -74,7 +74,7 @@ export default function EventsUser({
         overflow: 'auto',
       }}
     >
-          <div className="">
+          <div>
             {events.map((event: any) => {
               return (
                 <Link href={`/events/edit/${event.id}`} key={event.id}>
