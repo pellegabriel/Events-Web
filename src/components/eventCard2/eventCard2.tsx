@@ -58,13 +58,18 @@ export default function EventCard2({ event }: IProps | any) {
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
   return (
+    <div style={{flexDirection:'column', marginTop:'15px'}}>
+    <div  style={{color:'black', display:'flex', justifyContent:'start'}}>
+                    Fecha de Inicio: {startDate}
+    </div>
     <div
-      className="flex rounded-lg mt-8 object-cover shadow-xl group-hover:opacity-75"
+      className="flex rounded-lg mt-1 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
       style={boxStyle}
           onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
     >
+
       <div className="group">
         <div className="flex flex-col ">
           {image && !error ? (
@@ -108,21 +113,11 @@ export default function EventCard2({ event }: IProps | any) {
               {event.descripcion}
             </p>
 
-            <div className="mt-3 flex items-center font-sans">
-              <div className="ml-3">
-                <div className="flex space-x-1 text-sm text-skin-muted">
-                  <div className="text-gray-700 text-base">
-                    Fecha de Inicio: {startDate} <br />
-                    Fecha de cierre: {endDate}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         
       </div>
-     
+      </div>
     </div>
   )
 }
