@@ -153,8 +153,10 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
 
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
-          <div>
-            <h2 className='px-8 text-white bg-gray-600 rounded dark:bg-gray-500 text-xl bg-gray-800 p-2' style={{  fontSize: '25px', marginLeft: '18px', maxWidth: '895px', borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
+          <div style={{margin:'0 18px'}}>
+            <h2 className='px-8 text-white bg-gray-600 dark:bg-gray-500 text-xl bg-gray-800 p-2' 
+                style={{  fontSize: '25px', minWidth: '400px',
+                maxWidth:'960px', borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
               Estos eventos comienzan pronto
             </h2>
             <ScrollEvent events={scrollEvents} />
@@ -170,12 +172,10 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
           </h1>
 
           <section className="">
-
             <EventsSearch
               events={events}
               filters={filters}
               updateFilters={handleChange}
-              
             />
           </section>
         </article>

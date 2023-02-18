@@ -3,12 +3,15 @@ import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import Link from 'next/link'
+import parseDate from '../../helperFunctions/parseDate'
 
 interface IProps {
   event: Event
 }
 
 export default function EventCard({ event }: IProps | any) {
+  const startDate = event.startDate ? parseDate(event.startDate) : ''
+
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
@@ -43,21 +46,25 @@ export default function EventCard({ event }: IProps | any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(event.types)
+  const backgroundColors = ['magenta', 'blue', 'yellow']
+  const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
 
   return (
     <div
       style={{
         margin: '20px',
         display: 'flex',
-        minHeight: '324px',
+        minHeight: '365px',
         maxWidth: '270px',
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        background: '#F4F6F6 ',
+        background: randomColor,
       }}
       className=" rounded-lg overflow-hidden shadow-xl"
     >
+      <h2 className='text-lg flex justify-center' style={{color:'white', backgroundColor:'black', padding: '8px'}}>
+        Inicia: {startDate}
+      </h2>
+
       <div
         style={{
           display: 'flex',
@@ -87,26 +94,28 @@ export default function EventCard({ event }: IProps | any) {
 
         <h2
           className="font-bold text-xl mb-2"
-          style={{ marginLeft: '16px', marginTop: '16px' }}
+          style={{ margin: '8px' }}
         >
           {' '}
           {event.name}
         </h2>
       </div>
 
-      {event.types.length > 0 && (
-        <div style={{ display: 'flex', width: '100%', overflow: 'auto' }}>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
-            {event.types}
-          </span>
-        </div>
-      )}
+        {event.types.length > 0 && (
+          <div style={{ display: 'flex', width: '100%', overflow: 'auto', padding: '8px' }}>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+              {event.types}
+            </span>
+          </div>
+        )}
 
-      {audio && (
-        <audio controls src={audio}>
-          <Link href={audio} />
-        </audio>
-      )}
+        {audio && (
+          <div style={{ display: 'flex', marginTop: 'auto', padding: '8px' }}>
+            <audio controls src={audio} style={{ height: '35px' }}>
+              <Link href={audio} />
+            </audio>
+          </div>
+        )}
     </div>
   )
 }

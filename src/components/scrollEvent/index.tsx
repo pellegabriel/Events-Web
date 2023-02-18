@@ -8,13 +8,14 @@ interface IProps {
 }
 
 export default function ScrollEvent({ events }: IProps) {
+
   return (
     <div
-      className="flex flex-wrap overflow-auto "
+      className="flex flex-wrap overflow-auto justify-center"
       style={{
-        width: '960px',
+        minWidth: '400px',
+        maxWidth:'960px',
         height: '730px',
-        marginRight: '30px',
         overflow: 'auto',
       }}
     >
