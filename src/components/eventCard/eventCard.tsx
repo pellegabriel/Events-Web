@@ -46,22 +46,37 @@ export default function EventCard({ event }: IProps | any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const backgroundColors = ['magenta', 'blue', 'yellow']
-  const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
+  // const backgroundColors = ['#EFE371', '#ba7dc2', 'yellow']
+  // const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
+  const [isHover, setIsHover] = useState(false);
 
+  const handleMouseEnter = () => {
+     setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+     setIsHover(false);
+  };
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#EFE371' : '#ba7dc2',minHeight: '365px'
+}
   return (
+  
     <div
+    
       style={{
         margin: '20px',
         display: 'flex',
         minHeight: '365px',
         maxWidth: '270px',
         flexDirection: 'column',
-        background: randomColor,
+        // background: randomColor,
       }}
       className=" rounded-lg overflow-hidden shadow-xl"
     >
-      <h2 className='text-lg flex justify-center' style={{color:'white', backgroundColor:'black', padding: '8px'}}>
+        <div style={boxStyle}
+    onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+>
+      <h2 className='text-lg flex justify-center font-extrabold' style={{color:'white', backgroundColor:'black', padding: '8px'}}>
         Inicia: {startDate}
       </h2>
 
@@ -93,7 +108,7 @@ export default function EventCard({ event }: IProps | any) {
         )}
 
         <h2
-          className="font-bold text-xl mb-2"
+          className="font-extrabold text-xl mb-2"
           style={{ margin: '8px' }}
         >
           {' '}
@@ -117,5 +132,6 @@ export default function EventCard({ event }: IProps | any) {
           </div>
         )}
     </div>
+    </div>      
   )
 }

@@ -31,11 +31,12 @@ export default function CategoriesList() {
   }
 
   return (
-    <div><h1 className='px-8 text-white bg-gray-800 rounded dark:bg-gray-500 text-xl  p-2' style={{ maxWidth: '300px', margin: '10px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
+    <div style={{marginLeft:'10px',}}><h1 className='px-8 text-white bg-black rounded dark:bg-gray-500 text-xl font-extrabold  p-2' style={{ maxWidth: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
       className="flex justify-center flex-col shadow-xl "
       style={{
-        marginRight: '20px',
-        background:'#292929', borderRadius: '10px', margin: '10px'
+       borderBottomLeftRadius:'10PX',
+        borderBottomRightRadius:'10PX'
+        
       }}
     >
 
@@ -44,19 +45,19 @@ export default function CategoriesList() {
           overflow: 'auto',
           display: 'flex',
           width: '230px',
-          height: '600px',
-          marginTop: '20px',
+          height: '600px'
           
         }}
         className="flex flex-col overflow-auto "
       >
         {categories.map(({ title, img }, index) => {
           return (
+            <div style={{borderWidth:'3px',maxWidth: '200px' , borderColor:'black',margin: '2px', marginBottom: '25px'}}>
             <button
-              className='shadow-xl '
+              className='shadow-xl font-extrabold '
               key={index}
               onClick={() => navigateToCategory(title)}
-              style={{ margin: '2px', maxWidth: '200px', background: '#cacaca ', color: 'white', marginBottom: '10px' }}
+              style={{ maxWidth: '200px', background: '#FF0062 ', color: 'white' }}
             >
               <Image
                 alt=""
@@ -64,8 +65,9 @@ export default function CategoriesList() {
                 width={200}
                 height={200}
                 style={{ width: '200px', height: '120px' }} />
-              <div style={{ maxWidth: '50%' }}>{title}</div>
+              <div style={{ maxWidth: '50%' , minHeight:'50px'}} className='flex items-center ml-4'> {title}</div>
             </button>
+            </div>
           )
         })}
       </div>

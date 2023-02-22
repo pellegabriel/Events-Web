@@ -278,6 +278,7 @@ export default function EventUpdateForm(props) {
     }
     setMap_point(value)
   }
+  const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
 
   return (
     <Grid
@@ -559,7 +560,7 @@ export default function EventUpdateForm(props) {
           isRequired={false}
           isReadOnly={false}
           value={currentTypesValue}
-          options={eventTypesOptions}
+          options={typesOptions}
           onChange={(e) => {
             let { value } = e.target
             if (errors.types?.hasError) {

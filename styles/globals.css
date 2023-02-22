@@ -9,19 +9,19 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #ba7dc2;
+  box-shadow: inset 0 0 5px #FF0062;
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ba7dc2;
+  background: #FF0062;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ba7dc2;
+  background: #FF0062;
 }
 
 @media (max-width: 600px) {

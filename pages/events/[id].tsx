@@ -81,31 +81,29 @@ export default function Id({ event, center }: IProps | any) {
 
   return (
     <>
-    
-      <div className="\ flex  items-center " >
-        <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
+          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-              <div className="text-white no-underline hover:text-white hover:no-underline">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
+                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
                 </div>
-              </div>
             </div>
             <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
               <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
                 <li className="mr-3">
                   <Link
                     href="/"
-                   style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                     >
                     Pagina principal
                   </Link>
                 </li>
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   >
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+ >
                     Empieza ahora
                   </Link>
                 </li>
@@ -118,33 +116,33 @@ export default function Id({ event, center }: IProps | any) {
                   alignItems:'center',
                     justifyContent:'center',
                     marginTop:'5rem',
-                    background:'#ba7dc2'}}
+                    background:'white'}}
+                    
                     >
-      <h2 className="mx-auto rounded-lg shadow-xl tracking-tight text-center p-8 dark:text-black xl:font-serif text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center p-8 dark:text-black  text-5xl mb-4 w-full">
           {event.name}
+        </h2>
+        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  ">
+                      {event.subtitle}Sub Titulo
+                    </h3>
+        <h2 className="max-w-3xl mx-auto  text-xl text-center">
+          Usuario que posteo el evento:
+        </h2>
+        <h2 className="max-w-3xl mx-auto text-xl text-center">
+          {event.user}
         </h2>
         <div style={{display:'flex',
                     flexDirection:'row'}}>
-       <div className="mx-auto rounded-xl flex justify-content">
+       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'black', borderRadius:'30px', height:'740px'}}>
           <Map events={[event]} center={mapCenter} zoom={15} />
         </div>
 
-      <div className="flex flex-col justify-center items-center  p-10" style={{ background:'#ba7dc2', color:'white'
+      <div className="flex flex-col justify-center items-center  p-10" style={{ color:'white'
       }}>
-        
-        <h2 className="max-w-3xl mx-auto  text-xl text-center font-serif ">
-          Usuario que posteo el evento:
-        </h2>
-        <h2 className="max-w-3xl mx-auto text-xl text-center font-serif ">
-          {event.user}
-        </h2>
         <div className="flex justify-center items-center">
-     
-
           <section
             className="flex w-6/6 rounded-lg  "
             style={{
-              background:'#ba7dc2',
               maxWidth: '600px',
               minHeight: '500px',
             }}
@@ -158,6 +156,7 @@ export default function Id({ event, center }: IProps | any) {
                     width={500}
                     height={500}
                     className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    style={{borderWidth:'3px', borderColor:'black'}}
                   />
                 ) : (
                   <Image
@@ -167,18 +166,20 @@ export default function Id({ event, center }: IProps | any) {
                     height={700}
                     onError={handleImageError}
                     className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    style={{borderWidth:'3px', borderColor:'black'}}
                   />
                 )}
               </div>
               <div>
                 <div className="flex flex-col lg:items-center">
                   <div className="lg:col-start-2">
-                    <h3 className="text-2xl font-bold tracking-tight sm:text-3xl font-serif ">
-                      {event.subtitle}
-                    </h3>
-                    <p className="mt-3 text-lg font-serif " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
-                      {event.descripcion}
+        
+                    <p className="mt-3 text-lg  " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
+                      {event.descripcion} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt cum esse distinctio temporibus minima, at fugit alias quos amet vero inventore, consectetur, molestiae consequuntur? Et quaerat possimus explicabo dolore maxime!
                     </p>
+                    <h3 className='font-extrabold' style={{color:'black', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} <br />
+                        al <br />{endDate}
+                        </h3>
                     <div className="mt-12 space-y-12">
                       <div className="flex">
                         <div className="flex-shrink-0"></div>
@@ -188,15 +189,21 @@ export default function Id({ event, center }: IProps | any) {
                               <Link href={audio} />
                             </audio>
                           )}
-                        </div>
+                        </div>                        
                       </div>
-
                       <div className="flex">
                         <div className="ml-4">
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                            {event.types}
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                            {event.types} 
+                          </span>
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                            {event.types} 
+                          </span>
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                            {event.types} 
                           </span>
                         </div>
+         
                       </div>
                     </div>
                   </div>
@@ -208,7 +215,7 @@ export default function Id({ event, center }: IProps | any) {
         </div>
       </div>
       </div>
-      <div className='flex flex-col'>
+      <div className='flex pr-20'>
       <Image
                     alt=""
                     src={svg6}
@@ -216,12 +223,11 @@ export default function Id({ event, center }: IProps | any) {
                     height={700}
                     className="mx-auto"
                   />
-        <h1 className="mt-10 text-xl text-slate-500 font-bold leading-normal mb-1 flex justify-center items-center" style={{maxWidth:'500px', marginLeft:'100px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
+        <h1 className="mt-5 mb-10 text-xl text-black font-extrabold leading-normal flex justify-center items-center" style={{maxWidth:'400px', marginLeft:'50px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
       </div> 
       </div>
-      </div>
       
-      <footer style={{background:'#2596be'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -229,8 +235,8 @@ export default function Id({ event, center }: IProps | any) {
           <li>
             <Link
               href="/aboutUs"
-              className="mr-8  hover:text-yellow-500 md:mr-6 text-1xl text-white"
-            >
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              >
               Sobre nosotros
             </Link>
           </li>

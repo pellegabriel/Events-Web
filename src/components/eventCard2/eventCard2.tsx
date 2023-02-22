@@ -22,7 +22,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#ba7dc2'  : '#2596be',
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#ba7dc2'  : '#EFE371',
 }
   const getUploadedImage = async () => {
     try {
@@ -69,7 +69,7 @@ export default function EventCard2({ event }: IProps | any) {
       
     >
 
-      <div className="group" style={{minWidth:'300px'}}>
+      <div className="group font-extrabold" style={{minWidth:'300px'}}>
         <div  style={{color:'black', display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
                     Fecha de Inicio: {startDate}
          </div>
@@ -106,10 +106,10 @@ export default function EventCard2({ event }: IProps | any) {
         <div className="sm:col-span-2">
           <div className="mt-3">
             <div className="group mb-2">
-              <h4 className="text-2xl leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">
+              <h4 className=" font-extrabold text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
                 {event.name}
               </h4>
-              <h5 className='text-md leading-6 font-sans '>
+              <h5 className='text-md font-bold leading-6 font-sans '>
                 Sub Titulo
               </h5>
             </div>

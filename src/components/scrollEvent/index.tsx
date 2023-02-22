@@ -17,6 +17,9 @@ export default function ScrollEvent({ events }: IProps) {
         maxWidth:'960px',
         height: '730px',
         overflow: 'auto',
+        borderBottomLeftRadius:'10PX',
+        borderBottomRightRadius:'10PX'
+        ,borderWidth:'3px',
       }}
     >
       {events.map((event, index) => {

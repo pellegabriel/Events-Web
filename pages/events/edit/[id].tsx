@@ -8,7 +8,7 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
 import EventUpdateForm, { EventUpdateFormInputValues } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { getEvent, getEventTypes } from '../../../src/graphql/queries'
+import { getEvent, listEventTypes } from '../../../src/graphql/queries'
 import DropZone from '../../../src/components/DropZone/DropZone'
 import DropZoneAudio from '../../../src/components/DropZone/DropZoneAudio'
 
@@ -38,15 +38,15 @@ export async function getServerSideProps({ req, query }: any) {
       variables: { id: id },
     })
     const eventTypeOptions = await SSR.API.graphql({
-      query: getEventTypes,
+      query: listEventTypes,
     })
     return {
       props: {
         event: response.data.getEvent,
-        eventOptions: eventTypeOptions.data.getEventTypes,
+        eventOptions: eventTypeOptions.data.listEventTypes.items,
         renderedAt: `${formattedBuildDate} at ${formattedBuildTime}`,
       },
-    }
+    }//cambiar por listEventTypes
   } catch (err) {
     console.log(err)
     return {
@@ -136,13 +136,13 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'black'}}>
+      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
               <div className="flex text-2xl pl-2">
                 <div className="em em-grinning"></div>
-                <div className='text-5xl font-extrabold' style={{color:'#e40661'}}>Weeout</div>
+                <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
                  >
                   Volver a Usuario
                 </Link>
@@ -159,7 +159,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
                  >
                   Pagina principal
                 </Link>
@@ -168,7 +168,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                          style={{background:'#e60c60'}} className=" text-white font-semibold   py-2 px-4 border border-transparent hover:border-black hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
                    onClick={signOut}
                 >
                   Cerrar sesion
@@ -179,36 +179,34 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </nav>
 
-      <div className="h-full p-8 flex items-center justify-center " style={{background:'#9219b4'}}>
+      <div className="h-full p-8 flex items-center justify-center " >
         <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " style={{borderWidth:'3px', borderColor:'black'}}>
           {' '}
           <div className="">
             <div >
              
               <div className="p-8 mx-20 flex flex-col items-center justify-center">
-                <h3 className="text-4xl text-slate-700 font-bold leading-normal mb-1">
+                <h3 className="text-4xl text-black font-extrabold leading-normal mb-1 ">
                   Buenisimo {user.username} !
                 </h3>
-                <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-                  <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>
-                  Fecha de la actualizacion: {renderedAt}
+                <div className="text-xs mt-4 mb-10 text-slate-400 font-extrabold " style={{display:'flex', justifyContent:'center',alignItems:'center', flexDirection:'column'}}>
+                  <h2 className="mr-2 text-slate-500 opacity-85 text-xl font-extrabold">El evento ya fue creado</h2>
+                  <h2 className="mr-2 text-slate-500 opacity-85 text-xl font-extrabold"> ahora solo  falta que termines de  rellenarlo
+                   <br/> para poder compartirlo con todo el mundo!</h2>
+                  
                 </div>
                 <Image
-                style={{ background: '#c257eb', borderRadius:'30px' ,borderWidth:'3px', borderColor:'black'}}
+                style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'black'}}
                     alt=""
                     src={svg4}
                     className=""
                   />
-                  <div className="text-xs mt-0 mb-2 text-slate-400 font-bold ">
-                  <h2 className="mr-2 text-slate-500 opacity-85 text-lg ">El evento ya fue creado, ahora solo  falta que termines de  rellenarlo
-                   <br/> para poder compartirlo con todo el mundo!
-                  </h2>
-                </div>
+                
               </div>
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
                 <div className=" overflow-hidden flex items-center justify-center">
                   <div className="mt- mb-8 grid-cols-1 p-10">
-                    <h1 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
+                    <h1 className="text-2xl text-black font-bold leading-normal mb-1">
                       Actualiza el evento:{' '}
                     </h1>
 
@@ -220,7 +218,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
                       eventTypesOptions={eventOptions}
                     />
                     <DropZone handleImageChange={handleImageChange} />
-
+                    <br />
                     <DropZoneAudio handleAudioChange={handleAudioChange} />
                     {/* <div className="max-w-xl">
                         <label
@@ -256,7 +254,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </div>
 
-      <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'black'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -264,8 +262,8 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              className="mr-8  hover:text-yellow-500 md:mr-6 text-1xl text-white"
-            >
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              >
               Sobre nosotros
             </Link>
           </li>

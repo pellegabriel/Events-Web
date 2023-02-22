@@ -3,13 +3,13 @@ import Ilustration from '../../src/components/Ilustracion/Ilustracion'
 export default function AboutUs() {
   return (
     <div>
-      <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#2596be'}}>
+        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
               <div className="flex text-2xl pl-2">
                 <div className="em em-grinning"></div>
-                Bienvenido a<div className="text-yellow-500 mx-2">Weeout</div>
+                <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
               </div>
             </div>
           </div>
@@ -18,14 +18,16 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/"
-                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+      >
                   Pagina principal
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/profile"
-                  style={{background:'#ba7dc2'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+      >
                    Tu perfil
                 </Link>
               </li>
