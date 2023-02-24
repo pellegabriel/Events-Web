@@ -66,7 +66,6 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const handleAudioChange = async (files: File[]) => {
     const file = files[0]
     try {
-      console.log({ file })
       Storage.put(`audio/${id}`, file)
     } catch (error) {
       console.log('Error uploading file: ', error)
@@ -76,7 +75,6 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const handleImageChange = async (files: File[]) => {
     const file = files[0]
     try {
-      console.log({ file })
       Storage.put(id, file)
     } catch (error) {
       console.log('Error uploading file: ', error)
