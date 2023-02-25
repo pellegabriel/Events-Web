@@ -8,11 +8,11 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Event } from '../../src/models'
+import { Event, EventTypes } from '../../src/models'
 import Image from 'next/image'
 import { Amplify, withSSRContext } from 'aws-amplify'
 import { ModelEventFilterInput } from '../../src/API'
-import { listEvents } from '../../src/graphql/queries'
+import { listEvents, listEventTypes } from '../../src/graphql/queries'
 import awsExports from '../../src/aws-exports'
 import EventsUser from '../../src/components/filterUser/filterUser'
 import EventCreateForm from '../../src/components/eventCreateFormEdited/EventCreateForm'
@@ -29,11 +29,14 @@ interface IProps {
   renderedAt: string
   events: Array<Event>
   filters: Partial<IFilters>
+  eventOptions : Array<EventTypes>
+
 }
 export interface IFilters {
   startDate?: string
   types?: string
   userId?: string
+  
 }
 export async function getServerSideProps({ req, query }: any) {
   const SSR = withSSRContext({ req })
@@ -60,10 +63,13 @@ export async function getServerSideProps({ req, query }: any) {
       query: listEvents,
       variables: { filter: filter },
     })
-    console.log(response)
+    const eventTypeOptions = await SSR.API.graphql({
+      query: listEventTypes,
+    })
     return {
       props: {
         events: response.data.listEvents.items,
+        eventOptions: eventTypeOptions.data.listEventTypes.items,
         filters: filterOptions,
       },
     }
@@ -75,7 +81,7 @@ export async function getServerSideProps({ req, query }: any) {
   }
 }
 
-function Profile({ events = [], signOut, filters }: IProps) {
+function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
   const router = useRouter()
   const id = router.query.id as string
   const [error, setError] = useState<string>()
@@ -220,6 +226,8 @@ function Profile({ events = [], signOut, filters }: IProps) {
                             events={events}
                             filters={filters}
                             updateFilters={handleChange}
+                            eventTypesOptions={eventOptions}
+
                           />
                         </div>
                       </section>

@@ -6,58 +6,35 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  SwitchField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { EventTypes } from "../models";
+import { Event } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
-export default function EventTypesUpdateForm(props) {
+export default function EventCreateForm(props) {
   const {
-    id: idProp,
-    eventTypes,
+    clearOnSuccess = true,
     onSuccess,
     onError,
     onSubmit,
+    onCancel,
     onValidate,
     onChange,
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     name: "",
-    enabled: false,
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [enabled, setEnabled] = React.useState(initialValues.enabled);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = eventTypesRecord
-      ? { ...initialValues, ...eventTypesRecord }
-      : initialValues;
-    setName(cleanValues.name);
-    setEnabled(cleanValues.enabled);
+    setName(initialValues.name);
     setErrors({});
   };
-  const [eventTypesRecord, setEventTypesRecord] = React.useState(eventTypes);
-  React.useEffect(() => {
-    const queryData = async () => {
-      const record = idProp
-        ? await DataStore.query(EventTypes, idProp)
-        : eventTypes;
-      setEventTypesRecord(record);
-    };
-    queryData();
-  }, [idProp, eventTypes]);
-  React.useEffect(resetStateValues, [eventTypesRecord]);
   const validations = {
-    name: [],
-    enabled: [],
+    name: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -78,14 +55,13 @@ export default function EventTypesUpdateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
-      columnGap="15px"
-      padding="20px"
+      rowGap={tokens.space.xs.value}
+      columnGap={tokens.space.xxxs.value}
+      padding={tokens.space.xl.value}
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
           name,
-          enabled,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -115,13 +91,12 @@ export default function EventTypesUpdateForm(props) {
               modelFields[key] = undefined;
             }
           });
-          await DataStore.save(
-            EventTypes.copyOf(eventTypesRecord, (updated) => {
-              Object.assign(updated, modelFields);
-            })
-          );
+          await DataStore.save(new Event(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
+          }
+          if (clearOnSuccess) {
+            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -129,12 +104,12 @@ export default function EventTypesUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "EventTypesUpdateForm")}
+      {...getOverrideProps(overrides, "EventCreateForm")}
       {...rest}
     >
       <TextField
-        label="Name"
-        isRequired={false}
+        label="Nombre del evento"
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -142,7 +117,6 @@ export default function EventTypesUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              enabled,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -157,57 +131,36 @@ export default function EventTypesUpdateForm(props) {
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
       ></TextField>
-      <SwitchField
-        label="Enabled"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={enabled}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              name,
-              enabled: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.enabled ?? value;
-          }
-          if (errors.enabled?.hasError) {
-            runValidationTasks("enabled", value);
-          }
-          setEnabled(value);
-        }}
-        onBlur={() => runValidationTasks("enabled", enabled)}
-        errorMessage={errors.enabled?.errorMessage}
-        hasError={errors.enabled?.hasError}
-        {...getOverrideProps(overrides, "enabled")}
-      ></SwitchField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Reset"
+          children="Limpiar"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || eventTypes)}
-          {...getOverrideProps(overrides, "ResetButton")}
+          {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xxxs.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Submit"
+            children="Cancelar"
+            type="button"
+            onClick={() => {
+              onCancel && onCancel();
+            }}
+            {...getOverrideProps(overrides, "CancelButton")}
+          ></Button>
+          <Button
+            children="Subir Evento"
             type="submit"
             variation="primary"
-            isDisabled={
-              !(idProp || eventTypes) ||
-              Object.values(errors).some((e) => e?.hasError)
-            }
+            isDisabled={Object.values(errors).some((e) => e?.hasError)}
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

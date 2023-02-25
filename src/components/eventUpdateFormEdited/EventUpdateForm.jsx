@@ -195,7 +195,7 @@ export default function EventUpdateForm(props) {
     initialValues.descripcion,
   )
 
-  console.log("por aca map_point vale", {map_point})
+
   const [errors, setErrors] = React.useState({})
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord }
@@ -231,6 +231,23 @@ export default function EventUpdateForm(props) {
     types: [],
     descripcion: [],
   }
+  console.log("typesRendercentralll", {types, currentTypesValue})
+  const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
+  const typesDictionary = Object.assign({}, ...typesOptions && typesOptions.map((item) => ({[item.id]: item.label})));
+  const convertedTypes = types.map(item => {
+    if(typesDictionary.hasOwnProperty(item)) {
+      return( typesDictionary[item] ) 
+    } else {
+      if (item.hasOwnProperty('label')) {
+        return(
+          item.label
+        )
+      }
+    }
+    return(item)
+
+  })
+
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName])
     const customValidator = fetchByPath(onValidate, fieldName)
@@ -278,8 +295,12 @@ export default function EventUpdateForm(props) {
     }
     setMap_point(value)
   }
-  const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
-
+  //cambios :
+  // const onChange = (selectedOptions:
+  //   OnChangeValue<ColourOption, true>) =>
+  //   setSelected(selectedOptions);
+    
+  console.log('asdasd',{currentTypesValue})
   return (
     <Grid
       as="form"
@@ -549,7 +570,7 @@ export default function EventUpdateForm(props) {
           setCurrentTypesValue(undefined)
         }}
         currentFieldValue={currentTypesValue}
-        items={types}
+        items={convertedTypes}
         hasError={errors.types?.hasError}
         setFieldValue={setCurrentTypesValue}
         inputFieldRef={typesRef}
@@ -561,10 +582,10 @@ export default function EventUpdateForm(props) {
           isReadOnly={false}
           value={currentTypesValue}
           options={typesOptions}
-          onChange={(e) => {
-            let { value } = e.target
+          onChange={(value) => {
+            console.log('onChange',{value})
             if (errors.types?.hasError) {
-              runValidationTasks('types', value)
+              runValidationTasks('types', value.value)
             }
             setCurrentTypesValue(value)
           }}

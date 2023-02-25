@@ -18,7 +18,7 @@ export const createEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;
 export const updateEventTypes = /* GraphQL */ `
   mutation UpdateEventTypes(
     $input: UpdateEventTypesInput!
@@ -35,7 +35,7 @@ export const updateEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;
 export const deleteEventTypes = /* GraphQL */ `
   mutation DeleteEventTypes(
     $input: DeleteEventTypesInput!
@@ -52,7 +52,7 @@ export const deleteEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;
 export const createEvent = /* GraphQL */ `
   mutation CreateEvent(
     $input: CreateEventInput!
@@ -76,7 +76,7 @@ export const createEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;
 export const updateEvent = /* GraphQL */ `
   mutation UpdateEvent(
     $input: UpdateEventInput!
@@ -100,7 +100,7 @@ export const updateEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;
 export const deleteEvent = /* GraphQL */ `
   mutation DeleteEvent(
     $input: DeleteEventInput!
@@ -124,4 +124,4 @@ export const deleteEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`
+`;

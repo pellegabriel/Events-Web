@@ -8,19 +8,21 @@ import EventCard2 from '../eventCard2/eventCard2'
 import Link from 'next/link'
 import svg5 from '../../../public/svg5.svg'
 import Image from 'next/image'
+import React from 'react'
 
 Amplify.configure({ ...awsExports, ssr: true })
 interface IProps {
+  eventTypesOptions: Array<{value:String,label:String}>
   events: Array<Event>
   filters: IFilters
   updateFilters: (newValue: Partial<IFilters>) => void
 }
 
-export default function EventsSearch({ events = [], updateFilters }: IProps) {
+export default function EventsSearch({ events = [], updateFilters, eventTypesOptions = [] }: IProps) {
   const handleChange = (value: string, name: string) => {
     updateFilters({ [name]: value })
   }
-  const { eventTypesOptions = [] } = rest
+    const [currentTypesValue, setCurrentTypesValue] = React.useState('')
 
   const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
 
@@ -38,7 +40,7 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
             }}
           />
         </div>
-        <div className="flex flex-col p-8 ">
+        <div className="flex flex-col p-8 " >
           <h2 className=" text-sm text-stone-600 text-lg font-extrabold">
             Tipo de evento:
           </h2>
@@ -46,8 +48,12 @@ export default function EventsSearch({ events = [], updateFilters }: IProps) {
           options={typesOptions}
           className="w-7"
           placeholder="tipo"
-          onBlur={(e: FocusEvent<HTMLInputElement>) => {
-            handleChange(e.target.value, 'types')
+          onChange={(value) => {
+            console.log('onChange',{value})
+            setCurrentTypesValue(value.label)
+          }}
+          onBlur={() => {
+            handleChange(currentTypesValue, 'types')
           }}
         />
         

@@ -5,9 +5,9 @@ import { Amplify, withSSRContext } from 'aws-amplify'
 import Map from './map/index'
 import EventsSearch from '../src/components/filterEventSearch/filterEventSearch'
 import { ModelEventFilterInput } from '../src/API'
-import { listEvents } from '../src/graphql/queries'
+import { listEvents, listEventTypes } from '../src/graphql/queries'
 import awsExports from '../src/aws-exports'
-import { Event } from '../src/models'
+import { Event, EventTypes } from '../src/models'
 import { useRouter } from 'next/router'
 import ScrollEvent from '../src/components/scrollEvent'
 import CategoriesList from '../src/components/categories/categories'
@@ -16,12 +16,14 @@ import EventsNowList from '../src/components/eventsNowList/EventsNowList'
 Amplify.configure({ ...awsExports, ssr: true })
 
 interface IHome {
+  eventTypesOptions?:Array<EventTypes>
   signOut: () => void
   scrollEvents: Array<Event>
   user: Record<string, any>
   renderedAt: string
   events: Array<Event>
   filters: IFilters
+  eventOptions : Array<EventTypes>
 }
 
 export interface IFilters {
@@ -64,9 +66,13 @@ export async function getServerSideProps({ req, query }: any) {
       query: listEvents,
       variables: { filter: filter },
     })
+    const eventTypeOptions = await SSR.API.graphql({
+      query: listEventTypes,
+    })
     return {
       props: {
         scrollEvents: response.data.listEvents.items,
+        eventOptions: eventTypeOptions.data.listEventTypes.items,
         events: responseFilter.data.listEvents.items,
         filters: filterOptions,
       },
@@ -78,7 +84,7 @@ export async function getServerSideProps({ req, query }: any) {
     }
   }
 }
-function Home({ events = [], scrollEvents = [], filters }: IHome) {
+function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) {
   const router = useRouter()
 
   const refreshData = ({ startDate, types }: IFilters) => {
@@ -174,6 +180,7 @@ function Home({ events = [], scrollEvents = [], filters }: IHome) {
               events={events}
               filters={filters}
               updateFilters={handleChange}
+              eventTypesOptions={eventOptions}
             />
           </section>
         </article>

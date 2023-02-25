@@ -33,9 +33,6 @@
           "deploymentBucketName": "amplify-weeout-main-161600-deployment",
           "s3Key": "amplify-builds/weeout921a0308VerifyAuthChallengeResponse-3931632b4e2b6b732b4a-build.zip"
         }
-      },
-      "api": {
-        "weeout": {}
       }
     }
   }
