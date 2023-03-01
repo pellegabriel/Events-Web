@@ -37,7 +37,8 @@ export interface IFilters {
   types?: string
   userId?: string
   
-}
+}//oasar esto a clientSideRendering
+
 export async function getServerSideProps({ req, query }: any) {
   const SSR = withSSRContext({ req })
   const renderedAt = new Date()
@@ -144,6 +145,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       ...newFilters,
     })
   }
+  console.log('eventoptions vale',eventOptions)
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
       <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 " style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>

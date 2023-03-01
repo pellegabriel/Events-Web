@@ -1,20 +1,20 @@
 import { Amplify } from 'aws-amplify'
 import awsExports from '../../aws-exports'
-import { FocusEvent } from 'react'
-import { Event } from '../../models'
+import { ChangeEvent, FocusEvent } from 'react'
+import { Event, EventTypes } from '../../models'
 import { IFilters } from '../../../pages'
 import EventCard2 from '../eventCard2/eventCard2'
 import Link from 'next/link'
 import svg5 from '../../../public/svg5.svg'
 import Image from 'next/image'
 import React from 'react'
-import Select from 'react-select'
+import Select, { ActionMeta, SingleValue } from 'react-select'
 
 
 
 Amplify.configure({ ...awsExports, ssr: true })
 interface IProps {
-  eventTypesOptions: Array<{value:String,label:String}>
+  eventTypesOptions:Array<EventTypes>
   events: Array<Event>
   filters: Partial<IFilters>
   updateFilters: (newValue: Partial<IFilters>) => void
@@ -29,10 +29,20 @@ export default function EventsUser({
   const handleChange = (value: string, name: string) => {
     updateFilters({ [name]: value })
   }
-  const [currentTypesValue, setCurrentTypesValue] = React.useState('')
 
   const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
+  const handleSelectChange = (optionSelected: SingleValue<{
+    value: string;
+    label: string | null | undefined;
+}>, actionMeta: ActionMeta<{
+    value: string;
+    label: string | null | undefined;
+}>) => {
+    if (optionSelected?.label) {
+      updateFilters({ types: optionSelected.label })
 
+    }
+  }
 
   return (
     <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#B746D7',borderRadius:'10px' ,  color:'black', }}>
@@ -43,7 +53,7 @@ export default function EventsUser({
             className="w-7"
             type="date"
             placeholder="Fecha"
-            onBlur={(e: FocusEvent<HTMLInputElement>) => {
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               handleChange(e.target.value, 'startDate')
             }}
           />
@@ -56,13 +66,8 @@ export default function EventsUser({
           options={typesOptions}
           className="w-7"
           placeholder="tipo"
-          onChange={(value) => {
-            console.log('onChange',{value})
-            setCurrentTypesValue(value.label)
-          }}
-          onBlur={() => {
-            handleChange(currentTypesValue, 'types')
-          }}
+          onChange={handleSelectChange}
+
         />
           <Image alt="" src={svg5} width={500} height={500} />
           <h2 className="font-extrabold text-sm text-white text-lg">Filtra tus eventos para seleccionar el que quieras editar</h2>

@@ -30,13 +30,7 @@ export interface IFilters {
   startDate: string
   types: string
 }
-// Interface IHome {
-//   user: TUser
-//   }
 
-//   Type TUser = {
-//   userName: string
-//   }
 export async function getServerSideProps({ req, query }: any) {
   const SSR = withSSRContext({ req })
   const startDate = new Date(query.startDate)
