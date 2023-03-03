@@ -14,7 +14,7 @@ function DropZone({ handleImageChange }: DropzoneTypes) {
       preview: URL.createObjectURL(file)
     })))
     handleImageChange(acceptedFiles)
-  }, [])
+  }, [handleImageChange])
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,

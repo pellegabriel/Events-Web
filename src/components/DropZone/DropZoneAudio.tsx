@@ -14,7 +14,7 @@ function DropZoneAudio({ handleAudioChange }: DropzoneTypes) {
       preview: URL.createObjectURL(file)
     })))
     handleAudioChange(acceptedFiles)
-  }, [])
+  }, [handleAudioChange])
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
