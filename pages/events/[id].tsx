@@ -119,7 +119,7 @@ export default function Id({ event, center }: IProps | any) {
                     background:'white'}}
                     
                     >
-      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center p-8 dark:text-black  text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center p-8   text-5xl mb-4 w-full">
           {event.name}
         </h2>
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  ">
@@ -155,7 +155,7 @@ export default function Id({ event, center }: IProps | any) {
                     src={img1}
                     width={500}
                     height={500}
-                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    className="mx-auto rounded-lg shadow-xl "
                     style={{borderWidth:'3px', borderColor:'black'}}
                   />
                 ) : (
@@ -165,7 +165,7 @@ export default function Id({ event, center }: IProps | any) {
                     width={700}
                     height={700}
                     onError={handleImageError}
-                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    className="mx-auto rounded-lg shadow-xl "
                     style={{borderWidth:'3px', borderColor:'black'}}
                   />
                 )}
@@ -228,10 +228,10 @@ export default function Id({ event, center }: IProps | any) {
       </div>
       
       <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
-        <span className="text-sm text-white sm:text-center dark:text-gray-400">
+        <span className="text-sm text-white sm:text-center ">
           © 2022. All Rights Reserved.
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500  sm:mt-0">
           <li>
             <Link
               href="/aboutUs"
