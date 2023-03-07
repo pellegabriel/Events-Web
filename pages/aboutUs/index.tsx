@@ -3,7 +3,7 @@ import Ilustration from '../../src/components/Ilustracion/Ilustracion'
 export default function AboutUs() {
   return (
     <div>
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'gray'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -35,7 +35,12 @@ export default function AboutUs() {
           </div>
         </div>
       </nav>
-      <section className="bg-white items-center flex flex-col justify-center antialiased pb-40 text-black-200 pt-40">
+      <section className="bg-white items-center flex flex-col justify-center antialiased text-black-200 p-10"      style={{
+          background:'#eab8f8',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
         <Ilustration />
       </section>
       <div

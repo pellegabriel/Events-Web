@@ -52,7 +52,7 @@ export default function EventsNowList({ events = [] }: IProps) {
         background:'white',
         borderBottomLeftRadius:'10PX',
         borderBottomRightRadius:'10PX'
-        ,borderWidth:'3px', borderColor:'black'
+        ,borderWidth:'3px', borderColor:'gray'
       }}
     >
       {events.length === 0 ? (

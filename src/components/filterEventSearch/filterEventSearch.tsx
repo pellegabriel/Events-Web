@@ -37,7 +37,7 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
     }
   }
   return (
-    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#B746D7',borderRadius:'10px' ,  color:'black', }}>
+    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',background:'#B746D7',borderRadius:'10px' ,  color:'black', }}>
       <div className="mb-10  p-8" style={{ maxWidth: '700px' }}>
         <div className="flex flex-col py-1 p-8 ">
           <h2 className=" text-sm text-stone-600 text-lg font-extrabold ">Fecha inicio: </h2>

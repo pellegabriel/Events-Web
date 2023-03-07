@@ -11,10 +11,10 @@ export default function Ilustration() {
     >
       <div
         className="flex p-10  max-w-md items-center bg-gray"
-        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'black' }}
+        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'gray' }}
       >
         <Image alt="" src={svg1} width={600} height={600} />
-        <h2 className=" flex justify-center p-10 font-extrabold text-3xl text-black">
+        <h2 className=" flex justify-center p-10 font-extrabold text-2xl text-black">
           Es un espacio digital que brinda un servicio gratuito para agentes
           culturales y aficionados a la cultura, el arte y ocio. Nuestro
           objetivo es facilitar a través de nuestra página, el encuentro entre
@@ -24,10 +24,10 @@ export default function Ilustration() {
       </div>
       <div
         className="flex p-10 mt-20 max-w-md items-center"
-        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'black' }}
+        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'gray' }}
       >
         <Image alt="" src={svg2} width={600} height={600} />
-        <h2 className="flex justify-center  p-10 font-extrabold text-3xl text-black">
+        <h2 className="flex justify-center  p-10 font-extrabold text-2xl text-black">
           A través nuestro podrás generar o buscar eventos de acuerdo a tu
           interés. Podés saber qué está pasando en este preciso momento en el
           lugar en donde estés y acceder a la información detallada de la

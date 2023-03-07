@@ -80,8 +80,8 @@ export default function Id({ event, center }: IProps | any) {
   )
 
   return (
-    <>
-          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+    <div style={{background:'#eab8f8'}}>
+          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'gray'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -115,11 +115,11 @@ export default function Id({ event, center }: IProps | any) {
                     flexDirection:'column',
                   alignItems:'center',
                     justifyContent:'center',
-                    marginTop:'5rem',
-                    background:'white'}}
+                    paddingTop:'7rem',
+                    background:'#eab8f8'}}
                     
                     >
-      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center p-8   text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center  text-5xl mb-4 w-full">
           {event.name}
         </h2>
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  ">
@@ -133,7 +133,7 @@ export default function Id({ event, center }: IProps | any) {
         </h2>
         <div style={{display:'flex',
                     flexDirection:'row'}}>
-       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'black', borderRadius:'30px', height:'740px'}}>
+       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'gray', borderRadius:'30px', height:'740px'}}>
           <Map events={[event]} center={mapCenter} zoom={15} />
         </div>
 
@@ -156,7 +156,7 @@ export default function Id({ event, center }: IProps | any) {
                     width={500}
                     height={500}
                     className="mx-auto rounded-lg shadow-xl "
-                    style={{borderWidth:'3px', borderColor:'black'}}
+                    style={{borderWidth:'3px', borderColor:'gray'}}
                   />
                 ) : (
                   <Image
@@ -166,7 +166,7 @@ export default function Id({ event, center }: IProps | any) {
                     height={700}
                     onError={handleImageError}
                     className="mx-auto rounded-lg shadow-xl "
-                    style={{borderWidth:'3px', borderColor:'black'}}
+                    style={{borderWidth:'3px', borderColor:'gray'}}
                   />
                 )}
               </div>
@@ -227,7 +227,7 @@ export default function Id({ event, center }: IProps | any) {
       </div> 
       </div>
       
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'gray'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
         <span className="text-sm text-white sm:text-center ">
           © 2022. All Rights Reserved.
         </span>
@@ -242,6 +242,6 @@ export default function Id({ event, center }: IProps | any) {
           </li>
         </ul>
       </footer>
-    </>
+    </div>
   )
 }

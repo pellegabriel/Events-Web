@@ -106,7 +106,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </Head>
       <div
         style={{
-          background:'#F9F6F5',
+          background:'#eab8f8',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -150,7 +150,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
        
         </div>
 
-        <div id='medio' className="flex" style={{ alignItems: 'flex-start' , backgroundColor:'#F9F6F5'}}>
+        <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div style={{margin:'0 18px'}}>
             <h2 className='px-8 font-extrabold text-white bg-black  text-xl bg-black p-2' 
@@ -160,7 +160,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
-          <div style={{borderWidth:'3px', borderColor:'', borderRadius:'30px'}}>
+          <div style={{borderWidth:'3px', borderColor:'gray', borderRadius:'30px'}}>
           <Map events={events} />
           </div>
         </div>

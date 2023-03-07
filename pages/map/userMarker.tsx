@@ -80,7 +80,7 @@ function UserMarker({ map_point, center, zoom, onDragEnd }: IProps) {
         value={inputText}
         onChange={(e) => {
           setInputText(e.target.value)}}
-          style={{borderWidth:'1px', borderColor:'black'}}
+          style={{borderWidth:'1px', borderColor:'gray'}}
 
       />
       </div>

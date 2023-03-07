@@ -77,7 +77,7 @@ export default function Events({ events = [] }: IProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'black'}}>
+      <nav className="p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#9219b4',borderBottomWidth:'3px', borderColor:'gray'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -145,7 +145,7 @@ export default function Events({ events = [] }: IProps) {
       </div>
       
     </div>
-     <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+     <footer style={{background:'#9219b4',borderWidth:'3px', borderColor:'gray'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
      <span className="text-sm text-white sm:text-center dark:text-gray-400">
        © 2022. All Rights Reserved.
      </span>

@@ -168,7 +168,7 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
         </div>
       </div>
 
-      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 " style={{borderWidth:'3px', borderColor:'black'}}>
+      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 " style={{borderWidth:'3px', borderColor:'gray'}}>
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
