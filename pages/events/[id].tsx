@@ -175,8 +175,7 @@ export default function Id({ event, center }: IProps | any) {
                   <div className="lg:col-start-2">
         
                     <p className="mt-3 text-lg  " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
-                      {event.descripcion} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt cum esse distinctio temporibus minima, at fugit alias quos amet vero inventore, consectetur, molestiae consequuntur? Et quaerat possimus explicabo dolore maxime!
-                    </p>
+                      {event.descripcion} </p>
                     <h3 className='font-extrabold' style={{color:'black', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} <br />
                         al <br />{endDate}
                         </h3>

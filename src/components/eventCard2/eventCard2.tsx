@@ -115,8 +115,7 @@ export default function EventCard2({ event }: IProps | any) {
             </div>
 
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
-              {event.descripcion} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem corrupti, assumenda modi laboriosam quod nostrum hic explicabo iusto fuga nisi doloribus veniam ratione repellat magni maxime! Magni perspiciatis excepturi incidunt.
-            </p>
+              {event.descripcion} </p>
             <div  style={{color:'black', display:'flex', justifyContent:'start', marginTop:'20px'}}>
                     Finaliza: {endDate}
          </div>
