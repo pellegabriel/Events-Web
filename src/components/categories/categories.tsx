@@ -64,8 +64,8 @@ export default function CategoriesList() {
                 alt=""
                 src={img}
                 width={200}
-                height={200}
-                style={{ width: '200px', height: '120px' }} />
+                height={120}
+             />
               <div style={{ maxWidth: '50%' , minHeight:'50px'}} className='flex items-center ml-4'> {title}</div>
             </button>
             </div>
