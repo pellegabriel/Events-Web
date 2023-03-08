@@ -79,7 +79,7 @@ function ArrayField({
               setIsEditing(true)
             }}
           >
-            Add item
+            Agrega otra categoria a tu evento
           </Button>
         </>
       ) : (
