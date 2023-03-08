@@ -195,15 +195,18 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
                 </h3>
                 <Image style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'gray'}} alt="" src={svg3} width={500} height={500} />
 
-                <h1 className="mt-10 text-2xl text-black font-extrabold leading-normal mb-1">
+                <h1 className="mt-10 text-2xl text-black font-extrabold leading-normal mb-10">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
+                <div className='bg-white' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px'} }>
                 <EventCreateForm
                   onSuccess={handleSuccess}
                   onSubmit={handleSubmit}
                   onError={handleError}
                   
                 />
+                </div>
+            
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
                 <h1 className="font-extrabold mt-10 mb-20 text-2xl text-black leading-normal mb-1">

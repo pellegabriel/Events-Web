@@ -11,7 +11,7 @@ export default function Ilustration() {
     >
       <div
         className="flex p-10  max-w-md items-center bg-gray"
-        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'gray' }}
+        
       >
         <Image alt="" src={svg1} width={600} height={600} />
         <h2 className=" flex justify-center p-10 font-extrabold text-2xl text-black">
@@ -24,7 +24,7 @@ export default function Ilustration() {
       </div>
       <div
         className="flex p-10 mt-20 max-w-md items-center"
-        style={{ borderRadius: '10px', borderWidth: '3px', borderColor: 'gray' }}
+        
       >
         <Image alt="" src={svg2} width={600} height={600} />
         <h2 className="flex justify-center  p-10 font-extrabold text-2xl text-black">

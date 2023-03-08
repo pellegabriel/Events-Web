@@ -31,7 +31,7 @@ export default function CategoriesList() {
   }
 
   return (
-    <div style={{marginLeft:'10px',}}><h1 className='px-8 text-white bg-black rounded text-xl font-extrabold  p-2' style={{ maxWidth: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
+    <div style={{marginLeft:'10px',backgroundColor:'white'}}><h1 className='px-8 text-white bg-black rounded text-xl font-extrabold  p-2' style={{ maxWidth: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
       className="flex justify-center flex-col shadow-xl "
       style={{
        borderBottomLeftRadius:'10PX',
