@@ -45,7 +45,7 @@ export default function EventsUser({
   }
 
   return (
-    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'black' ,padding:'8px', marginBottom:'100px',background:'#B746D7',borderRadius:'10px' ,  color:'black', }}>
+    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'white' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px' ,  color:'black', }}>
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-6 p-8 ">
           <h2 className="font-extrabold text-sm text-stone-600">Fecha inicio: </h2>

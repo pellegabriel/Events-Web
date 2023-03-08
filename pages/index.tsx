@@ -109,11 +109,12 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          backgroundColor:'#F0E0F0'
         }}
       >
         
 
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -126,7 +127,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -134,7 +135,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white font-extrabold  py-2 px-4 border border-transparent border-black hover:text-black rounded flex items-center justify-center"                  >
+                    style={{background:'#FF0062'}} className=" text-white font-extrabold  py-2 px-4 border border-transparent borde-white hover:text-black rounded flex items-center justify-center"                  >
                     Empieza ahora
                   </Link>
                 </li>
@@ -159,7 +160,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
-          <div style={{borderWidth:'3px', borderColor:'black', borderRadius:'30px'}}>
+          <div style={{borderWidth:'3px', borderColor:'white', borderRadius:'30px'}}>
           <Map events={events} />
           </div>
         </div>
@@ -179,7 +180,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           </section>
         </article>
       </div>
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -187,7 +188,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

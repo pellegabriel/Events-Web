@@ -148,7 +148,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
   console.log('eventoptions vale',eventOptions)
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 " style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 " style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -163,7 +163,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                   >
                   Pagina principal
                 </Link>
@@ -171,7 +171,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                   onClick={signOut}
                 >
                   Cerrar sesion
@@ -183,9 +183,9 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       </nav>
       <div
         className="h-full p-8 flex items-center justify-center"
-
+        style={{backgroundColor:'#F0E0F0'}}
       >
-        <div className=" break-words bg-white  mt-16 border border-gray-900 w-6/6 rounded-lg p-8 "style={{borderWidth:'3px' ,background: 'white' }}>
+        <div className=" break-words bg-white  mt-16 border border-white w-6/6 rounded-lg p-8 "style={{borderWidth:'3px' ,background: 'white' }}>
           <div className="">
             <div className="" >
               <div className="justiify-center flex flex-col items-center">
@@ -193,7 +193,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
                 <h3 className="mt-20 flex items-cen  text-4xl font-extrabold leading-normal mb-1"style={{ color: 'white' }}>
                   Hola {user.username} Bienvenido!
                 </h3>
-                <Image style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'black'}} alt="" src={svg3} width={500} height={500} />
+                <Image style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}} alt="" src={svg3} width={500} height={500} />
 
                 <h1 className="mt-10 text-2xl text-slate-500 font-extrabold leading-normal mb-1">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
@@ -242,7 +242,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
         </div>
       </div>
       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
-      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}}>
+      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}}>
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -250,7 +250,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

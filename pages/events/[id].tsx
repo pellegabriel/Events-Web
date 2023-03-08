@@ -81,7 +81,7 @@ export default function Id({ event, center }: IProps | any) {
 
   return (
     <>
-          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -94,7 +94,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                      >
                     Pagina principal
                   </Link>
@@ -102,7 +102,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
  >
                     Empieza ahora
                   </Link>
@@ -133,7 +133,7 @@ export default function Id({ event, center }: IProps | any) {
         </h2>
         <div style={{display:'flex',
                     flexDirection:'row'}}>
-       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'black', borderRadius:'30px', height:'740px'}}>
+       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'white', borderRadius:'30px', height:'740px'}}>
           <Map events={[event]} center={mapCenter} zoom={15} />
         </div>
 
@@ -156,7 +156,7 @@ export default function Id({ event, center }: IProps | any) {
                     width={500}
                     height={500}
                     className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
-                    style={{borderWidth:'3px', borderColor:'black'}}
+                    style={{borderWidth:'3px', borderColor:'white'}}
                   />
                 ) : (
                   <Image
@@ -166,7 +166,7 @@ export default function Id({ event, center }: IProps | any) {
                     height={700}
                     onError={handleImageError}
                     className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
-                    style={{borderWidth:'3px', borderColor:'black'}}
+                    style={{borderWidth:'3px', borderColor:'white'}}
                   />
                 )}
               </div>
@@ -227,7 +227,7 @@ export default function Id({ event, center }: IProps | any) {
       </div> 
       </div>
       
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'black'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -235,7 +235,7 @@ export default function Id({ event, center }: IProps | any) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

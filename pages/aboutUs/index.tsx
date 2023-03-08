@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Ilustration from '../../src/components/Ilustracion/Ilustracion'
 export default function AboutUs() {
   return (
-    <div>
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'black'}}>
+    <div style={{backgroundColor:'#F0E0F0'}} >
+        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -18,7 +18,7 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
       >
                   Pagina principal
                 </Link>
@@ -26,7 +26,7 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
       >
                    Tu perfil
                 </Link>
@@ -35,7 +35,7 @@ export default function AboutUs() {
           </div>
         </div>
       </nav>
-      <section className="bg-white items-center flex flex-col justify-center antialiased pb-40 text-black-200 pt-40">
+      <section className="items-center flex flex-col justify-center antialiased pb-40 text-black-200 pt-40">
         <Ilustration />
       </section>
       <div
