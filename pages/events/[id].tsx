@@ -80,7 +80,7 @@ export default function Id({ event, center }: IProps | any) {
   )
 
   return (
-    <>
+    <div>
           <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
@@ -115,11 +115,11 @@ export default function Id({ event, center }: IProps | any) {
                     flexDirection:'column',
                   alignItems:'center',
                     justifyContent:'center',
-                    marginTop:'5rem',
-                    background:'white'}}
+                    paddingTop:'7rem',
+                    background:'#eab8f8'}}
                     
                     >
-      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center p-8 dark:text-black  text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center  text-5xl mb-4 w-full">
           {event.name}
         </h2>
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  ">
@@ -231,7 +231,7 @@ export default function Id({ event, center }: IProps | any) {
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500  sm:mt-0">
           <li>
             <Link
               href="/aboutUs"
@@ -242,6 +242,6 @@ export default function Id({ event, center }: IProps | any) {
           </li>
         </ul>
       </footer>
-    </>
+    </div>
   )
 }

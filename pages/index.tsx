@@ -106,6 +106,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </Head>
       <div
         style={{
+          background:'#eab8f8',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -145,7 +146,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </nav>
 
         <div id='arriba' className='pt-28' >
-          <h2 className='px-8 text-white bg-black rounded dark:bg-gray-500 text-base bg-black font-extrabold p-2' style={{ fontSize: '25px' ,borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>En este momento</h2>
+          <h2 className='px-8 text-white bg-black rounded  text-base bg-black font-extrabold p-2' style={{ fontSize: '25px' ,borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>En este momento</h2>
           <EventsNowList events={[]} filters={filters} />
        
         </div>
@@ -153,7 +154,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div style={{margin:'0 18px'}}>
-            <h2 className='px-8 font-extrabold text-white bg-black dark:bg-gray-500 text-xl bg-black p-2' 
+            <h2 className='px-8 font-extrabold text-white bg-black  text-xl bg-black p-2' 
                 style={{  fontSize: '25px', minWidth: '400px',
                 maxWidth:'960px', borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
                 Estos eventos comienzan pronto
@@ -166,7 +167,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </div>
 
         <article id='abajo' className="grid gap-2 max-w-[1370px]" style={{marginTop: '100px'}}>
-          <h1 className=" font-extrabold px-8 text-white bg-black rounded dark:bg-gray-500 text-3xl bg-black p-4" style={{  fontSize: '25px',borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
+          <h1 className=" font-extrabold px-8 text-white bg-black rounded  text-3xl bg-black p-4" style={{  fontSize: '25px',borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
             Busca lo que necesites en la Lista de eventos disponibles:
           </h1>
 
@@ -184,7 +185,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 sm:mt-0">
           <li>
             <Link
               href="/aboutUs"

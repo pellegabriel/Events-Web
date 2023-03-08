@@ -190,23 +190,26 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
             <div className="" >
               <div className="justiify-center flex flex-col items-center">
                 
-                <h3 className="mt-20 flex items-cen  text-4xl font-extrabold leading-normal mb-1"style={{ color: 'white' }}>
+                <h3 className="mt-10 flex items-cen  text-4xl font-extrabold leading-normal mb-8"style={{ color: 'black' }}>
                   Hola {user.username} Bienvenido!
                 </h3>
                 <Image style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}} alt="" src={svg3} width={500} height={500} />
 
-                <h1 className="mt-10 text-2xl text-slate-500 font-extrabold leading-normal mb-1">
+                <h1 className="mt-10 text-2xl text-black font-extrabold leading-normal mb-10">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
+                <div className='bg-white' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px'} }>
                 <EventCreateForm
                   onSuccess={handleSuccess}
                   onSubmit={handleSubmit}
                   onError={handleError}
                   
                 />
+                </div>
+            
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
-                <h1 className="font-extrabold mt-10 mb-20 text-2xl text-slate-500 leading-normal mb-1">
+                <h1 className="font-extrabold mt-10 mb-20 text-2xl text-black leading-normal mb-1">
                   No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
               </div>
@@ -214,7 +217,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
                 <div className=" overflow-hidden flex ">
                   <div className="mt-8 mb-8 grid-cols-1 p-10">
-                    <h1 className="font-extrabold text-3xl text-slate-700 leading-normal mb-10">
+                    <h1 className="font-extrabold text-3xl text-black leading-normal mb-10">
                       Busca uno de tus eventos y haz click para editarlo:{' '}
                     </h1>
 
