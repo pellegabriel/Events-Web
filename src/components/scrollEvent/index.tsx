@@ -21,7 +21,6 @@ export default function ScrollEvent({ events }: IProps) {
         borderBottomLeftRadius:'10PX',
         borderBottomRightRadius:'10PX'
         ,borderWidth:'3px',
-        backgroundColor:'white'
       }}
     >
       {events.map((event, index) => {
