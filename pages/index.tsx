@@ -150,7 +150,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           <EventsNowList events={[]} filters={filters} />
        
         </div>
-
+    
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div style={{margin:'0 18px'}}>
