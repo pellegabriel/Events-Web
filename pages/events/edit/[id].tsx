@@ -134,7 +134,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'gray'}}>
+      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -149,7 +149,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                  >
                   Volver a Usuario
                 </Link>
@@ -157,7 +157,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                  >
                   Pagina principal
                 </Link>
@@ -166,7 +166,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                    onClick={signOut}
                 >
                   Cerrar sesion
@@ -177,8 +177,8 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </nav>
 
-      <div className="h-full p-8 flex items-center justify-center " style={{backgroundColor:'#eab8f8'}}>
-        <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " >
+      <div className="h-full p-8 flex items-center justify-center " style={{backgroundColor:'#F0E0F0'}}>
+        <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " style={{borderWidth:'3px', borderColor:'white'}}>
           {' '}
           <div className="">
             <div >
@@ -194,7 +194,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
                   
                 </div>
                 <Image
-                style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'gray'}}
+                style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}}
                     alt=""
                     src={svg4}
                     className=""
@@ -224,7 +224,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </div>
 
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'gray'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -232,7 +232,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

@@ -80,8 +80,8 @@ export default function Id({ event, center }: IProps | any) {
   )
 
   return (
-    <div style={{background:'#eab8f8'}}>
-          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'gray'}}>
+    <div>
+          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -94,7 +94,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
                      >
                     Pagina principal
                   </Link>
@@ -102,7 +102,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
  >
                     Empieza ahora
                   </Link>
@@ -133,7 +133,7 @@ export default function Id({ event, center }: IProps | any) {
         </h2>
         <div style={{display:'flex',
                     flexDirection:'row'}}>
-       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'gray', borderRadius:'30px', height:'740px'}}>
+       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'white', borderRadius:'30px', height:'740px'}}>
           <Map events={[event]} center={mapCenter} zoom={15} />
         </div>
 
@@ -155,8 +155,8 @@ export default function Id({ event, center }: IProps | any) {
                     src={img1}
                     width={500}
                     height={500}
-                    className="mx-auto rounded-lg shadow-xl "
-                    style={{borderWidth:'3px', borderColor:'gray'}}
+                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    style={{borderWidth:'3px', borderColor:'white'}}
                   />
                 ) : (
                   <Image
@@ -165,8 +165,8 @@ export default function Id({ event, center }: IProps | any) {
                     width={700}
                     height={700}
                     onError={handleImageError}
-                    className="mx-auto rounded-lg shadow-xl "
-                    style={{borderWidth:'3px', borderColor:'gray'}}
+                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                    style={{borderWidth:'3px', borderColor:'white'}}
                   />
                 )}
               </div>
@@ -175,8 +175,7 @@ export default function Id({ event, center }: IProps | any) {
                   <div className="lg:col-start-2">
         
                     <p className="mt-3 text-lg  " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
-                      {event.descripcion} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt cum esse distinctio temporibus minima, at fugit alias quos amet vero inventore, consectetur, molestiae consequuntur? Et quaerat possimus explicabo dolore maxime!
-                    </p>
+                      {event.descripcion} </p>
                     <h3 className='font-extrabold' style={{color:'black', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} <br />
                         al <br />{endDate}
                         </h3>
@@ -227,15 +226,15 @@ export default function Id({ event, center }: IProps | any) {
       </div> 
       </div>
       
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'gray'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
-        <span className="text-sm text-white sm:text-center ">
+      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
+        <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500  sm:mt-0">
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent border-black  hover:text-black rounded flex items-center justify-center"
+              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

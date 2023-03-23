@@ -46,7 +46,7 @@ export default function EventCard({ event }: IProps | any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const backgroundColors = ['#EFE371', '#ba7dc2', 'yellow']
+  // const backgroundColors = ['#FF65A1 ', '#ba7dc2', 'yellow']
   // const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
   const [isHover, setIsHover] = useState(false);
 
@@ -56,7 +56,7 @@ export default function EventCard({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#E93279' : '#ba7dc2',minHeight: '365px'
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#FF65A1 ' : '#ba7dc2',minHeight: '365px'
 }
   return (
   
