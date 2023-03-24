@@ -49,10 +49,7 @@ export default function EventsNowList({ events = [] }: IProps) {
         height: '180px',
         overflow: 'auto',
         marginBottom: '64px',
-        background:'white',
-        borderBottomLeftRadius:'10PX',
-        borderBottomRightRadius:'10PX'
-        ,borderWidth:'3px', borderColor:'white'
+        
       }}
     >
       {events.length === 0 ? (
@@ -65,7 +62,7 @@ export default function EventsNowList({ events = [] }: IProps) {
                         className="mx-auto  dark:bg-gray-500"
                         style={{marginLeft:'40px',}}
                       />
-            <h1 className="  text-black text-xl font-bold leading-normal mb-1 flex justify-center items-center" style={{maxWidth:'500px'}}>Ups! No hay eventos sucediendo ahora.</h1>
+            <h1 className="  text-white text-xl font-bold leading-normal mb-1 flex justify-center items-center" style={{maxWidth:'500px'}}>Ups! No hay eventos sucediendo ahora.</h1>
           </div>
       ) : (
         events.map((event: any) => {

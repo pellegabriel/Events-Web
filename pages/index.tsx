@@ -106,16 +106,14 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </Head>
       <div
         style={{
-          background:'#eab8f8',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          backgroundColor:'#F0E0F0'
         }}
       >
         
 
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
+        <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -128,7 +126,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -136,7 +134,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white font-extrabold  py-2 px-4 border border-transparent borde-white hover:text-black rounded flex items-center justify-center"                  >
+                     className=" hover:bg-rose-500  text-white font-extrabold  py-2 px-4 border border-transparent  hover:text-black  flex items-center justify-center"                  >
                     Empieza ahora
                   </Link>
                 </li>
@@ -146,7 +144,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </nav>
 
         <div id='arriba' className='pt-28' >
-          <h2 className='px-8 text-white bg-black rounded  text-base bg-black font-extrabold p-2' style={{ fontSize: '25px' ,borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>En este momento</h2>
+          <h2 className='px-8 text-white  text-base  font-extrabold p-2' style={{ fontSize: '25px', background:'#170b0e' }}>En este momento</h2>
           <EventsNowList events={[]} filters={filters} />
        
         </div>
@@ -154,20 +152,20 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <CategoriesList />
           <div style={{margin:'0 18px'}}>
-            <h2 className='px-8 font-extrabold text-white bg-black  text-xl bg-black p-2' 
+            <h2 className='px-8 font-extrabold text-white   text-xl  p-2' 
                 style={{  fontSize: '25px', minWidth: '400px',
-                maxWidth:'960px', borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
+                maxWidth:'960px', background:'#170b0e'}}>
                 Estos eventos comienzan pronto
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
-          <div style={{borderWidth:'3px', borderColor:'white', borderRadius:'30px'}}>
+          <div >
           <Map events={events} />
           </div>
         </div>
 
         <article id='abajo' className="grid gap-2 max-w-[1370px]" style={{marginTop: '100px'}}>
-          <h1 className=" font-extrabold px-8 text-white bg-black rounded  text-3xl bg-black p-4" style={{  fontSize: '25px',borderTopLeftRadius: '10px',borderTopRightRadius: '10px'}}>
+          <h1 className=" font-extrabold px-8 text-white    text-3xl  p-4" style={{  fontSize: '25px',background:'#170b0e'}}>
             Busca lo que necesites en la Lista de eventos disponibles:
           </h1>
 
@@ -181,15 +179,15 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           </section>
         </article>
       </div>
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
-        <span className="text-sm text-white sm:text-center dark:text-gray-400">
+      <footer  className="mb-12 border-t border-gray-900 shadow md:flex md:items-center md:justify-between md:p-6 dark:">
+        <span className="text-lg text-black lg:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-lg text-gray-500 sm:mt-0">
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+               className=" hover:bg-rose-500  text-black  font-extrabold  py-2 px-4 border border-transparent   hover:text-black  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

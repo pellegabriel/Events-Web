@@ -5,8 +5,8 @@ import Marker from './Marker'
 
 const containerStyle = {
   width: '300px',
-  height: '730px',
-  borderRadius: '30px',
+  height: '770px',
+
 }
 
 const defaultCenter = {

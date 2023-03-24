@@ -5,21 +5,28 @@
 ::-webkit-scrollbar {
   width: 14px;
   height: 14px;
+  border-radius: 30px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #FF0062;
-}
+  border-radius: 30px;
 
+}
+html{
+  background: rgb(165,97,191);
+  background: radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%); 
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FF0062;
+  border-radius: 30px;
+
+  background: #f43f5e;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF0062;
+  background: #f43f5e;
 }
 
 @media (max-width: 600px) {

@@ -37,10 +37,10 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
     }
   }
   return (
-    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'white' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px' ,  color:'black', }}>
+    <div className=" hover:bg-black  flex justify-center" style={{ padding:'8px', marginBottom:'100px' ,  color:'gray-900', }}>
       <div className="mb-10  p-8" style={{ maxWidth: '700px' }}>
         <div className="flex flex-col py-1 p-8 ">
-          <h2 className=" text-sm text-black text-lg font-extrabold ">Fecha inicio: </h2>
+          <h2 className=" text-sm text-white text-lg font-extrabold ">Fecha inicio: </h2>
           <input
             className="w-7"
             type="date"
@@ -51,7 +51,7 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
           />
         </div>
         <div className="flex flex-col p-8 " >
-          <h2 className=" text-sm text-black text-lg font-extrabold">
+          <h2 className=" text-sm text-white text-lg font-extrabold">
             Tipo de evento:
           </h2>
           <Select
@@ -63,16 +63,16 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
         
           
           <Image alt="" src={svg5} width={500} height={500} />
-          <h2 className="font-medium text-sm text-black text-lg font-extrabold">Filtra entre los eventos existentes para encontrar el que mas te guste.</h2>
+          <h2 className="font-medium text-sm text-white text-lg font-extrabold">Filtra entre los eventos existentes para encontrar el que mas te guste.</h2>
 
         </div>
       </div>
 
-      <div className="flex justify-center" style={{background:'white',
-      padding: '48px', borderRadius:'10px'}}>
+      <div className="flex justify-center" style={{
+      padding: '48px'}}>
         <div className="">
           <div className=" text-xl text-black font-medium mb-12 border-b border-gray-300 ">
-            <h5 className="py-1 mb-1 font-extrabold" style={{color:'black'}}>
+            <h5 className="py-1 mb-1 font-extrabold" style={{color:'white'}}>
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>
@@ -83,6 +83,7 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
         width: '860px',
         height: '900px',
         overflow: 'auto',
+        
       }}
     >
             {events.map((event: any) => {

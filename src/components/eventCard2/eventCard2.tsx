@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Event } from '../../models'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import parseDate from '../../helperFunctions/parseDate'
 import Link from 'next/link'
@@ -10,6 +10,64 @@ interface IProps {
 }
 
 export default function EventCard2({ event }: IProps | any) {
+  const elRef = useRef<HTMLDivElement>(null);
+
+  function handleMove(e: MouseEvent) {
+    const el = elRef.current;
+    if (el) {
+      const height = el.clientHeight;
+      const width = el.clientWidth;
+
+      const xVal = e.offsetX;
+      const yVal = e.offsetY;
+
+      const yRotation = 20 * ((xVal - width / 2) / width);
+      const xRotation = -20 * ((yVal - height / 2) / height);
+      const string = `perspective(500px) scale(1) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+
+      el.style.transform = string;
+    }
+  }
+
+  function handleMouseOut() {
+    const el = elRef.current;
+    if (el) {
+      el.style.transform = 'perspective(500px) scale(1) rotateX(0) rotateY(0)';
+    }
+  }
+
+  function handleMouseDown() {
+    const el = elRef.current;
+    if (el) {
+      el.style.transform = 'perspective(500px) scale(0.9) rotateX(0) rotateY(0)';
+    }
+  }
+
+  function handleMouseUp() {
+    const el = elRef.current;
+    if (el) {
+      el.style.transform = 'perspective(500px) scale(1.1) rotateX(0) rotateY(0)';
+    }
+  }
+
+  useEffect(() => {
+    const el = elRef.current;
+    if (el) {
+      el.addEventListener('mousemove', handleMove);
+      el.addEventListener('mouseout', handleMouseOut);
+      el.addEventListener('mousedown', handleMouseDown);
+      el.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      if (el) {
+        el.removeEventListener('mousemove', handleMove);
+        el.removeEventListener('mouseout', handleMouseOut);
+        el.removeEventListener('mousedown', handleMouseDown);
+        el.removeEventListener('mouseup', handleMouseUp);
+      }
+    };
+  }, []);
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
@@ -22,7 +80,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#FF65A1'  : '#ba7dc2 ',
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
 }
   const getUploadedImage = async () => {
     try {
@@ -57,11 +115,13 @@ export default function EventCard2({ event }: IProps | any) {
   const startDate = event.startDate ? parseDate(event.startDate) : ''
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
+
   return (
-    <div style={{flexDirection:'column', marginTop:'15px'}}>
+    <div id="tilt" ref={elRef} style={{flexDirection:'column', marginTop:'15px', marginLeft:'35px',  boxShadow: "0px 0px 30px rgba(0,0,0, 0.6)",
+  }}>
    
     <div
-      className="flex rounded-lg p-4 object-cover shadow-xl group-hover:opacity-75"
+      className="flex p-4 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
       style={boxStyle}
           onMouseEnter={handleMouseEnter}
@@ -70,7 +130,7 @@ export default function EventCard2({ event }: IProps | any) {
     >
 
       <div className="group font-extrabold" style={{minWidth:'300px'}}>
-        <div  style={{color:'black', display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
+        <div  style={{ display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
                     Fecha de Inicio: {startDate}
          </div>
         <div className="flex flex-col ">
@@ -115,8 +175,8 @@ export default function EventCard2({ event }: IProps | any) {
             </div>
 
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
-              {event.descripcion} </p>
-            <div  style={{color:'black', display:'flex', justifyContent:'start', marginTop:'20px'}}>
+              {event.descripcion} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio sit consequuntur numquam natus laudantium a, dolores deleniti assumenda vel veniam laborum, unde minima distinctio? Aperiam vel officia cumque consectetur. </p>
+            <div  style={{ display:'flex', justifyContent:'start', marginTop:'20px'}}>
                     Finaliza: {endDate}
          </div>
           </div>

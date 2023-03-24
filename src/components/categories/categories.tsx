@@ -1,26 +1,28 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { CategoryItem } from '../categoryItem/categoryItem'
 
 export default function CategoriesList() {
   const router = useRouter()
   const img1 = '/img1.jpg'
   const categories = [
-    { title: 'teatro', img: img1 },
-    { title: 'Musica', img: img1 },
-    { title: 'Actividades sociales', img: img1 },
-    { title: 'Baile', img: img1 },
-    { title: 'Presentaciones', img: img1 },
-    { title: 'Arte', img: img1 },
-    { title: 'Medio ambiente', img: img1 },
-    { title: 'Deportes', img: img1 },
-    { title: 'Actividad  fisica', img: img1 },
-    { title: 'Literatura', img: img1 },
-    { title: 'Política', img: img1 },
-    { title: 'Religion', img: img1 },
-    { title: 'Espiritualidad', img: img1 },
-    { title: 'Salud y bienestar', img: img1 },
-    { title: 'Trabajo y negocios', img: img1 },
-    { title: 'Vida nocturna', img: img1 },
+    { title: 'Teatro', image: img1 },
+    { title: 'Musica', image: img1 },
+    { title: 'Actividades sociales', image: img1 },
+    { title: 'Baile', image: img1 },
+    { title: 'Presentaciones', image: img1 },
+    { title: 'Arte', image: img1 },
+    { title: 'Medio ambiente', image: img1 },
+    { title: 'Deportes', image: img1 },
+    { title: 'Actividad  fisica', image: img1 },
+    { title: 'Literatura', image: img1 },
+    { title: 'Política', image: img1 },
+    { title: 'Religion', image: img1 },
+    { title: 'Espiritualidad', image: img1 },
+    { title: 'Salud y bienestar', image: img1 },
+    { title: 'Trabajo y negocios', image: img1 },
+    { title: 'Vida nocturna', image: img1 },
   ]
 
   const navigateToCategory = (categoryTitle: string) => {
@@ -29,11 +31,20 @@ export default function CategoriesList() {
       query: { categoryTitle },
     })
   }
+  const [isHover, setIsHover] = useState(false);
 
+  const handleMouseEnter = () => {
+     setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+     setIsHover(false);
+  };
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
+}
   return (
-    <div style={{marginLeft:'10px',        backgroundColor:'white'
-  }}><h1 className='px-8 text-white bg-black rounded dark:bg-gray-500 text-xl font-extrabold  p-2' style={{ maxWidth: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
-      className="flex justify-center flex-col shadow-xl "
+    <div style={{marginLeft:'10px'
+  }}><h1 className='px-8 text-white   dark:bg-gray-500 text-xl font-extrabold  p-2' style={{ maxWidth: '300px', backgroundColor:'#170b0e' }}>Categorias</h1><div
+      className="flex justify-center flex-col  "
       style={{
        borderBottomLeftRadius:'10PX',
         borderBottomRightRadius:'10PX'
@@ -51,24 +62,9 @@ export default function CategoriesList() {
         }}
         className="flex flex-col overflow-auto "
       >
-        {categories.map(({ title, img }, index) => {
+        {categories.map(({ title, image }, index) => {
           return (
-            <div key={title} style={{borderWidth:'3px',maxWidth: '200px' , borderColor:'white',margin: '2px', marginBottom: '25px'}}>
-            <button
-              className='shadow-xl font-extrabold '
-              key={index}
-              onClick={() => navigateToCategory(title)}
-              style={{ maxWidth: '200px', background: '#FF0062 ', color: 'white' }}
-            >
-              <Image
-                alt=""
-                src={img}
-                width={200}
-                height={120}
-             />
-              <div style={{ maxWidth: '50%' , minHeight:'50px'}} className='flex items-center ml-4'> {title}</div>
-            </button>
-            </div>
+            <CategoryItem title={title} image={image}/>
           )
         })}
       </div>
