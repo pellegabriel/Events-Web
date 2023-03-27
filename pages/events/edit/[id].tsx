@@ -134,7 +134,11 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
 
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className=" p-2 mt-0 fixed w-full z-10 top-0 "style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
+        <div style={{ 
+        background: 'rgb(165,97,191)',
+        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+      }} >
+      <nav className=" p-2 mt-0  w-full z-10 top-0 "style={{borderBottomWidth:'3px', borderColor:'white'}}>
         <div className="container mx-auto flex flex-wrap items-center">
           <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
             <div className="text-white no-underline hover:text-white hover:no-underline">
@@ -149,7 +153,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                    style={{}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-white rounded flex items-center justify-center"
                  >
                   Volver a Usuario
                 </Link>
@@ -157,7 +161,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                    style={{}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-white rounded flex items-center justify-center"
                  >
                   Pagina principal
                 </Link>
@@ -166,7 +170,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                    style={{}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-white rounded flex items-center justify-center"
                    onClick={signOut}
                 >
                   Cerrar sesion
@@ -177,24 +181,23 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </nav>
 
-      <div className="h-full p-8 flex items-center justify-center " style={{backgroundColor:'#F0E0F0'}}>
-        <div className=" break-words bg-white  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " style={{borderWidth:'3px', borderColor:'white'}}>
+      <div className="h-full p-8 flex items-center justify-center " style={{}}>
+        <div className=" break-words  mt-16 border border-gray-300 w-6/6 rounded-lg p-8 " style={{borderWidth:'3px', borderColor:'white'}}>
           {' '}
           <div className="">
             <div >
              
               <div className="p-8 mx-20 flex flex-col items-center justify-center">
-                <h3 className="text-4xl text-black font-extrabold leading-normal mb-1 ">
+                <h3 className="text-4xl text-white font-extrabold leading-normal mb-1 ">
                   Buenisimo {user.username} !
                 </h3>
                 <div className="text-xs mt-4 mb-10 text-slate-400 font-extrabold " style={{display:'flex', justifyContent:'center',alignItems:'center', flexDirection:'column'}}>
-                  <h2 className="mr-2 text-black opacity-85 text-xl font-extrabold">El evento ya fue creado</h2>
-                  <h2 className="mr-2 text-black opacity-85 text-xl font-extrabold"> ahora solo  falta que termines de  rellenarlo
+                  <h2 className="mr-2 text-white opacity-85 text-xl font-extrabold">El evento ya fue creado</h2>
+                  <h2 className="mr-2 text-white opacity-85 text-xl font-extrabold"> ahora solo  falta que termines de  rellenarlo
                    <br/> para poder compartirlo con todo el mundo!</h2>
                   
                 </div>
                 <Image
-                style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}}
                     alt=""
                     src={svg4}
                     className=""
@@ -203,7 +206,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
                 <div className=" overflow-hidden flex items-center justify-center">
                   <div className="mt- mb-8 grid-cols-1 p-10">
-                    <h1 className="text-2xl text-black font-bold leading-normal mb-1">
+                    <h1 className="text-2xl text-white font-bold leading-normal mb-1">
                       Actualiza el evento:{' '}
                     </h1>
                     <EventUpdateForm
@@ -224,7 +227,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
         </div>
       </div>
 
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <footer style={{borderWidth:'3px', borderColor:'white'}} className="p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -232,13 +235,14 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+              style={{}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-white rounded flex items-center justify-center"
               >
               Sobre nosotros
             </Link>
           </li>
         </ul>
       </footer>
+      </div>
     </Authenticator>
   )
 }

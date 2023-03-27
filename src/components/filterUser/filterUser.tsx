@@ -45,7 +45,7 @@ export default function EventsUser({
   }
 
   return (
-    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'white' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px' ,  color:'black', }}>
+    <div className=" hover:bg-black  flex justify-center" style={{borderWidth:'3px', borderColor:'white' ,padding:'8px', marginBottom:'100px',borderRadius:'10px' ,  color:'black', }}>
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-6 p-8 ">
           <h2 className="font-extrabold text-sm text-black">Fecha inicio: </h2>
@@ -70,12 +70,12 @@ export default function EventsUser({
 
         />
           <Image alt="" src={svg5} width={500} height={500} />
-          <h2 className="font-extrabold text-sm text-white text-lg">Filtra tus eventos para seleccionar el que quieras editar</h2>
+          <h2 className="font-extrabold  text-white text-lg">Filtra tus eventos para seleccionar el que quieras editar</h2>
 
         </div>
       </div>
 
-      <div style={{background:'white',
+      <div style={{
       padding: '48px', borderRadius:'10px', maxWidth:'800px'}}>
         <div className="">
           <div className="text-xl font-medium mb-12 border-b border-gray-300 ">

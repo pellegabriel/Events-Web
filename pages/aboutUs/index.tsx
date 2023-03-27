@@ -2,23 +2,24 @@ import Link from 'next/link'
 import Ilustration from '../../src/components/Ilustracion/Ilustracion'
 export default function AboutUs() {
   return (
-    <div style={{backgroundColor:'#F0E0F0'}} >
-        <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
-        <div className="container mx-auto flex flex-wrap items-center">
-          <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-            <div className="text-white no-underline hover:text-white hover:no-underline">
-              <div className="flex text-2xl pl-2">
-                <div className="em em-grinning"></div>
-                <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
-              </div>
+    <div style={{ 
+        background: 'rgb(165,97,191)',
+        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+      }} >
+        <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
+          <div className="container mx-auto flex flex-wrap items-center">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+                <div className="flex text-2xl pl-2">
+                  <div className="em em-grinning"></div>
+                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
+                </div>
             </div>
-          </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
             <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
       >
                   Pagina principal
                 </Link>
@@ -26,7 +27,7 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
       >
                    Tu perfil
                 </Link>

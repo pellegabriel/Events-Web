@@ -80,8 +80,11 @@ export default function Id({ event, center }: IProps | any) {
   )
 
   return (
-    <div>
-          <nav  className=" p-2 mt-0 fixed w-full z-10 top-0" style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
+    <div style={{ 
+        background: 'rgb(165,97,191)',
+        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+      }}>
+          <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <div className="flex text-2xl pl-2">
@@ -94,7 +97,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                      >
                     Pagina principal
                   </Link>
@@ -102,7 +105,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
  >
                     Empieza ahora
                   </Link>
@@ -115,25 +118,24 @@ export default function Id({ event, center }: IProps | any) {
                     flexDirection:'column',
                   alignItems:'center',
                     justifyContent:'center',
-                    paddingTop:'7rem',
-                    background:'#eab8f8'}}
+                    paddingTop:'7rem'}}
                     
                     >
-      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center  text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center text-white  text-5xl mb-4 w-full">
           {event.name}
         </h2>
-        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  ">
+        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  text-white">
                       {event.subtitle}Sub Titulo
                     </h3>
-        <h2 className="max-w-3xl mx-auto  text-xl text-center">
+        <h2 className="max-w-3xl mx-auto  text-xl text-white text-center">
           Usuario que posteo el evento:
         </h2>
-        <h2 className="max-w-3xl mx-auto text-xl text-center">
+        <h2 className="max-w-3xl mx-auto text-xl text-white text-center">
           {event.user}
         </h2>
         <div style={{display:'flex',
                     flexDirection:'row'}}>
-       <div className="mx-auto rounded-xl flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'white', borderRadius:'30px', height:'740px'}}>
+       <div className="mx-auto  flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'white',  height:'770px'}}>
           <Map events={[event]} center={mapCenter} zoom={15} />
         </div>
 
@@ -174,10 +176,10 @@ export default function Id({ event, center }: IProps | any) {
                 <div className="flex flex-col lg:items-center">
                   <div className="lg:col-start-2">
         
-                    <p className="mt-3 text-lg  " style={{color:'black', background:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
-                      {event.descripcion} </p>
-                    <h3 className='font-extrabold' style={{color:'black', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} <br />
-                        al <br />{endDate}
+                    <p className="mt-3 text-lg  " style={{color:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
+                      {event.descripcion} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, at. Nam voluptatum ratione in? Iure nam sunt sit nostrum accusantium incidunt quaerat, similique, blanditiis consequatur autem amet aut reiciendis nihil?</p>
+                    <h3 className='font-extrabold' style={{color:'white', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} 
+                         al {endDate}
                         </h3>
                     <div className="mt-12 space-y-12">
                       <div className="flex">
@@ -192,13 +194,13 @@ export default function Id({ event, center }: IProps | any) {
                       </div>
                       <div className="flex">
                         <div className="ml-4">
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
                             {event.types} 
                           </span>
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
                             {event.types} 
                           </span>
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
                             {event.types} 
                           </span>
                         </div>
@@ -222,11 +224,11 @@ export default function Id({ event, center }: IProps | any) {
                     height={700}
                     className="mx-auto"
                   />
-        <h1 className="mt-5 mb-10 text-xl text-black font-extrabold leading-normal flex justify-center items-center" style={{maxWidth:'400px', marginLeft:'50px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
+        <h1 className="mt-5 mb-10 text-xl text-white font-bold leading-normal flex justify-center items-center" style={{maxWidth:'400px', marginLeft:'50px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
       </div> 
       </div>
       
-      <footer style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-black">
+      <footer style={{borderTopWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-white">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -234,7 +236,7 @@ export default function Id({ event, center }: IProps | any) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+              className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

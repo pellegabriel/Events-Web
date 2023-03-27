@@ -15,7 +15,7 @@ export const CategoryItem = (props: ICategory) => {
     const handleMouseLeave = () => {
        setIsHover(false);
     };
-    const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
+    const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#f43f5e'  : '#170b0e', color:'white',
   }     
     return(
         <div key={props.title} style={{margin: '2px', marginBottom: '25px'}}>
