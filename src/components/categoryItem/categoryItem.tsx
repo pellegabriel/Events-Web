@@ -2,42 +2,41 @@ import Image from "next/image";
 import { useState } from "react";
 
 interface ICategory {
-    title: string
-    image: string
+  title: string
+  onClick: () => void
 }
 
 export const CategoryItem = (props: ICategory) => {
-    const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
-    const handleMouseEnter = () => {
-       setIsHover(true);
-    };
-    const handleMouseLeave = () => {
-       setIsHover(false);
-    };
-    const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#f43f5e'  : '#170b0e', color:'white',
-  }     
-    return(
-        <div key={props.title} style={{margin: '2px', marginBottom: '25px'}}>
-        <button
-          className='shadow-xl font-extrabold '
+  const handleMouseEnter = () => {
+      setIsHover(true);
+  };
   
-          style={{ maxWidth: '200px', color: 'white' }}
-        >
-          <Image
-            alt=""
-            src={props.image}
-            width={200}
-            height={120}
-         />
-            <div style={boxStyle} 
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            className='max-w-1/2 min-h-50 flex justify-center ml-40 text-20 items-center '
-            >     
-                {props.title}
-            </div>
-        </button>
-        </div>
-    )
+  const handleMouseLeave = () => {
+      setIsHover(false);
+  };
+
+  const boxStyle = {
+    color:'white',
+    minWidth: '240px',
+    height:'50px',
+    padding: '8px 46px',
+    fontSize: '14px',
+    borderRadius: '6px',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    backgroundColor: isHover ? '#f43f5e'  : 'transparent',
+  }
+
+  return (
+    <button
+      style={boxStyle}
+      className='shadow-xl'
+      onClick={props.onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {props.title}
+    </button>
+  )
 }

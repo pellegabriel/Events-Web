@@ -8,10 +8,10 @@ export default function AboutUs() {
       }} >
         <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
+                  <div className='text-5xl' style={{color:'white'}}>WeeOut</div>
                 </div>
             </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
@@ -19,7 +19,7 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
       >
                   Pagina principal
                 </Link>
@@ -27,7 +27,7 @@ export default function AboutUs() {
               <li className="mr-3">
                 <Link
                   href="/profile"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
       >
                    Tu perfil
                 </Link>

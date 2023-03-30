@@ -10,64 +10,6 @@ interface IProps {
 }
 
 export default function EventCard2({ event }: IProps | any) {
-  const elRef = useRef<HTMLDivElement>(null);
-
-  function handleMove(e: MouseEvent) {
-    const el = elRef.current;
-    if (el) {
-      const height = el.clientHeight;
-      const width = el.clientWidth;
-
-      const xVal = e.offsetX;
-      const yVal = e.offsetY;
-
-      const yRotation = 20 * ((xVal - width / 2) / width);
-      const xRotation = -20 * ((yVal - height / 2) / height);
-      const string = `perspective(500px) scale(1) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-
-      el.style.transform = string;
-    }
-  }
-
-  function handleMouseOut() {
-    const el = elRef.current;
-    if (el) {
-      el.style.transform = 'perspective(500px) scale(1) rotateX(0) rotateY(0)';
-    }
-  }
-
-  function handleMouseDown() {
-    const el = elRef.current;
-    if (el) {
-      el.style.transform = 'perspective(500px) scale(0.9) rotateX(0) rotateY(0)';
-    }
-  }
-
-  function handleMouseUp() {
-    const el = elRef.current;
-    if (el) {
-      el.style.transform = 'perspective(500px) scale(1.1) rotateX(0) rotateY(0)';
-    }
-  }
-
-  useEffect(() => {
-    const el = elRef.current;
-    if (el) {
-      el.addEventListener('mousemove', handleMove);
-      el.addEventListener('mouseout', handleMouseOut);
-      el.addEventListener('mousedown', handleMouseDown);
-      el.addEventListener('mouseup', handleMouseUp);
-    }
-
-    return () => {
-      if (el) {
-        el.removeEventListener('mousemove', handleMove);
-        el.removeEventListener('mouseout', handleMouseOut);
-        el.removeEventListener('mousedown', handleMouseDown);
-        el.removeEventListener('mouseup', handleMouseUp);
-      }
-    };
-  }, []);
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
@@ -80,7 +22,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
+  const boxStyle = {backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
 }
   const getUploadedImage = async () => {
     try {
@@ -117,7 +59,8 @@ export default function EventCard2({ event }: IProps | any) {
 
 
   return (
-    <div id="tilt" ref={elRef} style={{flexDirection:'column', marginTop:'15px', marginLeft:'35px',  boxShadow: "0px 0px 30px rgba(0,0,0, 0.6)",
+    <div  style={{flexDirection:'column',  boxShadow: "0px 0px 30px rgba(0,0,0, 0.6)",
+    borderRadius: "10px", width:'330px', height:'500px',margin:'29px'
   }}>
    
     <div
@@ -129,10 +72,8 @@ export default function EventCard2({ event }: IProps | any) {
       
     >
 
-      <div className="group font-extrabold" style={{minWidth:'300px'}}>
-        <div  style={{ display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
-                    Fecha de Inicio: {startDate}
-         </div>
+      <div className="group " style={{minWidth:'300px'}}>
+    
         <div className="flex flex-col ">
         
           {image && !error ? (
@@ -155,34 +96,38 @@ export default function EventCard2({ event }: IProps | any) {
               style={{ width: '300px', height: '180px' }}
             />
           )}
-           {audio && (
-                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
-                  <Link href={audio} />
-                </audio>
-              )}
+           
         </div>
-      </div>
-      <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 " >
+        <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 " >
         <div className="sm:col-span-2">
           <div className="mt-3">
             <div className="group mb-2">
-              <h4 className=" font-extrabold text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
+              <h4 className="  text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
                 {event.name}
               </h4>
               <h5 className='text-md font-bold leading-6 font-sans '>
                 Sub Titulo
               </h5>
             </div>
-
+{audio && (
+                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
+                  <Link href={audio} />
+                </audio>
+              )}
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
               {event.descripcion} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio sit consequuntur numquam natus laudantium a, dolores deleniti assumenda vel veniam laborum, unde minima distinctio? Aperiam vel officia cumque consectetur. </p>
+            
             <div  style={{ display:'flex', justifyContent:'start', marginTop:'20px'}}>
-                    Finaliza: {endDate}
+                    Fecha de Inicio: {startDate}
+                    <br />
+                    Finaliza: {endDate} 
          </div>
           </div>
         </div>
         
       </div>
+      </div>
+      
       </div>
     </div>
   )

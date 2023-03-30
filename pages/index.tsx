@@ -115,10 +115,10 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
 
         <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
+                  <div className='text-5xl' style={{color:'white'}}>WeeOut</div>
                 </div>
             </div>
             <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
@@ -126,7 +126,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/aboutUs"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
                   >
                     Mas sobre nosotros
                   </Link>
@@ -134,7 +134,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                     className=" hover:bg-rose-500  text-white font-extrabold  py-2 px-4 border border-transparent  hover:text-black  flex items-center justify-center"                  >
+                     className=" hover:bg-rose-500  text-white  py-2 px-4 border border-transparent  hover:text-black  flex items-center justify-center"                  >
                     Empieza ahora
                   </Link>
                 </li>
@@ -143,31 +143,26 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           </div>
         </nav>
 
-        <div id='arriba' className='pt-28' >
-          <h2 className='px-8 text-white  text-base  font-extrabold p-2' style={{ fontSize: '25px', background:'#170b0e' }}>En este momento</h2>
-          <EventsNowList events={[]} filters={filters} />
-       
-        </div>
+        <EventsNowList events={[]} filters={filters} />
     
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
-          <CategoriesList />
           <div style={{margin:'0 18px'}}>
-            <h2 className='px-8 font-extrabold text-white   text-xl  p-2' 
+            <h2 className='px-8 text-white   text-xl  p-2 flex justify-center' 
                 style={{  fontSize: '25px', minWidth: '400px',
-                maxWidth:'960px', background:'#170b0e'}}>
+                maxWidth:'960px', }}>
                 Estos eventos comienzan pronto
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
-          <div >
+          <div style={{marginTop:'80px'}}>
           <Map events={events} />
           </div>
         </div>
 
-        <article id='abajo' className="grid gap-2 max-w-[1370px]" style={{marginTop: '100px'}}>
-          <h1 className=" font-extrabold px-8 text-white    text-3xl  p-4" style={{  fontSize: '25px',background:'#170b0e'}}>
-            Busca lo que necesites en la Lista de eventos disponibles:
-          </h1>
+        <CategoriesList />
+
+        <article id='abajo' className="grid gap-2 max-w-[1370px]">
+        
 
           <section className="">
             <EventsSearch
@@ -179,15 +174,15 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
           </section>
         </article>
       </div>
-      <footer  className="mb-12 border-t border-gray-900 shadow md:flex md:items-center md:justify-between md:p-6 dark:">
-        <span className="text-lg text-black lg:text-center dark:text-gray-400">
+      <footer  className="mb-12 border-t border-gray-900 shadow md:flex md:items-center md:justify-between md:p-6 ">
+        <span className="text-lg text-black lg:text-center ">
           © 2022. All Rights Reserved.
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-lg text-gray-500 sm:mt-0">
           <li>
             <Link
               href="/aboutUs"
-               className=" hover:bg-rose-500  text-black  font-extrabold  py-2 px-4 border border-transparent   hover:text-black  flex items-center justify-center"
+               className=" hover:bg-rose-500  text-black   py-2 px-4 border border-transparent   hover:text-black  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

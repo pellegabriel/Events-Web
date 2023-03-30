@@ -86,10 +86,10 @@ export default function Id({ event, center }: IProps | any) {
       }}>
           <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
+                  <div className='text-5xl ' style={{color:'white'}}>WeeOut</div>
                 </div>
             </div>
             <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
@@ -97,7 +97,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                      >
                     Pagina principal
                   </Link>
@@ -105,7 +105,7 @@ export default function Id({ event, center }: IProps | any) {
                 <li className="mr-3">
                   <Link
                     href="/profile"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
  >
                     Empieza ahora
                   </Link>
@@ -121,7 +121,7 @@ export default function Id({ event, center }: IProps | any) {
                     paddingTop:'7rem'}}
                     
                     >
-      <h2 className="mx-auto rounded-lg font-extrabold tracking-tight text-center text-white  text-5xl mb-4 w-full">
+      <h2 className="mx-auto rounded-lg  tracking-tight text-center text-white  text-5xl mb-4 w-full">
           {event.name}
         </h2>
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  text-white">
@@ -178,7 +178,7 @@ export default function Id({ event, center }: IProps | any) {
         
                     <p className="mt-3 text-lg  " style={{color:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
                       {event.descripcion} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, at. Nam voluptatum ratione in? Iure nam sunt sit nostrum accusantium incidunt quaerat, similique, blanditiis consequatur autem amet aut reiciendis nihil?</p>
-                    <h3 className='font-extrabold' style={{color:'white', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} 
+                    <h3 className='' style={{color:'white', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} 
                          al {endDate}
                         </h3>
                     <div className="mt-12 space-y-12">
@@ -236,7 +236,7 @@ export default function Id({ event, center }: IProps | any) {
           <li>
             <Link
               href="/aboutUs"
-              className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+              className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>
