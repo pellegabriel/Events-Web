@@ -154,10 +154,10 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       }} >
        <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>
-                  <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
+                  <div className='text-5xl ' style={{color:'white'}}>WeeOut</div>
                 </div>
             </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
@@ -165,7 +165,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                   >
                   Pagina principal
                 </Link>
@@ -173,7 +173,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                     className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                   onClick={signOut}
                 >
                   Cerrar sesion
@@ -192,12 +192,12 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
             <div className="" >
               <div className="justiify-center flex flex-col items-center">
                 
-                <h3 className="mt-10 flex items-cen  text-4xl font-extrabold leading-normal mb-8"style={{ color: 'white' }}>
+                <h3 className="mt-10 flex items-cen  text-4xl  leading-normal mb-8"style={{ color: 'white' }}>
                   Hola {user.username} Bienvenido!
                 </h3>
-                <Image style={{  borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}} alt="" src={svg3} width={500} height={500} />
+                <Image  alt="" src={svg3} width={500} height={500} />
 
-                <h1 className="mt-10 text-2xl text-white font-bold leading-normal mb-10">
+                <h1 className="mt-10 text-l text-white  leading-normal mb-10">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
                 <div className='' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',borderRadius:'10px'} }>
@@ -211,15 +211,15 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
             
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
-                <h1 className="font-bold mt-10 mb-20 text-2xl text-white leading-normal">
+                <h1 className=" mt-10 mb-20 text-l text-white leading-normal">
                   No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
               </div>
         
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
                 <div className=" overflow-hidden flex ">
-                  <div className="mt-8 mb-8 grid-cols-1 p-10">
-                    <h1 className="font-bold text-3xl text-white leading-normal mb-10">
+                  <div className="mt-8 mb-8 grid-cols-1 p-10 ">
+                    <h1 className=" text-3xl text-white leading-normal mb-10 flex justify-center items-center ">
                       Busca uno de tus eventos y haz click para editarlo:{' '}
                     </h1>
 
@@ -255,7 +255,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              className=" hover:bg-rose-500  text-white  font-extrabold  py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+              className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>

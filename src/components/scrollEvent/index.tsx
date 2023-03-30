@@ -14,7 +14,7 @@ export default function ScrollEvent({ events }: IProps) {
       className="flex flex-wrap overflow-auto justify-center p-5"
       style={{
         minWidth: '400px',
-
+        marginTop:'40PX',
         maxWidth:'960px',
         height: '730px',
         overflow: 'auto',
