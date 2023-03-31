@@ -4,9 +4,9 @@ import { Event } from '../../src/models'
 import Marker from './Marker'
 
 const containerStyle = {
-  width: '300px',
-  height: '730px',
-  borderRadius: '30px',
+  width: '800px',
+  height: '300px',
+
 }
 
 const defaultCenter = {

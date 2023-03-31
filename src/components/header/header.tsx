@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Header (){
     return (
-        <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0">
+        <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0" style={{ border: 0, padding: '32px 0px' }}>
           <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
               <div className="text-white no-underline hover:text-white hover:no-underline">
                 <div className="flex text-2xl pl-2">
                   <div className="em em-grinning"></div>

@@ -11,16 +11,14 @@ export default function ScrollEvent({ events }: IProps) {
 
   return (
     <div
-      className="flex flex-wrap overflow-auto justify-center"
+      className="flex flex-wrap overflow-auto justify-center p-5"
       style={{
         minWidth: '400px',
-        backgroundColor:'white',
-        maxWidth:'960px',
+        marginTop:'40PX',
+        maxWidth:'1000px',
         height: '730px',
         overflow: 'auto',
-        borderBottomLeftRadius:'10PX',
-        borderBottomRightRadius:'10PX'
-        ,borderWidth:'3px',
+
       }}
     >
       {events.map((event, index) => {

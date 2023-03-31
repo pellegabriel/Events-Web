@@ -1,27 +1,32 @@
-import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { CategoryItem } from '../categoryItem/categoryItem'
 
 export default function CategoriesList() {
   const router = useRouter()
-  const img1 = '/img1.jpg'
-  const categories = [
-    { title: 'teatro', img: img1 },
-    { title: 'Musica', img: img1 },
-    { title: 'Actividades sociales', img: img1 },
-    { title: 'Baile', img: img1 },
-    { title: 'Presentaciones', img: img1 },
-    { title: 'Arte', img: img1 },
-    { title: 'Medio ambiente', img: img1 },
-    { title: 'Deportes', img: img1 },
-    { title: 'Actividad  fisica', img: img1 },
-    { title: 'Literatura', img: img1 },
-    { title: 'Política', img: img1 },
-    { title: 'Religion', img: img1 },
-    { title: 'Espiritualidad', img: img1 },
-    { title: 'Salud y bienestar', img: img1 },
-    { title: 'Trabajo y negocios', img: img1 },
-    { title: 'Vida nocturna', img: img1 },
-  ]
+  const img1 = '../../art.jpg'
+  //hacer esto con todas las img de cada categoria
+  const categories = {
+    firstRow: [
+    { title: 'Teatro', image: img1 },
+    { title: 'Musica', image: img1 },
+    { title: 'Actividades sociales', image: img1 },
+    { title: 'Baile', image: img1 },
+    { title: 'Presentaciones', image: img1 },
+    { title: 'Arte', image: img1 },
+    { title: 'Medio ambiente', image: img1 },
+    { title: 'Deportes', image: img1 },
+    ],
+    secondRow: [      
+      { title: 'Actividad  fisica', image: img1 },
+      { title: 'Literatura', image: img1 },
+      { title: 'Política', image: img1 },
+      { title: 'Religion', image: img1 },
+      { title: 'Espiritualidad', image: img1 },
+      { title: 'Salud y bienestar', image: img1 },
+      { title: 'Trabajo y negocios', image: img1 },
+      { title: 'Vida nocturna', image: img1 },
+    ]
+  }
 
   const navigateToCategory = (categoryTitle: string) => {
     router.push({
@@ -31,47 +36,75 @@ export default function CategoriesList() {
   }
 
   return (
-    <div style={{marginLeft:'10px',        backgroundColor:'white'
-  }}><h1 className='px-8 text-white bg-black rounded dark:bg-gray-500 text-xl font-extrabold  p-2' style={{ maxWidth: '300px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>Categorias</h1><div
-      className="flex justify-center flex-col shadow-xl "
+    <div
       style={{
-       borderBottomLeftRadius:'10PX',
-        borderBottomRightRadius:'10PX'
-        
+        width: '1200px',
+        marginTop:' 100px'
       }}
     >
+      <h1
+        style={{
+          color: 'white',
+          paddingLeft: 0,
+          fontSize: '24px',
+          marginBottom: '32px',
+          backgroundColor:'transparent',
+        }}
+      >
+        Selecciona tus intereses
+      </h1>
 
       <div
+        className="flex justify-center flex-col"
         style={{
-          overflow: 'auto',
-          display: 'flex',
-          width: '230px',
-          height: '600px'
-          
+          borderBottomLeftRadius:'10PX',
+          borderBottomRightRadius:'10PX',
         }}
-        className="flex flex-col overflow-auto "
       >
-        {categories.map(({ title, img }, index) => {
-          return (
-            <div key={title} style={{borderWidth:'3px',maxWidth: '200px' , borderColor:'white',margin: '2px', marginBottom: '25px'}}>
-            <button
-              className='shadow-xl font-extrabold '
-              key={index}
-              onClick={() => navigateToCategory(title)}
-              style={{ maxWidth: '200px', background: '#FF0062 ', color: 'white' }}
-            >
-              <Image
-                alt=""
-                src={img}
-                width={200}
-                height={120}
-             />
-              <div style={{ maxWidth: '50%' , minHeight:'50px'}} className='flex items-center ml-4'> {title}</div>
-            </button>
-            </div>
-          )
-        })}
+      <div
+        style={{
+          gap: '16px',
+          width: '100%',
+          display: 'flex',
+          overflow: 'auto',
+          paddingBottom: '16px',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            gap: '16px',
+            width: '100%',
+            display: 'flex',
+          }}
+        >
+          {categories.firstRow.map(({ title }, index) => {
+            return (
+              <CategoryItem
+                key={title}
+                title={title}
+                onClick={() => navigateToCategory(title)}
+              />
+          )})}
+        </div>
+        <div
+          style={{
+            gap: '16px',
+            width: '100%',
+            display: 'flex',
+          }}
+        >
+          {categories.secondRow.map(({ title }, index) => {
+            return (
+              <CategoryItem
+                key={title}
+                title={title}
+                onClick={() => navigateToCategory(title)}
+              />
+          )})}
+        </div>
       </div>
-    </div></div>
+    </div>
+  </div>
   )
 }

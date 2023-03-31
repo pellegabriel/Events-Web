@@ -148,22 +148,24 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
   console.log('eventoptions vale',eventOptions)
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-      <nav className="bg-violet-800 p-2 mt-0 fixed w-full z-10 top-0 " style={{background:'#B746D7',borderBottomWidth:'3px', borderColor:'white'}}>
-        <div className="container mx-auto flex flex-wrap items-center">
-          <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-            <div className="text-white no-underline hover:text-white hover:no-underline">
-              <div className="flex text-2xl pl-2">
-                <div className="em em-grinning"></div>
-                <div className='text-5xl font-extrabold' style={{color:'white'}}>WeeOut</div>
-              </div>
+        <div style={{ 
+        background: 'rgb(165,97,191)',
+        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+      }} >
+       <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
+          <div className="container mx-auto flex flex-wrap items-center">
+            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
+                <div className="flex text-2xl pl-2">
+                  <div className="em em-grinning"></div>
+                  <div className='text-5xl ' style={{color:'white'}}>WeeOut</div>
+                </div>
             </div>
-          </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
             <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                   >
                   Pagina principal
                 </Link>
@@ -171,7 +173,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-                    style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                   onClick={signOut}
                 >
                   Cerrar sesion
@@ -183,22 +185,22 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       </nav>
       <div
         className="h-full p-8 flex items-center justify-center"
-        style={{backgroundColor:'#F0E0F0'}}
+
       >
-        <div className=" break-words bg-white  mt-16 border border-white w-6/6 rounded-lg p-8 "style={{borderWidth:'3px' ,background: 'white' }}>
+        <div className=" break-words mt-16  p-8 ">
           <div className="">
             <div className="" >
               <div className="justiify-center flex flex-col items-center">
                 
-                <h3 className="mt-10 flex items-cen  text-4xl font-extrabold leading-normal mb-8"style={{ color: 'black' }}>
+                <h3 className="mt-10 flex items-cen  text-4xl  leading-normal mb-8"style={{ color: 'white' }}>
                   Hola {user.username} Bienvenido!
                 </h3>
-                <Image style={{ background: '#ba7dc2', borderRadius:'30px' ,borderWidth:'3px', borderColor:'white'}} alt="" src={svg3} width={500} height={500} />
+                <Image  alt="" src={svg3} width={500} height={500} />
 
-                <h1 className="mt-10 text-2xl text-black font-extrabold leading-normal mb-10">
+                <h1 className="mt-10 text-l text-white  leading-normal mb-10">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
-                <div className='bg-white' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',background:'white',borderRadius:'10px'} }>
+                <div className='' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',borderRadius:'10px'} }>
                 <EventCreateForm
                   onSuccess={handleSuccess}
                   onSubmit={handleSubmit}
@@ -209,15 +211,15 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
             
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
-                <h1 className="font-extrabold mt-10 mb-20 text-2xl text-black leading-normal mb-1">
+                <h1 className=" mt-10 mb-20 text-l text-white leading-normal">
                   No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
               </div>
         
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
                 <div className=" overflow-hidden flex ">
-                  <div className="mt-8 mb-8 grid-cols-1 p-10">
-                    <h1 className="font-extrabold text-3xl text-black leading-normal mb-10">
+                  <div className="mt-8 mb-8 grid-cols-1 p-10 ">
+                    <h1 className=" text-3xl text-white leading-normal mb-10 flex justify-center items-center ">
                       Busca uno de tus eventos y haz click para editarlo:{' '}
                     </h1>
 
@@ -245,7 +247,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
         </div>
       </div>
       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
-      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{background:'#B746D7',borderWidth:'3px', borderColor:'white'}}>
+      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{borderTopWidth:'3px', borderColor:'white'}}>
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -253,13 +255,14 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
           <li>
             <Link
               href="/aboutUs"
-              style={{background:'#FF0062'}} className=" text-white  font-extrabold  py-2 px-4 border border-transparent borde-white  hover:text-black rounded flex items-center justify-center"
+              className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
               >
               Sobre nosotros
             </Link>
           </li>
         </ul>
       </footer>
+      </div>
     </Authenticator>
   )
 }

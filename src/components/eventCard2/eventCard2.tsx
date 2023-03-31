@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Event } from '../../models'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import parseDate from '../../helperFunctions/parseDate'
 import Link from 'next/link'
@@ -22,7 +22,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ? '#FF65A1'  : '#ba7dc2 ',
+  const boxStyle = {backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
 }
   const getUploadedImage = async () => {
     try {
@@ -57,11 +57,14 @@ export default function EventCard2({ event }: IProps | any) {
   const startDate = event.startDate ? parseDate(event.startDate) : ''
   const endDate = event.endDate ? parseDate(event.endDate) : ''
 
+
   return (
-    <div style={{flexDirection:'column', marginTop:'15px'}}>
+    <div  style={{flexDirection:'column',  boxShadow: "0px 0px 30px rgba(0,0,0, 0.6)",
+    borderRadius: "10px", width:'330px', height:'500px',margin:'29px'
+  }}>
    
     <div
-      className="flex rounded-lg p-4 object-cover shadow-xl group-hover:opacity-75"
+      className="flex p-4 object-cover shadow-xl group-hover:opacity-75"
       key={event.id}
       style={boxStyle}
           onMouseEnter={handleMouseEnter}
@@ -69,10 +72,8 @@ export default function EventCard2({ event }: IProps | any) {
       
     >
 
-      <div className="group font-extrabold" style={{minWidth:'300px'}}>
-        <div  style={{color:'black', display:'flex', justifyContent:'start', paddingLeft:'15px'}}>
-                    Fecha de Inicio: {startDate}
-         </div>
+      <div className="group " style={{minWidth:'300px'}}>
+    
         <div className="flex flex-col ">
         
           {image && !error ? (
@@ -95,34 +96,38 @@ export default function EventCard2({ event }: IProps | any) {
               style={{ width: '300px', height: '180px' }}
             />
           )}
-           {audio && (
-                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
-                  <Link href={audio} />
-                </audio>
-              )}
+           
         </div>
-      </div>
-      <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 " >
+        <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 " >
         <div className="sm:col-span-2">
           <div className="mt-3">
             <div className="group mb-2">
-              <h4 className=" font-extrabold text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
+              <h4 className="  text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
                 {event.name}
               </h4>
               <h5 className='text-md font-bold leading-6 font-sans '>
                 Sub Titulo
               </h5>
             </div>
-
+{audio && (
+                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
+                  <Link href={audio} />
+                </audio>
+              )}
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
-              {event.descripcion} </p>
-            <div  style={{color:'black', display:'flex', justifyContent:'start', marginTop:'20px'}}>
-                    Finaliza: {endDate}
+              {event.descripcion} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio sit consequuntur numquam natus laudantium a, dolores deleniti assumenda vel veniam laborum, unde minima distinctio? Aperiam vel officia cumque consectetur. </p>
+            
+            <div  style={{ display:'flex', justifyContent:'start', marginTop:'20px'}}>
+                    Fecha de Inicio: {startDate}
+                    <br />
+                    Finaliza: {endDate} 
          </div>
           </div>
         </div>
         
       </div>
+      </div>
+      
       </div>
     </div>
   )
