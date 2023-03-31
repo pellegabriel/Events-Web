@@ -34,6 +34,7 @@
     "react-dropzone-uploader": "^2.11.0",
     "react-form-hook": "^0.0.1",
     "react-geocode": "^0.2.3",
+    "react-h5-audio-player": "^3.8.6",
     "react-hook-form": "^7.40.0",
     "react-npm": "^2.6.1",
     "react-select": "^5.7.0",

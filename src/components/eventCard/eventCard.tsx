@@ -3,6 +3,7 @@ import { Event } from '../../models'
 import { useEffect, useRef, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import Link from 'next/link'
+import AudioPlayer from '../AudioPlayer/AudioPlayer'
 
 interface IProps {
   event: Event
@@ -125,20 +126,16 @@ export default function EventCard({ event }: IProps | any) {
         Inicia: {startDate}
       </h2>
       </div>
-
-        {event.types.length > 0 && (
-          <div style={{ display: 'flex', width: '100%', overflow: 'auto', padding: '8px' }}>
-            <span style={{backgroundColor:'#FF0062'}} className="inline-block bg-gray-200  px-3 py-1 text-xs font-semibold text-white">
-              {event.types}
-            </span>
-          </div>
-        )}
-
         {audio && (
           <div style={{ display: 'flex', marginTop: 'auto', padding: '8px' }}>
-            <audio controls src={audio} style={{ height: '20px' }}>
-              <Link href={audio} />
-            </audio>
+           <AudioPlayer src={audio} controls autoPlay style={{height:'50px', backgroundColor: '#f43f5e' }}/>
+          </div>
+        )}
+         {event.types.length > 0 && (
+          <div style={{ display: 'flex', width: '100%', overflow: 'auto', padding: '8px' }}>
+            <span style={{backgroundColor:'#F9A825',margin:'8px',marginBottom:'15px'}} className="inline-block bg-gray-200  px-3 py-1 text-xs font-semibold text-black">
+              {event.types}
+            </span>
           </div>
         )}
     </div>

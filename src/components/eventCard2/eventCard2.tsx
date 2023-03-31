@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import parseDate from '../../helperFunctions/parseDate'
 import Link from 'next/link'
+import AudioPlayer from '../AudioPlayer/AudioPlayer'
 
 interface IProps {
   event: Event
@@ -110,9 +111,9 @@ export default function EventCard2({ event }: IProps | any) {
               </h5>
             </div>
 {audio && (
-                <audio style={{marginBottom:'10px' ,width:'260px',height:'25px',marginLeft:'22px'}} controls src={audio}>
-                  <Link href={audio} />
-                </audio>
+                <div style={{ display: 'flex', marginTop: 'auto', padding: '8px' }}>
+                <AudioPlayer src={audio} controls autoPlay style={{height:'40px', backgroundColor: '#f43f5e' }}/>
+               </div>
               )}
             <p className="mt-1 text-sm font-normal text-skin-base leading-5">
               {event.descripcion} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio sit consequuntur numquam natus laudantium a, dolores deleniti assumenda vel veniam laborum, unde minima distinctio? Aperiam vel officia cumque consectetur. </p>
