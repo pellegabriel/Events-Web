@@ -14,8 +14,7 @@
 
 }
 html{
-  background: rgb(165,97,191);
-  background: radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%); 
+  background: black
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {

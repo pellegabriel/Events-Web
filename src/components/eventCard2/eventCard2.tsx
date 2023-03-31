@@ -22,7 +22,7 @@ export default function EventCard2({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {backgroundColor: isHover ? '#a561bf'  : '#170b0e', color:'white',
+  const boxStyle = {backgroundColor: isHover ? '#f43f5e'  : '#170b0e', color:'white',
 }
   const getUploadedImage = async () => {
     try {

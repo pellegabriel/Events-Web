@@ -81,7 +81,7 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
           <div
       className="flex flex-wrap "
       style={{
-        overflow: 'auto',marginBottom:'100px', padding: '8px',
+        overflow: 'auto',marginBottom:'100px', padding: '8px', maxHeight:'900px'
         
       }}
     >

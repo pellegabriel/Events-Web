@@ -60,7 +60,7 @@ export default function EventCard({ event }: IProps | any) {
   const handleMouseLeave = () => {
      setIsHover(false);
   };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#a561bf'  : '#170b0e',minHeight: '365px'
+  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#f43f5e'  : '#170b0e',minHeight: '365px'
 }
 
   return (

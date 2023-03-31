@@ -15,7 +15,7 @@ export default function ScrollEvent({ events }: IProps) {
       style={{
         minWidth: '400px',
         marginTop:'40PX',
-        maxWidth:'1000px',
+        maxWidth:'1200px',
         height: '730px',
         overflow: 'auto',
 
