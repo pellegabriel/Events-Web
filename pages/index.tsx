@@ -154,11 +154,11 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
             </h2>
             <ScrollEvent events={scrollEvents} />
           </div>
-          <div style={{marginTop:'80px'}}>
+       
+        </div>
+        <div style={{marginTop:'80px'}}>
           <Map events={events} />
           </div>
-        </div>
-
         <CategoriesList />
 
         <article id='abajo' className="grid gap-2 max-w-[1370px]">

@@ -39,7 +39,7 @@ export default function CategoriesList() {
     <div
       style={{
         width: '1200px',
-        marginTop:' 300px'
+        marginTop:' 100px'
       }}
     >
       <h1

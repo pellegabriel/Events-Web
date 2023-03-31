@@ -3,10 +3,15 @@ import { Event } from '../../models'
 import { useEffect, useRef, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import Link from 'next/link'
-import parseDate from '../../helperFunctions/parseDate'
 
 interface IProps {
   event: Event
+}
+
+function parseDate(dateString: string) {
+  const date = new Date(dateString);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' } as const;
+  return date.toLocaleDateString('es-ES', options);
 }
 
 export default function EventCard({ event }: IProps | any) {
@@ -47,8 +52,6 @@ export default function EventCard({ event }: IProps | any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const backgroundColors = ['#FF65A1 ', '#ba7dc2', 'yellow']
-  // const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)]
   const [isHover, setIsHover] = useState(false);
 
   const handleMouseEnter = () => {
@@ -67,10 +70,12 @@ export default function EventCard({ event }: IProps | any) {
         color:'white',
         margin: '20px',
         display: 'flex',
-        minHeight: '365px',
-        maxWidth: '270px',
+        minHeight: '305px',
+        maxWidth: '300px',
         flexDirection: 'column',
-        boxShadow: "0px 0px 30px rgba(0,0,0, 0.6)",
+        border: '1px solid #e5e5e5',
+        borderRadius: '5px',
+        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
 
         backgroundColor: 'red',
       }}
@@ -80,18 +85,7 @@ export default function EventCard({ event }: IProps | any) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-      <h2 className='text-lg flex justify-center ' style={{color:'white', backgroundColor:'#170b0e', padding: '8px'}}>
-        Inicia: {startDate}
-      </h2>
-
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'space-between',
-        }}
-      >
-        {image && !error ? (
+           {image && !error ? (
           <Image
             alt=""
             src={image}
@@ -110,14 +104,26 @@ export default function EventCard({ event }: IProps | any) {
             style={{ width: '300px', height: '180px' }}
           />
         )}
+  
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'space-between',
+          padding:'12px',marginLeft:'10px'
+        }}
+      >
+     
 
         <h2
-          className=" text-xl mb-2"
-          style={{ margin: '8px' }}
+          className=" text-2xl mb-2"
         >
           {' '}
           {event.name}
         </h2>
+        <h2 className='text-sm flex  ' style={{color:'white'}}>
+        Inicia: {startDate}
+      </h2>
       </div>
 
         {event.types.length > 0 && (

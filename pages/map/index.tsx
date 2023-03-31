@@ -4,8 +4,8 @@ import { Event } from '../../src/models'
 import Marker from './Marker'
 
 const containerStyle = {
-  width: '300px',
-  height: '770px',
+  width: '800px',
+  height: '300px',
 
 }
 
