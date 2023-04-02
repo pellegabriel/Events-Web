@@ -149,8 +149,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
         <div style={{ 
-        background: 'rgb(165,97,191)',
-        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+        background: 'black'
       }} >
        <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
@@ -211,15 +210,15 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
             
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
-                <h1 className=" mt-10 mb-20 text-l text-white leading-normal">
+                <h1 className=" mt-0 mb-0 text-l text-white leading-normal">
                   No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
               </div>
         
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
                 <div className=" overflow-hidden flex ">
-                  <div className="mt-8 mb-8 grid-cols-1 p-10 ">
-                    <h1 className=" text-3xl text-white leading-normal mb-10 flex justify-center items-center ">
+                  <div className="mt-8  grid-cols-1  ">
+                    <h1 className=" text-md text-white leading-normal  flex justify-center items-center ">
                       Busca uno de tus eventos y haz click para editarlo:{' '}
                     </h1>
 

@@ -134,8 +134,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
         <div style={{ 
-        background: 'rgb(165,97,191)',
-        backgroundImage: 'radial-gradient(circle, rgba(165,97,191,1) 0%, rgba(0,0,0,1) 100%)'
+        background: 'black'
       }} >
       <nav className=" p-2 mt-0  w-full z-10 top-0 "style={{borderBottomWidth:'1px', borderColor:'white'}}>
         <div className="container mx-auto flex flex-wrap items-center">

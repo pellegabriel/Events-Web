@@ -45,7 +45,7 @@ export default function EventsUser({
   }
 
   return (
-    <div className=" hover:bg-white  flex justify-center p-10" >
+    <div className=" hover:bg-white  flex justify-center " >
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
         <div className="flex flex-col py-6 p-8 ">
           <h2 className=" text-sm text-white">Fecha inicio: </h2>
@@ -76,26 +76,27 @@ export default function EventsUser({
       </div>
 
       <div style={{
-      padding: '48px', borderRadius:'10px', maxWidth:'800px'}}>
+      padding: '10px', borderRadius:'10px', maxWidth:'800px', maxHeight:'1200px'}}>
         <div className="">
-          <div className="text-xl font-medium mb-12 border-b border-gray-300 ">
-            <h5 className="py-1 mb-1 font-" style={{color:'white'}}>
+          <div className="text-sm font-medium mb-12 border-b border-gray-300 flex justify-content items-center" style={{marginLeft:'20px'}}>
+            <h5 className="py-1 mb-1" style={{color:'white'}}>
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>
 
           <div
-      className="flex flex-wrap "
+      className="flex flex-wrap justify-center items-center"
       style={{
         width: '860px',
         height: '900px',
         overflow: 'auto',
+
       }}
     >
           <div>
             {events.map((event: any) => {
               return (
-                <Link href={`/events/edit/${event.id}`} key={event.id}>
+                <Link  href={`/events/edit/${event.id}`} key={event.id}>
                   <EventCard2 event={event} key={event.id} />
                 </Link>
               )

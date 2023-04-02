@@ -2,15 +2,30 @@ import Image from 'next/image'
 import svg1 from '../../../public/svg1.svg'
 import svg2 from '../../../public/svg2.svg'
 
-export default function Ilustration() {
+import { useSpring, animated } from 'react-spring'
+
+
+export default function Illustration() {
+  const props = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 1000 },
+  })
+
+  const hoverProps = useSpring({
+    to: { transform: 'scale(1.2)' },
+    from: { transform: 'scale(1)' },
+  })
   return (
     <><div
-      className="flex justify-center flex-col p-40 "
-      style={{ maxWidth: '1600px' }}
+      className="flex justify-center flex-col p-18 "
+      style={{ maxWidth: '1600px'}}
     >
-      <div
-        className="flex p-10  max-w-md items-center bg-gray"
-      >
+
+      <animated.div style={props}   className="flex p-10  max-w-md items-center bg-gray " >
+
+      
+
         <Image alt="" src={svg1} width={600} height={600} />
         <h2 className=" flex justify-center p-10 text-2xl text-white">
           Es un espacio digital que brinda un servicio gratuito para agentes
@@ -19,9 +34,8 @@ export default function Ilustration() {
           nuestros artistas y productores culturales y todos aquellos que deseen
           disfrutar de esta oferta.
         </h2>
-      </div>
-      <div
-        className="flex p-10 mt-20 max-w-md items-center"
+      </animated.div>
+      <animated.div style={props}          className="flex p-10 mt-20 max-w-md items-center"
       >
         <Image alt="" src={svg2} width={600} height={600} />
         <h2 className="flex justify-center  p-10 text-2xl text-white">
@@ -33,7 +47,7 @@ export default function Ilustration() {
           momento agradable, acorde a tu necesidad y bolsillo. Sumate a nuestra
           comunidad de usuarios.
         </h2>
-      </div>
+      </animated.div >
 
     </div>
     
