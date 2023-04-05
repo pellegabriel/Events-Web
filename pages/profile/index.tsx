@@ -186,17 +186,16 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
         className="h-full p-8 flex items-center justify-center"
 
       >
-        <div className=" break-words mt-16  p-8 ">
+        <div className=" break-words  ">
           <div className="">
-            <div className="" >
-              <div className="justiify-center flex flex-col items-center">
-                
-                <h3 className="mt-10 flex items-cen  text-4xl  leading-normal mb-8"style={{ color: 'white' }}>
+            <div  >
+                <div className="flex row">
+                <Image  alt="" src={svg3} width={500} height={500} />
+                <div style={{paddingTop:'100px'}}>
+                <h3 className="mt-10  text-2xl  leading-normal mb-2"style={{ color: 'white' }}>
                   Hola {user.username} Bienvenido!
                 </h3>
-                <Image  alt="" src={svg3} width={500} height={500} />
-
-                <h1 className="mt-10 text-l text-white  leading-normal mb-10">
+                <h1 className=" text-l text-white  leading-normal mb-10">
                   Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
                 </h1>
                 <div className='' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',borderRadius:'10px'} }>
@@ -207,20 +206,25 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
                   
                 />
                 </div>
+                </div>
+       
+                </div>
+                <div className="justiify-center flex flex-col items-center">
+
+                
             
                 {error && <div>{error}</div>}
                 {isLoading && <Spinner />}
                 <h1 className=" mt-0 mb-0 text-l text-white leading-normal">
                   No olvides que darle a Subir Evento te llevara a la siguiente fase.
                 </h1>
+                
               </div>
         
               <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
                 <div className=" overflow-hidden flex ">
                   <div className="mt-8  grid-cols-1  ">
-                    <h1 className=" text-md text-white leading-normal  flex justify-center items-center ">
-                      Busca uno de tus eventos y haz click para editarlo:{' '}
-                    </h1>
+                
 
                     <main className="grid gap-6 gap-y-8  ">
                       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
@@ -246,7 +250,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
         </div>
       </div>
       <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
-      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800"style={{borderTopWidth:'3px', borderColor:'white'}}>
+      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6"style={{borderTopWidth:'1px', borderColor:'white'}}>
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>

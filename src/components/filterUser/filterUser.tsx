@@ -47,8 +47,13 @@ export default function EventsUser({
   return (
     <div className=" hover:bg-white  flex justify-center " >
       <div className=" mb-10 mt-10  " style={{ maxWidth: '400px' }}>
+        <div className="text-sm font-medium flex justify-content items-center" style={{marginLeft:'20px'}}>
+            <h5 className="py-1 mb-1" style={{color:'white'}}>
+              Cantidad de eventos disponibles: {events.length}
+            </h5>
+          </div>
         <div className="flex flex-col py-6 p-8 ">
-          <h2 className=" text-sm text-white">Fecha inicio: </h2>
+          <h2 className="mb-4 text-sm text-white">Fecha inicio: </h2>
           <input
             className="w-7"
             type="date"
@@ -59,7 +64,7 @@ export default function EventsUser({
           />
         </div>
         <div className="flex flex-col p-8 ">
-          <h2 className=" font- text-sm text-white">
+          <h2 className="mb-4 font- text-sm text-white">
             Tipo de evento:
           </h2>
           <Select
@@ -69,26 +74,20 @@ export default function EventsUser({
           onChange={handleSelectChange}
 
         />
+          <h2 className=" mt-4 text-white text-sm">Filtra tus eventos para seleccionar el que quieras editar</h2>
           <Image alt="" src={svg5} width={500} height={500} />
-          <h2 className="font-  text-white text-lg">Filtra tus eventos para seleccionar el que quieras editar</h2>
-
         </div>
       </div>
 
       <div style={{
       padding: '10px', borderRadius:'10px', maxWidth:'800px', maxHeight:'1200px'}}>
         <div className="">
-          <div className="text-sm font-medium mb-12 border-b border-gray-300 flex justify-content items-center" style={{marginLeft:'20px'}}>
-            <h5 className="py-1 mb-1" style={{color:'white'}}>
-              Cantidad de eventos disponibles: {events.length}
-            </h5>
-          </div>
+          
 
           <div
       className="flex flex-wrap justify-center items-center"
       style={{
-        width: '860px',
-        height: '900px',
+        height: '650px',
         overflow: 'auto',
 
       }}

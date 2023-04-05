@@ -3,7 +3,24 @@ import { CategoryItem } from '../categoryItem/categoryItem'
 
 export default function CategoriesList() {
   const router = useRouter()
-  const img1 = '../../art.jpg'
+  const img1 = '../../teatro.png'
+  const img2 = '../../musica.png'
+  const img3 = '../../tareasSociales.png'
+  const img4 = '../../dansa.png'
+  const img5 = '../../cine.png'
+  const img6 = '../../art.png'
+  const img7 = '../../medioAmbiente.png'
+  const img8 = '../../deporte.png'
+  const img10 = '../../art.png'
+  const img11 = '../../lectura.png'
+  const img12 = '../../politica.png'
+  const img13 = '../../religion.png'
+  const img14 = '../../espiritualidad.png'
+  const img15 = '../../salud.png'
+  const img16 = '../../trabajo.png'
+  const img17 = '../../fiesta.png'
+
+
   //hacer esto con todas las img de cada categoria
   const categories = {
     firstRow: [

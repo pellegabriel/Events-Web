@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
+import icon from "../assets/icon.png";
+
 
 interface ICategory {
   title: string
@@ -36,6 +38,7 @@ export const CategoryItem = (props: ICategory) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* <img src={icon} alt="Icon" style={iconStyle} /> */}
       {props.title}
     </button>
   )

@@ -144,7 +144,7 @@ function Home({ events = [], scrollEvents = [], filters, eventOptions }: IHome) 
         </nav>
 
         <EventsNowList events={[]} filters={filters} />
-    
+
         <div id='medio' className="flex" style={{ alignItems: 'flex-start' }}>
           <div style={{margin:'0 18px'}}>
             <h2 className='px-8 text-white   text-xl  p-2 flex justify-center' 
