@@ -77,10 +77,10 @@ export default function EventsUser({
             placeholder="tipo"
             onChange={handleSelectChange}
           />
-          <h2 className=" mt-4 text-white text-sm">
+          <h2 className="mb-10 mt-4 text-white text-sm">
             Filtra tus eventos para seleccionar el que quieras editar
           </h2>
-          <Image alt="" src={svg5} width={500} height={500} />
+          <Image alt="" src={svg5} width={200} height={200} />
         </div>
       </div>
 
@@ -97,7 +97,7 @@ export default function EventsUser({
             className="flex flex-wrap justify-center items-center"
             style={{
               height: '650px',
-              overflow: 'auto',
+              overflow: 'auto', marginLeft:'150px'
             }}
           >
             <div>

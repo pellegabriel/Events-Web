@@ -72,7 +72,7 @@ export default function EventCard2({ event }: IProps | any) {
       }}
     >
       <div
-        className="flex p-4 object-cover shadow-xl group-hover:opacity-75"
+        className="flex p-3 object-cover shadow-xl group-hover:opacity-75"
         key={event.id}
         style={boxStyle}
         onMouseEnter={handleMouseEnter}
@@ -103,13 +103,13 @@ export default function EventCard2({ event }: IProps | any) {
           </div>
           <div className=" flex justify-center items-center pl-5 space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0 ">
             <div className="sm:col-span-2">
-              <div className="mt-3">
+              <div className="mt-3 ml-8">
                 <div className="group mb-2">
-                  <h4 className="  text-2xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
+                  <h4 className=" text-xl leading-6 font-sans text-skin-inverted group-hover:text-skin-primary">
                     {event.name}
                   </h4>
-                  <h5 className="text-md font-bold leading-6 font-sans ">
-                    Sub Titulo
+                  <h5 className="text-md leading-6 font-sans ">
+                    Sub Titulo{event.subTitulo}
                   </h5>
                 </div>
                 {audio && (

@@ -51,7 +51,6 @@ const AudioPlayer = ({
       ref={audioRef}
       src={src}
       controls={controls}
-      autoPlay={autoPlay}
       muted={muted}
       loop={loop}
       preload={preload}
