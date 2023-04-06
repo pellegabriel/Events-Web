@@ -20,7 +20,6 @@ import { EventCreateFormInputValues } from '../../src/components/eventCreateForm
 import { Spinner } from '@theme-ui/components'
 import svg3 from '../../public/svg3.svg'
 
-
 Amplify.configure({ ...awsExports, ssr: true })
 
 interface IProps {
@@ -29,15 +28,13 @@ interface IProps {
   renderedAt: string
   events: Array<Event>
   filters: Partial<IFilters>
-  eventOptions : Array<EventTypes>
-
+  eventOptions: Array<EventTypes>
 }
 export interface IFilters {
   startDate?: string
   types?: string
   userId?: string
-  
-}//oasar esto a clientSideRendering
+} //oasar esto a clientSideRendering
 
 export async function getServerSideProps({ req, query }: any) {
   const SSR = withSSRContext({ req })
@@ -120,8 +117,8 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
   const handleSuccess = (newEvent: Event) => {
     console.log('ASDASD', { newEvent })
     router.push({
-      pathname:`/events/edit/${newEvent.id}`,
-      query: {eventTitle: newEvent.name} 
+      pathname: `/events/edit/${newEvent.id}`,
+      query: { eventTitle: newEvent.name },
     })
   }
   const handleError = (_event: EventCreateFormInputValues, message: string) => {
@@ -145,126 +142,132 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       ...newFilters,
     })
   }
-  console.log('eventoptions vale',eventOptions)
+  console.log('eventoptions vale', eventOptions)
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
-        <div style={{ 
-        background: 'black'
-      }} >
-       <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
+      <div
+        style={{
+          background: 'black',
+        }}
+      >
+        <nav className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
           <div className="container mx-auto flex flex-wrap items-center">
             <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
-                <div className="flex text-2xl pl-2">
-                  <div className="em em-grinning"></div>
-                  <div className='text-5xl ' style={{color:'white'}}>WeeOut</div>
+              <div className="flex text-2xl pl-2">
+                <div className="em em-grinning"></div>
+                <div className="text-5xl " style={{ color: 'white' }}>
+                  WeeOut
                 </div>
+              </div>
             </div>
-          <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
-            <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
-              <li className="mr-3">
-                <Link
-                  href="/"
-                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+            <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+              <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
+                <li className="mr-3">
+                  <Link
+                    href="/"
+                    className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
                   >
-                  Pagina principal
-                </Link>
-              </li>
-              <li className="mr-3">
-                <Link
-                  href="/"
-                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
-                  onClick={signOut}
-                >
-                  Cerrar sesion
-                </Link>
-              </li>
-            </ul>
+                    Pagina principal
+                  </Link>
+                </li>
+                <li className="mr-3">
+                  <Link
+                    href="/"
+                    className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                    onClick={signOut}
+                  >
+                    Cerrar sesion
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-      <div
-        className="h-full p-8 flex items-center justify-center"
-
-      >
-        <div className=" break-words  ">
-          <div className="">
-            <div  >
+        </nav>
+        <div className="h-full p-8 flex items-center justify-center">
+          <div className=" break-words  ">
+            <div className="">
+              <div>
                 <div className="flex row">
-                <Image  alt="" src={svg3} width={500} height={500} />
-                <div style={{paddingTop:'100px'}}>
-                <h3 className="mt-10  text-2xl  leading-normal mb-2"style={{ color: 'white' }}>
-                  Hola {user.username} Bienvenido!
-                </h3>
-                <h1 className=" text-l text-white  leading-normal mb-10">
-                  Ahora que estas aqui, podras crear tus propios eventos <br/> Comienza eligiendo un nombre que te guste:{' '}
-                </h1>
-                <div className='' style={{borderWidth:'3px', borderColor:'gray' ,padding:'8px', marginBottom:'100px',borderRadius:'10px'} }>
-                <EventCreateForm
-                  onSuccess={handleSuccess}
-                  onSubmit={handleSubmit}
-                  onError={handleError}
-                  
-                />
-                </div>
-                </div>
-       
+                  <Image alt="" src={svg3} width={500} height={500} />
+                  <div style={{ paddingTop: '100px' }}>
+                    <h3
+                      className="mt-10  text-2xl  leading-normal mb-2"
+                      style={{ color: 'white' }}
+                    >
+                      Hola {user.username} Bienvenido!
+                    </h3>
+                    <h1 className=" text-l text-white  leading-normal mb-10">
+                      Ahora que estas aqui, podras crear tus propios eventos{' '}
+                      <br /> Comienza eligiendo un nombre que te guste:{' '}
+                    </h1>
+                    <div
+                      className=""
+                      style={{
+                        borderWidth: '3px',
+                        borderColor: 'gray',
+                        padding: '8px',
+                        marginBottom: '100px',
+                        borderRadius: '10px',
+                      }}
+                    >
+                      <EventCreateForm
+                        onSuccess={handleSuccess}
+                        onSubmit={handleSubmit}
+                        onError={handleError}
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="justiify-center flex flex-col items-center">
+                  {error && <div>{error}</div>}
+                  {isLoading && <Spinner />}
+                  <h1 className=" mt-0 mb-0 text-l text-white leading-normal">
+                    No olvides que darle a Subir Evento te llevara a la
+                    siguiente fase.
+                  </h1>
+                </div>
 
-                
-            
-                {error && <div>{error}</div>}
-                {isLoading && <Spinner />}
-                <h1 className=" mt-0 mb-0 text-l text-white leading-normal">
-                  No olvides que darle a Subir Evento te llevara a la siguiente fase.
-                </h1>
-                
-              </div>
-        
-              <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
-                <div className=" overflow-hidden flex ">
-                  <div className="mt-8  grid-cols-1  ">
-                
-
-                    <main className="grid gap-6 gap-y-8  ">
-                      <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
-                        <div
-                          className="col-span-12  object-cover lg:row-span-2 rounded-lg"
-                          
-                        >
-                          <EventsUser
-                            events={events}
-                            filters={filters}
-                            updateFilters={handleChange}
-                            eventTypesOptions={eventOptions}
-
-                          />
-                        </div>
-                      </section>
-                    </main>
+                <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
+                  <div className=" overflow-hidden flex ">
+                    <div className="mt-8  grid-cols-1  ">
+                      <main className="grid gap-6 gap-y-8  ">
+                        <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start">
+                          <div className="col-span-12  object-cover lg:row-span-2 rounded-lg">
+                            <EventsUser
+                              events={events}
+                              filters={filters}
+                              updateFilters={handleChange}
+                              eventTypesOptions={eventOptions}
+                            />
+                          </div>
+                        </section>
+                      </main>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
-      <footer className="p-4   shadow md:flex md:items-center md:justify-between md:p-6"style={{borderTopWidth:'1px', borderColor:'white'}}>
-        <span className="text-sm text-white sm:text-center dark:text-gray-400">
-          © 2022. All Rights Reserved.
-        </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-          <li>
-            <Link
-              href="/aboutUs"
-              className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+        <section className="grid grid-cols-3 col-start-2 gap-4 lg:gap-6 gap-y-8 content-start"></section>
+        <footer
+          className="p-4   shadow md:flex md:items-center md:justify-between md:p-6"
+          style={{ borderTopWidth: '1px', borderColor: 'white' }}
+        >
+          <span className="text-sm text-white sm:text-center dark:text-gray-400">
+            © 2022. All Rights Reserved.
+          </span>
+          <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+              <Link
+                href="/aboutUs"
+                className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
               >
-              Sobre nosotros
-            </Link>
-          </li>
-        </ul>
-      </footer>
+                Sobre nosotros
+              </Link>
+            </li>
+          </ul>
+        </footer>
       </div>
     </Authenticator>
   )

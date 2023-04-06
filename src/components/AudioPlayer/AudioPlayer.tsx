@@ -1,20 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef } from 'react'
 
 interface IProps {
-  src: string;
-  controls?: boolean;
-  autoPlay?: boolean;
-  muted?: boolean;
-  loop?: boolean;
-  preload?: 'none' | 'metadata' | 'auto';
-  onPlay?: () => void;
-  onPause?: () => void;
-  onEnded?: () => void;
-  onTimeUpdate?: () => void;
-  onLoadedMetadata?: () => void;
-  className?: string;
-  style?: React.CSSProperties;
-  playerStyle?: React.CSSProperties;
+  src: string
+  controls?: boolean
+  autoPlay?: boolean
+  muted?: boolean
+  loop?: boolean
+  preload?: 'none' | 'metadata' | 'auto'
+  onPlay?: () => void
+  onPause?: () => void
+  onEnded?: () => void
+  onTimeUpdate?: () => void
+  onLoadedMetadata?: () => void
+  className?: string
+  style?: React.CSSProperties
+  playerStyle?: React.CSSProperties
 }
 
 const AudioPlayer = ({
@@ -33,23 +33,22 @@ const AudioPlayer = ({
   style,
   playerStyle,
 }: IProps) => {
-    const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null)
 
-    const handleMouseEnter = () => {
-      if (audioRef.current) {
-        audioRef.current.play();
-      }
-    };
-  
-    const handleMouseLeave = () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
+  const handleMouseEnter = () => {
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (audioRef.current) {
+      audioRef.current.pause()
+    }
+  }
   return (
     <audio
-    ref={audioRef}
-
+      ref={audioRef}
       src={src}
       controls={controls}
       autoPlay={autoPlay}
@@ -102,7 +101,7 @@ audio::-webkit-media-controls-play-button {
         `}
       </style>
     </audio>
-  );
-};
+  )
+}
 
-export default AudioPlayer;
+export default AudioPlayer

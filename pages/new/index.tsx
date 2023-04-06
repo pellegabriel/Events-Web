@@ -99,14 +99,18 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/profile"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                  style={{ background: '#138D75' }}
+                  className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                >
                   Volver a Usuario
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                 >
+                  style={{ background: '#138D75' }}
+                  className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                >
                   Pagina principal
                 </Link>
               </li>
@@ -114,7 +118,9 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
               <li className="mr-3">
                 <Link
                   href="/"
-      style={{background:'#138D75'}} className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"                   onClick={signOut}
+                  style={{ background: '#138D75' }}
+                  className=" text-white font-semibold   py-2 px-4 border border-yellow-500 hover:border-transparent rounded flex items-center justify-center"
+                  onClick={signOut}
                 >
                   Cerrar sesion
                 </Link>
@@ -168,7 +174,10 @@ function NewEvent({ signOut, user, renderedAt }: IProps) {
         </div>
       </div>
 
-      <footer className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 " style={{borderWidth:'3px', borderColor:'white'}}>
+      <footer
+        className="p-4 bg-violet-800  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 "
+        style={{ borderWidth: '3px', borderColor: 'white' }}
+      >
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useState } from 'react'
+import { useSpring, animated } from 'react-spring'
 
 type CircleProps = {
-  diameter: number;
-  color: string;
-  strokeWidth: number;
-  path: string;
-};
+  diameter: number
+  color: string
+  strokeWidth: number
+  path: string
+}
 
 const Circle: React.FC<CircleProps> = ({
   diameter,
@@ -14,13 +14,13 @@ const Circle: React.FC<CircleProps> = ({
   strokeWidth,
   path,
 }) => {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(false)
 
   const { d, stroke, fill } = useSpring({
     d: hovered ? path : 'M0,0',
     stroke: hovered ? color : 'black',
     fill: hovered ? color : 'none',
-  });
+  })
 
   return (
     <animated.svg
@@ -37,7 +37,7 @@ const Circle: React.FC<CircleProps> = ({
         fill={fill}
       />
     </animated.svg>
-  );
-};
+  )
+}
 
-export default Circle;
+export default Circle

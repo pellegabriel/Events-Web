@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { useState } from "react";
-import icon from "../assets/icon.png";
-
+import Image from 'next/image'
+import { useState } from 'react'
+import icon from '../assets/icon.png'
 
 interface ICategory {
   title: string
@@ -9,31 +8,31 @@ interface ICategory {
 }
 
 export const CategoryItem = (props: ICategory) => {
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(false)
 
   const handleMouseEnter = () => {
-      setIsHover(true);
-  };
-  
+    setIsHover(true)
+  }
+
   const handleMouseLeave = () => {
-      setIsHover(false);
-  };
+    setIsHover(false)
+  }
 
   const boxStyle = {
-    color:'white',
+    color: 'white',
     minWidth: '240px',
-    height:'50px',
+    height: '50px',
     padding: '8px 46px',
     fontSize: '14px',
     borderRadius: '6px',
     border: '1px solid rgba(255, 255, 255, 0.3)',
-    backgroundColor: isHover ? '#f43f5e'  : 'transparent',
+    backgroundColor: isHover ? '#f43f5e' : 'transparent',
   }
 
   return (
     <button
       style={boxStyle}
-      className='shadow-xl'
+      className="shadow-xl"
       onClick={props.onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

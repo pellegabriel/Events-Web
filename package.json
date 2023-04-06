@@ -56,7 +56,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.19",
-    "prettier": "^2.8.1",
+    "prettier": "2.8.7",
     "react-dropzone": "^14.2.3",
     "stylelint-config-recommended": "^9.0.0",
     "tailwind-scrollbar": "^2.0.1",

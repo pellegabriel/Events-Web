@@ -80,154 +80,203 @@ export default function Id({ event, center }: IProps | any) {
   )
 
   return (
-    <div style={{ 
-        background: 'black'
-      }}>
-          <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
-          <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
-                <div className="flex text-2xl pl-2">
-                  <div className="em em-grinning"></div>
-                  <div className='text-5xl ' style={{color:'white'}}>WeeOut</div>
-                </div>
-            </div>
-            <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
-              <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
-                <li className="mr-3">
-                  <Link
-                    href="/"
-                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
-                     >
-                    Pagina principal
-                  </Link>
-                </li>
-                <li className="mr-3">
-                  <Link
-                    href="/profile"
-                     className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
- >
-                    Empieza ahora
-                  </Link>
-                </li>
-              </ul>
+    <div
+      style={{
+        background: 'black',
+      }}
+    >
+      <nav className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
+        <div className="container mx-auto flex flex-wrap items-center">
+          <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white ">
+            <div className="flex text-2xl pl-2">
+              <div className="em em-grinning"></div>
+              <div className="text-5xl " style={{ color: 'white' }}>
+                WeeOut
+              </div>
             </div>
           </div>
-        </nav>
-      <div style={{display:'flex',
-                    flexDirection:'column',
-                  alignItems:'center',
-                    justifyContent:'center',
-                    paddingTop:'7rem'}}
-                    
-                    >
-      <h2 className="mx-auto rounded-lg  tracking-tight text-center text-white  text-5xl mb-4 w-full">
+          <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+            <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
+              <li className="mr-3">
+                <Link
+                  href="/"
+                  className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                >
+                  Pagina principal
+                </Link>
+              </li>
+              <li className="mr-3">
+                <Link
+                  href="/profile"
+                  className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
+                >
+                  Empieza ahora
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: '7rem',
+        }}
+      >
+        <h2 className="mx-auto rounded-lg  tracking-tight text-center text-white  text-5xl mb-4 w-full">
           {event.name}
         </h2>
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  text-white">
-                      {event.subtitle}Sub Titulo
-                    </h3>
+          {event.subtitle}Sub Titulo
+        </h3>
         <h2 className="max-w-3xl mx-auto  text-xl text-white text-center">
           Usuario que posteo el evento:
         </h2>
         <h2 className="max-w-3xl mx-auto text-xl text-white text-center">
           {event.user}
         </h2>
-        <div style={{display:'flex',
-                    flexDirection:'row'}}>
-       <div className="mx-auto  flex justify-content " style={{marginTop:'80px',borderWidth:'3px', borderColor:'white',  height:'770px'}}>
-          <Map events={[event]} center={mapCenter} zoom={15} />
-        </div>
-
-      <div className="flex flex-col justify-center items-center  p-10" style={{ color:'white'
-      }}>
-        <div className="flex justify-center items-center">
-          <section
-            className="flex w-6/6 rounded-lg  "
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div
+            className="mx-auto  flex justify-content "
             style={{
-              maxWidth: '600px',
-              minHeight: '500px',
+              marginTop: '80px',
+              borderWidth: '3px',
+              borderColor: 'white',
+              height: '770px',
             }}
           >
-            <div className="container max-w-xl p-6 py-12 mx-auto  lg:px-8 lg:max-w-7xl">
-              <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
-                {error ? (
-                  <Image
-                    alt=""
-                    src={img1}
-                    width={500}
-                    height={500}
-                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
-                    style={{borderWidth:'3px', borderColor:'white'}}
-                  />
-                ) : (
-                  <Image
-                    alt=""
-                    src={image}
-                    width={700}
-                    height={700}
-                    onError={handleImageError}
-                    className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
-                    style={{borderWidth:'3px', borderColor:'white'}}
-                  />
-                )}
-              </div>
-              <div>
-                <div className="flex flex-col lg:items-center">
-                  <div className="lg:col-start-2">
-        
-                    <p className="mt-3 text-lg  " style={{color:'white', padding:'40px', maxWidth:'500px',borderRadius:'10px'}}>
-                      {event.descripcion} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, at. Nam voluptatum ratione in? Iure nam sunt sit nostrum accusantium incidunt quaerat, similique, blanditiis consequatur autem amet aut reiciendis nihil?</p>
-                    <h3 className='' style={{color:'white', display:'flex', justifyContent:'center',marginTop:'15px', fontSize:'20px'}}>El evento dura del: <br />{startDate} 
-                         al {endDate}
+            <Map events={[event]} center={mapCenter} zoom={15} />
+          </div>
+
+          <div
+            className="flex flex-col justify-center items-center  p-10"
+            style={{ color: 'white' }}
+          >
+            <div className="flex justify-center items-center">
+              <section
+                className="flex w-6/6 rounded-lg  "
+                style={{
+                  maxWidth: '600px',
+                  minHeight: '500px',
+                }}
+              >
+                <div className="container max-w-xl p-6 py-12 mx-auto  lg:px-8 lg:max-w-7xl">
+                  <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
+                    {error ? (
+                      <Image
+                        alt=""
+                        src={img1}
+                        width={500}
+                        height={500}
+                        className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                        style={{ borderWidth: '3px', borderColor: 'white' }}
+                      />
+                    ) : (
+                      <Image
+                        alt=""
+                        src={image}
+                        width={700}
+                        height={700}
+                        onError={handleImageError}
+                        className="mx-auto rounded-lg shadow-xl dark:bg-gray-500"
+                        style={{ borderWidth: '3px', borderColor: 'white' }}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <div className="flex flex-col lg:items-center">
+                      <div className="lg:col-start-2">
+                        <p
+                          className="mt-3 text-lg  "
+                          style={{
+                            color: 'white',
+                            padding: '40px',
+                            maxWidth: '500px',
+                            borderRadius: '10px',
+                          }}
+                        >
+                          {event.descripcion} Lorem ipsum dolor sit, amet
+                          consectetur adipisicing elit. Quod, at. Nam voluptatum
+                          ratione in? Iure nam sunt sit nostrum accusantium
+                          incidunt quaerat, similique, blanditiis consequatur
+                          autem amet aut reiciendis nihil?
+                        </p>
+                        <h3
+                          className=""
+                          style={{
+                            color: 'white',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: '15px',
+                            fontSize: '20px',
+                          }}
+                        >
+                          El evento dura del: <br />
+                          {startDate}
+                          al {endDate}
                         </h3>
-                    <div className="mt-12 space-y-12">
-                      <div className="flex">
-                        <div className="flex-shrink-0"></div>
-                        <div className="ml-4">
-                          {audio && (
-                            <audio controls src={audio} style={{width:'450px'}}>
-                              <Link href={audio} />
-                            </audio>
-                          )}
-                        </div>                        
-                      </div>
-                      <div className="flex">
-                        <div className="ml-4">
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-                            {event.types} 
-                          </span>
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-                            {event.types} 
-                          </span>
-                          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-                            {event.types} 
-                          </span>
+                        <div className="mt-12 space-y-12">
+                          <div className="flex">
+                            <div className="flex-shrink-0"></div>
+                            <div className="ml-4">
+                              {audio && (
+                                <audio
+                                  controls
+                                  src={audio}
+                                  style={{ width: '450px' }}
+                                >
+                                  <Link href={audio} />
+                                </audio>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex">
+                            <div className="ml-4">
+                              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+                                {event.types}
+                              </span>
+                              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+                                {event.types}
+                              </span>
+                              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+                                {event.types}
+                              </span>
+                            </div>
+                          </div>
                         </div>
-         
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
-          </section>
-          
+          </div>
+        </div>
+        <div className="flex pr-20">
+          <Image
+            alt=""
+            src={svg6}
+            width={700}
+            height={700}
+            className="mx-auto"
+          />
+          <h1
+            className="mt-5 mb-10 text-xl text-white font-bold leading-normal flex justify-center items-center"
+            style={{ maxWidth: '400px', marginLeft: '50px' }}
+          >
+            ¿Te agrado este evento? <br /> Recuerda que hay muchos mas esperando
+            ahi fuera <br /> No te los pierdas!
+          </h1>
         </div>
       </div>
-      </div>
-      <div className='flex pr-20'>
-      <Image
-                    alt=""
-                    src={svg6}
-                    width={700}
-                    height={700}
-                    className="mx-auto"
-                  />
-        <h1 className="mt-5 mb-10 text-xl text-white font-bold leading-normal flex justify-center items-center" style={{maxWidth:'400px', marginLeft:'50px'}}>¿Te agrado este evento? <br/> Recuerda que hay muchos mas esperando ahi fuera <br/> No te los pierdas!</h1>
-      </div> 
-      </div>
-      
-      <footer style={{borderTopWidth:'3px', borderColor:'white'}} className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-white">
+
+      <footer
+        style={{ borderTopWidth: '3px', borderColor: 'white' }}
+        className=" shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-white"
+      >
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2022. All Rights Reserved.
         </span>
@@ -236,7 +285,7 @@ export default function Id({ event, center }: IProps | any) {
             <Link
               href="/aboutUs"
               className=" hover:bg-rose-500  text-white    py-2 px-4 border border-transparent hover:text-white  flex items-center justify-center"
-              >
+            >
               Sobre nosotros
             </Link>
           </li>

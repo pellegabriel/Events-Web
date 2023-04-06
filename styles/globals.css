@@ -11,10 +11,9 @@
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 30px;
-
 }
-html{
-  background: black
+html {
+  background: black;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -29,21 +28,26 @@ html{
 }
 
 @media (max-width: 600px) {
-
-  #header{display: flex;
-  justify-content: right;}
-  #medio{
+  #header {
+    display: flex;
+    justify-content: right;
+  }
+  #medio {
     display: flex;
     flex-direction: column;
     max-width: 500px;
   }
-  #arriba{max-width: 500px;
-  padding-left: 70px;
+  #arriba {
+    max-width: 500px;
+    padding-left: 70px;
   }
-  #abajo{
+  #abajo {
     max-width: 500px;
   }
-  #footer{ width: 600px;
-  align-items: center;}
-  #todo{}  
+  #footer {
+    width: 600px;
+    align-items: center;
+  }
+  #todo {
+  }
 }

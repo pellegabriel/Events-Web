@@ -2,33 +2,37 @@ import Link from 'next/link'
 import Ilustration from '../../src/components/Ilustracion/Ilustracion'
 export default function AboutUs() {
   return (
-    <div style={{ 
+    <div
+      style={{
         background: 'black',
-      }} >
-        <nav  className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
-          <div className="container mx-auto flex flex-wrap items-center">
-            <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white">
-                <div className="flex text-2xl pl-2">
-                  <div className="em em-grinning"></div>
-                  <div className='text-5xl' style={{color:'white'}}>WeeOut</div>
-                </div>
+      }}
+    >
+      <nav className=" p-2 mt-0 w-full z-10 top-0 mb-12 border-b border-gray-300">
+        <div className="container mx-auto flex flex-wrap items-center">
+          <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white">
+            <div className="flex text-2xl pl-2">
+              <div className="em em-grinning"></div>
+              <div className="text-5xl" style={{ color: 'white' }}>
+                WeeOut
+              </div>
             </div>
+          </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
             <ul className="list-reset flex justify-between flex-1 md:flex-none items-center pb-2">
               <li className="mr-3">
                 <Link
                   href="/"
-                     className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
-      >
+                  className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
+                >
                   Pagina principal
                 </Link>
               </li>
               <li className="mr-3">
                 <Link
                   href="/profile"
-                     className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
-      >
-                   Tu perfil
+                  className=" hover:bg-rose-500  text-white   py-2 px-4 border border-transparent hover:text-black  flex items-center justify-center"
+                >
+                  Tu perfil
                 </Link>
               </li>
             </ul>

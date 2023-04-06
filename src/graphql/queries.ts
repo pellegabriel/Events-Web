@@ -15,7 +15,7 @@ export const getEventTypes = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const listEventTypes = /* GraphQL */ `
   query ListEventTypes(
     $filter: ModelEventTypesFilterInput
@@ -37,7 +37,7 @@ export const listEventTypes = /* GraphQL */ `
       startedAt
     }
   }
-`;
+`
 export const syncEventTypes = /* GraphQL */ `
   query SyncEventTypes(
     $filter: ModelEventTypesFilterInput
@@ -65,7 +65,7 @@ export const syncEventTypes = /* GraphQL */ `
       startedAt
     }
   }
-`;
+`
 export const getEvent = /* GraphQL */ `
   query GetEvent($id: ID!) {
     getEvent(id: $id) {
@@ -86,7 +86,7 @@ export const getEvent = /* GraphQL */ `
       _lastChangedAt
     }
   }
-`;
+`
 export const listEvents = /* GraphQL */ `
   query ListEvents(
     $filter: ModelEventFilterInput
@@ -115,7 +115,7 @@ export const listEvents = /* GraphQL */ `
       startedAt
     }
   }
-`;
+`
 export const syncEvents = /* GraphQL */ `
   query SyncEvents(
     $filter: ModelEventFilterInput
@@ -150,4 +150,4 @@ export const syncEvents = /* GraphQL */ `
       startedAt
     }
   }
-`;
+`

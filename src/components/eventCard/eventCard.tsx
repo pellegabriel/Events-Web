@@ -10,13 +10,17 @@ interface IProps {
 }
 
 function parseDate(dateString: string) {
-  const date = new Date(dateString);
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' } as const;
-  return date.toLocaleDateString('es-ES', options);
+  const date = new Date(dateString)
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  } as const
+  return date.toLocaleDateString('es-ES', options)
 }
 
 export default function EventCard({ event }: IProps | any) {
-  
   const startDate = event.startDate ? parseDate(event.startDate) : ''
 
   const [image, setImage] = useState<string>('')
@@ -53,22 +57,24 @@ export default function EventCard({ event }: IProps | any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(false)
 
   const handleMouseEnter = () => {
-     setIsHover(true);
-  };
+    setIsHover(true)
+  }
   const handleMouseLeave = () => {
-     setIsHover(false);
-  };
-  const boxStyle = {maxWidth:'700px'   ,backgroundColor: isHover ?  '#f43f5e'  : '#170b0e',minHeight: '365px'
-}
+    setIsHover(false)
+  }
+  const boxStyle = {
+    maxWidth: '700px',
+    backgroundColor: isHover ? '#f43f5e' : '#170b0e',
+    minHeight: '365px',
+  }
 
   return (
-  
     <div
       style={{
-        color:'white',
+        color: 'white',
         margin: '20px',
         display: 'flex',
         minHeight: '305px',
@@ -82,11 +88,12 @@ export default function EventCard({ event }: IProps | any) {
       }}
       // className=" overflow-hidden shadow-xl"
     >
-      <div style={boxStyle}
+      <div
+        style={boxStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-           {image && !error ? (
+        {image && !error ? (
           <Image
             alt=""
             src={image}
@@ -98,47 +105,60 @@ export default function EventCard({ event }: IProps | any) {
         ) : (
           <Image
             alt=""
-            src='/img1.jpg'
+            src="/img1.jpg"
             width={300}
             height={200}
             onError={handleImageError}
             style={{ width: '300px', height: '180px' }}
           />
         )}
-  
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'space-between',
-          padding:'12px',marginLeft:'10px'
-        }}
-      >
-     
 
-        <h2
-          className=" text-2xl mb-2"
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'space-between',
+            padding: '12px',
+            marginLeft: '10px',
+          }}
         >
-          {' '}
-          {event.name}
-        </h2>
-        <h2 className='text-sm flex  ' style={{color:'white'}}>
-        Inicia: {startDate}
-      </h2>
-      </div>
+          <h2 className=" text-2xl mb-2"> {event.name}</h2>
+          <h2 className="text-sm flex  " style={{ color: 'white' }}>
+            Inicia: {startDate}
+          </h2>
+        </div>
         {audio && (
           <div style={{ display: 'flex', marginTop: 'auto', padding: '8px' }}>
-           <AudioPlayer src={audio} controls autoPlay style={{height:'50px', backgroundColor: '#f43f5e' }}/>
+            <AudioPlayer
+              src={audio}
+              controls
+              autoPlay
+              style={{ height: '50px', backgroundColor: '#f43f5e' }}
+            />
           </div>
         )}
-         {event.types.length > 0 && (
-          <div style={{ display: 'flex', width: '100%', overflow: 'auto', padding: '8px' }}>
-            <span style={{backgroundColor:'#F9A825',margin:'8px',marginBottom:'15px'}} className="inline-block bg-gray-200  px-3 py-1 text-xs font-semibold text-black">
+        {event.types.length > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              overflow: 'auto',
+              padding: '8px',
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: '#F9A825',
+                margin: '8px',
+                marginBottom: '15px',
+              }}
+              className="inline-block bg-gray-200  px-3 py-1 text-xs font-semibold text-black"
+            >
               {event.types}
             </span>
           </div>
         )}
+      </div>
     </div>
-    </div>      
   )
 }

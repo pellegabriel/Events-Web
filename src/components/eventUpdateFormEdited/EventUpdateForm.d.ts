@@ -59,7 +59,7 @@ export declare type EventUpdateFormProps = React.PropsWithChildren<
   } & {
     id?: string
     event?: Event
-    eventTypesOptions?:Array<EventTypes>
+    eventTypesOptions?: Array<EventTypes>
     onSubmit?: (
       fields: EventUpdateFormInputValues,
     ) => EventUpdateFormInputValues

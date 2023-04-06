@@ -39,26 +39,27 @@ export async function getServerSideProps({ req }: any) {
   }
 }
 
+export default function EventsNowList({ events = [] }: IProps) {
+  const [isHover, setIsHover] = useState(false)
 
-export default function EventsNowList({ events = [] } : IProps) {
-  const [isHover, setIsHover] = useState(false);
-
-    const handleMouseEnter = () => {
-       setIsHover(true);
-    };
-    const handleMouseLeave = () => {
-       setIsHover(false);
-    };
-    const boxStyle = { backgroundColor: isHover ? '#f43f5e'  : '' ,width: '200px',
+  const handleMouseEnter = () => {
+    setIsHover(true)
+  }
+  const handleMouseLeave = () => {
+    setIsHover(false)
+  }
+  const boxStyle = {
+    backgroundColor: isHover ? '#f43f5e' : '',
+    width: '200px',
     padding: '8px',
     color: 'white',
     fontSize: '14px',
     borderRadius: '6px',
     border: '1px solid rgba(255, 255, 255, 0.6)',
-  }     
+  }
   return (
     <div
-      style={{  
+      style={{
         width: '1200px',
         height: '300px',
         display: 'flex',
@@ -80,37 +81,38 @@ export default function EventsNowList({ events = [] } : IProps) {
         }}
       >
         <div>
-          <h2 style={{ color: 'white', fontSize: '38px', marginBottom: '18px' }}>
+          <h2
+            style={{ color: 'white', fontSize: '38px', marginBottom: '18px' }}
+          >
             Cerati en Club TRI
           </h2>
 
-          <p style={{ color:'white', fontSize: '14px', marginBottom: '14px' }}>
+          <p style={{ color: 'white', fontSize: '14px', marginBottom: '14px' }}>
             Club TRI • Mar del Plata, Provincia de Buenos Aires
           </p>
 
-          <p style={{ color:'white', fontSize: '14px', marginBottom: '14px'}}>
+          <p style={{ color: 'white', fontSize: '14px', marginBottom: '14px' }}>
             15 de abr. de 2023
           </p>
 
-          <p style={{ color:'white', fontSize: '14px'}}>
-            $ 2.000,00
-          </p>
+          <p style={{ color: 'white', fontSize: '14px' }}>$ 2.000,00</p>
         </div>
 
-        <button 
+        <button
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={boxStyle}
-          >
+        >
           Ver más
         </button>
       </div>
-     
+
       <div
         style={{
           width: '60%',
           borderRadius: '14px',
-          backgroundImage: "url(https://estudiantesdelaplata.com/wp-content/uploads/2015/09/CERATI.png)"
+          backgroundImage:
+            'url(https://estudiantesdelaplata.com/wp-content/uploads/2015/09/CERATI.png)',
         }}
       />
     </div>

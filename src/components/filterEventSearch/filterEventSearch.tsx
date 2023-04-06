@@ -12,34 +12,46 @@ import React from 'react'
 
 Amplify.configure({ ...awsExports, ssr: true })
 interface IProps {
-  eventTypesOptions:Array<EventTypes>
+  eventTypesOptions: Array<EventTypes>
   events: Array<Event>
   filters: IFilters
   updateFilters: (newValue: Partial<IFilters>) => void
 }
 
-export default function EventsSearch({ events = [], updateFilters, eventTypesOptions = [] }: IProps) {
+export default function EventsSearch({
+  events = [],
+  updateFilters,
+  eventTypesOptions = [],
+}: IProps) {
   const handleChange = (value: string, name: string) => {
     updateFilters({ [name]: value })
   }
 
-  const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
-  const handleSelectChange = (optionSelected: SingleValue<{
-    value: string;
-    label: string | null | undefined;
-}>, actionMeta: ActionMeta<{
-    value: string;
-    label: string | null | undefined;
-}>) => {
+  const typesOptions = eventTypesOptions.map((options) => ({
+    value: options.id,
+    label: options.name,
+  }))
+  const handleSelectChange = (
+    optionSelected: SingleValue<{
+      value: string
+      label: string | null | undefined
+    }>,
+    actionMeta: ActionMeta<{
+      value: string
+      label: string | null | undefined
+    }>,
+  ) => {
     if (optionSelected?.label) {
       updateFilters({ types: optionSelected.label })
-
     }
   }
-  
+
   return (
-    <div className=" hover:bg-black  flex justify-center" style={{ padding:'8px', marginBottom:'100px' ,  color:'gray-900', }}>
-      <div className="mb-10  p-8" >
+    <div
+      className=" hover:bg-black  flex justify-center"
+      style={{ padding: '8px', marginBottom: '100px', color: 'gray-900' }}
+    >
+      <div className="mb-10  p-8">
         {/* <div className="flex flex-col py-1 p-8 ">
           <h2 className=" text-sm text-white text-lg  ">Fecha inicio: </h2>
           <input
@@ -69,28 +81,34 @@ export default function EventsSearch({ events = [], updateFilters, eventTypesOpt
         </div> */}
       </div>
 
-      <div className="flex justify-center" style={{
-      padding: '48px'}}>
+      <div
+        className="flex justify-center"
+        style={{
+          padding: '48px',
+        }}
+      >
         <div className="">
           <div className=" text-sm   mb-12 border-b border-gray-300 ">
-            <h5 className="py-1 mb-1 " style={{color:'white'}}>
+            <h5 className="py-1 mb-1 " style={{ color: 'white' }}>
               Cantidad de eventos disponibles: {events.length}
             </h5>
           </div>
 
           <div
-      className="flex flex-wrap "
-      style={{
-        overflow: 'auto',marginBottom:'100px', padding: '8px', maxHeight:'900px'
-        
-      }}
-    >
+            className="flex flex-wrap "
+            style={{
+              overflow: 'auto',
+              marginBottom: '100px',
+              padding: '8px',
+              maxHeight: '900px',
+            }}
+          >
             {events.map((event: any) => {
               return (
-                <Link href={`/events/${event.id}`} key={event.id} >
+                <Link href={`/events/${event.id}`} key={event.id}>
                   <EventCard2 event={event} key={event.id} />
                 </Link>
-                //poner el audio fuera del link 
+                //poner el audio fuera del link
               )
             })}
           </div>

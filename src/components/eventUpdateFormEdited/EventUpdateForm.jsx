@@ -195,7 +195,6 @@ export default function EventUpdateForm(props) {
     initialValues.descripcion,
   )
 
-
   const [errors, setErrors] = React.useState({})
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...eventRecord }
@@ -231,21 +230,25 @@ export default function EventUpdateForm(props) {
     types: [],
     descripcion: [],
   }
-  console.log("typesRendercentralll", {types, currentTypesValue})
-  const typesOptions = eventTypesOptions.map((options) => ({value: options.id, label: options.name}))
-  const typesDictionary = Object.assign({}, ...typesOptions && typesOptions.map((item) => ({[item.id]: item.label})));
-  const convertedTypes = types.map(item => {
-    if(typesDictionary.hasOwnProperty(item)) {
-      return( typesDictionary[item] ) 
+  console.log('typesRendercentralll', { types, currentTypesValue })
+  const typesOptions = eventTypesOptions.map((options) => ({
+    value: options.id,
+    label: options.name,
+  }))
+  const typesDictionary = Object.assign(
+    {},
+    ...(typesOptions &&
+      typesOptions.map((item) => ({ [item.id]: item.label }))),
+  )
+  const convertedTypes = types.map((item) => {
+    if (typesDictionary.hasOwnProperty(item)) {
+      return typesDictionary[item]
     } else {
       if (item.hasOwnProperty('label')) {
-        return(
-          item.label
-        )
+        return item.label
       }
     }
-    return(item)
-
+    return item
   })
 
   const runValidationTasks = async (fieldName, value) => {
@@ -299,8 +302,8 @@ export default function EventUpdateForm(props) {
   // const onChange = (selectedOptions:
   //   OnChangeValue<ColourOption, true>) =>
   //   setSelected(selectedOptions);
-    
-  console.log('asdasd',{currentTypesValue})
+
+  console.log('asdasd', { currentTypesValue })
   return (
     <Grid
       as="form"
@@ -340,7 +343,7 @@ export default function EventUpdateForm(props) {
           modelFields = onSubmit(modelFields)
         }
         try {
-          console.log("estodeAca23123333",{eventRecord, modelFields})
+          console.log('estodeAca23123333', { eventRecord, modelFields })
 
           await DataStore.save(
             Event.copyOf(eventRecord, (updated) => {
@@ -348,11 +351,11 @@ export default function EventUpdateForm(props) {
             }),
           )
           if (onSuccess) {
-            console.log("estodeAca",{modelFields})
+            console.log('estodeAca', { modelFields })
             onSuccess(modelFields)
           }
         } catch (err) {
-          console.error("pumba", err)
+          console.error('pumba', err)
           if (onError) {
             onError(modelFields, err.message)
           }
@@ -583,7 +586,7 @@ export default function EventUpdateForm(props) {
           value={currentTypesValue}
           options={typesOptions}
           onChange={(value) => {
-            console.log('onChange',{value})
+            console.log('onChange', { value })
             if (errors.types?.hasError) {
               runValidationTasks('types', value.value)
             }
@@ -596,11 +599,12 @@ export default function EventUpdateForm(props) {
           {...getOverrideProps(overrides, 'types')}
         />
       </ArrayField>
-      <Map map_point={map_point} onDragEnd={handleDragEnd}/>
+      <Map map_point={map_point} onDragEnd={handleDragEnd} />
 
-      <TextField style={{
-        height:'200px'
-      }}
+      <TextField
+        style={{
+          height: '200px',
+        }}
         label="Descripcion"
         isRequired={false}
         isReadOnly={false}
