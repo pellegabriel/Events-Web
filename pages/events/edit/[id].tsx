@@ -58,7 +58,6 @@ export async function getServerSideProps({ req, query }: any) {
 
 function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const router = useRouter()
-  const eventTitle = router.query.eventTitle
   const id = router.query.id as string
 
   const handleAudioChange = async (files: File[]) => {
@@ -185,17 +184,18 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
           </div>
         </nav>
 
-        <div className="h-full p-8 flex items-center justify-center ">
-          <div className=" break-words  mt-16 w-6/6 rounded-lg p-8 ">
+        <div className="h-full p-8 flex  justify-center ">
+          <div className=" break-words w-6/6 rounded-lg  ">
             {' '}
             <div className="">
               <div>
-                <div className="p-8 mx-20 flex flex-col items-center justify-center">
-                  <h3 className="text-4xl text-white leading-normal mb-1 ">
-                    Buenisimo {user.username} !
+                <div className='flex'>
+                <div className="p-8 flex flex-col items-center ">
+                  <h3 className="text-xl text-white leading-normal mb-1 ">
+                    Buenisimo {user.username} !!
                   </h3>
                   <div
-                    className="text-xs mt-4 mb-10 text-slate-400 "
+                    className="text-xs  mb-10 text-slate-400 "
                     style={{
                       display: 'flex',
                       justifyContent: 'center',
@@ -203,23 +203,21 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
                       flexDirection: 'column',
                     }}
                   >
-                    <h2 className="mr-2 text-white opacity-85 text-xl">
+                    <h2 className="mr-2 text-white opacity-85 text-sm">
                       El evento ya fue creado
                     </h2>
-                    <h2 className="mr-2 text-white opacity-85 text-xl">
+                    <h2 className="mr-2 text-white opacity-85 text-sm">
                       {' '}
                       ahora solo falta que termines de rellenarlo
                       <br /> para poder compartirlo con todo el mundo!
                     </h2>
                   </div>
                   <Image alt="" src={svg4} className="" />
-                </div>
-                <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 text-center">
-                  <div className=" overflow-hidden flex items-center justify-center">
-                    <div className="mt- mb-8 grid-cols-1 p-10">
-                      <h1 className="text-2xl text-white  leading-normal mb-1">
-                        Actualiza el evento:{' '}
-                      </h1>
+                  <DropZone handleImageChange={handleImageChange} />
+                      <br />
+                      <DropZoneAudio handleAudioChange={handleAudioChange} />
+                </div><div>
+                <div className=" grid-cols-1 rounded bg-slate-200 " >
                       <EventUpdateForm
                         id={event?.id}
                         onSubmit={handleSubmit}
@@ -227,12 +225,11 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
                         onError={handleError}
                         eventTypesOptions={eventOptions}
                       />
-                      <DropZone handleImageChange={handleImageChange} />
-                      <br />
-                      <DropZoneAudio handleAudioChange={handleAudioChange} />
+                    
                     </div>
-                  </div>
                 </div>
+                    
+                    </div>
               </div>
             </div>
           </div>

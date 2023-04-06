@@ -51,37 +51,50 @@ function DropZoneAudio({ handleAudioChange }: DropzoneTypes) {
   ))
 
   return (
+    <>
     <div
-      className="max-w-xl"
       {...getRootProps()}
       style={{
-        marginBottom: '20px',
+        display: 'flex',
+        width:'400px',
+        justifyContent: 'center',
+        padding: '8px',
+        border: '2px dashed #ccc',
+        borderRadius: '4px',
+        transition: 'border-color 0.2s ease-in-out',
+        cursor: 'pointer',
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.borderColor = '#666'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '#ccc'
       }}
     >
-      <label className="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-        <span className="flex items-center space-x-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 text-gray-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-            />
-          </svg>
-          <span className="font-medium text-gray-600">
-            Arrastra el archivo de audio aqui.
-          </span>
+      <span className="flex items-center space-x-2" style={{padding: '8px', }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+          />
+        </svg>
+        <span className="ml-4 text-sm font-medium text-white">
+          Suelta el archivo Audio aqui <br /> o clickea este recuadro
         </span>
-        <input {...getInputProps()} className="hidden" />
-      </label>
-      {thumbs}
+      </span>
+  
+      <input {...getInputProps()} className="hidden" />
     </div>
+    {thumbs}
+  </>
   )
 }
 

@@ -38,6 +38,7 @@
     "react-hook-form": "^7.40.0",
     "react-npm": "^2.6.1",
     "react-select": "^5.7.0",
+    "react-spring": "^9.7.1",
     "sharp": "^0.31.3",
     "start": "^5.1.0",
     "swiper": "^8.4.5",

@@ -201,7 +201,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
                       <br /> Comienza eligiendo un nombre que te guste:{' '}
                     </h1>
                     <div
-                      className=""
+                      className="bg-slate-200"
                       style={{
                         borderWidth: '3px',
                         borderColor: 'gray',
@@ -221,13 +221,21 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
                 <div className="justiify-center flex flex-col items-center">
                   {error && <div>{error}</div>}
                   {isLoading && <Spinner />}
-                  <h1 className=" mt-0 mb-0 text-l text-white leading-normal">
+                  <h1 className=" mt-0 mb-2 text-l text-white leading-normal">
                     No olvides que darle a Subir Evento te llevara a la
                     siguiente fase.
+                    
+       
                   </h1>
+                  <div className='  flex justify-center mt-2  border-t border-slate-500'>
+                    <h1 className='  mb-0 text-l text-white leading-normal'>
+                    Para editar un evento solo buscalo con los filtros mas abajo
+                    y seleccionalo para ir a la pantalla de edicion.
+                    </h1>
+                    </div>
                 </div>
 
-                <div className="p-8  flex justify-center mt-6 py-6 border-t border-slate-300 ">
+                <div className="p-8  flex justify-center mt-6 py-6  ">
                   <div className=" overflow-hidden flex ">
                     <div className="mt-8  grid-cols-1  ">
                       <main className="grid gap-6 gap-y-8  ">

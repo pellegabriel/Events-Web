@@ -368,7 +368,7 @@ export default function EventUpdateForm(props) {
         label="Titulo"
         isRequired={true}
         isReadOnly={false}
-        defaultValue={eventTitle}
+        defaultValue={name}
         onChange={(e) => {
           let { value } = e.target
           if (onChange) {
@@ -395,7 +395,7 @@ export default function EventUpdateForm(props) {
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, 'name')}
       ></TextField>
-      <TextField
+      <TextField 
         label="Sub titulo"
         isRequired={false}
         isReadOnly={false}
