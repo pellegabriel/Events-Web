@@ -58,7 +58,6 @@ export default function EventsNowList({ events = [] }: IProps) {
   //   border: '1px solid rgba(255, 255, 255, 0.6)',
   // }
   return (
-<<<<<<< Updated upstream
     <>
     <EventCard3/>
     {events.length === 0 ? (
@@ -84,65 +83,4 @@ export default function EventsNowList({ events = [] }: IProps) {
         })
       )}</>
     )
-=======
-    // <div
-    //   style={{
-    //     width: '1200px',
-    //     height: '300px',
-    //     display: 'flex',
-    //     padding: '24px',
-    //     overflow: 'auto',
-    //     borderRadius: '18px',
-    //     flexDirection: 'row',
-    //     marginBottom: '64px',
-    //     justifyContent: 'space-between',
-    //     border: '1px solid rgba(255, 255, 255, 0.6)',
-    //   }}
-    // >
-    //   <div
-    //     style={{
-    //       width: '50%',
-    //       display: 'flex',
-    //       flexDirection: 'column',
-    //       justifyContent: 'space-between',
-    //     }}
-    //   >
-    //     <div>
-    //       <h2
-    //         style={{ color: 'white', fontSize: '38px', marginBottom: '18px' }}
-    //       >
-    //         Cerati en Club TRI
-    //       </h2>
-
-    //       <p style={{ color: 'white', fontSize: '14px', marginBottom: '14px' }}>
-    //         Club TRI • Mar del Plata, Provincia de Buenos Aires
-    //       </p>
-
-    //       <p style={{ color: 'white', fontSize: '14px', marginBottom: '14px' }}>
-    //         15 de abr. de 2023
-    //       </p>
-
-    //       <p style={{ color: 'white', fontSize: '14px' }}>$ 2.000,00</p>
-    //     </div>
-
-    //     <button
-    //       onMouseEnter={handleMouseEnter}
-    //       onMouseLeave={handleMouseLeave}
-    //       style={boxStyle}
-    //     >
-    //       Ver más
-    //     </button>
-    //   </div>
-
-    //   <div
-    //     style={{
-    //       width: '60%',
-    //       borderRadius: '14px',
-    //       backgroundImage:
-    //         'url(https://estudiantesdelaplata.com/wp-content/uploads/2015/09/CERATI.png)',
-    //     }}
-    //   />
-    // </div>
-  )
->>>>>>> Stashed changes
 }
