@@ -2,14 +2,12 @@ import Image from 'next/image'
 import { Event } from '../../models'
 import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
-import { useMemo } from 'react';
-
 
 interface IProps {
   event: Event
 }
 
-export default function EventCard2({ event }: IProps | any) {
+export default function EventCard({ event }: IProps) {
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
@@ -43,6 +41,7 @@ export default function EventCard2({ event }: IProps | any) {
     getUploadedAudio()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   const [isHover, setIsHover] = useState(false)
 
   const handleMouseEnter = () => {
@@ -60,16 +59,7 @@ export default function EventCard2({ event }: IProps | any) {
     borderRadius: '6px',
     border: '1px solid rgba(255, 255, 255, 0.6)',
   }
-  const containerWidth = '60%';
 
-  const containerPixelWidth = useMemo(() => {
-    const parsedWidth = parseInt(containerWidth, 10);
-    if (!Number.isNaN(parsedWidth)) {
-      const parentWidth = document.querySelector('.parent')?.clientWidth ?? 0;
-      return (parentWidth * parsedWidth) / 100;
-    }
-    return undefined;
-  }, [containerWidth]);
   return (
     <div
       style={{
@@ -98,7 +88,7 @@ export default function EventCard2({ event }: IProps | any) {
           <h2
             style={{ color: 'white', fontSize: '38px', marginBottom: '18px' }}
           >
-          {event.name}
+            {event.name}
           </h2>
 
           <p style={{ color: 'white', fontSize: '14px', marginBottom: '14px' }}>
@@ -121,14 +111,13 @@ export default function EventCard2({ event }: IProps | any) {
         </button>
       </div>
 
-      <div
-        />
-        {image && !error ? (
-          <Image
-            className=" p-4 "
-            alt=""
-            src={image}
-            width={containerPixelWidth}            
+      {image && !error ? (
+        <Image
+          className=" p-4 "
+          alt=""
+          src={image}
+          width={400}
+     
             height={200}
             onError={handleImageError}
             style={{ width: '180px', height: '120px' }}
@@ -138,7 +127,7 @@ export default function EventCard2({ event }: IProps | any) {
             className=" p-4"
             alt=""
             src="/img1.jpg"
-            width={containerPixelWidth}            
+            width={400}            
             height={200}
             style={{ width: '180px', height: '120px' }}
           />

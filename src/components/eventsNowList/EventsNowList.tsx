@@ -40,26 +40,10 @@ export async function getServerSideProps({ req }: any) {
 }
 
 export default function EventsNowList({ events = [] }: IProps) {
-  // const [isHover, setIsHover] = useState(false)
 
-  // const handleMouseEnter = () => {
-  //   setIsHover(true)
-  // }
-  // const handleMouseLeave = () => {
-  //   setIsHover(false)
-  // }
-  // const boxStyle = {
-  //   backgroundColor: isHover ? '#f43f5e' : '',
-  //   width: '200px',
-  //   padding: '8px',
-  //   color: 'white',
-  //   fontSize: '14px',
-  //   borderRadius: '6px',
-  //   border: '1px solid rgba(255, 255, 255, 0.6)',
-  // }
   return (
     <>
-    <EventCard3/>
+    
     {events.length === 0 ? (
           <div className='flex '>
           <Image
