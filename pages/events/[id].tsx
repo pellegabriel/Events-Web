@@ -143,12 +143,31 @@ export default function Id({ event, center }: IProps | any) {
             className="mx-auto  flex justify-content "
             style={{
               marginTop: '80px',
-              borderWidth: '3px',
-              borderColor: 'white',
-              height: '770px',
+              height: '1000px',
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection: 'column',
             }}
           >
             <Map events={[event]} center={mapCenter} zoom={15} />
+            
+            <div style={{display:'flex', flexDirection:'row'}}>    
+            <Image
+            alt=""
+            src={svg6}
+            width={70}
+            height={70}
+            className="mx-auto"
+          />
+          <h1
+            className="mt-5 mb-10 text-l text-white  leading-normal flex justify-center items-center"
+            style={{ marginLeft: '10px'}}
+          >
+            ¿Te agrado este evento? Recuerda que hay muchos mas esperando
+            ahi fuera <br /> No te los pierdas!
+          </h1>
+          
+          </div> 
           </div>
 
           <div
@@ -254,22 +273,6 @@ export default function Id({ event, center }: IProps | any) {
               </section>
             </div>
           </div>
-        </div>
-        <div className="flex pr-20">
-          <Image
-            alt=""
-            src={svg6}
-            width={700}
-            height={700}
-            className="mx-auto"
-          />
-          <h1
-            className="mt-5 mb-10 text-xl text-white font-bold leading-normal flex justify-center items-center"
-            style={{ maxWidth: '400px', marginLeft: '50px' }}
-          >
-            ¿Te agrado este evento? <br /> Recuerda que hay muchos mas esperando
-            ahi fuera <br /> No te los pierdas!
-          </h1>
         </div>
       </div>
 
