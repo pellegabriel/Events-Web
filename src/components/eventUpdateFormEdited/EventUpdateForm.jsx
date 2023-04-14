@@ -306,6 +306,7 @@ export default function EventUpdateForm(props) {
   console.log('asdasd', { currentTypesValue })
   return (
     <Grid
+      
       as="form"
       rowGap={tokens.space.xs.value}
       columnGap={tokens.space.xxxs.value}
@@ -649,7 +650,7 @@ export default function EventUpdateForm(props) {
           gap={tokens.space.xxxs.value}
           {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}
         >
-          <Button
+          <Button 
             children="Cancelar"
             type="button"
             onClick={() => {
@@ -657,7 +658,7 @@ export default function EventUpdateForm(props) {
             }}
             {...getOverrideProps(overrides, 'CancelButton')}
           ></Button>
-          <Button
+          <Button style={{backgroundColor:'#f43f5e'}}
             children="Subir evento"
             type="submit"
             variation="primary"

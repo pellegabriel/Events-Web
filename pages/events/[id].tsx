@@ -9,6 +9,7 @@ import { Storage } from 'aws-amplify'
 import svg6 from '../../public/svg6.svg'
 import parseDate from '../../src/helperFunctions/parseDate'
 import Link from 'next/link'
+import AudioPlayer from '../../src/components/AudioPlayer/AudioPlayer'
 
 interface IProps {
   event: Event
@@ -126,16 +127,16 @@ export default function Id({ event, center }: IProps | any) {
           paddingTop: '7rem',
         }}
       >
-        <h2 className="mx-auto rounded-lg  tracking-tight text-center text-white  text-5xl mb-4 w-full">
+        <h2 className="mx-auto rounded-lg  tracking-tight text-center text-white  text-3xl mb-4 w-full">
           {event.name}
         </h2>
-        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl  text-white">
+        <h3 className="text-xl tracking-tight   text-white">
           {event.subtitle}Sub Titulo
         </h3>
-        <h2 className="max-w-3xl mx-auto  text-xl text-white text-center">
+        <h2 className="max-w-3xl mx-auto  text-sm text-white text-center">
           Usuario que posteo el evento:
         </h2>
-        <h2 className="max-w-3xl mx-auto text-xl text-white text-center">
+        <h2 className="max-w-3xl mx-auto text-sm text-white text-center">
           {event.user}
         </h2>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -143,7 +144,7 @@ export default function Id({ event, center }: IProps | any) {
             className="mx-auto  flex justify-content "
             style={{
               marginTop: '80px',
-              height: '1000px',
+              height: '500px',
               display: 'flex',
               justifyContent: 'center',
               flexDirection: 'column',
@@ -151,17 +152,17 @@ export default function Id({ event, center }: IProps | any) {
           >
             <Map events={[event]} center={mapCenter} zoom={15} />
             
-            <div style={{display:'flex', flexDirection:'row'}}>    
+            <div style={{display:'flex', flexDirection:'row', width:'650px'}}>    
             <Image
             alt=""
             src={svg6}
-            width={70}
-            height={70}
+            width={50}
+            height={50}
             className="mx-auto"
           />
           <h1
-            className="mt-5 mb-10 text-l text-white  leading-normal flex justify-center items-center"
-            style={{ marginLeft: '10px'}}
+            className="mt-10 mb-10 text-l text-white "
+            
           >
             ¿Te agrado este evento? Recuerda que hay muchos mas esperando
             ahi fuera <br /> No te los pierdas!
@@ -207,6 +208,16 @@ export default function Id({ event, center }: IProps | any) {
                   </div>
                   <div>
                     <div className="flex flex-col lg:items-center">
+                    <div >
+                              {audio && (
+                               <AudioPlayer
+                               src={audio}
+                               controls
+                               autoPlay
+                               style={{ height: '40px', backgroundColor: '#f43f5e', width:'500px' }}
+                             />
+                              )}
+                            </div>
                       <div className="lg:col-start-2">
                         <p
                           className="mt-3 text-lg  "
@@ -239,18 +250,7 @@ export default function Id({ event, center }: IProps | any) {
                         </h3>
                         <div className="mt-12 space-y-12">
                           <div className="flex">
-                            <div className="flex-shrink-0"></div>
-                            <div className="ml-4">
-                              {audio && (
-                                <audio
-                                  controls
-                                  src={audio}
-                                  style={{ width: '450px' }}
-                                >
-                                  <Link href={audio} />
-                                </audio>
-                              )}
-                            </div>
+                           
                           </div>
                           <div className="flex">
                             <div className="ml-4">

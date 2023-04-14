@@ -138,7 +138,7 @@ export default function EventCreateForm(props) {
             }}
             {...getOverrideProps(overrides, 'CancelButton')}
           ></Button>
-          <Button
+          <Button  style={{backgroundColor:'#f43f5e'}}
             children="Subir Evento"
             type="submit"
             variation="primary"

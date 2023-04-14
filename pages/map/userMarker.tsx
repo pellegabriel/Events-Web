@@ -70,6 +70,7 @@ function UserMarker({ map_point, center, zoom, onDragEnd }: IProps) {
   return isLoaded ? (
     <div>
       <div className="pt-8 pb-4">
+        <h1 className='p-2 mb-2'>Direccion</h1>
         <input
           id="address"
           placeholder="Ingrese la direccion"
