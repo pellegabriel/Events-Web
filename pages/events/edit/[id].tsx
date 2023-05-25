@@ -1,18 +1,24 @@
 import { useRouter } from 'next/router'
 import { Event, EventTypes } from '../../../src/models'
 import Image from 'next/image'
-import { Storage, withSSRContext } from 'aws-amplify'
 import svg4 from '../../../public/svg4.svg'
-import { Authenticator, Flex, useTheme } from '@aws-amplify/ui-react'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+// import { Authenticator, Flex, useTheme } from '@aws-amplify/ui-react'
+// import { withAuthenticator } from '@aws-amplify/ui-react'
 import Link from 'next/link'
 import EventUpdateForm, {
   EventUpdateFormInputValues,
 } from '../../../src/components/eventUpdateFormEdited/EventUpdateForm'
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { getEvent, listEventTypes } from '../../../src/graphql/queries'
+import React, {  useEffect, useState } from 'react'
+// import { getEvent, listEventTypes } from '../../../src/graphql/queries'
 import DropZone from '../../../src/components/DropZone/DropZone'
 import DropZoneAudio from '../../../src/components/DropZone/DropZoneAudio'
+import { createClient } from '@supabase/supabase-js';
+import { Auth, Storage } from '@supabase/ui';
+import { Authenticator, Flex } from '@aws-amplify/ui-react'
+
+const supabase = createClient('your-supabase-url', 'your-supabase-key');
+
+export { supabase };
 
 interface IProps {
   eventOptions: Array<EventTypes>
@@ -22,40 +28,6 @@ interface IProps {
   renderedAt: string
 }
 
-export async function getServerSideProps({ req, query }: any) {
-  const SSR = withSSRContext({ req })
-  const id = query.id as string
-  const renderedAt = new Date()
-
-  const formattedBuildDate = renderedAt.toLocaleDateString('en-US', {
-    dateStyle: 'long',
-  })
-  const formattedBuildTime = renderedAt.toLocaleTimeString('en-US', {
-    timeStyle: 'long',
-  })
-  try {
-    const response = await SSR.API.graphql({
-      query: getEvent,
-      variables: { id: id },
-    })
-    const eventTypeOptions = await SSR.API.graphql({
-      query: listEventTypes,
-    })
-    return {
-      props: {
-        event: response.data.getEvent,
-        eventOptions: eventTypeOptions.data.listEventTypes.items,
-        renderedAt: `${formattedBuildDate} at ${formattedBuildTime}`,
-      },
-    } //cambiar por listEventTypes
-  } catch (err) {
-    console.log(err)
-    return {
-      props: {},
-    }
-  }
-}
-
 function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const router = useRouter()
   const id = router.query.id as string
@@ -63,40 +35,62 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
   const handleAudioChange = async (files: File[]) => {
     const file = files[0]
     try {
-      Storage.put(`audio/${id}`, file)
+      const { error } = await supabase.storage
+        .from('audio')
+        .upload(`audio/${id}`, file);
+      if (error) {
+        console.log('Error uploading file: ', error);
+      }
     } catch (error) {
-      console.log('Error uploading file: ', error)
+      console.log('Error uploading file: ', error);
     }
   }
 
   const handleImageChange = async (files: File[]) => {
     const file = files[0]
     try {
-      Storage.put(id, file)
+      const { error } = await supabase.storage
+        .from('images')
+        .upload(id, file);
+      if (error) {
+        console.log('Error uploading file: ', error);
+      }
     } catch (error) {
-      console.log('Error uploading file: ', error)
+      console.log('Error uploading file: ', error);
     }
   }
 
-  const [audio, setAudio] = useState<string>()
-  const getUploadedAudio = async () => {
-    const file = await Storage.get(`audio/${id}`, {
-      level: 'public',
-    })
-    setAudio(file)
-  }
-  useEffect(() => {
-    getUploadedAudio()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [audio, setAudio] = useState<string | undefined>();
 
-  const [image, setImage] = useState<string>()
-  const getUploadedImage = async () => {
-    const file = await Storage.get(id, {
-      level: 'public',
-    })
-    setImage(file)
+  const getUploadedAudio = async () => {
+    const file = await supabase.storage
+      .from('audio')
+      .download(`audio/${id}`);
+  
+    if (file && file.data) {
+      const objectUrl = URL.createObjectURL(file.data);
+      setAudio(objectUrl);
+    }
   }
+  
+  useEffect(() => {
+    getUploadedAudio();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [image, setImage] = useState<string | undefined>();
+
+  const getUploadedImage = async () => {
+    const file = await supabase.storage
+      .from('images')
+      .download(id);
+  
+    if (file && file.data) {
+      const objectUrl = URL.createObjectURL(file.data);
+      setImage(objectUrl);
+    }
+  }
+  
   useEffect(() => {
     getUploadedImage()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,6 +109,7 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
       )
     },
   }
+
   const handleSuccess = (_event: EventUpdateFormInputValues) => {
     console.log(handleSuccess)
     router.push(`/profile`)
@@ -238,11 +233,16 @@ function Id({ event, signOut, user, renderedAt, eventOptions }: IProps) {
     </Authenticator>
   )
 }
-export default withAuthenticator(Id)
-function setError(message: string) {
+
+function useTheme(): { tokens: any } {
   throw new Error('Function not implemented.')
 }
 
 function setLoading(arg0: boolean) {
   throw new Error('Function not implemented.')
 }
+
+function setError(message: string) {
+  throw new Error('Function not implemented.')
+}
+

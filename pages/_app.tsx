@@ -1,33 +1,31 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import '../styles/globals.css'
-
-import { Amplify, API, graphqlOperation } from 'aws-amplify'
-import { studioTheme } from '../src/ui-components'
-
-import { AmplifyProvider, Authenticator } from '@aws-amplify/ui-react'
-import '@aws-amplify/ui-react/styles.css'
-import '@aws-amplify/ui-react/styles.css'
-
-import '../styles/globals.css'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import awsconfig from '../src/aws-exports'
-Amplify.configure(awsconfig)
-import config from '../src/aws-exports'
-
-Amplify.configure({
-  ...config,
-  ssr: true,
-})
+import { Session } from '@supabase/supabase-js';
+import { supabase } from './supabase';
+import { useEffect, useState } from 'react';
+import Login from './Login/Login';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
+      setSession(session);
+    });
+
+    return () => {
+      authListener?.unsubscribe();
+    };
+  }, []);
+
   return (
-    <AmplifyProvider theme={studioTheme}>
-      <Authenticator.Provider>
+    <>
+      {session && session.user ? (
         <Component {...pageProps} />
-      </Authenticator.Provider>
-    </AmplifyProvider>
-  )
+      ) : (
+        <Login />
+      )}
+    </>
+  );
 }

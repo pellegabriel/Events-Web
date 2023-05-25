@@ -135,6 +135,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
       },
     }
   }
+  
   const handleChange = (newFilters: IFilters) => {
     const prevFilters = router.query
     refreshData({
@@ -143,6 +144,7 @@ function Profile({ events = [], signOut, filters, eventOptions }: IProps) {
     })
   }
   console.log('eventoptions vale', eventOptions)
+  
   return (
     <Authenticator components={authComponents} hideSignUp={true}>
       <div
