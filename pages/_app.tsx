@@ -1,27 +1,31 @@
-import './App.css'
-import { useState, useEffect } from 'react'
-import { supabase } from '../src/supabaseClient'
-import Login from '../pages/Login/Login'
-import Account from '../pages/Account/Account'
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
+import '../styles/globals.css'
+import { Session } from '@supabase/supabase-js';
+import { supabase } from './supabase';
+import { useEffect, useState } from 'react';
+import Login from './Login/Login';
 
-function App() {
-  const [session, setSession] = useState(null)
+export default function App({ Component, pageProps }: AppProps) {
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
+      setSession(session);
+    });
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+    return () => {
+      authListener?.unsubscribe();
+    };
+  }, []);
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      {!session ? <Login /> : <Account key={session.user.id} session={session} />}
-    </div>
-  )
+    <>
+      {session && session.user ? (
+        <Component {...pageProps} />
+      ) : (
+        <Login />
+      )}
+    </>
+  );
 }
-
-export default App
