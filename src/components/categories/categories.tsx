@@ -1,47 +1,17 @@
 import { useRouter } from 'next/router'
 import { CategoryItem } from '../categoryItem/categoryItem'
+import { useGetCategories } from '../../../api/categories'
 
 export default function CategoriesList() {
   const router = useRouter()
-  const img1 = '../../teatro.png'
-  const img2 = '../../musica.png'
-  const img3 = '../../tareasSociales.png'
-  const img4 = '../../dansa.png'
-  const img5 = '../../cine.png'
-  const img6 = '../../art.png'
-  const img7 = '../../medioAmbiente.png'
-  const img8 = '../../deporte.png'
-  const img10 = '../../art.png'
-  const img11 = '../../lectura.png'
-  const img12 = '../../politica.png'
-  const img13 = '../../religion.png'
-  const img14 = '../../espiritualidad.png'
-  const img15 = '../../salud.png'
-  const img16 = '../../trabajo.png'
-  const img17 = '../../fiesta.png'
+  const { data, error, loading } = useGetCategories();
 
-  //hacer esto con todas las img de cada categoria
-  const categories = {
-    firstRow: [
-      { title: 'Teatro', image: img1 },
-      { title: 'Musica', image: img2 },
-      { title: 'Actividades sociales', image: img3 },
-      { title: 'Baile', image: img4 },
-      { title: 'Presentaciones', image: img1 },
-      { title: 'Arte', image: img10 },
-      { title: 'Medio ambiente', image: img7 },
-      { title: 'Deportes', image: img8 },
-    ],
-    secondRow: [
-      { title: 'Actividad  fisica', image: img1 },
-      { title: 'Literatura', image: img11 },
-      { title: 'Política', image: img12 },
-      { title: 'Religion', image: img13 },
-      { title: 'Espiritualidad', image: img14 },
-      { title: 'Salud y bienestar', image: img15 },
-      { title: 'Trabajo y negocios', image: img16 },
-      { title: 'Vida nocturna', image: img17 },
-    ],
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
   }
 
   const navigateToCategory = (categoryTitle: string) => {
@@ -71,11 +41,12 @@ export default function CategoriesList() {
       </h1>
 
       <div
-        className="flex justify-center flex-col"
         style={{
+          width: '100%',
           borderBottomLeftRadius: '10PX',
           borderBottomRightRadius: '10PX',
         }}
+        className="flex justify-center flex-col"
       >
         <div
           style={{
@@ -84,43 +55,17 @@ export default function CategoriesList() {
             display: 'flex',
             overflow: 'auto',
             paddingBottom: '16px',
-            flexDirection: 'column',
           }}
         >
-          <div
-            style={{
-              gap: '16px',
-              width: '100%',
-              display: 'flex',
-            }}
-          >
-            {categories.firstRow.map(({ title }, index) => {
-              return (
-                <CategoryItem
-                  key={title}
-                  title={title}
-                  onClick={() => navigateToCategory(title)}
-                />
-              )
-            })}
-          </div>
-          <div
-            style={{
-              gap: '16px',
-              width: '100%',
-              display: 'flex',
-            }}
-          >
-            {categories.secondRow.map(({ title }, index) => {
-              return (
-                <CategoryItem
-                  key={title}
-                  title={title}
-                  onClick={() => navigateToCategory(title)}
-                />
-              )
-            })}
-          </div>
+          {data && data.map(({ label }) => {
+            return (
+              <CategoryItem
+                key={label}
+                title={label}
+                onClick={() => navigateToCategory(label)}
+              />
+            )
+          })}
         </div>
       </div>
     </div>

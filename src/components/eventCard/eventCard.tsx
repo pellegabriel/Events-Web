@@ -1,13 +1,9 @@
 import Image from 'next/image'
 import { Event } from '../../models'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Storage } from 'aws-amplify'
 import Link from 'next/link'
 import AudioPlayer from '../AudioPlayer/AudioPlayer'
-
-interface IProps {
-  event: Event
-}
 
 function parseDate(dateString: string) {
   const date = new Date(dateString)
@@ -20,9 +16,33 @@ function parseDate(dateString: string) {
   return date.toLocaleDateString('es-ES', options)
 }
 
-export default function EventCard({ event }: IProps | any) {
-  const startDate = event.startDate ? parseDate(event.startDate) : ''
+export default function EventCard({ event }:  any) {
 
+
+
+
+//   audio
+// null
+// categoria
+// "Medio ambiente"
+// created_by
+// "8f34a240-7f15-4bba-8390-1f3dbe9d4052"
+// date
+// "2012-03-11"
+// description
+// "Turismo nocturno en la plata.\n+18"
+// event_end_time
+// null
+// id
+// "d1f3c4dd-28f2-4bb1-abdc-1f6ce6163e9a"
+// image
+// location: {lat: -34.913448, lng: -57.933482}
+// subtitle
+// null
+// title
+// "Caminata por el bosque a la noche"
+
+  console.log({event})
   const [image, setImage] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
   const [audio, setAudio] = useState<string>()
@@ -83,33 +103,27 @@ export default function EventCard({ event }: IProps | any) {
         border: '1px solid #e5e5e5',
         borderRadius: '5px',
         boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-
         backgroundColor: 'red',
       }}
-      // className=" overflow-hidden shadow-xl"
     >
       <div
         style={boxStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {image && !error ? (
-          <Image
+        {event.image ? (
+          <img
             alt=""
-            src={image}
-            width={300}
-            height={200}
+            src={event.image}
             onError={handleImageError}
-            style={{ width: '300px', height: '180px' }}
+            style={{ width: '300px', height: '240px' }}
           />
         ) : (
           <Image
             alt=""
             src="/img1.jpg"
-            width={300}
-            height={200}
             onError={handleImageError}
-            style={{ width: '300px', height: '180px' }}
+            style={{ width: '300px', height: '240px' }}
           />
         )}
 
@@ -122,9 +136,9 @@ export default function EventCard({ event }: IProps | any) {
             marginLeft: '10px',
           }}
         >
-          <h2 className=" text-2xl mb-2"> {event.name}</h2>
+          <h2 className=" text-2xl mb-2"> {event.title}</h2>
           <h2 className="text-sm flex  " style={{ color: 'white' }}>
-            Inicia: {startDate}
+            Inicia: {event.date}
           </h2>
         </div>
         {audio && (
@@ -137,7 +151,9 @@ export default function EventCard({ event }: IProps | any) {
             />
           </div>
         )}
-        {event.types.length > 0 && (
+
+        {/* types = categories */}
+        {/* {event.types.length > 0 && (
           <div
             style={{
               display: 'flex',
@@ -157,7 +173,7 @@ export default function EventCard({ event }: IProps | any) {
               {event.types}
             </span>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )
