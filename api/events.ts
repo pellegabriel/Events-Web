@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
+import { Json } from "../supabase-types";
 
 export type TEvent = {
-    audio: string
-    categoria: string
-    created_by: string
-    description: string
-    event_date_end: string
-    event_date_start: string
-    event_end_time: string
-    event_time_end: string
-    event_time_start: string
+    audio: string | null
+    categoria: string | null
+    created_by: string | null
+    date: string | null
+    description: string | null
+    event_end_time: string | null
     id: string
-    image: string
-    location: {
-        lat: string
-        lng: string
-    }
-    subtitle: string
+    image: string | null
+    location: Json
+    subtitle: string | null
     title: string
 }
 
@@ -28,14 +23,14 @@ type TUseGetEvents = {
 }
 
 type TUseCreateEvents = {
-    data: TEvent[]
-    createEvent: (eventData: TEvent) => Promise<void>
     error: string
+    data: TEvent[]
     loading: boolean
+    createEvent: (eventData: TEvent) => Promise<void>
 }
 
 export const useGetEvents = (): TUseGetEvents => {
-    const [data, setData] = useState<TEvent[]>(null)
+    const [data, setData] = useState<TEvent[]>([])
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
   
@@ -43,9 +38,10 @@ export const useGetEvents = (): TUseGetEvents => {
       try {
           setLoading(true)
           const { data } = await supabase.from("events").select();
-          setData(data)
-      } catch (err){
-          setError(err)
+
+          if (data) setData(data)
+      } catch (error){
+        console.log(`error-fetching-event, ${error}`)
       } finally {
           setLoading(false)
       }
@@ -59,7 +55,7 @@ export const useGetEvents = (): TUseGetEvents => {
 }
 
 export const useCreateEvent = (): TUseCreateEvents => {
-    const [data, setData] = useState<TEvent[]>(null)
+    const [data, setData] = useState<TEvent[]>([])
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
   
@@ -67,11 +63,9 @@ export const useCreateEvent = (): TUseCreateEvents => {
         try {
             setLoading(true)
             const response = await supabase.from("events").insert([eventData]);
-            console.log(response)
-            setData(response.data);
+            if (response.data) setData(response.data);
         } catch (err){
-            console.log({ err })
-            setError(err)
+            console.log(`error-creating-event, ${error}`)
         }   finally {
             setLoading(false)
         }

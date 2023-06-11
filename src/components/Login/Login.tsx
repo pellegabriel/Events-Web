@@ -29,98 +29,109 @@ export default function Login() {
   }
 
   return (
-    <div style={{
-      marginTop: 40,
-      padding: 30,
-    }}>
-      <p style={{
-    marginTop: 80,
-    marginBottom: 40,
-    paddingLeft: 20,
-    paddingRight: 20,
-    fontSize: 35,
-  }}>Bienvenido a WeeOut</p>
+    <div
+      style={{
+        marginTop: 40,
+        padding: 30,
+      }}
+    >
+      <p
+        style={{
+          marginTop: 80,
+          marginBottom: 40,
+          paddingLeft: 20,
+          paddingRight: 20,
+          fontSize: 35,
+        }}
+      >
+        Bienvenido a WeeOut
+      </p>
 
-      <div style={{ ...{
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  }, ...{
-    marginTop: 20,
-  }}}>
+      <div
+        style={{ ...{
+          paddingTop: 4,
+          paddingBottom: 4,
+          alignSelf: 'stretch',
+          }, ...{ marginTop: 20 }
+        }}
+      >
         <input
-          // label="Email"
-          // leftIcon={{ type: 'font-awesome', name: 'envelope' }}
           onChange={(event) => setEmail(event.target.value)}
           value={email}
           placeholder="email@address.com"
           autoCapitalize={'none'}
-          style={{
-            paddingLeft: 10,
-
-          }}
-
+          style={{ paddingLeft: 10 }}
         />
       </div>
-      <div style={{
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  }}>
+      <div
+        style={{
+          paddingTop: 4,
+          paddingBottom: 4,
+          alignSelf: 'stretch',
+        }}
+      >
         <input
-          // label="Contraseña"
-          // leftIcon={{ type: 'font-awesome', name: 'lock' }}
           onChange={(event) => setPassword(event.target.value)}
           value={password}
           type='password'
           placeholder="Contraseña"
           autoCapitalize={'none'}
-          style={{
-            paddingLeft: 10,
-
-          }}
+          style={{ paddingLeft: 10 }}
         />
       </div>
-      <p style={{
-    marginTop: 10,
-    marginBottom: 0,
-    paddingLeft: 20,
-    paddingRight: 20,
-    fontSize: 15,
-  }}>Si aun no tienes una cuenta, escribe tu email y contraseña. Despues dale a "Registrarte"</p>
+      <p
+        style={{
+          marginTop: 10,
+          marginBottom: 0,
+          paddingLeft: 20,
+          paddingRight: 20,
+          fontSize: 15,
+        }}
+      >
+        Si aun no tienes una cuenta, escribe tu email y contraseña. Despues dale a "Registrarte"
+      </p>
 
-      <div style={{ ...{
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  }, ...{
-    marginTop: 20,
-  } }}>
-          <button style={{
-    backgroundColor:  '#f5694d',
-
-    padding: 20,
-    borderRadius: 5,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  }} disabled={loading} onClick={() => signInWithEmail()}>
-            Inicias sesion
+      <div
+        style={{ ...{
+          paddingTop: 4,
+          paddingBottom: 4,
+          alignSelf: 'stretch',
+          }, ...{ marginTop: 20 }
+        }}
+      >
+        <button
+          disabled={loading}
+          onClick={() => signInWithEmail()}
+          style={{
+            backgroundColor:  '#f5694d',
+            padding: 20,
+            borderRadius: 5,
+            color: '#FFFFFF',
+            fontWeight: 'bold',
+          }}
+        >
+          Inicias sesion
         </button>      
         </div>
       
-      <div style={{
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  }}>
-        <button style={{
-    backgroundColor:  '#f5694d',
-
-    padding: 20,
-    borderRadius: 5,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  }} disabled={loading} onClick={() => signUpWithEmail()}>
+      <div
+        style={{
+          paddingTop: 4,
+          paddingBottom: 4,
+          alignSelf: 'stretch',
+        }}
+      >
+        <button
+          disabled={loading}
+          onClick={() => signUpWithEmail()}
+          style={{
+            padding: 20,
+            borderRadius: 5,
+            color: '#FFFFFF',
+            fontWeight: 'bold',
+            backgroundColor:  '#f5694d',
+          }}
+        >
           Registrarte
         </button>
       </div>

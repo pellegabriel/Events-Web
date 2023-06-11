@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { supabase } from "../supabase"
 
 type TCategory = {
-    id:number,
-    label:string
-    icon_name:string
+    id: number
+    label: string | null
+    icon_name: string | null
 }
 
 type TUseGetCategories = {
@@ -14,7 +14,7 @@ type TUseGetCategories = {
 }
 
 export const useGetCategories = (): TUseGetCategories => {
-    const [data, setData] = useState<TCategory[]>(null)
+    const [data, setData] = useState<TCategory[]>([])
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
   
@@ -22,25 +22,25 @@ export const useGetCategories = (): TUseGetCategories => {
       try {
           setLoading(true)
           const { data } = await supabase.from("categories").select();
-          setData(data)
+          if (data) setData(data)
       } catch (err){
-          setError(err)
+          console.log(`error-fetching-event, ${error}`)
       } finally {
           setLoading(false)
       }
     }
 
-    const filterCategories = async (categoriesIds: string[]) => {
-        try {
-            setLoading(true)
-            const { data } = await supabase.from("categories").select('id');
-            setData(data)
-        } catch (err){
-            setError(err)
-        } finally {
-            setLoading(false)
-        }
-    }
+    // const filterCategories = async (categoriesIds: string[]) => {
+    //     try {
+    //         setLoading(true)
+    //         const { data } = await supabase.from("categories").select('id');
+    //         if (data) setData(data)
+    //     } catch (err){
+    //         setError(err)
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    // }
   
     useEffect(() => {
       fetchCategories()

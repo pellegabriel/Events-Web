@@ -25,18 +25,16 @@ export interface Database {
           id?: number
           label?: string | null
         }
+        Relationships: []
       }
       events: {
         Row: {
           audio: string | null
           categoria: string | null
           created_by: string | null
+          date: string | null
           description: string | null
-          event_date_end: string | null
-          event_date_start: string | null
           event_end_time: string | null
-          event_time_end: string | null
-          event_time_start: string | null
           id: string
           image: string | null
           location: Json | null
@@ -47,12 +45,9 @@ export interface Database {
           audio?: string | null
           categoria?: string | null
           created_by?: string | null
+          date?: string | null
           description?: string | null
-          event_date_end?: string | null
-          event_date_start?: string | null
           event_end_time?: string | null
-          event_time_end?: string | null
-          event_time_start?: string | null
           id?: string
           image?: string | null
           location?: Json | null
@@ -63,18 +58,16 @@ export interface Database {
           audio?: string | null
           categoria?: string | null
           created_by?: string | null
+          date?: string | null
           description?: string | null
-          event_date_end?: string | null
-          event_date_start?: string | null
           event_end_time?: string | null
-          event_time_end?: string | null
-          event_time_start?: string | null
           id?: string
           image?: string | null
           location?: Json | null
           subtitle?: string | null
           title?: string
         }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -101,6 +94,14 @@ export interface Database {
           username?: string | null
           website?: string | null
         }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {
