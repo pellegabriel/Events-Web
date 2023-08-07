@@ -306,70 +306,80 @@ export default function EventUpdateForm(props) {
   console.log('asdasd', { currentTypesValue })
   return (
     <Grid
+  as="form"
+  rowGap={tokens.space.xs.value}
+  columnGap={tokens.space.xxxs.value}
+  padding={tokens.space.xl.value}
+  onSubmit={async (event) => {
+    event.preventDefault()
+    let modelFields = {
+      name,
+      subTitulo,
+      startDate,
+      endDate,
+      is_done,
+      map_point,
+      types,
+      descripcion,
+    }
+    const validationResponses = await Promise.all(
+      /* ... el código de la validación ... */
+    )
+    if (validationResponses.some((r) => r.hasError)) {
+      return
+    }
+    // Verificamos que onSubmit es una función y si devuelve un objeto
+    if (typeof onSubmit === 'function') {
+      const result = onSubmit(modelFields)
+      if (result && typeof result === 'object') {
+        modelFields = result
+      } else {
+        console.error('onSubmit no devolvió un objeto')
+        return
+      }
+    }
+  
+    try {
+      console.log('estodeAca23123333', { eventRecord, modelFields })
+  
+      // Verificamos que eventRecord es una instancia válida de Event
+      if (!(eventRecord instanceof Event)) {
+        console.error('eventRecord no es una instancia válida de Event')
+        return
+      }
+  
+      await DataStore.save(
+        Event.copyOf(eventRecord, (updated) => {
+          Object.assign(updated, modelFields)
+        }),
+      )
       
-      as="form"
-      rowGap={tokens.space.xs.value}
-      columnGap={tokens.space.xxxs.value}
-      padding={tokens.space.xl.value}
-      onSubmit={async (event) => {
-        event.preventDefault()
-        let modelFields = {
-          name,
-          subTitulo,
-          startDate,
-          endDate,
-          is_done,
-          map_point,
-          types,
-          descripcion,
-        }
-        const validationResponses = await Promise.all(
-          Object.keys(validations).reduce((promises, fieldName) => {
-            if (Array.isArray(modelFields[fieldName])) {
-              promises.push(
-                ...modelFields[fieldName].map((item) =>
-                  runValidationTasks(fieldName, item),
-                ),
-              )
-              return promises
-            }
-            promises.push(runValidationTasks(fieldName, modelFields[fieldName]))
-            return promises
-          }, []),
-        )
-        if (validationResponses.some((r) => r.hasError)) {
+      if (onSuccess) {
+        console.log('estodeAca', { modelFields })
+        onSuccess(modelFields)
+        // Verificamos que router es definido y router.push es una función
+        if (!router || typeof router.push !== 'function') {
+          console.error('router no está definido o router.push no es una función')
           return
         }
-        if (onSubmit) {
-          modelFields = onSubmit(modelFields)
-        }
-        try {
-          console.log('estodeAca23123333', { eventRecord, modelFields })
+        router.push(`/profile?startDate=&types=&userId=${userId}`)
+      }
+    } catch (err) {
+      console.error('pumba', err)
+      if (onError) {
+        onError(modelFields, err.message)
+      }
+    }
+  }}
+  {...rest}
+  {...getOverrideProps(overrides, 'EventUpdateForm')}
+>
 
-          await DataStore.save(
-            Event.copyOf(eventRecord, (updated) => {
-              Object.assign(updated, modelFields)
-            }),
-          )
-          if (onSuccess) {
-            console.log('estodeAca', { modelFields })
-            onSuccess(modelFields)
-          }
-        } catch (err) {
-          console.error('pumba', err)
-          if (onError) {
-            onError(modelFields, err.message)
-          }
-        }
-      }}
-      {...rest}
-      {...getOverrideProps(overrides, 'EventUpdateForm')}
-    >
       <TextField
         label="Titulo"
         isRequired={true}
         isReadOnly={false}
-        defaultValue={name}
+        defaultValue={eventTitle}
         onChange={(e) => {
           let { value } = e.target
           if (onChange) {
